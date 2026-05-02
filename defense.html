@@ -43,30 +43,6 @@
           <!-- Populated by JS -->
         </div>
 
-        <div style="display:flex;gap:16px;margin-top:24px;padding-top:20px;border-top:1px solid var(--border);flex-wrap:wrap">
-          <div style="flex:1;min-width:100px">
-            <div style="font-family:var(--mono);font-size:1.6rem;color:var(--danger);font-weight:700" id="statProjects">5</div>
-            <div style="color:var(--text2);font-size:12px">Active Programs</div>
-          </div>
-          <div style="flex:1;min-width:100px">
-            <div style="font-family:var(--mono);font-size:1.6rem;color:var(--warning);font-weight:700" id="statTasks">6</div>
-            <div style="color:var(--text2);font-size:12px">Open Tasks</div>
-          </div>
-          <div style="flex:1;min-width:100px">
-            <div style="font-family:var(--mono);font-size:1.6rem;color:var(--success);font-weight:700" id="statDone">12</div>
-            <div style="color:var(--text2);font-size:12px">Completed Tasks</div>
-          </div>
-          <div style="flex:1;min-width:100px">
-            <div style="font-family:var(--mono);font-size:1.6rem;color:var(--accent);font-weight:700" id="statTeam">2</div>
-            <div style="color:var(--text2);font-size:12px">Team Members</div>
-          </div>
-        </div>
-
-        <div style="margin-top:24px;padding:14px;background:var(--bg3);border:1px solid var(--border);border-radius:10px">
-          <div style="font-family:var(--mono);font-size:10px;color:var(--text3);margin-bottom:8px;letter-spacing:.1em">RECENT NOTIFICATIONS FROM HUB</div>
-          <div id="notifFeed"></div>
-        </div>
-
         <div style="margin-top:24px;text-align:center">
           <a href="#launch-hub" class="btn btn-danger btn-lg" onclick="launchHub(event)">🔒 &nbsp;Launch OrbitWorks Hub App</a>
           <p style="color:var(--text3);font-size:12px;margin-top:10px">
@@ -155,10 +131,6 @@ function renderDefenseData() {
     <div class="data-row">
       <div class="data-row-dot" style="background:${p.color}"></div>
       <div class="data-row-label">${p.name}</div>
-      <div style="width:100px;background:var(--bg4);border-radius:4px;height:5px;overflow:hidden;margin-right:10px">
-        <div style="width:${p.progress}%;height:5px;background:${p.color};border-radius:4px"></div>
-      </div>
-      <div class="data-row-val">${p.progress}%</div>
       <div class="data-row-badge" style="background:${(statusColor[p.status]||'#8b97aa')}22;color:${statusColor[p.status]||'#8b97aa'};border:1px solid ${(statusColor[p.status]||'#8b97aa')}44">${statusLabel[p.status]||p.status}</div>
     </div>
   `).join('');
