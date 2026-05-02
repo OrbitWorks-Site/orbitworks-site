@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merch Shop — OrbitWorks Aerospace</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<script src="js/main.js"></script>
+<script>document.write(renderNav())</script>
+<div class="page-wrap">
+
+  <section style="padding:60px 0 32px">
+    <div class="container">
+      <div class="eyebrow">Merch Shop</div>
+      <h1>OrbitWorks Gear</h1>
+      <p class="lead" style="margin-top:12px;max-width:600px">Rep the brand. A portion of every purchase goes directly to Drone Aid Operations — supporting humanitarian drone missions worldwide.</p>
+      <div style="margin-top:16px">
+        <span class="badge badge-success">~$10 per shirt to Drone Aid</span>
+        <span class="badge badge-accent" style="margin-left:8px">~$9 per patch</span>
+        <span class="badge badge-purple" style="margin-left:8px">~$5 per cup</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter -->
+  <div style="border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2);padding:14px 0">
+    <div class="container">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <span style="color:var(--text2);font-size:12px;font-family:var(--mono);letter-spacing:.08em">FILTER:</span>
+        <button class="btn btn-sm btn-primary" onclick="filterMerch('all',this)">All</button>
+        <button class="btn btn-sm" onclick="filterMerch('apparel',this)">👕 Apparel</button>
+        <button class="btn btn-sm" onclick="filterMerch('headwear',this)">🧢 Headwear</button>
+        <button class="btn btn-sm" onclick="filterMerch('accessories',this)">🎖️ Accessories</button>
+        <button class="btn btn-sm" onclick="filterMerch('drinkware',this)">☕ Drinkware</button>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="grid grid-4" id="merchGrid">
+
+        <div class="merch-card" data-cat="apparel" data-anim>
+          <div class="merch-img">👕</div>
+          <div class="merch-body">
+            <div class="merch-name">OW Classic Tee</div>
+            <div style="color:var(--text2);font-size:12px;margin-bottom:8px">Shield logo · Black · S–3XL</div>
+            <div class="merch-price">$28</div>
+            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'tee-classic',name:'OW Classic Tee',price:28,icon:'👕'})">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="merch-card" data-cat="apparel" data-anim>
+          <div class="merch-img">🥼</div>
+          <div class="merch-body">
+            <div class="merch-name">OW Tactical Hoodie</div>
+            <div style="color:var(--text2);font-size:12px;margin-bottom:8px">Embroidered logo · Black · S–2XL</div>
+            <div class="merch-price">$54</div>
+            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'hoodie-tactical',name:'OW Tactical Hoodie',price:54,icon:'🥼'})">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="merch-card" data-cat="apparel" data-anim>
+          <div class="merch-img">🎽</div>
+          <div class="merch-body">
+            <div class="merch-name">Drone Aid Tee</div>
+            <div style="color:var(--text2);font-size:12px;margin-bottom:8px">Drone Aid collab · Forest green</div>
+            <div class="merch-price">$28</div>
+            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'tee-droneaid',name:'Drone Aid Tee',price:28,icon:'🎽'})">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="merch-card" data-cat="headwear" data-anim>
+          <div class="merch-img">🧢</div>
+          <div class="merch-body">
+            <div class="merch-name">OW Operator Cap</div>
+            <div style="color:var(--text2);font-size:12px;margin-bottom:8px">Structured 6-panel · Black / Cyan</div>
+            <div class="merch-price">$32</div>
+            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'cap-operator',name:'OW Operator Cap',price:32,icon:'🧢'})">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="merch-card" data-cat="headwear" data-anim>
+          <div class="merch-img">🎩</div>
+          <div class="merch-body">
+            <div class="merch-name">OW Beanie</div>
+            <div style="color:var(--text2);font-size:12px;margin-bottom:8px">Embroidered · Black · One size</div>
+            <div class="merch-price">$22</div>
+            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'beanie',name:'OW Beanie',price:22,icon:'🎩'})">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="merch-card" data-cat="accessories" data-anim>
+          <div class="merch-img">🎖️</div>
+          <div class="merch-body">
+            <div class="merch-name">Shield Patch Set (3pk)</div>
+            <div style="color:var(--text2);font-size:12px;margin-bottom:8px">Embroidered · Hook & loop backed</div>
+            <div class="merch-price">$18</div>
+            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'patch-set',name:'Shield Patch Set (3pk)',price:18,icon:'🎖️'})">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="merch-card" data-cat="accessories" data-anim>
+          <div class="merch-img">🩳</div>
+          <div class="merch-body">
+            <div class="merch-name">OW Sticker Pack</div>
+            <div style="color:var(--text2);font-size:12px;margin-bottom:8px">5 premium vinyl stickers</div>
+            <div class="merch-price">$10</div>
+            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'stickers',name:'OW Sticker Pack',price:10,icon:'🩳'})">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="merch-card" data-cat="drinkware" data-anim>
+          <div class="merch-img">☕</div>
+          <div class="merch-body">
+            <div class="merch-name">OW Mug</div>
+            <div style="color:var(--text2);font-size:12px;margin-bottom:8px">11oz ceramic · Shield logo</div>
+            <div class="merch-price">$16</div>
+            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'mug',name:'OW Mug',price:16,icon:'☕'})">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="merch-card" data-cat="drinkware" data-anim>
+          <div class="merch-img">🧃</div>
+          <div class="merch-body">
+            <div class="merch-name">OW Tumbler 20oz</div>
+            <div style="color:var(--text2);font-size:12px;margin-bottom:8px">Stainless steel · Black/Cyan wrap</div>
+            <div class="merch-price">$28</div>
+            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'tumbler',name:'OW Tumbler 20oz',price:28,icon:'🧃'})">Add to Cart</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Drone Aid Notice -->
+      <div class="aid-banner" style="margin-top:48px;text-align:center" data-anim>
+        <div class="eyebrow" style="color:var(--success)">Your Purchase Matters</div>
+        <h3 style="color:var(--success);margin-bottom:10px">Supporting Drone Aid Operations</h3>
+        <p style="color:var(--text2);max-width:560px;margin:0 auto">Every order directly funds our humanitarian drone program. ~$10 per shirt, ~$9 per patch, ~$5 per mug goes toward drones and operations in crisis zones.</p>
+        <a href="drone-aid.html" style="display:inline-block;margin-top:16px" class="btn btn-sm" style="border-color:var(--success);color:var(--success)">Learn About Drone Aid →</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+<script>document.write(renderFooter())</script>
+<script>
+function filterMerch(cat, btn) {
+  document.querySelectorAll('.merch-card').forEach(c => {
+    c.style.display = cat === 'all' || (c.dataset.cat || '').includes(cat) ? '' : 'none';
+  });
+  document.querySelectorAll('[onclick^="filterMerch"]').forEach(b => b.className = 'btn btn-sm');
+  btn.className = 'btn btn-sm btn-primary';
+}
+</script>
+</body>
+</html>

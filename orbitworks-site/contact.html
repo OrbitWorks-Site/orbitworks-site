@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — OrbitWorks Aerospace</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<script src="js/main.js"></script>
+<script>document.write(renderNav())</script>
+<div class="page-wrap">
+  <section style="padding:60px 0 32px">
+    <div class="container">
+      <div class="eyebrow">Contact</div>
+      <h1>Get in Touch</h1>
+      <p class="lead" style="margin-top:12px;max-width:600px">Questions about products, services, custom builds, or training? We respond within 24 hours. For defense inquiries, use the Defense Portal.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="grid grid-2" style="gap:48px;align-items:start">
+
+        <!-- Form -->
+        <div data-anim>
+          <h3 style="margin-bottom:24px">Send a Message</h3>
+          <form id="contactForm" onsubmit="submitForm(event)">
+            <div class="grid grid-2" style="gap:12px">
+              <div class="form-group">
+                <label class="form-label">First Name *</label>
+                <input class="form-input" type="text" placeholder="Jane" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Last Name *</label>
+                <input class="form-input" type="text" placeholder="Smith" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address *</label>
+              <input class="form-input" type="email" placeholder="jane@company.com" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone</label>
+              <input class="form-input" type="tel" placeholder="(607) 555-0100" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Inquiry Type *</label>
+              <select class="form-input" required>
+                <option value="">Select...</option>
+                <option>Commercial Drone Purchase</option>
+                <option>Aerial Photography / Video</option>
+                <option>Mapping & Survey</option>
+                <option>Inspection Services</option>
+                <option>Pilot Training</option>
+                <option>Custom Drone Build</option>
+                <option>Merch / Shop</option>
+                <option>Drone Aid Operations</option>
+                <option>General Inquiry</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Message *</label>
+              <textarea class="form-input" placeholder="Tell us about your project or question..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center">Send Message →</button>
+          </form>
+          <div id="formSuccess" style="display:none;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:10px;padding:20px;margin-top:16px;text-align:center">
+            <div style="font-size:28px;margin-bottom:8px">✅</div>
+            <div style="color:var(--success);font-weight:700;margin-bottom:4px">Message Sent!</div>
+            <div style="color:var(--text2);font-size:13px">We'll get back to you within 24 hours.</div>
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div data-anim>
+          <h3 style="margin-bottom:24px">Contact Info</h3>
+          <div class="card" style="margin-bottom:12px">
+            <div style="font-size:24px;margin-bottom:8px">📞</div>
+            <div style="font-weight:700;margin-bottom:4px">Phone</div>
+            <a href="tel:6072062671" style="color:var(--accent);font-family:var(--mono)">(607) 206-2671</a>
+          </div>
+          <div class="card" style="margin-bottom:12px">
+            <div style="font-size:24px;margin-bottom:8px">📧</div>
+            <div style="font-weight:700;margin-bottom:4px">Email</div>
+            <a href="mailto:s.sanders@orbitworksaerospace.com" style="color:var(--accent);font-size:13px">s.sanders@orbitworksaerospace.com</a><br>
+            <a href="mailto:orders@orbitworksaerospace.com" style="color:var(--text2);font-size:13px">orders@orbitworksaerospace.com</a>
+          </div>
+          <div class="card" style="margin-bottom:12px">
+            <div style="font-size:24px;margin-bottom:8px">📍</div>
+            <div style="font-weight:700;margin-bottom:4px">Location</div>
+            <div style="color:var(--text2);font-size:13px">Vestal, New York<br>Southern Tier · Broome County</div>
+          </div>
+          <div class="card" style="margin-bottom:12px">
+            <div style="font-size:24px;margin-bottom:8px">🕐</div>
+            <div style="font-weight:700;margin-bottom:4px">Response Time</div>
+            <div style="color:var(--text2);font-size:13px">Within 24 hours for general inquiries<br>Same day for urgent / defense matters</div>
+          </div>
+          <div class="card card-accent-left" style="border-left-color:var(--danger)">
+            <div style="font-size:22px;margin-bottom:8px">🔒</div>
+            <div style="font-weight:700;margin-bottom:4px;color:var(--danger)">Defense Inquiries</div>
+            <div style="color:var(--text2);font-size:13px;margin-bottom:12px">For government, DoD, and defense contractor inquiries — use the secure Defense Portal.</div>
+            <a href="defense.html" class="btn btn-sm btn-danger">Defense Portal →</a>
+          </div>
+
+          <div style="margin-top:24px">
+            <h4 style="margin-bottom:12px;color:var(--text2)">Follow Us</h4>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <a href="https://twitter.com/OrbitworksA" target="_blank" class="btn btn-sm">𝕏 @OrbitworksA</a>
+              <a href="https://orbitworksaerospace.substack.com" target="_blank" class="btn btn-sm">📰 Substack</a>
+              <a href="https://www.facebook.com/orbitworksaerospace" target="_blank" class="btn btn-sm">📘 Facebook</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<script>document.write(renderFooter())</script>
+<script>
+function submitForm(e) {
+  e.preventDefault();
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+  OW.showToast('✅ Message sent! We\'ll be in touch within 24 hours.');
+}
+</script>
+</body>
+</html>
