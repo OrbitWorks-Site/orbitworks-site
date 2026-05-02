@@ -9,7 +9,7 @@ const OW = {
     projects: [
       { id: 'p1', name: 'Vanguard SHORAD', progress: 67, status: 'active', color: '#00d4ff' },
       { id: 'p2', name: 'AERIS-10X Radar', progress: 82, status: 'active', color: '#a78bfa' },
-      { id: 'p3', name: 'Talon Mk.I', progress: 34, status: 'pending', color: '#fb923c' },
+      { id: 'p3', name: 'Talon Mk.I', progress: 34, status: 'Active', color: '#fb923c' },
       { id: 'p4', name: 'DDTC / Regulatory', progress: 90, status: 'review', color: '#ef4444' },
       { id: 'p5', name: 'Tier I Facility', progress: 18, status: 'planning', color: '#4ade80' },
     ],
