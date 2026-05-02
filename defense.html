@@ -127,7 +127,7 @@ async function renderDefenseData() {
   const statusLabel = { active:'ACTIVE', pending:'PENDING', review:'REVIEW', planning:'PLANNING' };
 
   try {
-    const res = await fetch('http://67.205.183.99:8090/api/collections/projects/records?sort=name');
+    const res = await fetch('https://pb.orbitworksaerospace.com/api/collections/projects/records?sort=name');
     const data = await res.json();
     const projects = data.items;
 
