@@ -122,19 +122,26 @@
 <script>document.write(renderFooter())</script>
 <script>
 // Render live Hub data feed
-function renderDefenseData() {
-  const projects = OW.hubData.projects;
+async function renderDefenseData() {
   const statusColor = { active:'#22c55e', pending:'#f59e0b', review:'#a78bfa', planning:'#00d4ff' };
   const statusLabel = { active:'ACTIVE', pending:'PENDING', review:'REVIEW', planning:'PLANNING' };
 
-  document.getElementById('projectFeed').innerHTML = projects.map(p => `
-    <div class="data-row">
-      <div class="data-row-dot" style="background:${p.color}"></div>
-      <div class="data-row-label">${p.name}</div>
-      <div class="data-row-badge" style="background:${(statusColor[p.status]||'#8b97aa')}22;color:${statusColor[p.status]||'#8b97aa'};border:1px solid ${(statusColor[p.status]||'#8b97aa')}44">${statusLabel[p.status]||p.status}</div>
-    </div>
-  `).join('');
+  try {
+    const res = await fetch('http://67.205.183.99:8090/api/collections/projects/records?sort=name');
+    const data = await res.json();
+    const projects = data.items;
 
+    document.getElementById('projectFeed').innerHTML = projects.map(p => `
+      <div class="data-row">
+        <div class="data-row-dot" style="background:${p.color}"></div>
+        <div class="data-row-label">${p.name}</div>
+        <div class="data-row-badge" style="background:${(statusColor[p.status]||'#8b97aa')}22;color:${statusColor[p.status]||'#8b97aa'};border:1px solid ${(statusColor[p.status]||'#8b97aa')}44">${statusLabel[p.status]||p.status}</div>
+      </div>
+    `).join('');
+  } catch(e) {
+    document.getElementById('projectFeed').innerHTML = '<div style="color:var(--text3);font-size:13px;padding:10px">Syncing with Hub...</div>';
+  }
+}
   const notifs = OW.hubData.notifications;
   document.getElementById('notifFeed').innerHTML = notifs.map(n => `
     <div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:12px;align-items:center">
