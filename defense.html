@@ -43,12 +43,6 @@
       from { opacity: 0; filter: brightness(2); }
       to   { opacity: 1; filter: brightness(1); }
     }
-    .ember-particle {
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-      animation: ember-float linear forwards;
-    }
     @keyframes ember-float {
       0%   { opacity: 1; transform: translate(0,0) scale(1); }
       100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0); }
@@ -156,7 +150,7 @@
   <section>
     <div class="container">
 
-      <!-- Access gate -->
+      <!-- 1. ACCESS GATE / LOGGED IN BAR -->
       <div class="access-gate" id="accessGate">
         <div class="access-gate-text">
           🔐 <strong style="color:var(--text)">Classified specifications are redacted.</strong><br>
@@ -168,7 +162,6 @@
         </div>
       </div>
 
-      <!-- Logged in bar -->
       <div class="logged-in-bar" id="loggedInBar">
         <div style="display:flex;align-items:center;gap:10px">
           <span style="font-size:18px">🔓</span>
@@ -180,25 +173,8 @@
         <button class="btn" onclick="logout()" style="font-size:12px">Sign Out</button>
       </div>
 
-      <!-- Live status — project feed only, no hub button here -->
-      <div class="defense-hero" data-anim>
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:24px">
-          <div>
-            <div class="eyebrow" style="color:var(--danger)">OrbitWorks Hub · Live Status</div>
-            <h2 style="margin-top:4px">Active Defense Programs</h2>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end">
-            <div class="live-dot">LIVE DATA SYNC</div>
-            <div style="font-family:var(--mono);font-size:11px;color:var(--text3)">Last sync: <span id="syncTime">just now</span></div>
-          </div>
-        </div>
-        <div id="projectFeed">
-          <div style="color:var(--text3);font-size:13px;padding:10px">Loading programs...</div>
-        </div>
-      </div>
-
-      <!-- Systems -->
-      <div class="section-header" style="margin-top:64px" data-anim>
+      <!-- 2. SYSTEM CARDS WITH REDACTIONS -->
+      <div class="section-header" data-anim>
         <div class="eyebrow" style="color:var(--danger)">Flagship Program</div>
         <h2>Vanguard SHORAD Counter-UAS System</h2>
         <p>Integrated short-range air defense designed to address the cost-exchange crisis in drone defense. Domestic manufacturing, zero Chinese-origin components.</p>
@@ -299,7 +275,7 @@
       </div>
 
       <!-- Full Battery -->
-      <div class="card" style="text-align:center;padding:36px;position:relative;overflow:hidden" data-anim>
+      <div class="card" style="text-align:center;padding:36px;position:relative;overflow:hidden;margin-bottom:32px" data-anim>
         <div class="burn-overlay" id="burnBattery" style="position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:10"></div>
         <div style="font-family:var(--mono);font-size:1.1rem;color:var(--danger);font-weight:700;margin-bottom:8px">Complete Vanguard Battery</div>
         <div style="margin-bottom:12px">
@@ -316,7 +292,24 @@
         </div>
       </div>
 
-      <!-- Hub App Launch — moved here below system cards -->
+      <!-- 3. HUB LIVE STATUS -->
+      <div class="defense-hero" data-anim>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:24px">
+          <div>
+            <div class="eyebrow" style="color:var(--danger)">OrbitWorks Hub · Live Status</div>
+            <h2 style="margin-top:4px">Active Defense Programs</h2>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end">
+            <div class="live-dot">LIVE DATA SYNC</div>
+            <div style="font-family:var(--mono);font-size:11px;color:var(--text3)">Last sync: <span id="syncTime">just now</span></div>
+          </div>
+        </div>
+        <div id="projectFeed">
+          <div style="color:var(--text3);font-size:13px;padding:10px">Loading programs...</div>
+        </div>
+      </div>
+
+      <!-- 4. HUB APP LAUNCH -->
       <div class="card" style="margin-top:32px;text-align:center;padding:36px" data-anim>
         <div class="eyebrow" style="color:var(--danger)">OrbitWorks Hub</div>
         <h3 style="margin-bottom:12px">Authorized Personnel App Access</h3>
@@ -328,7 +321,7 @@
         </p>
       </div>
 
-      <!-- Inquiries -->
+      <!-- 5. INQUIRIES -->
       <div class="card" style="margin-top:32px;padding:40px;text-align:center" data-anim>
         <div class="eyebrow" style="color:var(--danger)">Government & Defense Inquiries</div>
         <h3 style="margin-bottom:12px">Request Program Information</h3>
