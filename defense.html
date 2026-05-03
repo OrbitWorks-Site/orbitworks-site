@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +24,6 @@
     </div>
   </section>
 
-  <!-- ── LIVE HUB DATA ── -->
   <section>
     <div class="container">
       <div class="defense-hero" data-anim>
@@ -40,19 +39,18 @@
         </div>
 
         <div id="projectFeed">
-          <!-- Populated by JS -->
+          <div style="color:var(--text3);font-size:13px;padding:10px">Loading programs...</div>
         </div>
 
         <div style="margin-top:24px;text-align:center">
           <a href="#launch-hub" class="btn btn-danger btn-lg" onclick="launchHub(event)">🔒 &nbsp;Launch OrbitWorks Hub App</a>
           <p style="color:var(--text3);font-size:12px;margin-top:10px">
-  Authorized personnel only · Requires credentials<br>
-  Don't have the app? <a href="mailto:s.sanders@orbitworksaerospace.com?subject=Hub App Access Request" style="color:var(--danger)">Request access →</a>
-</p>
+            Authorized personnel only · Requires credentials<br>
+            Don't have the app? <a href="mailto:s.sanders@orbitworksaerospace.com?subject=Hub App Access Request" style="color:var(--danger)">Request access →</a>
+          </p>
         </div>
       </div>
 
-      <!-- Vanguard SHORAD System -->
       <div class="section-header" style="margin-top:64px" data-anim>
         <div class="eyebrow" style="color:var(--danger)">Flagship Program</div>
         <h2>Vanguard SHORAD Counter-UAS System</h2>
@@ -104,7 +102,6 @@
         </div>
       </div>
 
-      <!-- Inquiries -->
       <div class="card" style="margin-top:32px;padding:40px;text-align:center" data-anim>
         <div class="eyebrow" style="color:var(--danger)">Government & Defense Inquiries</div>
         <h3 style="margin-bottom:12px">Request Program Information</h3>
@@ -121,17 +118,13 @@
 </div>
 <script>document.write(renderFooter())</script>
 <script>
-// Render live Hub data feed
 async function renderDefenseData() {
   const statusColor = { active:'#22c55e', pending:'#f59e0b', review:'#a78bfa', planning:'#00d4ff' };
   const statusLabel = { active:'ACTIVE', pending:'PENDING', review:'REVIEW', planning:'PLANNING' };
-
   try {
     const res = await fetch('https://pb.orbitworksaerospace.com/api/collections/projects/records?sort=name');
     const data = await res.json();
-    const projects = data.items;
-
-    document.getElementById('projectFeed').innerHTML = projects.map(p => `
+    document.getElementById('projectFeed').innerHTML = data.items.map(p => `
       <div class="data-row">
         <div class="data-row-dot" style="background:${p.color}"></div>
         <div class="data-row-label">${p.name}</div>
@@ -142,45 +135,14 @@ async function renderDefenseData() {
     document.getElementById('projectFeed').innerHTML = '<div style="color:var(--text3);font-size:13px;padding:10px">Syncing with Hub...</div>';
   }
 }
-  const notifs = OW.hubData.notifications;
-  document.getElementById('notifFeed').innerHTML = notifs.map(n => `
-    <div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:12px;align-items:center">
-      <span>${n.icon}</span>
-      <div style="flex:1">
-        <span style="color:var(--text);font-weight:600">${n.title}</span>
-        <span style="color:var(--text3);margin-left:8px">${timeAgo(n.time)}</span>
-      </div>
-      ${!n.read ? '<span style="width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block"></span>' : ''}
-    </div>
-  `).join('');
-
-  // Stats
-  document.getElementById('statProjects').textContent = OW.hubData.stats.projects;
-  document.getElementById('statTasks').textContent = OW.hubData.stats.openTasks;
-  document.getElementById('statDone').textContent = OW.hubData.stats.completedTasks;
-  document.getElementById('statTeam').textContent = OW.hubData.stats.teamSize;
-}
-
-function timeAgo(ts) {
-  const d = Date.now() - ts;
-  if (d < 60000) return 'just now';
-  if (d < 3600000) return Math.floor(d/60000)+'m ago';
-  if (d < 86400000) return Math.floor(d/3600000)+'h ago';
-  return Math.floor(d/86400000)+'d ago';
-}
 
 function launchHub(e) {
   e.preventDefault();
   OW.showToast('🛡️ OrbitWorks Hub — Open the app on your Android device');
 }
 
-// Update sync time
 document.getElementById('syncTime').textContent = new Date().toLocaleTimeString();
-
-// Render on load
 renderDefenseData();
-
-// Auto-refresh every 30s
 setInterval(() => {
   document.getElementById('syncTime').textContent = new Date().toLocaleTimeString();
   renderDefenseData();
