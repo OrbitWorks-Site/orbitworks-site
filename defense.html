@@ -4,6 +4,141 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Defense Portal — OrbitWorks Aerospace</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .redact-bar {
+      background: #1a1a1a;
+      border-radius: 3px;
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+      user-select: none;
+      vertical-align: middle;
+    }
+    .redact-bar::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(90deg, #111 0px, #111 3px, #1a1a1a 3px, #1a1a1a 6px);
+    }
+    .redact-sm  { height: 14px; width: 90px; }
+    .redact-md  { height: 14px; width: 130px; }
+    .redact-lg  { height: 14px; width: 180px; }
+    .classified-label {
+      display: block;
+      color: var(--danger);
+      font-size: 9px;
+      letter-spacing: 1px;
+      font-weight: 700;
+      margin-top: 3px;
+      font-family: var(--mono);
+    }
+    .reveal-value {
+      display: none;
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 700;
+      animation: fade-in 0.5s forwards;
+    }
+    @keyframes fade-in {
+      from { opacity: 0; filter: brightness(2); }
+      to   { opacity: 1; filter: brightness(1); }
+    }
+    .ember-particle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: ember-float linear forwards;
+    }
+    @keyframes ember-float {
+      0%   { opacity: 1; transform: translate(0,0) scale(1); }
+      100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0); }
+    }
+    .spec-block { margin-bottom: 6px; }
+    .spec-label-sm {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text3);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 3px;
+    }
+    .access-gate {
+      background: rgba(0,212,255,0.05);
+      border: 1px solid rgba(0,212,255,0.18);
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    .access-gate-text { color: var(--text2); font-size: 13px; line-height: 18px; }
+    .access-gate-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    .login-modal-bg {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-modal-bg.open { display: flex; }
+    .login-modal {
+      background: var(--bg2);
+      border: 1px solid var(--border2);
+      border-radius: 14px;
+      padding: 32px;
+      width: 100%;
+      max-width: 400px;
+      margin: 16px;
+    }
+    .login-input {
+      width: 100%;
+      background: var(--bg3);
+      border: 1px solid var(--border2);
+      border-radius: 8px;
+      color: var(--text);
+      padding: 10px 14px;
+      font-size: 14px;
+      box-sizing: border-box;
+      margin-bottom: 12px;
+      font-family: var(--font, sans-serif);
+    }
+    .login-input:focus { outline: none; border-color: var(--accent); }
+    .login-input::placeholder { color: var(--text3); }
+    .login-err {
+      display: none;
+      background: rgba(239,68,68,0.1);
+      border: 1px solid rgba(239,68,68,0.3);
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: var(--danger);
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .logged-in-bar {
+      display: none;
+      background: rgba(34,197,94,0.07);
+      border: 1px solid rgba(34,197,94,0.2);
+      border-radius: 10px;
+      padding: 12px 18px;
+      margin-bottom: 24px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .logged-in-bar.show { display: flex; }
+  </style>
 </head>
 <body>
 <script src="js/main.js"></script>
@@ -14,7 +149,7 @@
     <div class="container">
       <div class="eyebrow" style="color:var(--danger)">🔒 Restricted Access</div>
       <h1>Defense Systems Portal</h1>
-      <p class="lead" style="margin-top:12px;max-width:640px">OrbitWorks Aerospace defense programs — counter-UAS, SHORAD, and related systems — are developed under ITAR compliance. This portal is for government, DoD, and defense contractor inquiries only.</p>
+      <p class="lead" style="margin-top:12px;max-width:640px">OrbitWorks Aerospace defense programs — counter-UAS, SHORAD, and related systems — developed under ITAR compliance. This portal is for government, DoD, and defense contractor use.</p>
       <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
         <span class="badge badge-danger">ITAR Controlled</span>
         <span class="badge badge-success">NDAA §848 Compliant</span>
@@ -26,6 +161,32 @@
 
   <section>
     <div class="container">
+
+      <!-- Access gate (shown when logged out) -->
+      <div class="access-gate" id="accessGate">
+        <div class="access-gate-text">
+          🔐 <strong style="color:var(--text)">Classified specifications are redacted.</strong><br>
+          Authorized personnel may sign in to view full program data.
+        </div>
+        <div class="access-gate-btns">
+          <button class="btn btn-lg" onclick="openLogin()">Sign In →</button>
+          <a href="request-access.html" class="btn btn-danger btn-lg">Request Access</a>
+        </div>
+      </div>
+
+      <!-- Logged in bar -->
+      <div class="logged-in-bar" id="loggedInBar">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="font-size:18px">🔓</span>
+          <div>
+            <div style="color:var(--success);font-weight:700;font-size:13px">Classified Access Granted</div>
+            <div style="color:var(--text2);font-size:12px" id="loggedInName">Authorized Personnel</div>
+          </div>
+        </div>
+        <button class="btn" onclick="logout()" style="font-size:12px">Sign Out</button>
+      </div>
+
+      <!-- Live status header -->
       <div class="defense-hero" data-anim>
         <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:24px">
           <div>
@@ -46,53 +207,123 @@
           <a href="#launch-hub" class="btn btn-danger btn-lg" onclick="launchHub(event)">🔒 &nbsp;Launch OrbitWorks Hub App</a>
           <p style="color:var(--text3);font-size:12px;margin-top:10px">
             Authorized personnel only · Requires credentials<br>
-            Don't have the app? <a href="mailto:s.sanders@orbitworksaerospace.com?subject=Hub App Access Request" style="color:var(--danger)">Request access →</a>
+            Don't have the app? <a href="request-access.html" style="color:var(--danger)">Request access →</a>
           </p>
         </div>
       </div>
 
+      <!-- Systems -->
       <div class="section-header" style="margin-top:64px" data-anim>
         <div class="eyebrow" style="color:var(--danger)">Flagship Program</div>
         <h2>Vanguard SHORAD Counter-UAS System</h2>
-        <p>An integrated short-range air defense system designed to address the cost-exchange crisis in drone defense. Purpose-built for domestic manufacturing with zero Chinese-origin components.</p>
+        <p>Integrated short-range air defense designed to address the cost-exchange crisis in drone defense. Domestic manufacturing, zero Chinese-origin components.</p>
       </div>
 
       <div class="grid grid-3" style="margin-bottom:32px">
-        <div class="card card-accent-top" style="border-top-color:var(--danger)" data-anim>
+
+        <!-- AERIS-10X -->
+        <div class="card card-accent-top" style="border-top-color:var(--danger);position:relative;overflow:hidden" data-anim>
+          <div class="burn-overlay" id="burnAeris" style="position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:10"></div>
           <div style="font-size:32px;margin-bottom:12px">📡</div>
           <h3>AERIS-10X Radar</h3>
-          <p style="color:var(--text2);font-size:13px;margin:10px 0">Phased array radar system for UAS detection and tracking. Solid-state, low probability of intercept, electronically steerable beam.</p>
-          <div style="font-family:var(--mono);color:var(--danger);font-size:14px;margin-bottom:12px">$50,000 / unit</div>
-          <div style="display:flex;gap:6px;flex-wrap:wrap">
-            <span class="badge badge-danger">Verified in Field</span>
-            <span class="badge badge-accent">TRL9</span>
+          <div style="margin:6px 0 10px">
+            <span class="badge badge-danger" style="margin-right:6px">Verified in Field</span>
+            <span class="badge badge-accent">TRL 9</span>
+          </div>
+          <p style="color:var(--text2);font-size:13px;margin:0 0 12px">Phased array radar for UAS detection and tracking. Solid-state, low probability of intercept, electronically steerable beam.</p>
+          <div class="spec-block">
+            <span class="spec-label-sm">Unit Price</span>
+            <span class="redact-bar redact-md" id="rb-aeris-price"></span>
+            <span class="classified-label" id="cl-aeris-price">CLASSIFIED</span>
+            <span class="reveal-value" id="rv-aeris-price" style="color:var(--danger)">$50,000 / unit</span>
+          </div>
+          <div class="spec-block">
+            <span class="spec-label-sm">Detection Range</span>
+            <span class="redact-bar redact-sm" id="rb-aeris-range"></span>
+            <span class="classified-label" id="cl-aeris-range">CLASSIFIED</span>
+            <span class="reveal-value" id="rv-aeris-range">5 km effective</span>
+          </div>
+          <div class="spec-block">
+            <span class="spec-label-sm">Band</span>
+            <span class="redact-bar redact-sm" id="rb-aeris-band"></span>
+            <span class="classified-label" id="cl-aeris-band">CLASSIFIED</span>
+            <span class="reveal-value" id="rv-aeris-band">X-Band AESA</span>
           </div>
         </div>
-        <div class="card card-accent-top" style="border-top-color:var(--orange)" data-anim>
+
+        <!-- Talon Mk.I -->
+        <div class="card card-accent-top" style="border-top-color:var(--orange);position:relative;overflow:hidden" data-anim>
+          <div class="burn-overlay" id="burnTalon" style="position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:10"></div>
           <div style="font-size:32px;margin-bottom:12px">🎯</div>
           <h3>Talon Mk.I Interceptor</h3>
-          <p style="color:var(--text2);font-size:13px;margin:10px 0">Kinetic intercept drone. Low-cost expendable solution — designed to defeat Group 1-2 UAS threats at a fraction of traditional system costs.</p>
-          <div style="font-family:var(--mono);color:var(--orange);font-size:14px;margin-bottom:12px">$1,750 / unit</div>
-          <div style="display:flex;gap:6px;flex-wrap:wrap">
-            <span class="badge badge-warning">Verified in Field</span>
-            <span class="badge badge-accent">TRL9</span>
+          <div style="margin:6px 0 10px">
+            <span class="badge badge-warning" style="margin-right:6px">Verified in Field</span>
+            <span class="badge badge-accent">TRL 9</span>
+          </div>
+          <p style="color:var(--text2);font-size:13px;margin:0 0 12px">Kinetic intercept drone. Low-cost expendable defeating Group 1-2 UAS threats at a fraction of traditional system costs.</p>
+          <div class="spec-block">
+            <span class="spec-label-sm">Unit Price</span>
+            <span class="redact-bar redact-md" id="rb-talon-price"></span>
+            <span class="classified-label" id="cl-talon-price">CLASSIFIED</span>
+            <span class="reveal-value" id="rv-talon-price" style="color:var(--orange)">$1,750 / unit</span>
+          </div>
+          <div class="spec-block">
+            <span class="spec-label-sm">Intercept Range</span>
+            <span class="redact-bar redact-sm" id="rb-talon-range"></span>
+            <span class="classified-label" id="cl-talon-range">CLASSIFIED</span>
+            <span class="reveal-value" id="rv-talon-range">1.2 km radius</span>
+          </div>
+          <div class="spec-block">
+            <span class="spec-label-sm">Endurance</span>
+            <span class="redact-bar redact-sm" id="rb-talon-end"></span>
+            <span class="classified-label" id="cl-talon-end">CLASSIFIED</span>
+            <span class="reveal-value" id="rv-talon-end">8 min loiter</span>
           </div>
         </div>
-        <div class="card card-accent-top" style="border-top-color:var(--purple)" data-anim>
+
+        <!-- Sentinel Mk.I -->
+        <div class="card card-accent-top" style="border-top-color:var(--purple);position:relative;overflow:hidden" data-anim>
+          <div class="burn-overlay" id="burnSentinel" style="position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:10"></div>
           <div style="font-size:32px;margin-bottom:12px">🚀</div>
           <h3>Sentinel Mk.I Launcher</h3>
-          <p style="color:var(--text2);font-size:13px;margin:10px 0">Armored multi-round launcher for Talon interceptors. Automated tracking integration with AERIS-10X via encrypted datalink.</p>
-          <div style="font-family:var(--mono);color:var(--purple);font-size:14px;margin-bottom:12px">$55,000 / unit</div>
-          <div style="display:flex;gap:6px;flex-wrap:wrap">
-            <span class="badge badge-purple">Design Phase</span>
-            <span class="badge badge-accent">TRL4-5</span>
+          <div style="margin:6px 0 10px">
+            <span class="badge badge-purple" style="margin-right:6px">Design Phase</span>
+            <span class="badge badge-accent">TRL 4-5</span>
+          </div>
+          <p style="color:var(--text2);font-size:13px;margin:0 0 12px">Armored multi-round launcher for Talon interceptors. Automated tracking integration with AERIS-10X via encrypted datalink.</p>
+          <div class="spec-block">
+            <span class="spec-label-sm">Unit Price</span>
+            <span class="redact-bar redact-md" id="rb-sent-price"></span>
+            <span class="classified-label" id="cl-sent-price">CLASSIFIED</span>
+            <span class="reveal-value" id="rv-sent-price" style="color:var(--purple)">$55,000 / unit</span>
+          </div>
+          <div class="spec-block">
+            <span class="spec-label-sm">Capacity</span>
+            <span class="redact-bar redact-sm" id="rb-sent-cap"></span>
+            <span class="classified-label" id="cl-sent-cap">CLASSIFIED</span>
+            <span class="reveal-value" id="rv-sent-cap">15× Talon Mk.I</span>
+          </div>
+          <div class="spec-block">
+            <span class="spec-label-sm">Reload Time</span>
+            <span class="redact-bar redact-sm" id="rb-sent-rel"></span>
+            <span class="classified-label" id="cl-sent-rel">CLASSIFIED</span>
+            <span class="reveal-value" id="rv-sent-rel">&lt; 45 seconds</span>
           </div>
         </div>
+
       </div>
 
-      <div class="card" style="text-align:center;padding:36px" data-anim>
+      <!-- Full Battery -->
+      <div class="card" style="text-align:center;padding:36px;position:relative;overflow:hidden" data-anim>
+        <div class="burn-overlay" id="burnBattery" style="position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:10"></div>
         <div style="font-family:var(--mono);font-size:1.1rem;color:var(--danger);font-weight:700;margin-bottom:8px">Complete Vanguard Battery</div>
-        <div style="font-family:var(--mono);font-size:2.5rem;color:var(--accent);font-weight:700">$116,250</div>
+
+        <div style="margin-bottom:12px">
+          <span class="redact-bar redact-lg" id="rb-battery-price" style="height:36px;width:220px"></span>
+          <span class="classified-label" id="cl-battery-price" style="text-align:center">CLASSIFIED — AUTHORIZED ACCESS REQUIRED</span>
+          <div class="reveal-value" id="rv-battery-price" style="color:var(--accent);font-size:2.5rem;font-weight:700">$116,250</div>
+        </div>
+
         <p style="color:var(--text2);font-size:13px;margin:12px 0">1× AERIS-10X · 1× Sentinel Mk.I · 15× Talon Mk.I · Complete integrated system</p>
         <div style="display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap">
           <span class="badge badge-success">NDAA §848 Compliant</span>
@@ -102,29 +333,82 @@
         </div>
       </div>
 
+      <!-- Inquiries -->
       <div class="card" style="margin-top:32px;padding:40px;text-align:center" data-anim>
         <div class="eyebrow" style="color:var(--danger)">Government & Defense Inquiries</div>
         <h3 style="margin-bottom:12px">Request Program Information</h3>
-        <p style="color:var(--text2);max-width:520px;margin:0 auto 24px">For DoD, prime contractors, and government agencies interested in the Vanguard SHORAD system, technology demonstrations, or partnership opportunities.</p>
+        <p style="color:var(--text2);max-width:520px;margin:0 auto 24px">For DoD, prime contractors, and government agencies interested in the Vanguard SHORAD system, demonstrations, or partnership opportunities.</p>
         <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
           <a href="mailto:s.sanders@orbitworksaerospace.com?subject=Defense%20Inquiry%20-%20Vanguard%20SHORAD" class="btn btn-danger btn-lg">📧 Defense Inquiry</a>
           <a href="tel:6072062671" class="btn btn-lg">📞 (607) 206-2671</a>
         </div>
-        <p style="color:var(--text3);font-size:12px;margin-top:20px">All defense inquiries are handled under NDA. ITAR compliance maintained at all times.<br>Export counsel engaged · DDTC registration in process.</p>
+        <p style="color:var(--text3);font-size:12px;margin-top:20px">All defense inquiries handled under NDA. ITAR compliance maintained at all times.<br>Export counsel engaged · DDTC registration in process.</p>
       </div>
+
     </div>
   </section>
 
 </div>
+
+<!-- Login Modal -->
+<div class="login-modal-bg" id="loginModal" onclick="closeLoginOnBg(event)">
+  <div class="login-modal">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
+      <div style="width:44px;height:44px;border-radius:10px;background:rgba(0,212,255,0.1);border:1px solid #0084a0;display:flex;align-items:center;justify-content:center;font-size:22px">🛡️</div>
+      <div>
+        <div style="color:var(--accent);font-weight:700;font-size:15px;letter-spacing:1px">ORBITWORKS HUB</div>
+        <div style="color:var(--text2);font-size:12px">Secure Personnel Login</div>
+      </div>
+    </div>
+    <div class="login-err" id="loginErr"></div>
+    <input type="text" class="login-input" id="loginUser" placeholder="Username" autocomplete="username" autocapitalize="none">
+    <input type="password" class="login-input" id="loginPass" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="btn btn-danger btn-lg" onclick="doLogin()" id="loginBtn" style="width:100%;justify-content:center;margin-bottom:12px">Sign In →</button>
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <button class="btn" onclick="closeLogin()" style="font-size:13px">Cancel</button>
+      <a href="request-access.html" style="color:var(--accent);font-size:13px">Request Access →</a>
+    </div>
+    <div style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:8px;padding:10px 12px;margin-top:16px">
+      <div style="color:var(--text3);font-size:11px;line-height:17px;text-align:center">🔐 Authorized personnel only · Access logged<br>ITAR-controlled technical data system</div>
+    </div>
+  </div>
+</div>
+
 <script>document.write(renderFooter())</script>
+
 <script>
-async function renderDefenseData() {
-  const statusColor = { active:'#22c55e', pending:'#f59e0b', review:'#a78bfa', planning:'#00d4ff' };
-  const statusLabel = { active:'ACTIVE', pending:'PENDING', review:'REVIEW', planning:'PLANNING' };
+const PB = 'https://pb.orbitworksaerospace.com';
+const statusColor = { active:'#22c55e', pending:'#f59e0b', review:'#a78bfa', planning:'#00d4ff' };
+const statusLabel = { active:'ACTIVE', pending:'PENDING', review:'REVIEW', planning:'PLANNING' };
+
+const REDACT_BARS = [
+  'rb-aeris-price','rb-aeris-range','rb-aeris-band',
+  'rb-talon-price','rb-talon-range','rb-talon-end',
+  'rb-sent-price','rb-sent-cap','rb-sent-rel',
+  'rb-battery-price'
+];
+const CLASSIFIED_LABELS = [
+  'cl-aeris-price','cl-aeris-range','cl-aeris-band',
+  'cl-talon-price','cl-talon-range','cl-talon-end',
+  'cl-sent-price','cl-sent-cap','cl-sent-rel',
+  'cl-battery-price'
+];
+const REVEAL_VALS = [
+  'rv-aeris-price','rv-aeris-range','rv-aeris-band',
+  'rv-talon-price','rv-talon-range','rv-talon-end',
+  'rv-sent-price','rv-sent-cap','rv-sent-rel',
+  'rv-battery-price'
+];
+const BURN_CONTAINERS = ['burnAeris','burnTalon','burnSentinel','burnBattery'];
+
+let currentUser = null;
+let burned = false;
+
+async function renderProjects() {
   try {
-    const res = await fetch('https://pb.orbitworksaerospace.com/api/collections/projects/records?sort=name');
+    const res = await fetch(`${PB}/api/collections/projects/records?sort=sort_order`);
     const data = await res.json();
-    document.getElementById('projectFeed').innerHTML = data.items.map(p => `
+    document.getElementById('projectFeed').innerHTML = data.items.map(p=>`
       <div class="data-row">
         <div class="data-row-dot" style="background:${p.color}"></div>
         <div class="data-row-label">${p.name}</div>
@@ -136,17 +420,124 @@ async function renderDefenseData() {
   }
 }
 
+function openLogin() { document.getElementById('loginModal').classList.add('open'); document.getElementById('loginUser').focus(); }
+function closeLogin() { document.getElementById('loginModal').classList.remove('open'); document.getElementById('loginErr').style.display='none'; }
+function closeLoginOnBg(e) { if(e.target.id==='loginModal') closeLogin(); }
+
+async function doLogin() {
+  const user = document.getElementById('loginUser').value.trim();
+  const pass = document.getElementById('loginPass').value.trim();
+  const err  = document.getElementById('loginErr');
+  const btn  = document.getElementById('loginBtn');
+  err.style.display='none';
+  if(!user||!pass){err.textContent='⚠️ Enter username and password.';err.style.display='block';return;}
+  btn.textContent='Signing in...';btn.disabled=true;
+  try {
+    const res = await fetch(`${PB}/api/collections/users/auth-with-password`,{
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({identity:user,password:pass}),
+    });
+    const data = await res.json();
+    if(data.token) {
+      currentUser = data.record;
+      closeLogin();
+      triggerBurn();
+    } else {
+      err.textContent='⚠️ '+(data.message||'Invalid credentials.');
+      err.style.display='block';
+    }
+  } catch(e) {
+    err.textContent='⚠️ Connection error. Try again.';
+    err.style.display='block';
+  }
+  btn.textContent='Sign In →';btn.disabled=false;
+}
+
+function logout() {
+  currentUser=null;burned=false;
+  document.getElementById('loggedInBar').classList.remove('show');
+  document.getElementById('accessGate').style.display='flex';
+  REDACT_BARS.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el){el.style.opacity='1';el.style.width='';el.style.transition='';}
+  });
+  CLASSIFIED_LABELS.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el){el.style.opacity='1';el.style.transition='';}
+  });
+  REVEAL_VALS.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el){el.style.display='none';}
+  });
+  BURN_CONTAINERS.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el)el.innerHTML='';
+  });
+}
+
+function spawnEmbers(container, count) {
+  for(let i=0;i<count;i++){
+    setTimeout(()=>{
+      const e=document.createElement('div');
+      const x=Math.random()*100;
+      const y=Math.random()*100;
+      const size=2+Math.random()*3;
+      const colors=['#ff6b00','#ff9500','#ffcc00','#ff3300','#ff8800','#ffaa00'];
+      const color=colors[Math.floor(Math.random()*colors.length)];
+      const dx=(Math.random()-0.5)*80;
+      const dy=-(25+Math.random()*50);
+      const dur=0.4+Math.random()*0.7;
+      e.style.cssText=`position:absolute;left:${x}%;top:${y}%;width:${size}px;height:${size}px;background:${color};border-radius:50%;pointer-events:none;--dx:${dx}px;--dy:${dy}px;animation:ember-float ${dur}s linear forwards;z-index:20`;
+      container.appendChild(e);
+      setTimeout(()=>e.remove(),dur*1000+100);
+    },Math.random()*500);
+  }
+}
+
+function triggerBurn() {
+  if(burned) return;
+  burned=true;
+
+  document.getElementById('accessGate').style.display='none';
+  const bar=document.getElementById('loggedInBar');
+  bar.classList.add('show');
+  const name=currentUser?.name||currentUser?.username||'Authorized Personnel';
+  document.getElementById('loggedInName').textContent=name+' · Access Granted';
+
+  BURN_CONTAINERS.forEach((id,ci)=>{
+    setTimeout(()=>{
+      const cont=document.getElementById(id);
+      if(cont) spawnEmbers(cont, 35);
+    }, ci*180);
+  });
+
+  REDACT_BARS.forEach((id,i)=>{
+    const bar=document.getElementById(id);
+    if(!bar) return;
+    const delay=200+i*90+Math.random()*80;
+    setTimeout(()=>{
+      spawnEmbers(bar.parentElement||bar,10);
+      bar.style.transition='opacity 0.35s, width 0.45s';
+      bar.style.opacity='0';
+      bar.style.width='0';
+      const cl=document.getElementById(CLASSIFIED_LABELS[i]);
+      if(cl){cl.style.transition='opacity 0.2s';cl.style.opacity='0';}
+    },delay);
+    setTimeout(()=>{
+      const rv=document.getElementById(REVEAL_VALS[i]);
+      if(rv) rv.style.display='inline-block';
+    },delay+550);
+  });
+}
+
 function launchHub(e) {
   e.preventDefault();
   OW.showToast('🛡️ OrbitWorks Hub — Open the app on your Android device');
 }
 
-document.getElementById('syncTime').textContent = new Date().toLocaleTimeString();
-renderDefenseData();
-setInterval(() => {
-  document.getElementById('syncTime').textContent = new Date().toLocaleTimeString();
-  renderDefenseData();
-}, 30000);
+document.getElementById('syncTime').textContent=new Date().toLocaleTimeString();
+renderProjects();
+setInterval(()=>{document.getElementById('syncTime').textContent=new Date().toLocaleTimeString();renderProjects();},30000);
 </script>
 </body>
 </html>
