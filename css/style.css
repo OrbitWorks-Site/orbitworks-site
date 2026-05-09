@@ -415,6 +415,27 @@ h4 { font-size: 1rem; }
 .product-price { font-family: var(--mono); font-size: 18px; color: var(--accent); font-weight: 700; margin-bottom: 12px; }
 .product-footer { display: flex; gap: 8px; align-items: center; }
 
+.product-compare {
+  margin-top: 14px; padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.product-compare-title {
+  font-size: 11px; font-weight: 700; color: var(--text3);
+  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;
+}
+.compare-row {
+  display: flex; align-items: baseline; gap: 8px;
+  font-size: 12px; line-height: 1.8;
+}
+.compare-row .compare-label {
+  flex-shrink: 0; font-weight: 700; font-size: 10px;
+  padding: 1px 6px; border-radius: 4px; text-transform: uppercase;
+}
+.compare-label.cheaper { background: rgba(234,179,8,0.15); color: #eab308; }
+.compare-label.pricier { background: rgba(59,130,246,0.15); color: #3b82f6; }
+.compare-row .compare-name { color: var(--text2); }
+.compare-row .compare-price { color: var(--text3); font-family: var(--mono); font-size: 11px; margin-left: auto; flex-shrink: 0; }
+
 /* ── SERVICE CARD ─────────────────────────────────────────────────────────── */
 .service-card {
   background: var(--bg2);
