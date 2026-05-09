@@ -135,14 +135,14 @@
 
   <section style="padding:60px 0 32px">
     <div class="container">
-      <div class="eyebrow" style="color:var(--danger)">🔒 Restricted Access</div>
+      <div class="eyebrow" style="color:var(--danger)">Restricted Access</div>
       <h1>Defense Systems Portal</h1>
       <p class="lead" style="margin-top:12px;max-width:640px">OrbitWorks Aerospace defense programs — counter-UAS, SHORAD, and related systems — developed under ITAR compliance. This portal is for government, DoD, and defense contractor use.</p>
       <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
         <span class="badge badge-danger">ITAR Controlled</span>
-        <span class="badge badge-success">NDAA §848 Compliant</span>
         <span class="badge badge-warning">Berry Amendment Compliant</span>
         <span class="badge badge-accent">DDTC Registration In Process</span>
+        <span class="badge badge-success">0 Chinese Components</span>
       </div>
     </div>
   </section>
@@ -153,18 +153,18 @@
       <!-- 1. ACCESS GATE / LOGGED IN BAR -->
       <div class="access-gate" id="accessGate">
         <div class="access-gate-text">
-          🔐 <strong style="color:var(--text)">Classified specifications are redacted.</strong><br>
+          <strong style="color:var(--text)">Classified specifications are redacted.</strong><br>
           Authorized personnel may sign in to view full program data.
         </div>
         <div class="access-gate-btns">
-          <button class="btn btn-lg" onclick="openLogin()">Sign In →</button>
+          <button class="btn btn-lg" onclick="openLogin()">Sign In</button>
           <a href="request-access.html" class="btn btn-danger btn-lg">Request Access</a>
         </div>
       </div>
 
       <div class="logged-in-bar" id="loggedInBar">
         <div style="display:flex;align-items:center;gap:10px">
-          <span style="font-size:18px">🔓</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           <div>
             <div style="color:var(--success);font-weight:700;font-size:13px">Classified Access Granted</div>
             <div style="color:var(--text2);font-size:12px" id="loggedInName">Authorized Personnel</div>
@@ -185,7 +185,9 @@
         <!-- AERIS-10X -->
         <div class="card card-accent-top" style="border-top-color:var(--danger);position:relative;overflow:hidden" data-anim>
           <div class="burn-overlay" id="burnAeris" style="position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:10"></div>
-          <div style="font-size:32px;margin-bottom:12px">📡</div>
+          <div style="margin-bottom:12px">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
           <h3>AERIS-10X Radar</h3>
           <div style="margin:6px 0 10px">
             <span class="badge badge-danger" style="margin-right:6px">Verified in Field</span>
@@ -215,7 +217,9 @@
         <!-- Talon Mk.I -->
         <div class="card card-accent-top" style="border-top-color:var(--orange);position:relative;overflow:hidden" data-anim>
           <div class="burn-overlay" id="burnTalon" style="position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:10"></div>
-          <div style="font-size:32px;margin-bottom:12px">🎯</div>
+          <div style="margin-bottom:12px">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="22" y1="12" x2="18" y2="12"/><line x1="6" y1="12" x2="2" y2="12"/><line x1="12" y1="6" x2="12" y2="2"/><line x1="12" y1="22" x2="12" y2="18"/></svg>
+          </div>
           <h3>Talon Mk.I Interceptor</h3>
           <div style="margin:6px 0 10px">
             <span class="badge badge-warning" style="margin-right:6px">Verified in Field</span>
@@ -245,7 +249,9 @@
         <!-- Sentinel Mk.I -->
         <div class="card card-accent-top" style="border-top-color:var(--purple);position:relative;overflow:hidden" data-anim>
           <div class="burn-overlay" id="burnSentinel" style="position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:10"></div>
-          <div style="font-size:32px;margin-bottom:12px">🚀</div>
+          <div style="margin-bottom:12px">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </div>
           <h3>Sentinel Mk.I Launcher</h3>
           <div style="margin:6px 0 10px">
             <span class="badge badge-purple" style="margin-right:6px">Design Phase</span>
@@ -262,7 +268,7 @@
             <span class="spec-label-sm">Capacity</span>
             <span class="redact-bar redact-sm" id="rb-sent-cap"></span>
             <span class="classified-label" id="cl-sent-cap">CLASSIFIED</span>
-            <span class="reveal-value" id="rv-sent-cap">15× Talon Mk.I</span>
+            <span class="reveal-value" id="rv-sent-cap">15x Talon Mk.I</span>
           </div>
           <div class="spec-block">
             <span class="spec-label-sm">Reload Time</span>
@@ -283,9 +289,8 @@
           <span class="classified-label" id="cl-battery-price" style="text-align:center">CLASSIFIED — AUTHORIZED ACCESS REQUIRED</span>
           <div class="reveal-value" id="rv-battery-price" style="color:var(--accent);font-size:2.5rem;font-weight:700">$116,250</div>
         </div>
-        <p style="color:var(--text2);font-size:13px;margin:12px 0">1× AERIS-10X · 1× Sentinel Mk.I · 15× Talon Mk.I · Complete integrated system</p>
+        <p style="color:var(--text2);font-size:13px;margin:12px 0">1x AERIS-10X &middot; 1x Sentinel Mk.I &middot; 15x Talon Mk.I &middot; Complete integrated system</p>
         <div style="display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap">
-          <span class="badge badge-success">NDAA §848 Compliant</span>
           <span class="badge badge-warning">Berry Amendment</span>
           <span class="badge badge-danger">ITAR Controlled</span>
           <span class="badge badge-accent">0 Chinese Components</span>
@@ -296,7 +301,7 @@
       <div class="defense-hero" data-anim>
         <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:24px">
           <div>
-            <div class="eyebrow" style="color:var(--danger)">OrbitWorks Hub · Live Status</div>
+            <div class="eyebrow" style="color:var(--danger)">OrbitWorks Hub &middot; Live Status</div>
             <h2 style="margin-top:4px">Active Defense Programs</h2>
           </div>
           <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end">
@@ -314,10 +319,10 @@
         <div class="eyebrow" style="color:var(--danger)">OrbitWorks Hub</div>
         <h3 style="margin-bottom:12px">Authorized Personnel App Access</h3>
         <p style="color:var(--text2);max-width:480px;margin:0 auto 24px;font-size:14px">The Hub app provides real-time program status, secure communications, and full operational access. Available by request only.</p>
-        <a href="#launch-hub" class="btn btn-danger btn-lg" onclick="launchHub(event)">🔒 &nbsp;Launch OrbitWorks Hub App</a>
+        <a href="#launch-hub" class="btn btn-danger btn-lg" onclick="launchHub(event)">Launch OrbitWorks Hub App</a>
         <p style="color:var(--text3);font-size:12px;margin-top:14px">
-          Authorized personnel only · Requires credentials<br>
-          Don't have the app? <a href="request-access.html" style="color:var(--danger)">Request access →</a>
+          Authorized personnel only &middot; Requires credentials<br>
+          Don't have the app? <a href="request-access.html" style="color:var(--danger)">Request access</a>
         </p>
       </div>
 
@@ -327,10 +332,10 @@
         <h3 style="margin-bottom:12px">Request Program Information</h3>
         <p style="color:var(--text2);max-width:520px;margin:0 auto 24px">For DoD, prime contractors, and government agencies interested in the Vanguard SHORAD system, demonstrations, or partnership opportunities.</p>
         <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-          <a href="mailto:s.sanders@orbitworksaerospace.com?subject=Defense%20Inquiry%20-%20Vanguard%20SHORAD" class="btn btn-danger btn-lg">📧 Defense Inquiry</a>
-          <a href="tel:6072062671" class="btn btn-lg">📞 (607) 206-2671</a>
+          <a href="mailto:s.sanders@orbitworksaerospace.com?subject=Defense%20Inquiry%20-%20Vanguard%20SHORAD" class="btn btn-danger btn-lg">Defense Inquiry</a>
+          <a href="tel:6072062671" class="btn btn-lg">(607) 206-2671</a>
         </div>
-        <p style="color:var(--text3);font-size:12px;margin-top:20px">All defense inquiries handled under NDA. ITAR compliance maintained at all times.<br>Export counsel engaged · DDTC registration in process.</p>
+        <p style="color:var(--text3);font-size:12px;margin-top:20px">All defense inquiries handled under NDA. ITAR compliance maintained at all times.<br>Export counsel engaged &middot; DDTC registration in process.</p>
       </div>
 
     </div>
@@ -342,7 +347,9 @@
 <div class="login-modal-bg" id="loginModal" onclick="closeLoginOnBg(event)">
   <div class="login-modal">
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
-      <div style="width:44px;height:44px;border-radius:10px;background:rgba(0,212,255,0.1);border:1px solid #0084a0;display:flex;align-items:center;justify-content:center;font-size:22px">🛡️</div>
+      <div style="width:44px;height:44px;border-radius:10px;background:rgba(0,212,255,0.1);border:1px solid #0084a0;display:flex;align-items:center;justify-content:center">
+        <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><path d="M16 2L28.66 9.5V24.5L16 32L3.34 24.5V9.5L16 2Z" stroke="#00d4ff" stroke-width="1.5" fill="rgba(0,212,255,0.08)"/><circle cx="16" cy="16" r="3" fill="#00d4ff" opacity="0.6"/></svg>
+      </div>
       <div>
         <div style="color:var(--accent);font-weight:700;font-size:15px;letter-spacing:1px">ORBITWORKS HUB</div>
         <div style="color:var(--text2);font-size:12px">Secure Personnel Login</div>
@@ -351,13 +358,13 @@
     <div class="login-err" id="loginErr"></div>
     <input type="text" class="login-input" id="loginUser" placeholder="Username" autocomplete="username" autocapitalize="none">
     <input type="password" class="login-input" id="loginPass" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
-    <button class="btn btn-danger btn-lg" onclick="doLogin()" id="loginBtn" style="width:100%;justify-content:center;margin-bottom:12px">Sign In →</button>
+    <button class="btn btn-danger btn-lg" onclick="doLogin()" id="loginBtn" style="width:100%;justify-content:center;margin-bottom:12px">Sign In</button>
     <div style="display:flex;justify-content:space-between;align-items:center">
       <button class="btn" onclick="closeLogin()" style="font-size:13px">Cancel</button>
-      <a href="request-access.html" style="color:var(--accent);font-size:13px">Request Access →</a>
+      <a href="request-access.html" style="color:var(--accent);font-size:13px">Request Access</a>
     </div>
     <div style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:8px;padding:10px 12px;margin-top:16px">
-      <div style="color:var(--text3);font-size:11px;line-height:17px;text-align:center">🔐 Authorized personnel only · Access logged<br>ITAR-controlled technical data system</div>
+      <div style="color:var(--text3);font-size:11px;line-height:17px;text-align:center">Authorized personnel only &middot; Access logged<br>ITAR-controlled technical data system</div>
     </div>
   </div>
 </div>
@@ -418,7 +425,7 @@ async function doLogin() {
   const err  = document.getElementById('loginErr');
   const btn  = document.getElementById('loginBtn');
   err.style.display='none';
-  if(!user||!pass){err.textContent='⚠️ Enter username and password.';err.style.display='block';return;}
+  if(!user||!pass){err.textContent='Enter username and password.';err.style.display='block';return;}
   btn.textContent='Signing in...';btn.disabled=true;
   try {
     const res = await fetch(`${PB}/api/collections/users/auth-with-password`,{
@@ -431,14 +438,14 @@ async function doLogin() {
       closeLogin();
       triggerBurn();
     } else {
-      err.textContent='⚠️ '+(data.message||'Invalid credentials.');
+      err.textContent=(data.message||'Invalid credentials.');
       err.style.display='block';
     }
   } catch(e) {
-    err.textContent='⚠️ Connection error. Try again.';
+    err.textContent='Connection error. Try again.';
     err.style.display='block';
   }
-  btn.textContent='Sign In →';btn.disabled=false;
+  btn.textContent='Sign In';btn.disabled=false;
 }
 
 function logout() {
@@ -519,7 +526,7 @@ function triggerBurn() {
 
 function launchHub(e) {
   e.preventDefault();
-  OW.showToast('🛡️ OrbitWorks Hub — Open the app on your Android device');
+  OW.showToast('OrbitWorks Hub — Open the app on your Android device');
 }
 
 document.getElementById('syncTime').textContent=new Date().toLocaleTimeString();

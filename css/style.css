@@ -1,4 +1,4 @@
-/* ── OrbitWorks Aerospace · Global Styles ─────────────────────────────────── */
+/* ── OrbitWorks Aerospace · Global Styles v2.0 ────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
 :root {
@@ -251,18 +251,17 @@ h4 { font-size: 1rem; }
 .hero-bg {
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 60% 40%, rgba(0,132,160,0.15) 0%, transparent 70%),
+    radial-gradient(ellipse 80% 60% at 60% 40%, rgba(0,132,160,0.18) 0%, transparent 70%),
     radial-gradient(ellipse 60% 50% at 20% 80%, rgba(167,139,250,0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 
-.hero-grid {
+/* Hexagonal grid canvas overlay */
+.hero-hex-canvas {
   position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
+  width: 100%; height: 100%;
   pointer-events: none;
+  opacity: 0.7;
 }
 
 .hero-content { position: relative; z-index: 2; }
@@ -298,6 +297,51 @@ h4 { font-size: 1rem; }
   color: var(--accent);
 }
 .hero-stat-label { font-size: 12px; color: var(--text2); margin-top: 2px; }
+
+/* ── HEXAGON DECORATIVE ELEMENTS ─────────────────────────────────────────── */
+.hex-icon {
+  width: 56px; height: 56px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: var(--adim);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  margin-bottom: 16px;
+  position: relative;
+}
+.hex-icon::before {
+  content: '';
+  position: absolute; inset: 1px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: var(--bg2);
+}
+.hex-icon span { position: relative; z-index: 1; }
+
+.hex-divider {
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px;
+  padding: 24px 0;
+}
+.hex-divider-dot {
+  width: 10px; height: 10px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: var(--accent);
+  opacity: 0.3;
+}
+.hex-divider-dot:nth-child(2) { opacity: 0.6; width: 14px; height: 14px; }
+.hex-divider-dot:nth-child(3) { opacity: 0.3; }
+.hex-divider-line {
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border2), transparent);
+}
+
+/* Hexagonal section accent */
+.hex-accent {
+  position: absolute;
+  width: 200px; height: 200px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: radial-gradient(ellipse at center, rgba(0,212,255,0.06), transparent);
+  pointer-events: none;
+}
 
 /* ── PRODUCT CARD ─────────────────────────────────────────────────────────── */
 .product-card {
@@ -535,6 +579,40 @@ h4 { font-size: 1rem; }
 textarea.form-input { height: 120px; resize: vertical; }
 select.form-input { cursor: pointer; }
 
+/* ── BOARD / TEAM ─────────────────────────────────────────────────────────── */
+.board-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 32px;
+  text-align: center;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.board-card:hover { border-color: var(--accent2); transform: translateY(-3px); }
+.board-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.board-card:hover::before { opacity: 1; }
+
+.board-avatar {
+  width: 80px; height: 80px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: linear-gradient(135deg, var(--accent2), var(--purple));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; font-weight: 800; color: #fff;
+  margin: 0 auto 16px;
+}
+
+.board-name { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+.board-title { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.05em; margin-bottom: 12px; }
+.board-bio { font-size: 13px; color: var(--text2); line-height: 1.7; }
+
 /* ── FOOTER ───────────────────────────────────────────────────────────────── */
 .footer {
   background: var(--bg2);
@@ -588,41 +666,50 @@ select.form-input { cursor: pointer; }
 .toast.show { transform: translateY(0); opacity: 1; }
 .toast-accent { border-left: 3px solid var(--accent); }
 
-/* ── DRONE AID ────────────────────────────────────────────────────────────── */
-.aid-banner {
-  background: linear-gradient(135deg, rgba(34,197,94,0.08), rgba(10,12,16,0));
-  border: 1px solid rgba(34,197,94,0.2);
+/* ── ABOUT TIMELINE ───────────────────────────────────────────────────────── */
+.timeline { position: relative; padding-left: 28px; }
+.timeline::before {
+  content: '';
+  position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px;
+  background: linear-gradient(to bottom, var(--accent), var(--purple), transparent);
+}
+.timeline-item { position: relative; margin-bottom: 32px; }
+.timeline-dot {
+  position: absolute; left: -28px; top: 6px;
+  width: 16px; height: 16px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: var(--accent);
+}
+.timeline-date { font-family: var(--mono); font-size: 11px; color: var(--accent); margin-bottom: 4px; }
+.timeline-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.timeline-desc { color: var(--text2); font-size: 13px; line-height: 1.6; }
+
+/* ── MISSION BANNER (replaced aid-banner) ─────────────────────────────────── */
+.mission-banner {
+  background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(10,12,16,0));
+  border: 1px solid rgba(0,212,255,0.15);
   border-radius: 16px;
   padding: 40px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
-.aid-banner h2 { color: var(--success); }
+.mission-banner::before {
+  content: '';
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 120px; height: 120px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: radial-gradient(ellipse at center, rgba(0,212,255,0.08), transparent);
+  pointer-events: none;
+}
+
+/* ── PROGRESS BARS ───────────────────────────────────────────────────────── */
 .progress-track {
   height: 8px; background: var(--bg4);
   border-radius: 8px; overflow: hidden;
   margin: 16px 0 8px;
 }
 .progress-fill { height: 100%; border-radius: 8px; background: var(--success); transition: width 1s ease; }
-
-/* ── ABOUT TIMELINE ───────────────────────────────────────────────────────── */
-.timeline { position: relative; padding-left: 28px; }
-.timeline::before {
-  content: '';
-  position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px;
-  background: linear-gradient(to bottom, var(--accent), transparent);
-}
-.timeline-item { position: relative; margin-bottom: 32px; }
-.timeline-dot {
-  position: absolute; left: -28px; top: 6px;
-  width: 16px; height: 16px;
-  border-radius: 50%;
-  background: var(--accent);
-  border: 2px solid var(--bg);
-  box-shadow: 0 0 0 3px rgba(0,212,255,0.2);
-}
-.timeline-date { font-family: var(--mono); font-size: 11px; color: var(--accent); margin-bottom: 4px; }
-.timeline-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
-.timeline-desc { color: var(--text2); font-size: 13px; line-height: 1.6; }
 
 /* ── UTILITY ──────────────────────────────────────────────────────────────── */
 .divider { height: 1px; background: var(--border); margin: 40px 0; }

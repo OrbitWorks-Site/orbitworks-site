@@ -16,7 +16,7 @@
     <div class="container">
       <div class="eyebrow">Products</div>
       <h1>Commercial Drone Systems</h1>
-      <p class="lead" style="margin-top:12px;max-width:640px">Ready-to-fly platforms, component kits, and custom builds. All systems use NDAA-compliant components and are backed by 24/7 post-purchase support.</p>
+      <p class="lead" style="margin-top:12px;max-width:640px">Ready-to-fly platforms, component kits, and custom builds. All systems use domestically sourced components and are backed by 24/7 post-purchase support.</p>
     </div>
   </section>
 
@@ -26,11 +26,11 @@
       <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
         <span style="color:var(--text2);font-size:12px;font-family:var(--mono);letter-spacing:.08em">FILTER:</span>
         <button class="btn btn-sm btn-primary" onclick="filterProducts('all',this)">All</button>
-        <button class="btn btn-sm" onclick="filterProducts('photography',this)">📸 Photography</button>
-        <button class="btn btn-sm" onclick="filterProducts('mapping',this)">🗺️ Mapping</button>
-        <button class="btn btn-sm" onclick="filterProducts('fpv',this)">⚡ FPV / Racing</button>
-        <button class="btn btn-sm" onclick="filterProducts('cargo',this)">📦 Cargo / Lift</button>
-        <button class="btn btn-sm" onclick="filterProducts('kit',this)">🛠️ Kits & Parts</button>
+        <button class="btn btn-sm" onclick="filterProducts('photography',this)">Photography</button>
+        <button class="btn btn-sm" onclick="filterProducts('mapping',this)">Mapping</button>
+        <button class="btn btn-sm" onclick="filterProducts('fpv',this)">FPV / Racing</button>
+        <button class="btn btn-sm" onclick="filterProducts('cargo',this)">Cargo / Lift</button>
+        <button class="btn btn-sm" onclick="filterProducts('kit',this)">Kits & Parts</button>
       </div>
     </div>
   </div>
@@ -41,7 +41,9 @@
       <div class="grid grid-3" id="productGrid">
 
         <div class="product-card" data-cat="photography mapping" data-anim>
-          <div class="product-img">🚁</div>
+          <div class="product-img">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </div>
           <div class="product-body">
             <div style="display:flex;gap:6px;margin-bottom:8px">
               <span class="badge badge-accent">Mapping</span>
@@ -65,16 +67,18 @@
         </div>
 
         <div class="product-card" data-cat="photography" data-anim>
-          <div class="product-img">📸</div>
+          <div class="product-img">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
           <div class="product-body">
             <div style="display:flex;gap:6px;margin-bottom:8px">
               <span class="badge badge-accent">Photography</span>
               <span class="badge badge-success">In Stock</span>
             </div>
             <div class="product-name">OW-Cine 6K</div>
-            <div class="product-desc">Cinema-grade aerial photography hex. 6K/30fps, 4K/60fps, 3-axis gimbal with 0.01° stabilization, 35-min flight time. The definitive aerial cinema platform.</div>
+            <div class="product-desc">Cinema-grade aerial photography hex. 6K/30fps, 4K/60fps, 3-axis gimbal with 0.01deg stabilization, 35-min flight time. The definitive aerial cinema platform.</div>
             <ul style="color:var(--text2);font-size:12px;margin:8px 0 12px;padding-left:18px;line-height:2">
-              <li>6K/30fps · 4K/60fps</li>
+              <li>6K/30fps &middot; 4K/60fps</li>
               <li>3-axis brushless gimbal</li>
               <li>35-minute flight time</li>
               <li>10km OcuSync 3.0 link</li>
@@ -82,14 +86,16 @@
             </ul>
             <div class="product-price">$3,799</div>
             <div class="product-footer">
-              <button class="btn btn-primary btn-sm" onclick="OW.addToCart({id:'cine-6k',name:'OW-Cine 6K',price:3799,icon:'📸'})">Add to Cart</button>
+              <button class="btn btn-primary btn-sm" onclick="OW.addToCart({id:'cine-6k',name:'OW-Cine 6K',price:3799,icon:'C6'})">Add to Cart</button>
               <a href="contact.html" class="btn btn-sm">Custom Quote</a>
             </div>
           </div>
         </div>
 
         <div class="product-card" data-cat="fpv kit" data-anim>
-          <div class="product-img">⚡</div>
+          <div class="product-img">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
           <div class="product-body">
             <div style="display:flex;gap:6px;margin-bottom:8px">
               <span class="badge badge-accent">FPV / Racing</span>
@@ -106,21 +112,23 @@
             </ul>
             <div class="product-price">$349</div>
             <div class="product-footer">
-              <button class="btn btn-primary btn-sm" onclick="OW.addToCart({id:'racer-fpv',name:'OW-Racer FPV Kit',price:349,icon:'⚡'})">Add to Cart</button>
+              <button class="btn btn-primary btn-sm" onclick="OW.addToCart({id:'racer-fpv',name:'OW-Racer FPV Kit',price:349,icon:'FPV'})">Add to Cart</button>
               <a href="contact.html" class="btn btn-sm">Bundle Options</a>
             </div>
           </div>
         </div>
 
         <div class="product-card" data-cat="cargo" data-anim>
-          <div class="product-img">📦</div>
+          <div class="product-img">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
           <div class="product-body">
             <div style="display:flex;gap:6px;margin-bottom:8px">
               <span class="badge badge-accent">Heavy Lift</span>
               <span class="badge badge-warning">Build to Order</span>
             </div>
             <div class="product-name">OW-Lifter X8</div>
-            <div class="product-desc">Octocopter heavy-lift platform. 10kg payload capacity, 22-min flight time at max load. Used in humanitarian aid and commercial delivery operations.</div>
+            <div class="product-desc">Octocopter heavy-lift platform. 10kg payload capacity, 22-min flight time at max load. Used in commercial delivery and logistics operations.</div>
             <ul style="color:var(--text2);font-size:12px;margin:8px 0 12px;padding-left:18px;line-height:2">
               <li>10kg payload capacity</li>
               <li>X8 coaxial configuration</li>
@@ -136,7 +144,9 @@
         </div>
 
         <div class="product-card" data-cat="photography mapping" data-anim>
-          <div class="product-img">🔭</div>
+          <div class="product-img">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
           <div class="product-body">
             <div style="display:flex;gap:6px;margin-bottom:8px">
               <span class="badge badge-accent">Thermal</span>
@@ -153,14 +163,16 @@
             </ul>
             <div class="product-price">$1,899</div>
             <div class="product-footer">
-              <button class="btn btn-primary btn-sm" onclick="OW.addToCart({id:'thermal-scout',name:'OW-Thermal Scout',price:1899,icon:'🔭'})">Add to Cart</button>
+              <button class="btn btn-primary btn-sm" onclick="OW.addToCart({id:'thermal-scout',name:'OW-Thermal Scout',price:1899,icon:'TS'})">Add to Cart</button>
               <a href="contact.html" class="btn btn-sm">Quote</a>
             </div>
           </div>
         </div>
 
         <div class="product-card" data-cat="kit" data-anim>
-          <div class="product-img">🛠️</div>
+          <div class="product-img">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
           <div class="product-body">
             <div style="display:flex;gap:6px;margin-bottom:8px">
               <span class="badge badge-purple">Parts Kit</span>
@@ -177,7 +189,7 @@
             </ul>
             <div class="product-price">$129</div>
             <div class="product-footer">
-              <button class="btn btn-primary btn-sm" onclick="OW.addToCart({id:'starter-micro',name:'OW-Starter Micro Kit',price:129,icon:'🛠️'})">Add to Cart</button>
+              <button class="btn btn-primary btn-sm" onclick="OW.addToCart({id:'starter-micro',name:'OW-Starter Micro Kit',price:129,icon:'MK'})">Add to Cart</button>
             </div>
           </div>
         </div>
@@ -185,11 +197,11 @@
       </div>
 
       <!-- Custom build CTA -->
-      <div class="card card-accent-top" style="margin-top:40px;text-align:center;padding:40px" data-anim>
+      <div class="mission-banner" style="margin-top:40px" data-anim>
         <div class="eyebrow">Don't see what you need?</div>
         <h3 style="margin-bottom:12px">Custom Drone Builds</h3>
-        <p class="lead" style="max-width:560px;margin:0 auto 24px">Tell us your mission — payload, range, endurance, environment — and we'll design and build the right platform. We've built for filmmakers, farmers, inspectors, and humanitarian organizations.</p>
-        <a href="contact.html" class="btn btn-primary btn-lg">Request a Custom Build →</a>
+        <p class="lead" style="max-width:560px;margin:0 auto 24px">Tell us your mission — payload, range, endurance, environment — and we'll design and build the right platform. We've built for filmmakers, farmers, inspectors, and defense organizations.</p>
+        <a href="contact.html" class="btn btn-primary btn-lg">Request a Custom Build</a>
       </div>
     </div>
   </section>

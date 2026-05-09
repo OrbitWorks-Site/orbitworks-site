@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OrbitWorks Aerospace Inc. — Drone Solutions | Vestal, NY</title>
-  <meta name="description" content="OrbitWorks Aerospace Inc. — Commercial drone systems, aerial photography, mapping, pilot training, and humanitarian drone operations. Based in Vestal, NY.">
+  <title>OrbitWorks Aerospace Inc. — Defense & Drone Technology | Binghamton, NY</title>
+  <meta name="description" content="OrbitWorks Aerospace Inc. — Advanced aerospace defense systems, commercial drone platforms, and counter-UAS technology. Based in Binghamton, NY.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -16,35 +16,35 @@
   <!-- ── HERO ── -->
   <section class="hero">
     <div class="hero-bg"></div>
-    <div class="hero-grid"></div>
+    <canvas class="hero-hex-canvas" id="hexCanvas"></canvas>
     <div class="container">
-      <div class="hero-content" style="max-width:680px">
-        <div class="hero-badge">🛡️ &nbsp;ORBITWORKS AEROSPACE INC. · VESTAL, NY</div>
-        <h1>Advanced Drone Solutions for <span>Every Mission</span></h1>
+      <div class="hero-content" style="max-width:720px">
+        <div class="hero-badge">ORBITWORKS AEROSPACE INC. &middot; BINGHAMTON, NY</div>
+        <h1>Defending the Skies with <span>Next-Gen Technology</span></h1>
         <p class="lead" style="margin-top:16px">
-          From commercial aerial photography and precision mapping to humanitarian aid operations and custom-built drone systems — OrbitWorks delivers reliable, innovative UAS technology for operators, businesses, and agencies worldwide.
+          From battle-tested drone systems and counter-UAS defense to commercial aerial platforms — OrbitWorks Aerospace delivers advanced technology forged in real-world operations for the U.S. military, our allies, and commercial operators.
         </p>
         <div class="hero-btns">
-          <a href="drones.html" class="btn btn-primary btn-lg">🚁 &nbsp;Shop Drones</a>
-          <a href="services.html" class="btn btn-lg">📋 &nbsp;Our Services</a>
-          <a href="contact.html" class="btn btn-lg">💬 &nbsp;Get a Quote</a>
+          <a href="defense.html" class="btn btn-danger btn-lg">Defense Systems</a>
+          <a href="drones.html" class="btn btn-primary btn-lg">Commercial Drones</a>
+          <a href="contact.html" class="btn btn-lg">Contact Us</a>
         </div>
         <div class="hero-stats">
           <div>
-            <div class="hero-stat-val">107</div>
-            <div class="hero-stat-label">FAA Part 107 Certified</div>
-          </div>
-          <div>
             <div class="hero-stat-val">5+</div>
             <div class="hero-stat-label">Years Field Operations</div>
+          </div>
+          <div>
+            <div class="hero-stat-val">3+</div>
+            <div class="hero-stat-label">Continents Operated</div>
           </div>
           <div>
             <div class="hero-stat-val">24/7</div>
             <div class="hero-stat-label">Post-Purchase Support</div>
           </div>
           <div>
-            <div class="hero-stat-val">3+</div>
-            <div class="hero-stat-label">Continents Operated</div>
+            <div class="hero-stat-val">0</div>
+            <div class="hero-stat-label">Chinese-Origin Components</div>
           </div>
         </div>
       </div>
@@ -56,20 +56,20 @@
     <div class="container">
       <div class="grid grid-4">
         <div data-anim>
+          <div class="stat-big">Defense</div>
+          <div class="stat-label">Counter-UAS & SHORAD systems</div>
+        </div>
+        <div data-anim>
+          <div class="stat-big">UAV</div>
+          <div class="stat-label">ISR, FPV & cargo platforms</div>
+        </div>
+        <div data-anim>
           <div class="stat-big">Custom</div>
           <div class="stat-label">Built-to-spec aerial systems</div>
         </div>
         <div data-anim>
-          <div class="stat-big">FPV+</div>
-          <div class="stat-label">Racing, cargo, photography rigs</div>
-        </div>
-        <div data-anim>
-          <div class="stat-big">NDAA</div>
-          <div class="stat-label">Compliant components only</div>
-        </div>
-        <div data-anim>
-          <div class="stat-big">Aid</div>
-          <div class="stat-label">Humanitarian drone operations</div>
+          <div class="stat-big">ITAR</div>
+          <div class="stat-label">Controlled defense technology</div>
         </div>
       </div>
     </div>
@@ -80,45 +80,57 @@
     <div class="container">
       <div class="section-header" data-anim>
         <div class="eyebrow">What We Do</div>
-        <h2>Full-Spectrum Drone Capability</h2>
-        <p>Whether you need a ready-to-fly system off the shelf, a custom build for a specific mission, or a certified Part 107 pilot on-site — we've got you covered.</p>
+        <h2>Full-Spectrum Aerospace Capability</h2>
+        <p>Defense systems forged in combat zones. Commercial drones built for professional operators. Custom platforms engineered for any mission.</p>
       </div>
       <div class="grid grid-3" style="gap:16px">
+        <div class="service-card" data-anim style="border-left:3px solid var(--danger)">
+          <div class="hex-icon"><span style="font-size:28px">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </span></div>
+          <div class="service-title">Defense Systems</div>
+          <div class="service-desc">Counter-UAS, SHORAD, and advanced defense technology developed from years of real-world operational experience. Government and defense contractor inquiries only.</div>
+          <a href="defense.html" class="btn btn-sm btn-danger" style="margin-top:auto">Defense Portal</a>
+        </div>
         <div class="service-card" data-anim>
-          <div class="service-icon">🚁</div>
+          <div class="hex-icon"><span style="font-size:28px">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </span></div>
           <div class="service-title">Commercial Drone Systems</div>
-          <div class="service-desc">Photography rigs, mapping platforms, FPV racers, heavy-lift cargo drones, and custom builds. All using high-strength materials and NDAA-compliant components.</div>
-          <a href="drones.html" class="btn btn-sm btn-primary" style="margin-top:auto">Shop →</a>
+          <div class="service-desc">Photography rigs, mapping platforms, FPV kits, heavy-lift cargo drones, and custom builds. All using high-strength materials and domestically sourced components.</div>
+          <a href="drones.html" class="btn btn-sm btn-primary" style="margin-top:auto">Shop Drones</a>
         </div>
         <div class="service-card" data-anim>
-          <div class="service-icon">📡</div>
+          <div class="hex-icon"><span style="font-size:28px">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </span></div>
           <div class="service-title">Aerial Services</div>
-          <div class="service-desc">FAA Part 107 certified pilots for hire. Aerial photography, 3D mapping, infrastructure inspection, agricultural surveys, and film production support.</div>
-          <a href="services.html" class="btn btn-sm btn-primary" style="margin-top:auto">Learn More →</a>
+          <div class="service-desc">Professional drone operations for photography, 3D mapping, infrastructure inspection, agricultural surveys, and film production support.</div>
+          <a href="services.html" class="btn btn-sm btn-primary" style="margin-top:auto">Learn More</a>
         </div>
         <div class="service-card" data-anim>
-          <div class="service-icon">🎓</div>
-          <div class="service-title">Pilot Training</div>
-          <div class="service-desc">Ground school, simulator training, field practice, and Part 107 exam prep. We train hobbyists, commercial operators, and organizational teams.</div>
-          <a href="services.html#training" class="btn btn-sm btn-primary" style="margin-top:auto">Enroll →</a>
-        </div>
-        <div class="service-card" data-anim>
-          <div class="service-icon">🌍</div>
-          <div class="service-title">Drone Aid Operations</div>
-          <div class="service-desc">Humanitarian drone support for crisis zones. Supply delivery, medical logistics, and situational awareness for NGOs and government agencies in conflict areas.</div>
-          <a href="drone-aid.html" class="btn btn-sm" style="margin-top:auto;border-color:var(--success);color:var(--success)">Support →</a>
-        </div>
-        <div class="service-card" data-anim>
-          <div class="service-icon">🛠️</div>
+          <div class="hex-icon"><span style="font-size:28px">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </span></div>
           <div class="service-title">Custom Builds</div>
           <div class="service-desc">Tell us your mission parameters and we'll spec, build, and test a custom drone platform. FPV, fixed-wing, multirotor, hybrid — we build it all.</div>
-          <a href="contact.html" class="btn btn-sm btn-primary" style="margin-top:auto">Request Build →</a>
+          <a href="contact.html" class="btn btn-sm btn-primary" style="margin-top:auto">Request Build</a>
         </div>
-        <div class="service-card" data-anim style="border-left:3px solid var(--danger)">
-          <div class="service-icon">🔒</div>
-          <div class="service-title">Defense Systems</div>
-          <div class="service-desc">Counter-UAS, SHORAD, and defense technology developed under ITAR compliance. Government and defense contractor inquiries only.</div>
-          <a href="defense.html" class="btn btn-sm btn-danger" style="margin-top:auto">Defense Portal →</a>
+        <div class="service-card" data-anim>
+          <div class="hex-icon"><span style="font-size:28px">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </span></div>
+          <div class="service-title">Pilot Training</div>
+          <div class="service-desc">Ground school, simulator training, field practice, and Part 107 exam prep. We train hobbyists, commercial operators, and organizational teams.</div>
+          <a href="services.html#training" class="btn btn-sm" style="margin-top:auto;border-color:var(--purple);color:var(--purple)">Enroll</a>
+        </div>
+        <div class="service-card" data-anim>
+          <div class="hex-icon"><span style="font-size:28px">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </span></div>
+          <div class="service-title">Enterprise Solutions</div>
+          <div class="service-desc">Fleet management, organizational drone programs, and turn-key aerial solutions for agencies, construction firms, and enterprise clients.</div>
+          <a href="contact.html" class="btn btn-sm btn-primary" style="margin-top:auto">Inquire</a>
         </div>
       </div>
     </div>
@@ -134,7 +146,9 @@
       </div>
       <div class="grid grid-3">
         <div class="product-card" data-anim>
-          <div class="product-img">🚁</div>
+          <div class="product-img">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </div>
           <div class="product-body">
             <div class="product-name">OW-Mapper Pro</div>
             <div class="product-desc">Fixed-wing VTOL mapping drone. 45-min flight time, RTK GPS, 42MP survey camera. Ideal for agriculture and land survey.</div>
@@ -146,58 +160,36 @@
           </div>
         </div>
         <div class="product-card" data-anim>
-          <div class="product-img">📸</div>
+          <div class="product-img">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
           <div class="product-body">
             <div class="product-name">OW-Cine 6K</div>
             <div class="product-desc">Cinema-grade aerial photography platform. 6K/30fps, 3-axis gimbal, 35-min flight time. The professional filmmaker's aerial toolkit.</div>
             <div class="product-price">$3,799</div>
             <div class="product-footer">
-              <button class="btn btn-primary btn-sm" onclick="OW.addToCart({id:'cine-6k',name:'OW-Cine 6K',price:3799,icon:'📸'})">Add to Cart</button>
+              <button class="btn btn-primary btn-sm" onclick="OW.addToCart({id:'cine-6k',name:'OW-Cine 6K',price:3799,icon:'C6'})">Add to Cart</button>
               <a href="drones.html" class="btn btn-sm">Details</a>
             </div>
           </div>
         </div>
         <div class="product-card" data-anim>
-          <div class="product-img">⚡</div>
+          <div class="product-img">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
           <div class="product-body">
             <div class="product-name">OW-Racer FPV Kit</div>
             <div class="product-desc">5" freestyle FPV racing kit. F7 FC, 45A ESC, 2306 motors. Everything you need from scratch. Beginner to advanced builds available.</div>
             <div class="product-price">$349</div>
             <div class="product-footer">
-              <button class="btn btn-primary btn-sm" onclick="OW.addToCart({id:'racer-fpv',name:'OW-Racer FPV Kit',price:349,icon:'⚡'})">Add to Cart</button>
+              <button class="btn btn-primary btn-sm" onclick="OW.addToCart({id:'racer-fpv',name:'OW-Racer FPV Kit',price:349,icon:'FPV'})">Add to Cart</button>
               <a href="drones.html" class="btn btn-sm">Details</a>
             </div>
           </div>
         </div>
       </div>
       <div style="text-align:center;margin-top:32px">
-        <a href="drones.html" class="btn btn-primary btn-lg">View All Drones →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── DRONE AID CALLOUT ── -->
-  <section>
-    <div class="container">
-      <div class="aid-banner" data-anim>
-        <div class="eyebrow" style="color:var(--success)">Humanitarian Mission</div>
-        <h2>Drone Aid Operations</h2>
-        <p class="lead" style="margin-top:12px">
-          10% of every purchase supports our Drone Aid Operations program — delivering critical supplies and situational awareness to humanitarian groups in crisis zones worldwide.
-        </p>
-        <div style="max-width:400px;margin:0 auto">
-          <div class="progress-track">
-            <div class="progress-fill" style="width:68%"></div>
-          </div>
-          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text2)">
-            <span>68% of 2025 mission goal</span>
-            <span style="color:var(--success);font-family:var(--mono)">$8,400 raised</span>
-          </div>
-        </div>
-        <div style="margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-          <a href="drone-aid.html" class="btn btn-lg" style="border-color:var(--success);color:var(--success)">Learn More</a>
-          <a href="https://www.buymeacoffee.com/droneaidofficial" target="_blank" class="btn btn-lg" style="border-color:var(--success);color:var(--success)">☕ Support the Mission</a>
-        </div>
+        <a href="drones.html" class="btn btn-primary btn-lg">View All Drones</a>
       </div>
     </div>
   </section>
@@ -205,13 +197,16 @@
   <!-- ── CTA ── -->
   <section class="tight" style="background:var(--bg2);border-top:1px solid var(--border)">
     <div class="container">
-      <div style="text-align:center" data-anim>
-        <div class="eyebrow">Ready to Fly?</div>
+      <div class="mission-banner" data-anim>
+        <div class="eyebrow">Ready to Get Started?</div>
         <h2>Let's Build Your Mission</h2>
-        <p class="lead" style="margin-top:12px;margin-bottom:28px">Custom builds, pilot-for-hire, training, or off-the-shelf systems. Contact us and we'll get you airborne.</p>
+        <p class="lead" style="margin-top:12px;margin-bottom:28px;max-width:560px;margin-left:auto;margin-right:auto">Custom builds, pilot-for-hire, training, or defense inquiries. Contact us and we'll get you airborne.</p>
         <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-          <a href="contact.html" class="btn btn-primary btn-lg">Get in Touch →</a>
-          <a href="tel:6072062671" class="btn btn-lg">📞 (607) 206-2671</a>
+          <a href="contact.html" class="btn btn-primary btn-lg">Get in Touch</a>
+          <a href="tel:6072062671" class="btn btn-lg">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            (607) 206-2671
+          </a>
         </div>
       </div>
     </div>

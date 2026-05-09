@@ -1,8 +1,8 @@
 // ── OrbitWorks Aerospace · Global JS ─────────────────────────────────────────
 
-// ── SHARED DATA STORE (mimics Hub app sync) ──────────────────────────────────
+// ── SHARED DATA STORE ───────────────────────────────────────────────────────
 const OW = {
-  version: '1.0.0',
+  version: '2.0.0',
 
   // Simulated live data from Hub app
   hubData: {
@@ -14,15 +14,15 @@ const OW = {
       { id: 'p5', name: 'Tier I Facility', progress: 18, status: 'planning', color: '#4ade80' },
     ],
     tasks: [
-      { title: 'Finalize DDTC Registration', priority: 'high', status: 'todo', due: '2025-05-08' },
-      { title: 'AERIS-10X simulation run', priority: 'high', status: 'inprogress', due: '2025-05-12' },
-      { title: 'Tier I facility floor plan', priority: 'med', status: 'inprogress', due: '2025-05-20' },
+      { title: 'Finalize DDTC Registration', priority: 'high', status: 'todo', due: '2026-05-08' },
+      { title: 'AERIS-10X simulation run', priority: 'high', status: 'inprogress', due: '2026-05-12' },
+      { title: 'Tier I facility floor plan', priority: 'med', status: 'inprogress', due: '2026-05-20' },
     ],
     notifications: [
-      { icon: '⚠️', title: 'Task Overdue', body: 'IQT follow-up email overdue.', time: Date.now() - 7200000, read: false },
-      { icon: '✅', title: 'DDTC Filing Review complete', body: 'Marked complete by Steven Sanders.', time: Date.now() - 172800000, read: true },
+      { icon: '!', title: 'Task Overdue', body: 'IQT follow-up email overdue.', time: Date.now() - 7200000, read: false },
+      { icon: '+', title: 'DDTC Filing Review complete', body: 'Marked complete by Steven Sanders.', time: Date.now() - 172800000, read: true },
     ],
-    stats: { projects: 5, openTasks: 6, teamSize: 2, completedTasks: 12 },
+    stats: { projects: 5, openTasks: 6, teamSize: 3, completedTasks: 12 },
   },
 
   // ── CART ──────────────────────────────────────────────────────────────────
@@ -42,7 +42,7 @@ const OW = {
       this.cart.push({ ...item, qty: 1 });
     }
     this.saveCart();
-    this.showToast(`✅ ${item.name} added to cart`);
+    this.showToast(`Added ${item.name} to cart`);
     this.openCart();
   },
 
@@ -72,7 +72,7 @@ const OW = {
     } else {
       el.innerHTML = this.cart.map(item => `
         <div class="cart-item">
-          <span class="cart-item-icon">${item.icon || '📦'}</span>
+          <span class="cart-item-icon">${item.icon || 'OW'}</span>
           <div class="cart-item-info">
             <div class="cart-item-name">${item.name}</div>
             <div class="cart-item-price">$${item.price.toFixed(2)} × ${item.qty || 1}</div>
@@ -105,7 +105,7 @@ const OW = {
       this.showToast('Your cart is empty!');
       return;
     }
-    this.showToast('🚧 Checkout coming soon — email orders@orbitworksaerospace.com');
+    this.showToast('Checkout coming soon — email s.sanders@orbitworksaerospace.com');
   },
 
   // ── TOAST ─────────────────────────────────────────────────────────────────
@@ -152,12 +152,54 @@ const OW = {
     });
   },
 
+  // ── HEXAGON GRID BACKGROUND ───────────────────────────────────────────────
+  initHexGrid() {
+    const canvas = document.getElementById('hexCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let w, h;
+    function resize() {
+      w = canvas.width = canvas.offsetWidth;
+      h = canvas.height = canvas.offsetHeight;
+      draw();
+    }
+    function drawHex(cx, cy, r) {
+      ctx.beginPath();
+      for (let i = 0; i < 6; i++) {
+        const angle = (Math.PI / 3) * i - Math.PI / 6;
+        const x = cx + r * Math.cos(angle);
+        const y = cy + r * Math.sin(angle);
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.closePath();
+      ctx.stroke();
+    }
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      const r = 40;
+      const dx = r * Math.sqrt(3);
+      const dy = r * 1.5;
+      ctx.strokeStyle = 'rgba(0,212,255,0.06)';
+      ctx.lineWidth = 1;
+      for (let row = -1; row < h / dy + 1; row++) {
+        for (let col = -1; col < w / dx + 1; col++) {
+          const x = col * dx + (row % 2 === 0 ? 0 : dx / 2);
+          const y = row * dy;
+          drawHex(x, y, r);
+        }
+      }
+    }
+    resize();
+    window.addEventListener('resize', resize);
+  },
+
   // ── INIT ──────────────────────────────────────────────────────────────────
   init() {
     this.initNav();
     this.initScrollAnim();
     this.updateCartBadge();
     this.renderCart();
+    this.initHexGrid();
   }
 };
 
@@ -168,7 +210,13 @@ function renderNav() {
   return `
   <nav class="nav">
     <a class="nav-logo" href="index.html">
-      <div class="nav-logo-icon">🛡️</div>
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 32 32" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 2L28.66 9.5V24.5L16 32L3.34 24.5V9.5L16 2Z" stroke="#00d4ff" stroke-width="1.5" fill="rgba(0,212,255,0.08)"/>
+          <path d="M16 8L22.93 12V20L16 24L9.07 20V12L16 8Z" stroke="#00d4ff" stroke-width="1" fill="rgba(0,212,255,0.12)"/>
+          <circle cx="16" cy="16" r="3" fill="#00d4ff" opacity="0.6"/>
+        </svg>
+      </div>
       ORBITWORKS AEROSPACE
     </a>
     <ul class="nav-links">
@@ -177,10 +225,9 @@ function renderNav() {
       <li><a href="drones.html">Drones</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="merch.html">Merch</a></li>
-      <li><a href="drone-aid.html">Drone Aid</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="contact.html" class="btn btn-sm nav-cta">Get Quote</a></li>
-      <li><a href="defense.html" class="btn btn-sm nav-defense">🔒 DEFENSE</a></li>
+      <li><a href="defense.html" class="btn btn-sm nav-defense">DEFENSE</a></li>
     </ul>
     <div class="hamburger" id="hamburger">
       <span></span><span></span><span></span>
@@ -195,20 +242,22 @@ function renderFooter() {
       <div class="footer-grid">
         <div class="footer-brand">
           <a class="nav-logo" href="index.html" style="margin-bottom:0">
-            <div class="nav-logo-icon">🛡️</div>
+            <div class="nav-logo-icon">
+              <svg viewBox="0 0 32 32" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 2L28.66 9.5V24.5L16 32L3.34 24.5V9.5L16 2Z" stroke="#00d4ff" stroke-width="1.5" fill="rgba(0,212,255,0.08)"/>
+                <path d="M16 8L22.93 12V20L16 24L9.07 20V12L16 8Z" stroke="#00d4ff" stroke-width="1" fill="rgba(0,212,255,0.12)"/>
+                <circle cx="16" cy="16" r="3" fill="#00d4ff" opacity="0.6"/>
+              </svg>
+            </div>
             ORBITWORKS AEROSPACE
           </a>
-          <p>Innovative drone solutions for commercial, humanitarian, and defense applications. Based in Vestal, NY.</p>
-          <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
-            <span class="badge badge-accent">FAA Part 107 Certified</span>
-            <span class="badge badge-success">NDAA Compliant</span>
-          </div>
+          <p>Advanced aerospace defense and drone technology. Protecting the skies for the United States and our allies. Binghamton, NY.</p>
         </div>
         <div class="footer-col">
           <h4>Company</h4>
           <ul>
             <li><a href="about.html">About Us</a></li>
-            <li><a href="drone-aid.html">Drone Aid Operations</a></li>
+            <li><a href="about.html#board">The Board</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="https://orbitworksaerospace.substack.com" target="_blank">Substack Blog</a></li>
           </ul>
@@ -217,9 +266,8 @@ function renderFooter() {
           <h4>Products & Services</h4>
           <ul>
             <li><a href="drones.html">Commercial Drones</a></li>
-            <li><a href="services.html">Aerial Photography</a></li>
-            <li><a href="services.html">Mapping & Survey</a></li>
-            <li><a href="services.html">Pilot Training</a></li>
+            <li><a href="services.html">Aerial Services</a></li>
+            <li><a href="services.html#training">Pilot Training</a></li>
             <li><a href="merch.html">Merch Shop</a></li>
           </ul>
         </div>
@@ -228,14 +276,13 @@ function renderFooter() {
           <ul>
             <li><a href="tel:6072062671">(607) 206-2671</a></li>
             <li><a href="mailto:s.sanders@orbitworksaerospace.com">s.sanders@orbitworksaerospace.com</a></li>
-            <li><a href="mailto:orders@orbitworksaerospace.com">orders@orbitworksaerospace.com</a></li>
             <li><a href="https://twitter.com/OrbitworksA" target="_blank">@OrbitworksA</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2025 OrbitWorks Aerospace Inc. · Vestal, NY · All rights reserved.</p>
-        <span class="mono">v1.0.0 · Built in-house</span>
+        <p>&copy; ${new Date().getFullYear()} OrbitWorks Aerospace Inc. &middot; Binghamton, NY &middot; All rights reserved.</p>
+        <span class="mono">v2.0.0 &middot; Built in-house</span>
       </div>
     </div>
   </footer>
@@ -243,18 +290,18 @@ function renderFooter() {
   <div class="cart-overlay" id="cartOverlay" onclick="OW.closeCart()"></div>
   <div class="cart-drawer" id="cartDrawer">
     <div class="cart-header">
-      <h3>🛒 Cart</h3>
+      <h3>Cart</h3>
       <button class="cart-close" onclick="OW.closeCart()">✕</button>
     </div>
     <div class="cart-items" id="cartItems"></div>
     <div class="cart-footer">
       <div class="cart-total">Total <span id="cartTotal">$0.00</span></div>
-      <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="OW.checkout()">Checkout →</button>
+      <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="OW.checkout()">Checkout</button>
     </div>
   </div>
   <!-- Floating cart -->
   <div class="cart-icon" onclick="OW.openCart()">
-    🛒
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0a0c10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
     <span class="cart-badge" id="cartBadge" style="display:none">0</span>
   </div>
   <!-- Toast -->

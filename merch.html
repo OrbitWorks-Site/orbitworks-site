@@ -14,12 +14,7 @@
     <div class="container">
       <div class="eyebrow">Merch Shop</div>
       <h1>OrbitWorks Gear</h1>
-      <p class="lead" style="margin-top:12px;max-width:600px">Rep the brand. A portion of every purchase goes directly to Drone Aid Operations — supporting humanitarian drone missions worldwide.</p>
-      <div style="margin-top:16px">
-        <span class="badge badge-success">~$10 per shirt to Drone Aid</span>
-        <span class="badge badge-accent" style="margin-left:8px">~$9 per patch</span>
-        <span class="badge badge-purple" style="margin-left:8px">~$5 per cup</span>
-      </div>
+      <p class="lead" style="margin-top:12px;max-width:600px">Rep the brand. Official OrbitWorks Aerospace apparel, headwear, and accessories — built for operators and supporters alike.</p>
     </div>
   </section>
 
@@ -29,10 +24,10 @@
       <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
         <span style="color:var(--text2);font-size:12px;font-family:var(--mono);letter-spacing:.08em">FILTER:</span>
         <button class="btn btn-sm btn-primary" onclick="filterMerch('all',this)">All</button>
-        <button class="btn btn-sm" onclick="filterMerch('apparel',this)">👕 Apparel</button>
-        <button class="btn btn-sm" onclick="filterMerch('headwear',this)">🧢 Headwear</button>
-        <button class="btn btn-sm" onclick="filterMerch('accessories',this)">🎖️ Accessories</button>
-        <button class="btn btn-sm" onclick="filterMerch('drinkware',this)">☕ Drinkware</button>
+        <button class="btn btn-sm" onclick="filterMerch('apparel',this)">Apparel</button>
+        <button class="btn btn-sm" onclick="filterMerch('headwear',this)">Headwear</button>
+        <button class="btn btn-sm" onclick="filterMerch('accessories',this)">Accessories</button>
+        <button class="btn btn-sm" onclick="filterMerch('drinkware',this)">Drinkware</button>
       </div>
     </div>
   </div>
@@ -42,103 +37,120 @@
       <div class="grid grid-4" id="merchGrid">
 
         <div class="merch-card" data-cat="apparel" data-anim>
-          <div class="merch-img">👕</div>
+          <div class="merch-img">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"><path d="M20.38 3.46L16 2 12 5 8 2 3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
+          </div>
           <div class="merch-body">
             <div class="merch-name">OW Classic Tee</div>
             <div style="color:var(--text2);font-size:12px;margin-bottom:8px">Shield logo · Black · S–3XL</div>
             <div class="merch-price">$28</div>
-            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'tee-classic',name:'OW Classic Tee',price:28,icon:'👕'})">Add to Cart</button>
+            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'tee-classic',name:'OW Classic Tee',price:28,icon:'T'})">Add to Cart</button>
           </div>
         </div>
 
         <div class="merch-card" data-cat="apparel" data-anim>
-          <div class="merch-img">🥼</div>
+          <div class="merch-img">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"><path d="M20.38 3.46L16 2 12 5 8 2 3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/><path d="M12 5v17"/></svg>
+          </div>
           <div class="merch-body">
             <div class="merch-name">OW Tactical Hoodie</div>
             <div style="color:var(--text2);font-size:12px;margin-bottom:8px">Embroidered logo · Black · S–2XL</div>
             <div class="merch-price">$54</div>
-            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'hoodie-tactical',name:'OW Tactical Hoodie',price:54,icon:'🥼'})">Add to Cart</button>
+            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'hoodie-tactical',name:'OW Tactical Hoodie',price:54,icon:'H'})">Add to Cart</button>
           </div>
         </div>
 
         <div class="merch-card" data-cat="apparel" data-anim>
-          <div class="merch-img">🎽</div>
+          <div class="merch-img">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"><path d="M20.38 3.46L16 2 12 5 8 2 3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
+          </div>
           <div class="merch-body">
-            <div class="merch-name">Drone Aid Tee</div>
-            <div style="color:var(--text2);font-size:12px;margin-bottom:8px">Drone Aid collab · Forest green</div>
+            <div class="merch-name">OW Operator Tee</div>
+            <div style="color:var(--text2);font-size:12px;margin-bottom:8px">Tactical edition · OD green · S–3XL</div>
             <div class="merch-price">$28</div>
-            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'tee-droneaid',name:'Drone Aid Tee',price:28,icon:'🎽'})">Add to Cart</button>
+            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'tee-operator',name:'OW Operator Tee',price:28,icon:'T'})">Add to Cart</button>
           </div>
         </div>
 
         <div class="merch-card" data-cat="headwear" data-anim>
-          <div class="merch-img">🧢</div>
+          <div class="merch-img">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"><path d="M2 16h20M4 16c0-4 2-10 8-10s8 6 8 10"/><path d="M2 16c0 1 1 3 3 3h14c2 0 3-2 3-3"/></svg>
+          </div>
           <div class="merch-body">
             <div class="merch-name">OW Operator Cap</div>
             <div style="color:var(--text2);font-size:12px;margin-bottom:8px">Structured 6-panel · Black / Cyan</div>
             <div class="merch-price">$32</div>
-            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'cap-operator',name:'OW Operator Cap',price:32,icon:'🧢'})">Add to Cart</button>
+            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'cap-operator',name:'OW Operator Cap',price:32,icon:'C'})">Add to Cart</button>
           </div>
         </div>
 
         <div class="merch-card" data-cat="headwear" data-anim>
-          <div class="merch-img">🎩</div>
+          <div class="merch-img">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"><rect x="4" y="8" width="16" height="10" rx="2"/><path d="M4 12h16"/></svg>
+          </div>
           <div class="merch-body">
             <div class="merch-name">OW Beanie</div>
             <div style="color:var(--text2);font-size:12px;margin-bottom:8px">Embroidered · Black · One size</div>
             <div class="merch-price">$22</div>
-            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'beanie',name:'OW Beanie',price:22,icon:'🎩'})">Add to Cart</button>
+            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'beanie',name:'OW Beanie',price:22,icon:'B'})">Add to Cart</button>
           </div>
         </div>
 
         <div class="merch-card" data-cat="accessories" data-anim>
-          <div class="merch-img">🎖️</div>
+          <div class="merch-img">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
           <div class="merch-body">
             <div class="merch-name">Shield Patch Set (3pk)</div>
             <div style="color:var(--text2);font-size:12px;margin-bottom:8px">Embroidered · Hook & loop backed</div>
             <div class="merch-price">$18</div>
-            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'patch-set',name:'Shield Patch Set (3pk)',price:18,icon:'🎖️'})">Add to Cart</button>
+            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'patch-set',name:'Shield Patch Set (3pk)',price:18,icon:'P'})">Add to Cart</button>
           </div>
         </div>
 
         <div class="merch-card" data-cat="accessories" data-anim>
-          <div class="merch-img">🩳</div>
+          <div class="merch-img">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M8 8h.01M12 8h.01M16 8h.01M8 12h.01M12 12h.01"/></svg>
+          </div>
           <div class="merch-body">
             <div class="merch-name">OW Sticker Pack</div>
             <div style="color:var(--text2);font-size:12px;margin-bottom:8px">5 premium vinyl stickers</div>
             <div class="merch-price">$10</div>
-            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'stickers',name:'OW Sticker Pack',price:10,icon:'🩳'})">Add to Cart</button>
+            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'stickers',name:'OW Sticker Pack',price:10,icon:'S'})">Add to Cart</button>
           </div>
         </div>
 
         <div class="merch-card" data-cat="drinkware" data-anim>
-          <div class="merch-img">☕</div>
+          <div class="merch-img">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+          </div>
           <div class="merch-body">
             <div class="merch-name">OW Mug</div>
             <div style="color:var(--text2);font-size:12px;margin-bottom:8px">11oz ceramic · Shield logo</div>
             <div class="merch-price">$16</div>
-            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'mug',name:'OW Mug',price:16,icon:'☕'})">Add to Cart</button>
+            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'mug',name:'OW Mug',price:16,icon:'M'})">Add to Cart</button>
           </div>
         </div>
 
         <div class="merch-card" data-cat="drinkware" data-anim>
-          <div class="merch-img">🧃</div>
+          <div class="merch-img">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"><path d="M6 3h12l-1 18H7L6 3z"/><path d="M5 3h14"/></svg>
+          </div>
           <div class="merch-body">
             <div class="merch-name">OW Tumbler 20oz</div>
             <div style="color:var(--text2);font-size:12px;margin-bottom:8px">Stainless steel · Black/Cyan wrap</div>
             <div class="merch-price">$28</div>
-            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'tumbler',name:'OW Tumbler 20oz',price:28,icon:'🧃'})">Add to Cart</button>
+            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'tumbler',name:'OW Tumbler 20oz',price:28,icon:'T'})">Add to Cart</button>
           </div>
         </div>
 
       </div>
 
-      <!-- Drone Aid Notice -->
-      <div class="aid-banner" style="margin-top:48px;text-align:center" data-anim>
-        <div class="eyebrow" style="color:var(--success)">Your Purchase Matters</div>
-        <h3 style="color:var(--success);margin-bottom:10px">Supporting Drone Aid Operations</h3>
-        <p style="color:var(--text2);max-width:560px;margin:0 auto">Every order directly funds our humanitarian drone program. ~$10 per shirt, ~$9 per patch, ~$5 per mug goes toward drones and operations in crisis zones.</p>
-        <a href="drone-aid.html" style="display:inline-block;margin-top:16px" class="btn btn-sm" style="border-color:var(--success);color:var(--success)">Learn About Drone Aid →</a>
+      <!-- Mission CTA -->
+      <div class="mission-banner" style="margin-top:48px;text-align:center" data-anim>
+        <div class="eyebrow">Support the Mission</div>
+        <h3 style="margin-bottom:10px">Wear It. Fly It. Defend It.</h3>
+        <p style="color:var(--text2);max-width:560px;margin:0 auto">Every purchase supports OrbitWorks Aerospace and our mission to build next-generation defense and drone systems — domestically manufactured, combat-tested, American-made.</p>
       </div>
     </div>
   </section>
