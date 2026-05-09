@@ -442,30 +442,42 @@ function renderStage(){
   if(stage===5) renderSummary();
 }
 
-/* ── TOTAL ──────────────────────────────────────────────────────────────── */
-function total(){
-  let t=149.99; // assembly
-  // Singles
+/* ── PRICING CONSTANTS ─────────────────────────────────────────────────── */
+const LABOR_PCT = 0.30;        // 30% of parts subtotal
+const LABOR_MIN = 99.00;       // $99 minimum
+const NYS_TAX   = 0.08;        // 8% Broome County, NY (4% state + 4% county)
+
+/* ── PARTS SUBTOTAL HELPER ─────────────────────────────────────────────── */
+function partsSubtotal(){
+  let p=0;
   ['fw','mr','fc','esc','batt','fpv','vtol','gps','rx','servo'].forEach(k=>{
     if(!sel[k]) return;
     let q=1;
     if(k==='motor') q=motorN();
     if(k==='esc'&&sel[k].perMotor) q=motorN();
-    t+=sel[k].price*q;
+    p+=sel[k].price*q;
   });
-  // Motor special
-  if(sel.motor){ t+=sel.motor.price*motorN(); }
-  // ESC special (already handled above if perMotor; if 4-in-1 handled as qty 1)
-  // Multis
+  if(sel.motor) p+=sel.motor.price*motorN();
   ['cam','cargo','launch','transport','ground','field'].forEach(k=>{
-    (multi[k]||[]).forEach(x=>{ t+=x.price*x.qty; });
+    (multi[k]||[]).forEach(x=>{ p+=x.price*x.qty; });
   });
+  return p;
+}
+function laborFee(parts){ return Math.max(LABOR_MIN, +(parts*LABOR_PCT).toFixed(2)); }
+
+/* ── TOTAL ──────────────────────────────────────────────────────────────── */
+function total(){
+  const parts = partsSubtotal();
+  const labor = laborFee(parts);
+  const taxable = parts + labor;
+  const tax = +(taxable * NYS_TAX).toFixed(2);
+  const t = taxable + tax;
   document.getElementById('runTotal').textContent=t.toFixed(2);
 }
 
 /* ── SUMMARY ────────────────────────────────────────────────────────────── */
 function renderSummary(){
-  let rows='', t=0;
+  let rows='', parts=0;
   const singles=[
     ['fw','Airframe (Fixed Wing)'],['mr','Airframe (Multirotor)'],
     ['fc','Flight Controller'],['esc','ESC'],['motor','Motor(s)'],
@@ -478,7 +490,7 @@ function renderSummary(){
     if(k==='motor') q=motorN();
     if(k==='esc'&&sel[k].perMotor) q=motorN();
     const line=sel[k].price*q;
-    t+=line;
+    parts+=line;
     rows+=`<tr><td>${label}</td><td>${sel[k].name}</td><td style="font-family:var(--mono)">${q}</td><td style="font-family:var(--mono)">$${line.toFixed(2)}</td></tr>`;
   });
   const multis=[
@@ -490,13 +502,22 @@ function renderSummary(){
     (multi[k]||[]).forEach(x=>{
       if(x.price===0) return;
       const line=x.price*x.qty;
-      t+=line;
+      parts+=line;
       rows+=`<tr><td>${label}</td><td>${x.name}</td><td style="font-family:var(--mono)">${x.qty}</td><td style="font-family:var(--mono)">$${line.toFixed(2)}</td></tr>`;
     });
   });
-  t+=149.99;
-  rows+=`<tr><td>Assembly & Testing</td><td>Professional assembly, firmware, test flight</td><td style="font-family:var(--mono)">1</td><td style="font-family:var(--mono)">$149.99</td></tr>`;
-  rows+=`<tr class="total-row"><td colspan="3">ESTIMATED TOTAL</td><td>$${t.toFixed(2)}</td></tr>`;
+  // Parts subtotal
+  rows+=`<tr style="border-top:2px solid var(--border2)"><td colspan="3" style="color:var(--text2)">Parts Subtotal</td><td style="font-family:var(--mono)">$${parts.toFixed(2)}</td></tr>`;
+  // Labor & testing (30% of parts, $99 min)
+  const labor = laborFee(parts);
+  rows+=`<tr><td>Labor &amp; Testing</td><td style="color:var(--text2);font-size:12px">Assembly, firmware, calibration, test flight (30% of parts, $99 min)</td><td style="font-family:var(--mono)">1</td><td style="font-family:var(--mono)">$${labor.toFixed(2)}</td></tr>`;
+  // NYS sales tax
+  const taxable = parts + labor;
+  const tax = +(taxable * NYS_TAX).toFixed(2);
+  rows+=`<tr><td>NYS Sales Tax</td><td style="color:var(--text2);font-size:12px">Broome County, NY &mdash; 8%</td><td style="font-family:var(--mono)">&mdash;</td><td style="font-family:var(--mono)">$${tax.toFixed(2)}</td></tr>`;
+  // Total
+  const grand = taxable + tax;
+  rows+=`<tr class="total-row"><td colspan="3">ESTIMATED TOTAL</td><td>$${grand.toFixed(2)}</td></tr>`;
   document.getElementById('summaryBody').innerHTML=rows;
 }
 
@@ -525,20 +546,26 @@ window.sendOrder=function(){
   let lines=['=== ORBITWORKS CUSTOM DRONE BUILD ORDER ===','Date: '+new Date().toLocaleDateString(),'Customer: '+name,'Email: '+email];
   if(notes) lines.push('Notes: '+notes);
   lines.push('','--- CONFIGURATION ---');
-  let t=0;
+  let parts=0;
   const singles=[['fw','Airframe (FW)'],['mr','Airframe (MR)'],['fc','FC'],['esc','ESC'],['motor','Motors'],['gps','GPS'],['rx','Receiver'],['servo','Servos'],['fpv','FPV'],['batt','Battery'],['vtol','VTOL']];
   singles.forEach(([k,label])=>{
     if(!sel[k]) return;
     let q=1; if(k==='motor')q=motorN(); if(k==='esc'&&sel[k].perMotor)q=motorN();
-    const line=sel[k].price*q; t+=line;
+    const line=sel[k].price*q; parts+=line;
     lines.push(`${label}: ${sel[k].name} x${q} — $${line.toFixed(2)}`);
   });
   const multis=[['cam','Camera'],['cargo','Cargo'],['launch','Launch/Recovery'],['transport','Transport'],['ground','Ground Station'],['field','Field Accessory']];
   multis.forEach(([k,label])=>{
-    (multi[k]||[]).forEach(x=>{ if(x.price===0)return; const line=x.price*x.qty; t+=line; lines.push(`${label}: ${x.name} x${x.qty} — $${line.toFixed(2)}`); });
+    (multi[k]||[]).forEach(x=>{ if(x.price===0)return; const line=x.price*x.qty; parts+=line; lines.push(`${label}: ${x.name} x${x.qty} — $${line.toFixed(2)}`); });
   });
-  t+=149.99;
-  lines.push(`Assembly & Testing: $149.99`,'','ESTIMATED TOTAL: $'+t.toFixed(2));
+  const labor = laborFee(parts);
+  const taxable = parts + labor;
+  const tax = +(taxable * NYS_TAX).toFixed(2);
+  const grand = taxable + tax;
+  lines.push('','Parts Subtotal: $'+parts.toFixed(2));
+  lines.push(`Labor & Testing (30% of parts, $99 min): $${labor.toFixed(2)}`);
+  lines.push(`NYS Sales Tax (8%): $${tax.toFixed(2)}`);
+  lines.push('','ESTIMATED TOTAL: $'+grand.toFixed(2));
   const subject=encodeURIComponent('Custom Drone Build Order — '+name);
   window.location.href='mailto:orders@orbitworksaerospace.com?subject='+subject+'&body='+encodeURIComponent(lines.join('\n'));
   document.getElementById('stageContainer').style.display='none';

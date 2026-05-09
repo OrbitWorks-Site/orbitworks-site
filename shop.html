@@ -24,6 +24,7 @@
       <div class="shop-nav-bar">
         <a href="#drones" class="btn btn-sm btn-primary">Drones</a>
         <a href="build-a-drone.html" class="btn btn-sm btn-primary">Build Your Drone</a>
+        <a href="#parts" class="btn btn-sm btn-primary">Parts</a>
         <a href="#services" class="btn btn-sm">Services</a>
         <a href="#education" class="btn btn-sm">Education</a>
         <a href="#merch" class="btn btn-sm">Merch</a>
@@ -273,6 +274,346 @@
         <p style="color:var(--text2);max-width:520px;margin:0 auto 24px;font-size:14px">3D-printed fixed wings, carbon fiber multirotors, real US-sourced electronics. Zero Chinese-origin components. VTOL conversions available.</p>
         <a href="build-a-drone.html" class="btn btn-primary btn-lg">Build Your Drone &rarr;</a>
       </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════════ -->
+  <!-- ── COTS PART BIN ── -->
+  <!-- ══════════════════════════════════════════════════════════════════════════ -->
+  <section id="parts" style="border-top:1px solid var(--border)">
+    <div class="container">
+      <div class="section-header" data-anim>
+        <div class="eyebrow">COTS Part Bin</div>
+        <h2>Commercial Off-The-Shelf Components</h2>
+        <p>Individual parts, electronics, and accessories available for purchase. All components domestically sourced. Click a category to expand.</p>
+      </div>
+
+      <style>
+        .cots-cat{border:1px solid var(--border);border-radius:10px;margin-bottom:12px;overflow:hidden;background:var(--bg2)}
+        .cots-cat-head{padding:16px 20px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:background .2s}
+        .cots-cat-head:hover{background:var(--bg3)}
+        .cots-cat-head h3{font-size:16px;margin:0;display:flex;align-items:center;gap:10px}
+        .cots-cat-head h3 .cat-count{font-family:var(--mono);font-size:11px;color:var(--text2);background:var(--bg3);padding:2px 8px;border-radius:4px}
+        .cots-cat-head .cots-arrow{font-size:18px;color:var(--text2);transition:transform .3s}
+        .cots-cat.open .cots-arrow{transform:rotate(180deg)}
+        .cots-cat-body{display:none;padding:0 20px 20px}
+        .cots-cat.open .cots-cat-body{display:block}
+        .cots-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+        .cots-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:18px;transition:border-color .2s,transform .2s}
+        .cots-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+        .cots-card .cots-tag{display:inline-block;font-family:var(--mono);font-size:10px;background:var(--adim);color:var(--accent);padding:2px 8px;border-radius:4px;margin-bottom:6px;text-transform:uppercase}
+        .cots-card h4{font-size:14px;margin:0 0 6px}
+        .cots-card .cots-specs{font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:10px}
+        .cots-card .cots-specs li{margin-bottom:2px}
+        .cots-card .cots-price{font-family:var(--mono);font-size:17px;color:var(--success)}
+        .cots-card .cots-add{margin-top:10px}
+      </style>
+
+      <!-- ── Fixed Wing Airframes ── -->
+      <div class="cots-cat" data-anim>
+        <div class="cots-cat-head" onclick="this.parentElement.classList.toggle('open')">
+          <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg> Fixed Wing Airframes <span class="cat-count">10</span></h3>
+          <span class="cots-arrow">&#9660;</span>
+        </div>
+        <div class="cots-cat-body">
+          <div class="cots-grid">
+            <div class="cots-card"><span class="cots-tag">Micro</span><h4>Pico Talon</h4><ul class="cots-specs"><li>Wingspan: 650mm</li><li>Material: LW-PLA 3D print</li><li>Hand-launch FPV wing</li><li>Weight: ~180g (airframe only)</li></ul><div class="cots-price">$26.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fw-pico',name:'Pico Talon Airframe',price:26.99,icon:'PT'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Small</span><h4>Mini Plank</h4><ul class="cots-specs"><li>Wingspan: 900mm</li><li>Material: LW-PLA 3D print</li><li>Fast plank for FPV cruising</li><li>Weight: ~250g (airframe only)</li></ul><div class="cots-price">$26.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fw-plank',name:'Mini Plank Airframe',price:26.99,icon:'MP'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Medium</span><h4>Lark</h4><ul class="cots-specs"><li>Wingspan: 1130mm</li><li>Material: LW-PLA 3D print</li><li>Mid-size mapping wing</li><li>Good endurance platform</li></ul><div class="cots-price">$34.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fw-lark',name:'Lark Airframe',price:34.99,icon:'LK'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Medium</span><h4>Talon 1400</h4><ul class="cots-specs"><li>Wingspan: 1400mm</li><li>Pusher configuration</li><li>Roomy fuselage for payloads</li><li>Extended-range surveillance</li></ul><div class="cots-price">$34.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fw-talon',name:'Talon 1400 Airframe',price:34.99,icon:'T4'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Medium</span><h4>Super Stingray</h4><ul class="cots-specs"><li>Wingspan: 1300mm</li><li>Blended body flying wing</li><li>VTOL conversion available</li><li>Stable in strong winds</li></ul><div class="cots-price">$34.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fw-stingray',name:'Super Stingray Airframe',price:34.99,icon:'SS'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Large</span><h4>Stork</h4><ul class="cots-specs"><li>Wingspan: 1620mm</li><li>High-endurance mapping</li><li>VTOL conversion available</li><li>Large payload bay</li></ul><div class="cots-price">$34.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fw-stork',name:'Stork Airframe',price:34.99,icon:'SK'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Medium</span><h4>Stallion</h4><ul class="cots-specs"><li>Wingspan: 1340mm</li><li>Performance pusher config</li><li>VTOL conversion available</li><li>Strong crosswind handling</li></ul><div class="cots-price">$40.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fw-stallion',name:'Stallion Airframe',price:40.99,icon:'SN'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Large</span><h4>Moose</h4><ul class="cots-specs"><li>Wingspan: 1600mm</li><li>Heavy-lift mapping wing</li><li>Dedicated payload compartment</li><li>Survey gear compatible</li></ul><div class="cots-price">$46.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fw-moose',name:'Moose Airframe',price:46.99,icon:'MS'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Medium</span><h4>AR Wing 2</h4><ul class="cots-specs"><li>Wingspan: 1200mm</li><li>Material: EPP foam</li><li>Popular FPV flying wing</li><li>Durable, easy repairs</li></ul><div class="cots-price">$38.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fw-ar2',name:'AR Wing 2 Airframe',price:38.99,icon:'AR'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Small</span><h4>Nano Talon EVO</h4><ul class="cots-specs"><li>Wingspan: 860mm</li><li>VTOL-capable micro wing</li><li>Backpack-portable</li><li>Recon platform</li></ul><div class="cots-price">$32.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fw-nano',name:'Nano Talon EVO',price:32.99,icon:'NT'})">Add to Cart</button></div></div>
+          </div>
+          <div style="margin-top:14px"><div class="cots-card" style="max-width:300px"><span class="cots-tag" style="background:rgba(167,139,250,.12);color:var(--purple)">Add-On</span><h4>VTOL Conversion Kit</h4><ul class="cots-specs"><li>Quad-motor VTOL pack</li><li>For compatible Flightory wings</li></ul><div class="cots-price">$14.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'vtol-kit',name:'VTOL Conversion Kit',price:14.99,icon:'VT'})">Add to Cart</button></div></div></div>
+        </div>
+      </div>
+
+      <!-- ── Multirotor Frames ── -->
+      <div class="cots-cat" data-anim>
+        <div class="cots-cat-head" onclick="this.parentElement.classList.toggle('open')">
+          <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg> Multirotor Frames <span class="cat-count">10</span></h3>
+          <span class="cots-arrow">&#9660;</span>
+        </div>
+        <div class="cots-cat-body">
+          <div class="cots-grid">
+            <div class="cots-card"><span class="cots-tag">Tricopter</span><h4>Y3 Tricopter Frame</h4><ul class="cots-specs"><li>Size: ~450mm</li><li>Carbon fiber, Y-config</li><li>3 motors, rear tilt servo</li><li>Efficient cruiser</li></ul><div class="cots-price">$46.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'mr-tri',name:'Y3 Tricopter Frame',price:46.99,icon:'Y3'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Quadcopter</span><h4>5" Quad Frame (220mm)</h4><ul class="cots-specs"><li>Size: 220mm</li><li>Carbon fiber, 5mm arms</li><li>Race/freestyle workhorse</li><li>Fits 5" props, 4 motors</li></ul><div class="cots-price">$52.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'mr-5q',name:'5in Quad Frame 220mm',price:52.99,icon:'5Q'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Quadcopter</span><h4>5" DC Frame (DeadCat)</h4><ul class="cots-specs"><li>Size: 220mm</li><li>DeadCat geometry</li><li>Props out of camera view</li><li>Cinema FPV, 4 motors</li></ul><div class="cots-price">$58.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'mr-5dc',name:'5in DC Frame DeadCat',price:58.99,icon:'DC'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Quadcopter</span><h4>7" Long Range Quad</h4><ul class="cots-specs"><li>Size: 295mm</li><li>Carbon fiber, 6mm arms</li><li>Room for HD + GPS</li><li>Long-range cruiser, 4 motors</li></ul><div class="cots-price">$64.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'mr-7q',name:'7in LR Quad Frame',price:64.99,icon:'7Q'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Quadcopter</span><h4>7" X-Class Racer</h4><ul class="cots-specs"><li>Size: 295mm</li><li>Reinforced 6mm CF arms</li><li>Lightweight construction</li><li>Race frame, 4 motors</li></ul><div class="cots-price">$72.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'mr-7x',name:'7in X-Class Racer Frame',price:72.99,icon:'7X'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Quadcopter</span><h4>10" Quad Frame (450mm)</h4><ul class="cots-specs"><li>Size: 450mm</li><li>Heavy-lift quad</li><li>Cinema camera / LiDAR capable</li><li>4 motors</li></ul><div class="cots-price">$89.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'mr-10q',name:'10in Quad Frame 450mm',price:89.99,icon:'10'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Hexacopter</span><h4>S550 Hexacopter (550mm)</h4><ul class="cots-specs"><li>Size: 550mm, foldable</li><li>6-motor redundancy</li><li>Inspection &amp; mapping</li><li>Compact transport</li></ul><div class="cots-price">$74.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'mr-hex',name:'S550 Hexacopter Frame',price:74.99,icon:'H6'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Hexacopter</span><h4>Tarot 680 Pro Hex</h4><ul class="cots-specs"><li>Size: 680mm, foldable</li><li>Clean wiring routing</li><li>Camera-ready underside</li><li>6 motors, industrial</li></ul><div class="cots-price">$159.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'mr-hexf',name:'Tarot 680 Pro Hex Frame',price:159.99,icon:'T6'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Hexacopter</span><h4>ZD850 Foldable Hex</h4><ul class="cots-specs"><li>Size: 850mm, full carbon</li><li>Folding arms, retract gear</li><li>Heavy-lift capable</li><li>6 motors</li></ul><div class="cots-price">$199.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'mr-hexl',name:'ZD850 Hex Frame',price:199.99,icon:'Z8'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Octocopter</span><h4>X8 Octocopter (1000mm+)</h4><ul class="cots-specs"><li>Size: 1000mm+</li><li>Coaxial 8-motor config</li><li>Max redundancy &amp; payload</li><li>Industrial grade</li></ul><div class="cots-price">$279.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'mr-octo',name:'X8 Octocopter Frame',price:279.99,icon:'X8'})">Add to Cart</button></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Flight Controllers ── -->
+      <div class="cots-cat" data-anim>
+        <div class="cots-cat-head" onclick="this.parentElement.classList.toggle('open')">
+          <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> Flight Controllers <span class="cat-count">7</span></h3>
+          <span class="cots-arrow">&#9660;</span>
+        </div>
+        <div class="cots-cat-body">
+          <div class="cots-grid">
+            <div class="cots-card"><span class="cots-tag">Fixed Wing</span><h4>SpeedyBee F405 WING</h4><ul class="cots-specs"><li>MCU: STM32F405</li><li>Firmware: INAV / ArduPilot</li><li>12 PWM outputs, 7-36V</li><li>Solder-free connectors</li></ul><div class="cots-price">$42.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fc-f405w',name:'SpeedyBee F405 WING FC',price:42.99,icon:'FC'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Fixed Wing</span><h4>SpeedyBee F405 WING Mini</h4><ul class="cots-specs"><li>MCU: STM32F405</li><li>Firmware: INAV / ArduPilot</li><li>Compact footprint</li><li>Same firmware support</li></ul><div class="cots-price">$36.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fc-f405wm',name:'SpeedyBee F405 WING Mini',price:36.99,icon:'FC'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Multirotor</span><h4>SpeedyBee F405 V4</h4><ul class="cots-specs"><li>MCU: STM32F405, ICM42688P gyro</li><li>Firmware: Betaflight / INAV</li><li>30x30 mount, 10.5g</li><li>3-6S, Bluetooth config, OSD</li></ul><div class="cots-price">$42.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fc-f405v4',name:'SpeedyBee F405 V4 FC',price:42.99,icon:'FC'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Multirotor</span><h4>SpeedyBee F722 V3</h4><ul class="cots-specs"><li>MCU: STM32F722, dual gyro</li><li>Firmware: Betaflight / INAV</li><li>30x30 mount, OSD</li><li>Premium build quality</li></ul><div class="cots-price">$49.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fc-f722',name:'SpeedyBee F722 V3 FC',price:49.99,icon:'FC'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Autopilot</span><h4>Holybro Pixhawk 6C</h4><ul class="cots-specs"><li>MCU: STM32H743 (480MHz)</li><li>Dual IMU: ICM42688P + BMI088</li><li>ArduPilot / PX4</li><li>Autonomous missions, vibration-isolated</li></ul><div class="cots-price">$192.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fc-pix6c',name:'Holybro Pixhawk 6C',price:192.99,icon:'PX'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Autopilot</span><h4>Holybro Pixhawk 6C Mini</h4><ul class="cots-specs"><li>MCU: STM32H743</li><li>Same H743 processor</li><li>Compact form factor</li><li>ArduPilot / PX4</li></ul><div class="cots-price">$154.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fc-pix6cm',name:'Pixhawk 6C Mini',price:154.99,icon:'PX'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Enterprise</span><h4>CubePilot Cube Orange+</h4><ul class="cots-specs"><li>MCU: STM32H757 (400MHz)</li><li>Triple-redundant IMU</li><li>Vibration-isolated, 73g</li><li>ArduPilot / PX4, NDAA compliant</li></ul><div class="cots-price">$349.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fc-cube',name:'CubePilot Cube Orange+',price:349.99,icon:'CB'})">Add to Cart</button></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── ESCs ── -->
+      <div class="cots-cat" data-anim>
+        <div class="cots-cat-head" onclick="this.parentElement.classList.toggle('open')">
+          <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> ESCs <span class="cat-count">7</span></h3>
+          <span class="cots-arrow">&#9660;</span>
+        </div>
+        <div class="cots-cat-body">
+          <div class="cots-grid">
+            <div class="cots-card"><span class="cots-tag">4-in-1</span><h4>SpeedyBee BLS 60A 4-in-1</h4><ul class="cots-specs"><li>BLHeli_S, 3-6S</li><li>30x30 stack mount</li><li>One board runs 4 motors</li><li>Multirotor only</li></ul><div class="cots-price">$57.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'esc-sb60',name:'SpeedyBee 60A 4-in-1 ESC',price:57.99,icon:'ES'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">4-in-1</span><h4>SpeedyBee BLS 55A 4-in-1</h4><ul class="cots-specs"><li>BLHeli_S, 3-6S</li><li>30x30 stack, budget</li><li>Good for 5" builds</li><li>Multirotor only</li></ul><div class="cots-price">$49.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'esc-sb55',name:'SpeedyBee 55A 4-in-1 ESC',price:49.99,icon:'ES'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Individual</span><h4>BLHeli_S 30A</h4><ul class="cots-specs"><li>30A per motor, 2-6S</li><li>BLHeli_S firmware</li><li>FW and MR compatible</li><li>Price per unit</li></ul><div class="cots-price">$14.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'esc-30a',name:'BLHeli_S 30A ESC',price:14.99,icon:'ES'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Individual</span><h4>BLHeli_32 50A</h4><ul class="cots-specs"><li>50A per motor, telemetry</li><li>BLHeli_32 firmware</li><li>For 7"+ and hex/octo</li><li>Price per unit</li></ul><div class="cots-price">$24.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'esc-50a',name:'BLHeli_32 50A ESC',price:24.99,icon:'ES'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Industrial</span><h4>Hobbywing XRotor 60A</h4><ul class="cots-specs"><li>60A, FOC support</li><li>3-8S input</li><li>Heavy-lift platforms</li><li>Price per unit</li></ul><div class="cots-price">$34.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'esc-hw60',name:'Hobbywing XRotor 60A ESC',price:34.99,icon:'ES'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Industrial</span><h4>Hobbywing X-Rotor 80A</h4><ul class="cots-specs"><li>80A, high-current</li><li>For U-series motors</li><li>Large props, heavy lift</li><li>Price per unit</li></ul><div class="cots-price">$54.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'esc-hw80',name:'Hobbywing X-Rotor 80A ESC',price:54.99,icon:'ES'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Fixed Wing</span><h4>BLHeli_S 40A (Wing)</h4><ul class="cots-specs"><li>40A single ESC, 3-6S</li><li>For FW pusher motors</li><li>BLHeli_S firmware</li><li>Price per unit</li></ul><div class="cots-price">$16.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'esc-fw40',name:'BLHeli_S 40A Wing ESC',price:16.99,icon:'ES'})">Add to Cart</button></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Motors ── -->
+      <div class="cots-cat" data-anim>
+        <div class="cots-cat-head" onclick="this.parentElement.classList.toggle('open')">
+          <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg> Motors <span class="cat-count">11</span></h3>
+          <span class="cots-arrow">&#9660;</span>
+        </div>
+        <div class="cots-cat-body">
+          <div class="cots-grid">
+            <div class="cots-card"><span class="cots-tag">5" Quad</span><h4>T-Motor F60 Pro V 1750KV</h4><ul class="cots-specs"><li>Size: 2207.5, 34.3g</li><li>1750KV, 6S, N52H magnets</li><li>Titanium shaft, 12N14P</li><li>Max power: 1003W</li></ul><div class="cots-price">$34.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'mot-f60',name:'T-Motor F60 Pro V 1750KV',price:34.99,icon:'MT'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">5" Quad</span><h4>EMAX ECO II 2306 1700KV</h4><ul class="cots-specs"><li>Size: 2306, ~33g</li><li>1700KV, 6S capable</li><li>Budget 5" motor</li><li>Proven reliability</li></ul><div class="cots-price">$16.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'mot-2306',name:'EMAX ECO II 2306',price:16.99,icon:'MT'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">7" / LR</span><h4>BrotherHobby Avenger 2812 900KV</h4><ul class="cots-specs"><li>Size: 2812, ~42g</li><li>900KV, titanium hollow shaft</li><li>Smooth torque delivery</li><li>7" LR / tricopter</li></ul><div class="cots-price">$34.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'mot-2812',name:'BrotherHobby 2812 900KV',price:34.99,icon:'MT'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">7" / Hex</span><h4>T-Motor F90 1507 1300KV</h4><ul class="cots-specs"><li>Size: 1507, ~22g</li><li>1300KV, efficient mid-range</li><li>7" cruiser / light hex</li><li>High efficiency</li></ul><div class="cots-price">$28.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'mot-f90',name:'T-Motor F90 1507 1300KV',price:28.99,icon:'MT'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">7" / Hex</span><h4>iFlight XING2 2807 1300KV</h4><ul class="cots-specs"><li>Size: 2807, ~38g</li><li>1300KV, 7" all-rounder</li><li>Smooth and efficient</li><li>Good value</li></ul><div class="cots-price">$24.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'mot-2807',name:'iFlight XING2 2807',price:24.99,icon:'MT'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">10" / Hex</span><h4>T-Motor U5 2804 400KV</h4><ul class="cots-specs"><li>Size: 2804, ~68g</li><li>400KV, high efficiency</li><li>10" props, low RPM</li><li>Hex / heavy-lift quad</li></ul><div class="cots-price">$44.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'mot-u5',name:'T-Motor U5 400KV',price:44.99,icon:'MT'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Heavy Lift</span><h4>T-Motor U8 II 100KV</h4><ul class="cots-specs"><li>Size: ~89mm, 256g</li><li>100KV, max thrust 7.3kg</li><li>IP45 rated, 1500 flights</li><li>Large hex / octocopter</li></ul><div class="cots-price">$179.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'mot-u8',name:'T-Motor U8 II 100KV',price:179.99,icon:'MT'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Heavy Lift</span><h4>T-Motor U10 II 100KV</h4><ul class="cots-specs"><li>100KV, max thrust 10.6kg</li><li>IP45 rated, industrial</li><li>For octocopter builds</li><li>1000hr MTBF</li></ul><div class="cots-price">$249.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'mot-u10',name:'T-Motor U10 II 100KV',price:249.99,icon:'MT'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Fixed Wing</span><h4>T-Motor AT2312 1750KV</h4><ul class="cots-specs"><li>Size: 2312, ~56g</li><li>1750KV, FW pusher</li><li>Micro to medium wings</li><li>Light, efficient</li></ul><div class="cots-price">$22.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'mot-fw17',name:'T-Motor AT2312 1750KV',price:22.99,icon:'MT'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Fixed Wing</span><h4>T-Motor AT2820 1050KV</h4><ul class="cots-specs"><li>Size: 2820, ~78g</li><li>1050KV, higher torque</li><li>Large FW, bigger props</li><li>Payload-capable</li></ul><div class="cots-price">$32.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'mot-fw13',name:'T-Motor AT2820 1050KV',price:32.99,icon:'MT'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Fixed Wing</span><h4>BrotherHobby Avenger 910KV</h4><ul class="cots-specs"><li>910KV, heavy-duty FW</li><li>Long-range mapping flights</li><li>Large wing platforms</li><li>High torque</li></ul><div class="cots-price">$34.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'mot-bh910',name:'BrotherHobby 910KV',price:34.99,icon:'MT'})">Add to Cart</button></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── GPS Modules ── -->
+      <div class="cots-cat" data-anim>
+        <div class="cots-cat-head" onclick="this.parentElement.classList.toggle('open')">
+          <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg> GPS Modules <span class="cat-count">5</span></h3>
+          <span class="cots-arrow">&#9660;</span>
+        </div>
+        <div class="cots-cat-body">
+          <div class="cots-grid">
+            <div class="cots-card"><span class="cots-tag">Standard</span><h4>Matek SAM-M10Q</h4><ul class="cots-specs"><li>u-blox M10, quad-constellation</li><li>GPS+GLONASS+Galileo+BeiDou</li><li>7.5g, 26x16mm</li><li>5Hz update rate</li></ul><div class="cots-price">$28.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'gps-m10q',name:'Matek SAM-M10Q GPS',price:28.99,icon:'GP'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">GPS+Compass</span><h4>Matek M10Q-5883</h4><ul class="cots-specs"><li>u-blox M10 + QMC5883L compass</li><li>Quad-constellation</li><li>Recommended for autonomous</li><li>Integrated compass</li></ul><div class="cots-price">$34.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'gps-m10c',name:'Matek M10Q-5883 GPS',price:34.99,icon:'GP'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Budget</span><h4>BN-880 GPS/Compass</h4><ul class="cots-specs"><li>GPS + GLONASS</li><li>HMC5883L compass</li><li>Budget-friendly option</li><li>Dual constellation</li></ul><div class="cots-price">$18.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'gps-bn880',name:'BN-880 GPS/Compass',price:18.99,icon:'GP'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Pixhawk</span><h4>Holybro M9N GPS</h4><ul class="cots-specs"><li>u-blox M9N module</li><li>Integrated compass</li><li>Pixhawk-optimized connector</li><li>Plug-and-play</li></ul><div class="cots-price">$39.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'gps-m9n',name:'Holybro M9N GPS',price:39.99,icon:'GP'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">RTK</span><h4>Holybro H-RTK F9P Rover</h4><ul class="cots-specs"><li>u-blox ZED-F9P RTK</li><li>Centimeter-level accuracy</li><li>Multi-band, fast convergence</li><li>Survey &amp; precision ag</li></ul><div class="cots-price">$279.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'gps-rtk',name:'H-RTK F9P Rover GPS',price:279.99,icon:'GP'})">Add to Cart</button></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Receivers ── -->
+      <div class="cots-cat" data-anim>
+        <div class="cots-cat-head" onclick="this.parentElement.classList.toggle('open')">
+          <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1"/></svg> Receivers <span class="cat-count">5</span></h3>
+          <span class="cots-arrow">&#9660;</span>
+        </div>
+        <div class="cots-cat-body">
+          <div class="cots-grid">
+            <div class="cots-card"><span class="cots-tag">ELRS 2.4G</span><h4>Matek ELRS-R24-D</h4><ul class="cots-specs"><li>2.4GHz ExpressLRS</li><li>Diversity, dual antenna</li><li>22.5dBm, low latency</li><li>~2g</li></ul><div class="cots-price">$22.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'rx-elrs24',name:'Matek ELRS 2.4GHz Rx',price:22.99,icon:'RX'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">ELRS 900M</span><h4>Matek ELRS-R900</h4><ul class="cots-specs"><li>900MHz ExpressLRS</li><li>Max range, terrain penetration</li><li>Better obstacle performance</li><li>Long-range ops</li></ul><div class="cots-price">$28.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'rx-elrs9',name:'Matek ELRS 900MHz Rx',price:28.99,icon:'RX'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Crossfire</span><h4>TBS Crossfire Nano Rx</h4><ul class="cots-specs"><li>868/915MHz</li><li>Industry standard LR protocol</li><li>Proven track record</li><li>~1.5g</li></ul><div class="cots-price">$34.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'rx-tbs',name:'TBS Crossfire Nano Rx',price:34.99,icon:'RX'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Ghost</span><h4>ImmersionRC Ghost Rx</h4><ul class="cots-specs"><li>2.4GHz low-latency</li><li>Race-grade response</li><li>Minimal jitter</li><li>Competition protocol</li></ul><div class="cots-price">$39.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'rx-ghost',name:'ImmersionRC Ghost Rx',price:39.99,icon:'RX'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Budget ELRS</span><h4>RadioMaster RP3 ELRS</h4><ul class="cots-specs"><li>2.4GHz ExpressLRS</li><li>Diversity receiver</li><li>Budget-friendly</li><li>Great for starters</li></ul><div class="cots-price">$18.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'rx-drg',name:'RadioMaster RP3 ELRS Rx',price:18.99,icon:'RX'})">Add to Cart</button></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── FPV Systems ── -->
+      <div class="cots-cat" data-anim>
+        <div class="cots-cat-head" onclick="this.parentElement.classList.toggle('open')">
+          <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> FPV Systems <span class="cat-count">5</span></h3>
+          <span class="cots-arrow">&#9660;</span>
+        </div>
+        <div class="cots-cat-body">
+          <div class="cots-grid">
+            <div class="cots-card"><span class="cots-tag">Digital HD</span><h4>Walksnail Avatar HD Pro Kit</h4><ul class="cots-specs"><li>1080p/120fps, Sony Starvis II</li><li>22ms latency, 160&deg; FOV</li><li>4km range, H.265 codec</li><li>32GB DVR, Gyroflow support</li></ul><div class="cots-price">$174.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fpv-ws',name:'Walksnail Avatar HD Pro',price:174.99,icon:'FP'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">DJI Digital</span><h4>DJI O4 Air Unit</h4><ul class="cots-specs"><li>4K/60fps, 1/2" sensor</li><li>15ms latency (racing mode)</li><li>15km range (FCC), 8.2g</li><li>DJI Goggles 3 compatible</li></ul><div class="cots-price">$219.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fpv-dji',name:'DJI O4 Air Unit',price:219.99,icon:'FP'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">DJI Digital</span><h4>DJI O3 Air Unit</h4><ul class="cots-specs"><li>1080p/100fps digital</li><li>Previous gen, lighter weight</li><li>Still excellent performance</li><li>DJI ecosystem</li></ul><div class="cots-price">$179.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fpv-djim',name:'DJI O3 Air Unit',price:179.99,icon:'FP'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Analog</span><h4>Foxeer Reaper Nano + VTX</h4><ul class="cots-specs"><li>1200TVL camera + 600mW VTX</li><li>Budget analog FPV combo</li><li>Lightweight, simple setup</li><li>Universal compatibility</li></ul><div class="cots-price">$44.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fpv-ana',name:'Foxeer Reaper Nano + VTX',price:44.99,icon:'FP'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Analog</span><h4>Caddx Ratel Pro V2 + VTX</h4><ul class="cots-specs"><li>1500TVL + 800mW VTX</li><li>Best analog image quality</li><li>Premium combo</li><li>Low-light capable</li></ul><div class="cots-price">$54.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fpv-cad',name:'Caddx Ratel Pro V2 + VTX',price:54.99,icon:'FP'})">Add to Cart</button></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Cameras & Gimbals ── -->
+      <div class="cots-cat" data-anim>
+        <div class="cots-cat-head" onclick="this.parentElement.classList.toggle('open')">
+          <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg> Cameras &amp; Gimbals <span class="cat-count">6</span></h3>
+          <span class="cots-arrow">&#9660;</span>
+        </div>
+        <div class="cots-cat-body">
+          <div class="cots-grid">
+            <div class="cots-card"><span class="cots-tag">3-Axis</span><h4>Caddx GM3 3-Axis Gimbal</h4><ul class="cots-specs"><li>Tri-axis stabilized, 46g</li><li>Head tracking support</li><li>Walksnail compatible</li><li>Smooth cinema footage</li></ul><div class="cots-price">$139.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'cam-gm3',name:'Caddx GM3 3-Axis Gimbal',price:139.99,icon:'CM'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">1-Axis</span><h4>Caddx GM1 1-Axis Gimbal</h4><ul class="cots-specs"><li>Single tilt axis</li><li>Lightweight, FPV wings</li><li>Simple integration</li><li>Smooth tilt control</li></ul><div class="cots-price">$49.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'cam-gm1',name:'Caddx GM1 1-Axis Gimbal',price:49.99,icon:'CM'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Action Cam</span><h4>GoPro Hero 12 Mount Kit</h4><ul class="cots-specs"><li>Vibration-damped mount</li><li>Quick-release plate</li><li>Fits Hero 10/11/12</li><li>Anti-vibration TPU</li></ul><div class="cots-price">$44.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'cam-gp12',name:'GoPro Mount Kit',price:44.99,icon:'CM'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Compact 4K</span><h4>Sony RX0 II Mount Kit</h4><ul class="cots-specs"><li>Compact 4K camera mount</li><li>Lightweight, pro optics</li><li>Vibration-damped</li><li>15.3MP 1" sensor</li></ul><div class="cots-price">$54.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'cam-sony',name:'Sony RX0 II Mount Kit',price:54.99,icon:'CM'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Mapping</span><h4>Mapping Camera Mount (nadir)</h4><ul class="cots-specs"><li>Downward-facing mount</li><li>Orthomosaic mapping</li><li>Vibration-isolated</li><li>Universal camera plate</li></ul><div class="cots-price">$39.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'cam-map',name:'Mapping Camera Mount',price:39.99,icon:'CM'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Thermal</span><h4>FLIR Lepton 3.5 Thermal Kit</h4><ul class="cots-specs"><li>160x120 resolution, 12&mu;m pixel</li><li>LWIR 8-14&mu;m, &lt;50mK NETD</li><li>Radiometric output, 0.9g</li><li>USB interface, 8.7Hz</li></ul><div class="cots-price">$299.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'cam-therm',name:'FLIR Lepton 3.5 Thermal',price:299.99,icon:'CM'})">Add to Cart</button></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Batteries ── -->
+      <div class="cots-cat" data-anim>
+        <div class="cots-cat-head" onclick="this.parentElement.classList.toggle('open')">
+          <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="1" y="6" width="18" height="12" rx="2"/><path d="M23 10v4"/></svg> Batteries <span class="cat-count">7</span></h3>
+          <span class="cots-arrow">&#9660;</span>
+        </div>
+        <div class="cots-cat-body">
+          <div class="cots-grid">
+            <div class="cots-card"><span class="cots-tag">6S Race</span><h4>CNHL 1300mAh 6S 130C</h4><ul class="cots-specs"><li>22.2V, 1300mAh, XT60</li><li>130C burst rating</li><li>~208g</li><li>5" quad race/freestyle</li></ul><div class="cots-price">$32.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'bat-1300',name:'CNHL 1300mAh 6S',price:32.99,icon:'BT'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">6S Mid</span><h4>CNHL 1800mAh 6S 100C</h4><ul class="cots-specs"><li>22.2V, 1800mAh, XT60</li><li>100C burst rating</li><li>~278g</li><li>7" and light hex</li></ul><div class="cots-price">$39.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'bat-1800',name:'CNHL 1800mAh 6S',price:39.99,icon:'BT'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">4S</span><h4>CNHL 2200mAh 4S 100C</h4><ul class="cots-specs"><li>14.8V, 2200mAh, XT60</li><li>100C burst</li><li>~245g</li><li>Small FW and 5" quads</li></ul><div class="cots-price">$27.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'bat-4s22',name:'CNHL 2200mAh 4S',price:27.99,icon:'BT'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">6S Endurance</span><h4>Tattu 5000mAh 6S 35C</h4><ul class="cots-specs"><li>22.2V, 5000mAh, XT90</li><li>35C continuous</li><li>~680g</li><li>Mapping, heavy-lift</li></ul><div class="cots-price">$89.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'bat-5000',name:'Tattu 5000mAh 6S',price:89.99,icon:'BT'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">6S Max</span><h4>Tattu 10000mAh 6S 25C</h4><ul class="cots-specs"><li>22.2V, 10000mAh, XT90</li><li>25C continuous</li><li>~1250g</li><li>Large hex / octo, FW VTOL</li></ul><div class="cots-price">$159.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'bat-10k',name:'Tattu 10000mAh 6S',price:159.99,icon:'BT'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">6S Ultra</span><h4>Tattu 16000mAh 6S 15C</h4><ul class="cots-specs"><li>22.2V, 16000mAh, XT90</li><li>15C continuous</li><li>~1820g</li><li>Industrial platforms</li></ul><div class="cots-price">$219.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'bat-16k',name:'Tattu 16000mAh 6S',price:219.99,icon:'BT'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Li-Ion</span><h4>Tattu Li-Ion 3000mAh 6S</h4><ul class="cots-specs"><li>22.2V Li-Ion, lower discharge</li><li>Maximum flight time</li><li>~420g</li><li>Endurance-optimized</li></ul><div class="cots-price">$109.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'bat-li22',name:'Tattu Li-Ion 3000mAh 6S',price:109.99,icon:'BT'})">Add to Cart</button></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Cargo & Payload ── -->
+      <div class="cots-cat" data-anim>
+        <div class="cots-cat-head" onclick="this.parentElement.classList.toggle('open')">
+          <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Cargo &amp; Payload <span class="cat-count">5</span></h3>
+          <span class="cots-arrow">&#9660;</span>
+        </div>
+        <div class="cots-cat-body">
+          <div class="cots-grid">
+            <div class="cots-card"><h4>Servo Payload Release</h4><ul class="cots-specs"><li>Single-channel servo drop</li><li>500g payload capacity</li><li>PWM trigger</li></ul><div class="cots-price">$34.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'crg-srv',name:'Servo Payload Release',price:34.99,icon:'CG'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>Dual Servo Release System</h4><ul class="cots-specs"><li>Two-channel independent</li><li>Drop two payloads</li><li>Individual triggers</li></ul><div class="cots-price">$64.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'crg-dual',name:'Dual Servo Release',price:64.99,icon:'CG'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>Motorized Cargo Winch</h4><ul class="cots-specs"><li>Powered winch, 2kg capacity</li><li>Lower and retrieve</li><li>Precision delivery</li></ul><div class="cots-price">$119.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'crg-winch',name:'Motorized Cargo Winch',price:119.99,icon:'CG'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>Electromagnetic Release</h4><ul class="cots-specs"><li>Mag-lock drop mechanism</li><li>1kg capacity</li><li>Instant release</li></ul><div class="cots-price">$49.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'crg-mag',name:'Electromagnetic Release',price:49.99,icon:'CG'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>Insulated Cargo Pod (2L)</h4><ul class="cots-specs"><li>Temp-controlled delivery pod</li><li>Medical / sample transport</li><li>2-liter capacity</li></ul><div class="cots-price">$79.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'crg-box',name:'Insulated Cargo Pod 2L',price:79.99,icon:'CG'})">Add to Cart</button></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Launch & Recovery ── -->
+      <div class="cots-cat" data-anim>
+        <div class="cots-cat-head" onclick="this.parentElement.classList.toggle('open')">
+          <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg> Launch &amp; Recovery <span class="cat-count">5</span></h3>
+          <span class="cots-arrow">&#9660;</span>
+        </div>
+        <div class="cots-cat-body">
+          <div class="cots-grid">
+            <div class="cots-card"><h4>Pneumatic Catapult Launcher</h4><ul class="cots-specs"><li>Compressed-air rail</li><li>Hands-free FW launch</li><li>Up to 15kg AUW</li><li>Field-deployable</li></ul><div class="cots-price">$449.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'lnch-cat',name:'Pneumatic Catapult Launcher',price:449.99,icon:'LR'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>Bungee Launch System</h4><ul class="cots-specs"><li>Elastic bungee rail kit</li><li>Portable FW launcher</li><li>Quick setup</li><li>Field ops ready</li></ul><div class="cots-price">$89.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'lnch-bung',name:'Bungee Launch System',price:89.99,icon:'LR'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>Parachute Recovery System</h4><ul class="cots-specs"><li>Auto-deploy chute</li><li>Spring-loaded ejection</li><li>INAV/ArduPilot trigger</li><li>Full-size platforms</li></ul><div class="cots-price">$179.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'lnch-para',name:'Parachute Recovery System',price:179.99,icon:'LR'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>Parachute Recovery (Small)</h4><ul class="cots-specs"><li>Lightweight chute</li><li>Sub-3kg platforms</li><li>Ballistic deployment</li><li>Compact</li></ul><div class="cots-price">$119.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'lnch-paras',name:'Parachute Recovery Small',price:119.99,icon:'LR'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>Recovery Net Kit</h4><ul class="cots-specs"><li>Portable catch net</li><li>Fixed-wing recovery</li><li>No runway needed</li><li>Quick setup</li></ul><div class="cots-price">$129.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'lnch-net',name:'Recovery Net Kit',price:129.99,icon:'LR'})">Add to Cart</button></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Transport & Protection ── -->
+      <div class="cots-cat" data-anim>
+        <div class="cots-cat-head" onclick="this.parentElement.classList.toggle('open')">
+          <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg> Transport &amp; Protection <span class="cat-count">6</span></h3>
+          <span class="cots-arrow">&#9660;</span>
+        </div>
+        <div class="cots-cat-body">
+          <div class="cots-grid">
+            <div class="cots-card"><h4>Pelican 1600 Hard Case</h4><ul class="cots-specs"><li>Interior: 21.5 x 16.5 x 8"</li><li>IP67 watertight, 13 lbs</li><li>Fits 5"-7" quads w/ foam</li><li>MIL-SPEC tested</li></ul><div class="cots-price">$219.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'trn-pel1',name:'Pelican 1600 Hard Case',price:219.99,icon:'CS'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>Pelican 1650 Hard Case</h4><ul class="cots-specs"><li>Larger watertight case</li><li>Fits hex frames, wings to 1m</li><li>IP67, retractable handle</li><li>Wheels for transport</li></ul><div class="cots-price">$289.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'trn-pel2',name:'Pelican 1650 Hard Case',price:289.99,icon:'CS'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>Pelican Air 1615</h4><ul class="cots-specs"><li>40% lighter than standard</li><li>TSA-approved locks</li><li>Long-wing transport</li><li>IP67 rated</li></ul><div class="cots-price">$329.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'trn-pel3',name:'Pelican Air 1615',price:329.99,icon:'CS'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>Padded Backpack (5"-7" Quad)</h4><ul class="cots-specs"><li>Tactical drone backpack</li><li>Radio + goggles pockets</li><li>Fits 5"-7" quads</li><li>Water-resistant</li></ul><div class="cots-price">$79.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'trn-soft',name:'Padded Drone Backpack',price:79.99,icon:'CS'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>Wing Transport Tube (1.5m)</h4><ul class="cots-specs"><li>PVC tube case</li><li>Wings up to 1500mm</li><li>Shoulder strap</li><li>Foam-lined interior</li></ul><div class="cots-price">$64.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'trn-tube',name:'Wing Transport Tube',price:64.99,icon:'CS'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>Custom Foam Insert</h4><ul class="cots-specs"><li>CNC-cut foam insert</li><li>Sized to your exact build</li><li>Specify case model</li><li>Pick-n-pluck available</li></ul><div class="cots-price">$44.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'trn-foam',name:'Custom Foam Insert',price:44.99,icon:'CS'})">Add to Cart</button></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Ground Station & Range ── -->
+      <div class="cots-cat" data-anim>
+        <div class="cots-cat-head" onclick="this.parentElement.classList.toggle('open')">
+          <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> Ground Station &amp; Range <span class="cat-count">8</span></h3>
+          <span class="cots-arrow">&#9660;</span>
+        </div>
+        <div class="cots-cat-body">
+          <div class="cots-grid">
+            <div class="cots-card"><span class="cots-tag">Radio</span><h4>RadioMaster TX16S MKII</h4><ul class="cots-specs"><li>16-channel ELRS, 2.4GHz</li><li>V4.0 Hall gimbals, 750g</li><li>4.3" color display</li><li>EdgeTX / OpenTX</li></ul><div class="cots-price">$199.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'gnd-tx16',name:'RadioMaster TX16S MKII',price:199.99,icon:'TX'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Radio</span><h4>RadioMaster Pocket ELRS</h4><ul class="cots-specs"><li>Compact ELRS radio</li><li>Game-pad style</li><li>Travel-friendly</li><li>EdgeTX</li></ul><div class="cots-price">$89.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'gnd-tx12',name:'RadioMaster Pocket ELRS',price:89.99,icon:'TX'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Range</span><h4>ELRS Range Booster (2.4GHz)</h4><ul class="cots-specs"><li>External 2W PA module</li><li>Extends ELRS to 40km+</li><li>Plug-and-play upgrade</li><li>2.4GHz band</li></ul><div class="cots-price">$59.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'gnd-boost',name:'ELRS Range Booster',price:59.99,icon:'TX'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Antenna</span><h4>Directional Patch Antenna</h4><ul class="cots-specs"><li>13dBi patch</li><li>Ground station mount</li><li>Long-range link</li><li>SMA connector</li></ul><div class="cots-price">$34.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'gnd-ant',name:'Directional Patch Antenna',price:34.99,icon:'TX'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Tracker</span><h4>Antenna Tracker (Pan/Tilt)</h4><ul class="cots-specs"><li>Auto-tracking mount</li><li>Follows drone via telemetry</li><li>Pan + tilt axis</li><li>MAVLink compatible</li></ul><div class="cots-price">$149.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'gnd-track',name:'Antenna Tracker',price:149.99,icon:'TX'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Goggles</span><h4>Walksnail Avatar HD Goggles X</h4><ul class="cots-specs"><li>1080p OLED displays</li><li>Head tracking, DVR</li><li>Walksnail ecosystem</li><li>Low-latency digital</li></ul><div class="cots-price">$479.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'gnd-gog',name:'Walksnail HD Goggles X',price:479.99,icon:'GG'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Goggles</span><h4>DJI Goggles 3</h4><ul class="cots-specs"><li>1080p/100fps OLED</li><li>O4 compatible, DVR</li><li>DJI ecosystem</li><li>Comfortable fit</li></ul><div class="cots-price">$499.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'gnd-gogd',name:'DJI Goggles 3',price:499.99,icon:'GG'})">Add to Cart</button></div></div>
+            <div class="cots-card"><span class="cots-tag">Monitor</span><h4>7" FPV Ground Monitor</h4><ul class="cots-specs"><li>Sunlight-readable display</li><li>HDMI + AV input</li><li>Ground station use</li><li>Built-in battery</li></ul><div class="cots-price">$119.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'gnd-mon',name:'7in FPV Ground Monitor',price:119.99,icon:'GG'})">Add to Cart</button></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Field Accessories ── -->
+      <div class="cots-cat" data-anim>
+        <div class="cots-cat-head" onclick="this.parentElement.classList.toggle('open')">
+          <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg> Field Accessories <span class="cat-count">10</span></h3>
+          <span class="cots-arrow">&#9660;</span>
+        </div>
+        <div class="cots-cat-body">
+          <div class="cots-grid">
+            <div class="cots-card"><h4>Landing Pad (75cm Foldable)</h4><ul class="cots-specs"><li>High-vis launch/land pad</li><li>Weighted corners</li><li>Carrying bag included</li><li>75cm diameter</li></ul><div class="cots-price">$29.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fld-pad',name:'Landing Pad 75cm',price:29.99,icon:'FA'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>Landing Pad (150cm Heavy Duty)</h4><ul class="cots-specs"><li>Large pad for hex/octo</li><li>Reflective markers</li><li>Stake-down grommets</li><li>150cm diameter</li></ul><div class="cots-price">$59.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fld-padl',name:'Landing Pad 150cm',price:59.99,icon:'FA'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>Field Battery Charger (Dual 6S)</h4><ul class="cots-specs"><li>ToolkitRC M8S</li><li>800W total, dual output</li><li>Field-deployable</li><li>Charge 2x 6S simultaneous</li></ul><div class="cots-price">$149.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fld-chg',name:'Field Battery Charger',price:149.99,icon:'FA'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>LiPo Safety Bag (Large)</h4><ul class="cots-specs"><li>Fireproof charging/storage</li><li>Fits 4x 6S packs</li><li>Fire-resistant material</li><li>Velcro closure</li></ul><div class="cots-price">$19.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fld-bag',name:'LiPo Safety Bag Large',price:19.99,icon:'FA'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>Spare Prop Set (matched)</h4><ul class="cots-specs"><li>Props matched to your build</li><li>Specify motor/frame combo</li><li>One full set</li><li>CW + CCW pairs</li></ul><div class="cots-price">$14.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fld-prop',name:'Spare Prop Set',price:14.99,icon:'FA'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>Drone Field Tool Kit</h4><ul class="cots-specs"><li>Hex drivers, prop wrench</li><li>XT60 adapter, zip ties</li><li>Heat shrink, soldering</li><li>Organized carry case</li></ul><div class="cots-price">$39.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fld-tool',name:'Drone Field Tool Kit',price:39.99,icon:'FA'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>Portable Anemometer</h4><ul class="cots-specs"><li>Handheld wind speed meter</li><li>Pre-flight weather check</li><li>LCD display, m/s &amp; mph</li><li>Pocket-sized</li></ul><div class="cots-price">$34.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fld-winds',name:'Portable Anemometer',price:34.99,icon:'FA'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>Visual Observer Flag Kit</h4><ul class="cots-specs"><li>Hi-vis flags, vests, cones</li><li>FAA compliant ops</li><li>Part 107 ready</li><li>Complete kit</li></ul><div class="cots-price">$24.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fld-flag',name:'Visual Observer Flag Kit',price:24.99,icon:'FA'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>Field Ops Tarp (3m x 3m)</h4><ul class="cots-specs"><li>Waterproof ground tarp</li><li>Grommets for staking</li><li>Gear protection</li><li>Ground station base</li></ul><div class="cots-price">$44.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fld-tarp',name:'Field Ops Tarp 3m',price:44.99,icon:'FA'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>Battery Straps (Kevlar, 5-pack)</h4><ul class="cots-specs"><li>Non-slip rubberized Kevlar</li><li>5 straps, multiple widths</li><li>20mm + 25mm included</li><li>High-strength</li></ul><div class="cots-price">$12.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'fld-straps',name:'Kevlar Battery Straps 5pk',price:12.99,icon:'FA'})">Add to Cart</button></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Servos ── -->
+      <div class="cots-cat" data-anim>
+        <div class="cots-cat-head" onclick="this.parentElement.classList.toggle('open')">
+          <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg> Servos (Fixed Wing) <span class="cat-count">5</span></h3>
+          <span class="cots-arrow">&#9660;</span>
+        </div>
+        <div class="cots-cat-body">
+          <div class="cots-grid">
+            <div class="cots-card"><h4>EMAX ES08MA II (x2)</h4><ul class="cots-specs"><li>12g metal gear analog</li><li>Sold as pair</li><li>Standard wing surfaces</li></ul><div class="cots-price">$17.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'srv-es08',name:'EMAX ES08MA II Servo Pair',price:17.99,icon:'SV'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>EMAX ES3154 Digital (x2)</h4><ul class="cots-specs"><li>17g digital metal gear</li><li>Sold as pair</li><li>Faster, better centering</li></ul><div class="cots-price">$27.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'srv-ds',name:'EMAX ES3154 Servo Pair',price:27.99,icon:'SV'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>Savox SH-0254 Digital (x2)</h4><ul class="cots-specs"><li>Premium 7.4V digital</li><li>Metal gear, high torque</li><li>Sold as pair</li></ul><div class="cots-price">$34.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'srv-sa21',name:'Savox SH-0254 Servo Pair',price:34.99,icon:'SV'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>TowerPro MG90S (x2)</h4><ul class="cots-specs"><li>9g micro metal gear</li><li>Budget option</li><li>Small wings, sold as pair</li></ul><div class="cots-price">$12.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'srv-mg90',name:'TowerPro MG90S Servo Pair',price:12.99,icon:'SV'})">Add to Cart</button></div></div>
+            <div class="cots-card"><h4>Hitec HS-5055MG (x2)</h4><ul class="cots-specs"><li>Premium micro digital</li><li>Ball bearing, precise</li><li>Sold as pair</li></ul><div class="cots-price">$44.99</div><div class="cots-add"><button class="btn btn-sm btn-primary" onclick="OW.addToCart({id:'srv-hw',name:'Hitec HS-5055MG Servo Pair',price:44.99,icon:'SV'})">Add to Cart</button></div></div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
