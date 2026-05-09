@@ -2,7 +2,7 @@
 
 // ── SHARED DATA STORE ───────────────────────────────────────────────────────
 const OW = {
-  version: '2.2.0',
+  version: '2.3.0',
 
   // ── CART ──────────────────────────────────────────────────────────────────
   cart: JSON.parse(localStorage.getItem('ow_cart') || '[]'),
@@ -104,7 +104,6 @@ const OW = {
     if (hamburger && navLinks) {
       hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
     }
-    // Set active link
     const current = location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav-links a').forEach(a => {
       if (a.getAttribute('href') === current) a.classList.add('active');
@@ -172,73 +171,22 @@ const OW = {
     window.addEventListener('resize', resize);
   },
 
-  // ── MOLECULE GRID BACKGROUND (shop page) ──────────────────────────────────
-  initMoleculeGrid() {
-    const canvas = document.getElementById('moleculeCanvas');
+  // ── SHOP HEX GRID (scroll-parallax honeycomb) ────────────────────────────
+  initShopHexGrid() {
+    const canvas = document.getElementById('shopHexCanvas');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    let w, h, nodes = [], time = 0;
+    let w, h, lastScroll = -1, ticking = false;
 
-    // Gold palette
-    const GOLD      = 'rgba(184,148,46,';
-    const GOLD_DARK = 'rgba(138,110,30,';
+    const HEX_RADIUS  = 35;
+    const LINE_COLOR   = 'rgba(184,148,46,0.13)';
+    const FILL_COLOR   = 'rgba(184,148,46,0.025)';
+    const PARALLAX     = 0.35;
 
     function resize() {
       w = canvas.width  = window.innerWidth;
-      h = canvas.height = window.innerHeight - 60;
-      generateNodes();
-      draw();
-    }
-
-    function generateNodes() {
-      nodes = [];
-      // Grid-based placement with organic jitter for 60-70% coverage
-      const spacing = 90;
-      const cols = Math.ceil(w / spacing) + 2;
-      const rows = Math.ceil(h / spacing) + 2;
-      const seed = 42;
-      let idx = 0;
-
-      for (let r = -1; r < rows; r++) {
-        for (let c = -1; c < cols; c++) {
-          idx++;
-          // Pseudo-random based on position
-          const px = Math.sin(idx * 127.1 + seed) * 43758.5453;
-          const py = Math.sin(idx * 269.5 + seed * 1.7) * 43758.5453;
-          const rndX = (px - Math.floor(px)) - 0.5;
-          const rndY = (py - Math.floor(py)) - 0.5;
-
-          // ~70% chance to place a node (coverage control)
-          const chance = Math.sin(idx * 311.7) * 43758.5453;
-          if ((chance - Math.floor(chance)) > 0.72) continue;
-
-          const x = c * spacing + rndX * spacing * 0.7 + (r % 2 === 0 ? 0 : spacing * 0.5);
-          const y = r * spacing + rndY * spacing * 0.5;
-
-          // Randomize node type: hex, circle, or small dot
-          const typeRnd = Math.sin(idx * 457.3) * 43758.5453;
-          const t = (typeRnd - Math.floor(typeRnd));
-          let type, radius;
-          if (t < 0.35) {
-            type = 'hex';
-            radius = 12 + (rndX + 0.5) * 16;
-          } else if (t < 0.6) {
-            type = 'circle';
-            radius = 4 + (rndY + 0.5) * 10;
-          } else {
-            type = 'dot';
-            radius = 2 + (rndX + 0.5) * 4;
-          }
-
-          // Subtle drift parameters
-          const driftSpeed = 0.2 + (rndX + 0.5) * 0.4;
-          const driftAmp   = 2 + (rndY + 0.5) * 4;
-          const driftPhase = idx * 0.7;
-
-          nodes.push({ x, y, type, radius, driftSpeed, driftAmp, driftPhase,
-                        opacity: 0.04 + (rndX + 0.5) * 0.08 });
-        }
-      }
+      h = canvas.height = window.innerHeight;
+      drawGrid();
     }
 
     function drawHex(cx, cy, r) {
@@ -252,73 +200,53 @@ const OW = {
       ctx.closePath();
     }
 
-    function draw() {
+    function drawGrid() {
       ctx.clearRect(0, 0, w, h);
-      time += 0.008;
+      const r  = HEX_RADIUS;
+      const dx = r * Math.sqrt(3);
+      const dy = r * 1.5;
 
-      const maxDist = 140;
+      // Scroll-driven vertical offset (parallax)
+      const scrollY = window.scrollY || window.pageYOffset || 0;
+      const offset  = -(scrollY * PARALLAX) % (dy * 2);
 
-      // Draw bonds (connections) between nearby nodes
-      ctx.lineWidth = 0.8;
-      for (let i = 0; i < nodes.length; i++) {
-        const a = nodes[i];
-        const ax = a.x + Math.sin(time * a.driftSpeed + a.driftPhase) * a.driftAmp;
-        const ay = a.y + Math.cos(time * a.driftSpeed * 0.7 + a.driftPhase) * a.driftAmp * 0.6;
-        // Only check forward to avoid double-drawing
-        for (let j = i + 1; j < nodes.length; j++) {
-          const b = nodes[j];
-          const bx = b.x + Math.sin(time * b.driftSpeed + b.driftPhase) * b.driftAmp;
-          const by = b.y + Math.cos(time * b.driftSpeed * 0.7 + b.driftPhase) * b.driftAmp * 0.6;
-          const dx = ax - bx;
-          const dy = ay - by;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < maxDist) {
-            const alpha = (1 - dist / maxDist) * 0.06;
-            ctx.strokeStyle = GOLD + alpha + ')';
-            ctx.beginPath();
-            ctx.moveTo(ax, ay);
-            ctx.lineTo(bx, by);
-            ctx.stroke();
-          }
+      ctx.strokeStyle = LINE_COLOR;
+      ctx.lineWidth   = 1;
+      ctx.fillStyle   = FILL_COLOR;
+
+      const rowCount = Math.ceil(h / dy) + 4;
+      const colCount = Math.ceil(w / dx) + 4;
+
+      for (let row = -2; row < rowCount; row++) {
+        for (let col = -2; col < colCount; col++) {
+          const x = col * dx + (row % 2 === 0 ? 0 : dx / 2);
+          const y = row * dy + offset;
+
+          // Skip if fully off-screen
+          if (y < -r * 2 || y > h + r * 2) continue;
+
+          drawHex(x, y, r);
+          ctx.fill();
+          ctx.stroke();
         }
       }
 
-      // Draw nodes
-      for (const n of nodes) {
-        const nx = n.x + Math.sin(time * n.driftSpeed + n.driftPhase) * n.driftAmp;
-        const ny = n.y + Math.cos(time * n.driftSpeed * 0.7 + n.driftPhase) * n.driftAmp * 0.6;
+      lastScroll = scrollY;
+    }
 
-        if (n.type === 'hex') {
-          ctx.strokeStyle = GOLD + n.opacity + ')';
-          ctx.lineWidth = 1;
-          drawHex(nx, ny, n.radius);
-          ctx.stroke();
-          // Faint fill
-          ctx.fillStyle = GOLD + (n.opacity * 0.25) + ')';
-          drawHex(nx, ny, n.radius);
-          ctx.fill();
-        } else if (n.type === 'circle') {
-          ctx.strokeStyle = GOLD_DARK + n.opacity + ')';
-          ctx.lineWidth = 0.8;
-          ctx.beginPath();
-          ctx.arc(nx, ny, n.radius, 0, Math.PI * 2);
-          ctx.stroke();
-          ctx.fillStyle = GOLD + (n.opacity * 0.3) + ')';
-          ctx.fill();
-        } else {
-          // dot — small filled circles at bond intersections
-          ctx.fillStyle = GOLD + (n.opacity * 1.5) + ')';
-          ctx.beginPath();
-          ctx.arc(nx, ny, n.radius, 0, Math.PI * 2);
-          ctx.fill();
-        }
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => {
+          drawGrid();
+          ticking = false;
+        });
       }
-
-      requestAnimationFrame(draw);
     }
 
     resize();
     window.addEventListener('resize', resize);
+    window.addEventListener('scroll', onScroll, { passive: true });
   },
 
   // ── INIT ──────────────────────────────────────────────────────────────────
@@ -328,7 +256,7 @@ const OW = {
     this.updateCartBadge();
     this.renderCart();
     this.initHexGrid();
-    this.initMoleculeGrid();
+    this.initShopHexGrid();
   }
 };
 
@@ -403,14 +331,13 @@ function renderFooter() {
           <h4>Contact</h4>
           <ul>
             <li><a href="mailto:s.sanders@orbitworksaerospace.com">s.sanders@orbitworksaerospace.com</a></li>
-            <li><a href="https://www.facebook.com/orbitworksaerospace" target="_blank">Facebook</a></li>
             <li><a href="https://orbitworksaerospace.substack.com" target="_blank">Substack</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
         <p>&copy; ${new Date().getFullYear()} OrbitWorks Aerospace Inc. &middot; Binghamton, NY &middot; All rights reserved.</p>
-        <span class="mono">v2.2.0 &middot; Built in-house</span>
+        <span class="mono">v2.3.0 &middot; Built in-house</span>
       </div>
     </div>
   </footer>

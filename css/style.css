@@ -1,4 +1,4 @@
-/* ── OrbitWorks Aerospace · Global Styles v2.1 ────────────────────────────── */
+/* ── OrbitWorks Aerospace · Global Styles v2.3 ────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
 :root {
@@ -725,10 +725,10 @@ select.form-input { cursor: pointer; }
 /* ── SHOP PAGE: WHITE & GOLD THEME ─────────────────────────────────────────── */
 /* ══════════════════════════════════════════════════════════════════════════════ */
 .shop-theme {
-  --bg:      #faf8f3;
-  --bg2:     #f2efe7;
-  --bg3:     #e8e4da;
-  --bg4:     #ddd8cc;
+  --bg:      #ffffff;
+  --bg2:     #f5f5f5;
+  --bg3:     #ebebeb;
+  --bg4:     #e0e0e0;
   --accent:  #b8942e;
   --accent2: #8a6e1e;
   --adim:    rgba(184,148,46,0.12);
@@ -746,8 +746,8 @@ select.form-input { cursor: pointer; }
   color: var(--text);
 }
 
-/* Molecule canvas overlay for shop page */
-.shop-molecule-canvas {
+/* Honeycomb hex canvas overlay for shop page */
+.shop-hex-canvas {
   position: fixed; top: 60px; left: 0; right: 0; bottom: 0;
   width: 100%; height: calc(100vh - 60px);
   pointer-events: none;
@@ -769,7 +769,7 @@ select.form-input { cursor: pointer; }
   box-shadow: 0 12px 40px rgba(0,0,0,0.08);
 }
 .shop-theme .product-img {
-  background: linear-gradient(135deg, #f5f2ea, #ebe6d8);
+  background: linear-gradient(135deg, #f8f8f8, #f0f0f0);
   border-bottom-color: rgba(184,148,46,0.12);
 }
 .shop-theme .product-img::before {
@@ -807,7 +807,7 @@ select.form-input { cursor: pointer; }
   border-color: rgba(184,148,46,0.3);
 }
 .shop-theme .merch-img {
-  background: linear-gradient(135deg, #f5f2ea, #ebe6d8);
+  background: linear-gradient(135deg, #f8f8f8, #f0f0f0);
   border-bottom-color: rgba(184,148,46,0.12);
 }
 
