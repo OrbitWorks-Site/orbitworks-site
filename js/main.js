@@ -2,28 +2,7 @@
 
 // ── SHARED DATA STORE ───────────────────────────────────────────────────────
 const OW = {
-  version: '2.0.0',
-
-  // Simulated live data from Hub app
-  hubData: {
-    projects: [
-      { id: 'p1', name: 'Vanguard SHORAD', progress: 67, status: 'active', color: '#00d4ff' },
-      { id: 'p2', name: 'AERIS-10X Radar', progress: 82, status: 'active', color: '#a78bfa' },
-      { id: 'p3', name: 'Talon Mk.I', progress: 34, status: 'Active', color: '#fb923c' },
-      { id: 'p4', name: 'DDTC / Regulatory', progress: 90, status: 'review', color: '#ef4444' },
-      { id: 'p5', name: 'Tier I Facility', progress: 18, status: 'planning', color: '#4ade80' },
-    ],
-    tasks: [
-      { title: 'Finalize DDTC Registration', priority: 'high', status: 'todo', due: '2026-05-08' },
-      { title: 'AERIS-10X simulation run', priority: 'high', status: 'inprogress', due: '2026-05-12' },
-      { title: 'Tier I facility floor plan', priority: 'med', status: 'inprogress', due: '2026-05-20' },
-    ],
-    notifications: [
-      { icon: '!', title: 'Task Overdue', body: 'IQT follow-up email overdue.', time: Date.now() - 7200000, read: false },
-      { icon: '+', title: 'DDTC Filing Review complete', body: 'Marked complete by Steven Sanders.', time: Date.now() - 172800000, read: true },
-    ],
-    stats: { projects: 5, openTasks: 6, teamSize: 3, completedTasks: 12 },
-  },
+  version: '2.1.0',
 
   // ── CART ──────────────────────────────────────────────────────────────────
   cart: JSON.parse(localStorage.getItem('ow_cart') || '[]'),
@@ -222,9 +201,7 @@ function renderNav() {
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="drones.html">Drones</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="merch.html">Merch</a></li>
+      <li><a href="shop.html">Shop</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="contact.html" class="btn btn-sm nav-cta">Get Quote</a></li>
       <li><a href="defense.html" class="btn btn-sm nav-defense">DEFENSE</a></li>
@@ -265,24 +242,25 @@ function renderFooter() {
         <div class="footer-col">
           <h4>Products & Services</h4>
           <ul>
-            <li><a href="drones.html">Commercial Drones</a></li>
-            <li><a href="services.html">Aerial Services</a></li>
-            <li><a href="services.html#training">Pilot Training</a></li>
-            <li><a href="merch.html">Merch Shop</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="shop.html#drones">Commercial Drones</a></li>
+            <li><a href="shop.html#services">Aerial Services</a></li>
+            <li><a href="shop.html#training">Pilot Training</a></li>
+            <li><a href="shop.html#merch">Merch</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Contact</h4>
           <ul>
-            <li><a href="tel:6072062671">(607) 206-2671</a></li>
             <li><a href="mailto:s.sanders@orbitworksaerospace.com">s.sanders@orbitworksaerospace.com</a></li>
-            <li><a href="https://twitter.com/OrbitworksA" target="_blank">@OrbitworksA</a></li>
+            <li><a href="https://www.facebook.com/orbitworksaerospace" target="_blank">Facebook</a></li>
+            <li><a href="https://orbitworksaerospace.substack.com" target="_blank">Substack</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
         <p>&copy; ${new Date().getFullYear()} OrbitWorks Aerospace Inc. &middot; Binghamton, NY &middot; All rights reserved.</p>
-        <span class="mono">v2.0.0 &middot; Built in-house</span>
+        <span class="mono">v2.1.0 &middot; Built in-house</span>
       </div>
     </div>
   </footer>
