@@ -130,7 +130,7 @@ const OW = {
     });
   },
 
-  // ── HEXAGON GRID BACKGROUND (home page hero) ─────────────────────────────
+  // ── TACTICAL GRID BACKGROUND (home page hero) ────────────────────────────
   initHexGrid() {
     const canvas = document.getElementById('hexCanvas');
     if (!canvas) return;
@@ -141,29 +141,60 @@ const OW = {
       h = canvas.height = canvas.offsetHeight;
       draw();
     }
-    function drawHex(cx, cy, r) {
-      ctx.beginPath();
-      for (let i = 0; i < 6; i++) {
-        const angle = (Math.PI / 3) * i - Math.PI / 6;
-        const x = cx + r * Math.cos(angle);
-        const y = cy + r * Math.sin(angle);
-        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-      }
-      ctx.closePath();
-      ctx.stroke();
-    }
     function draw() {
       ctx.clearRect(0, 0, w, h);
-      const r = 40;
-      const dx = r * Math.sqrt(3);
-      const dy = r * 1.5;
-      ctx.strokeStyle = 'rgba(0,212,255,0.06)';
+      const spacing = 80;
+
+      // Fine grid lines
+      ctx.strokeStyle = 'rgba(16,185,129,0.04)';
+      ctx.lineWidth = 0.5;
+      for (let x = 0; x < w; x += spacing / 4) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+      }
+      for (let y = 0; y < h; y += spacing / 4) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+      }
+
+      // Major grid lines
+      ctx.strokeStyle = 'rgba(16,185,129,0.07)';
+      ctx.lineWidth = 0.8;
+      for (let x = 0; x < w; x += spacing) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+      }
+      for (let y = 0; y < h; y += spacing) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+      }
+
+      // Intersection crosses at major grid points
+      ctx.strokeStyle = 'rgba(16,185,129,0.1)';
       ctx.lineWidth = 1;
-      for (let row = -1; row < h / dy + 1; row++) {
-        for (let col = -1; col < w / dx + 1; col++) {
-          const x = col * dx + (row % 2 === 0 ? 0 : dx / 2);
-          const y = row * dy;
-          drawHex(x, y, r);
+      const crossSize = 4;
+      for (let x = 0; x < w; x += spacing) {
+        for (let y = 0; y < h; y += spacing) {
+          ctx.beginPath(); ctx.moveTo(x - crossSize, y); ctx.lineTo(x + crossSize, y); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(x, y - crossSize); ctx.lineTo(x, y + crossSize); ctx.stroke();
+        }
+      }
+
+      // Diagonal accent lines (schematic/blueprint feel)
+      ctx.strokeStyle = 'rgba(16,185,129,0.025)';
+      ctx.lineWidth = 0.5;
+      ctx.setLineDash([6, 12]);
+      for (let i = -h; i < w + h; i += spacing * 2) {
+        ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i + h, h); ctx.stroke();
+      }
+      ctx.setLineDash([]);
+
+      // Coordinate labels at select intersections
+      ctx.fillStyle = 'rgba(16,185,129,0.06)';
+      ctx.font = '9px "Space Mono", monospace';
+      let labelIdx = 0;
+      for (let x = spacing; x < w - spacing; x += spacing * 3) {
+        for (let y = spacing; y < h - spacing; y += spacing * 3) {
+          const lx = String.fromCharCode(65 + (labelIdx % 26));
+          const ly = Math.floor(labelIdx / 26) + 1;
+          ctx.fillText(`${lx}${ly}`, x + 6, y - 6);
+          labelIdx++;
         }
       }
     }
@@ -179,8 +210,8 @@ const OW = {
     let w, h, lastScroll = -1, ticking = false;
 
     const HEX_RADIUS  = 35;
-    const LINE_COLOR   = 'rgba(184,148,46,0.13)';
-    const FILL_COLOR   = 'rgba(184,148,46,0.025)';
+    const LINE_COLOR   = 'rgba(16,185,129,0.07)';
+    const FILL_COLOR   = 'rgba(16,185,129,0.02)';
     const PARALLAX     = 0.35;
 
     function resize() {
@@ -269,9 +300,9 @@ function renderNav() {
     <a class="nav-logo" href="index.html">
       <div class="nav-logo-icon">
         <svg viewBox="0 0 32 32" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M16 2L28.66 9.5V24.5L16 32L3.34 24.5V9.5L16 2Z" stroke="#00d4ff" stroke-width="1.5" fill="rgba(0,212,255,0.08)"/>
-          <path d="M16 8L22.93 12V20L16 24L9.07 20V12L16 8Z" stroke="#00d4ff" stroke-width="1" fill="rgba(0,212,255,0.12)"/>
-          <circle cx="16" cy="16" r="3" fill="#00d4ff" opacity="0.6"/>
+          <path d="M16 2L28.66 9.5V24.5L16 32L3.34 24.5V9.5L16 2Z" stroke="#10b981" stroke-width="1.5" fill="rgba(16,185,129,0.08)"/>
+          <path d="M16 8L22.93 12V20L16 24L9.07 20V12L16 8Z" stroke="#10b981" stroke-width="1" fill="rgba(16,185,129,0.12)"/>
+          <circle cx="16" cy="16" r="3" fill="#10b981" opacity="0.6"/>
         </svg>
       </div>
       ORBITWORKS AEROSPACE
@@ -298,9 +329,9 @@ function renderFooter() {
           <a class="nav-logo" href="index.html" style="margin-bottom:0">
             <div class="nav-logo-icon">
               <svg viewBox="0 0 32 32" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M16 2L28.66 9.5V24.5L16 32L3.34 24.5V9.5L16 2Z" stroke="#00d4ff" stroke-width="1.5" fill="rgba(0,212,255,0.08)"/>
-                <path d="M16 8L22.93 12V20L16 24L9.07 20V12L16 8Z" stroke="#00d4ff" stroke-width="1" fill="rgba(0,212,255,0.12)"/>
-                <circle cx="16" cy="16" r="3" fill="#00d4ff" opacity="0.6"/>
+                <path d="M16 2L28.66 9.5V24.5L16 32L3.34 24.5V9.5L16 2Z" stroke="#10b981" stroke-width="1.5" fill="rgba(16,185,129,0.08)"/>
+                <path d="M16 8L22.93 12V20L16 24L9.07 20V12L16 8Z" stroke="#10b981" stroke-width="1" fill="rgba(16,185,129,0.12)"/>
+                <circle cx="16" cy="16" r="3" fill="#10b981" opacity="0.6"/>
               </svg>
             </div>
             ORBITWORKS AEROSPACE
@@ -355,7 +386,23 @@ function renderFooter() {
   </div>
   <!-- Floating cart -->
   <div class="cart-icon" onclick="OW.openCart()">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0a0c10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="#0a0c10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Cargo drone: body -->
+      <rect x="11" y="13" width="10" height="7" rx="1.5"/>
+      <!-- Arms -->
+      <line x1="11" y1="14.5" x2="5" y2="10"/>
+      <line x1="21" y1="14.5" x2="27" y2="10"/>
+      <line x1="11" y1="18.5" x2="5" y2="23"/>
+      <line x1="21" y1="18.5" x2="27" y2="23"/>
+      <!-- Rotors -->
+      <circle cx="5" cy="10" r="3"/>
+      <circle cx="27" cy="10" r="3"/>
+      <circle cx="5" cy="23" r="3"/>
+      <circle cx="27" cy="23" r="3"/>
+      <!-- Cargo package -->
+      <rect x="13" y="22" width="6" height="4" rx="0.5" stroke-dasharray="2 1"/>
+      <line x1="16" y1="20" x2="16" y2="22"/>
+    </svg>
     <span class="cart-badge" id="cartBadge" style="display:none">0</span>
   </div>
   <!-- Toast -->

@@ -6,10 +6,13 @@
   --bg2:     #10131a;
   --bg3:     #161b26;
   --bg4:     #1e2535;
-  --accent:  #00d4ff;
-  --accent2: #0084a0;
-  --adim:    rgba(0,212,255,0.12);
-  --adim2:   rgba(0,212,255,0.06);
+  --accent:  #10b981;
+  --accent2: #059669;
+  --adim:    rgba(16,185,129,0.12);
+  --adim2:   rgba(16,185,129,0.06);
+  --contact: #3b82f6;
+  --contact2:#2563eb;
+  --cdim:    rgba(59,130,246,0.12);
   --border:  rgba(255,255,255,0.07);
   --border2: rgba(255,255,255,0.13);
   --text:    #e8edf5;
@@ -97,24 +100,24 @@ img { max-width: 100%; display: block; }
 .nav-links a.active { color: var(--accent); }
 
 .nav-hex {
-  background: var(--bg3) !important;
-  border: 1px solid var(--border2) !important;
-  color: var(--text) !important;
+  background: rgba(16,185,129,0.08) !important;
+  border: 1px solid rgba(16,185,129,0.2) !important;
+  color: var(--accent) !important;
   font-weight: 600 !important;
   padding: 7px 16px !important;
 }
-.nav-hex:hover { background: var(--bg4) !important; color: var(--accent) !important; opacity: 1 !important; }
+.nav-hex:hover { background: rgba(16,185,129,0.16) !important; color: var(--accent) !important; opacity: 1 !important; }
 .nav-hex.active { background: var(--adim) !important; color: var(--accent) !important; border-color: var(--accent2) !important; }
 
 .nav-cta {
   margin-left: 12px;
-  background: var(--adim) !important;
-  border: 1px solid var(--accent2) !important;
-  color: var(--accent) !important;
+  background: var(--cdim) !important;
+  border: 1px solid rgba(59,130,246,0.3) !important;
+  color: var(--contact) !important;
   font-weight: 700 !important;
   padding: 7px 16px !important;
 }
-.nav-cta:hover { background: rgba(0,212,255,0.2) !important; opacity: 1 !important; }
+.nav-cta:hover { background: rgba(59,130,246,0.2) !important; opacity: 1 !important; }
 
 .nav-defense {
   margin-left: 8px;
@@ -195,7 +198,13 @@ h4 { font-size: 1rem; }
   background: var(--adim);
   color: var(--accent);
 }
-.btn-primary:hover { background: rgba(0,212,255,0.2); }
+.btn-primary:hover { background: rgba(16,185,129,0.2); }
+
+.btn-contact {
+  background: var(--cdim);
+  color: var(--contact);
+}
+.btn-contact:hover { background: rgba(59,130,246,0.2); }
 
 .btn-danger {
   background: rgba(239,68,68,0.1);
@@ -260,8 +269,8 @@ h4 { font-size: 1rem; }
 .hero-bg {
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 60% 40%, rgba(0,132,160,0.18) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(167,139,250,0.08) 0%, transparent 70%);
+    radial-gradient(ellipse 80% 60% at 60% 40%, rgba(5,150,105,0.14) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(59,130,246,0.06) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -347,7 +356,7 @@ h4 { font-size: 1rem; }
   position: absolute;
   width: 200px; height: 200px;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  background: radial-gradient(ellipse at center, rgba(0,212,255,0.06), transparent);
+  background: radial-gradient(ellipse at center, rgba(16,185,129,0.06), transparent);
   pointer-events: none;
 }
 
@@ -374,7 +383,7 @@ h4 { font-size: 1rem; }
 .product-img::before {
   content: '';
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse at center, rgba(0,132,160,0.15), transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(5,150,105,0.12), transparent 70%);
 }
 
 .product-body { padding: 18px; flex: 1; display: flex; flex-direction: column; }
@@ -430,13 +439,13 @@ h4 { font-size: 1rem; }
 /* ── CART ─────────────────────────────────────────────────────────────────── */
 .cart-icon {
   position: fixed; bottom: 28px; right: 28px; z-index: 200;
-  width: 56px; height: 56px;
-  background: var(--accent);
-  border-radius: 50%;
+  width: 60px; height: 60px;
+  background: #f5c518;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   display: flex; align-items: center; justify-content: center;
   font-size: 22px;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(0,212,255,0.35);
+  box-shadow: none;
   transition: transform 0.2s;
 }
 .cart-icon:hover { transform: scale(1.08); }
@@ -700,8 +709,8 @@ img.board-avatar {
 
 /* ── MISSION BANNER ──────────────────────────────────────────────────────── */
 .mission-banner {
-  background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(10,12,16,0));
-  border: 1px solid rgba(0,212,255,0.15);
+  background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(10,12,16,0));
+  border: 1px solid rgba(16,185,129,0.15);
   border-radius: 16px;
   padding: 40px;
   text-align: center;
@@ -713,7 +722,7 @@ img.board-avatar {
   position: absolute; top: 0; left: 50%; transform: translateX(-50%);
   width: 120px; height: 120px;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  background: radial-gradient(ellipse at center, rgba(0,212,255,0.08), transparent);
+  background: radial-gradient(ellipse at center, rgba(16,185,129,0.08), transparent);
   pointer-events: none;
 }
 
@@ -758,6 +767,9 @@ img.board-avatar {
   --warning: #c88a2e;
   --purple:  #7c5cbf;
   --orange:  #c87832;
+  --contact: #2563eb;
+  --contact2:#1d4ed8;
+  --cdim:    rgba(37,99,235,0.12);
   background: var(--bg);
   color: var(--text);
 }
