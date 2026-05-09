@@ -63,7 +63,7 @@
             </ul>
             <div class="product-price">$2,499</div>
             <div class="product-footer">
-              <a href="contact.html" class="btn btn-primary btn-sm">Request Build</a>
+              <button class="btn btn-primary btn-sm" onclick="OW.addToCart({id:'atlas-pro',name:'Atlas Pro',price:2499,icon:'AP'})">Add to Cart</button>
               <a href="contact.html" class="btn btn-sm">Custom Quote</a>
             </div>
           </div>
@@ -88,7 +88,7 @@
             </ul>
             <div class="product-price">$3,799</div>
             <div class="product-footer">
-              <a href="contact.html" class="btn btn-primary btn-sm">Request Build</a>
+              <button class="btn btn-primary btn-sm" onclick="OW.addToCart({id:'vista-6k',name:'Vista 6K',price:3799,icon:'V6'})">Add to Cart</button>
               <a href="contact.html" class="btn btn-sm">Custom Quote</a>
             </div>
           </div>
@@ -113,7 +113,7 @@
             </ul>
             <div class="product-price">$349</div>
             <div class="product-footer">
-              <a href="contact.html" class="btn btn-primary btn-sm">Request Build</a>
+              <button class="btn btn-primary btn-sm" onclick="OW.addToCart({id:'volt-fpv',name:'Volt FPV Kit',price:349,icon:'VF'})">Add to Cart</button>
               <a href="contact.html" class="btn btn-sm">Bundle Options</a>
             </div>
           </div>
@@ -138,7 +138,8 @@
             </ul>
             <div class="product-price">$4,200</div>
             <div class="product-footer">
-              <a href="contact.html" class="btn btn-primary btn-sm">Request Build</a>
+              <button class="btn btn-primary btn-sm" onclick="OW.addToCart({id:'titan-x8',name:'Titan X8',price:4200,icon:'TX'})">Add to Cart</button>
+              <a href="contact.html" class="btn btn-sm">Custom Quote</a>
             </div>
           </div>
         </div>
@@ -162,8 +163,8 @@
             </ul>
             <div class="product-price">$1,899</div>
             <div class="product-footer">
-              <a href="contact.html" class="btn btn-primary btn-sm">Request Build</a>
-              <a href="contact.html" class="btn btn-sm">Quote</a>
+              <button class="btn btn-primary btn-sm" onclick="OW.addToCart({id:'ember-ir',name:'Ember IR',price:1899,icon:'EI'})">Add to Cart</button>
+              <a href="contact.html" class="btn btn-sm">Custom Quote</a>
             </div>
           </div>
         </div>
@@ -187,7 +188,7 @@
             </ul>
             <div class="product-price">$129</div>
             <div class="product-footer">
-              <a href="contact.html" class="btn btn-primary btn-sm">Request Build</a>
+              <button class="btn btn-primary btn-sm" onclick="OW.addToCart({id:'spark-micro',name:'Spark Micro Kit',price:129,icon:'SM'})">Add to Cart</button>
             </div>
           </div>
         </div>
@@ -305,7 +306,10 @@
           <p style="color:var(--text2);font-size:13px;margin:12px 0">Safe flying habits, airspace rules, pre-flight checks, and basic maneuvers. Includes simulator time and field practice with our training fleet.</p>
           <div style="font-family:var(--mono);color:var(--accent);font-size:1.3rem;margin:16px 0">$199</div>
           <p style="color:var(--text3);font-size:12px">1-day course &middot; Max 4 students</p>
-          <a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:16px">Enroll</a>
+          <div style="display:flex;gap:8px;margin-top:16px">
+            <button class="btn btn-primary btn-sm" onclick="OW.addToCart({id:'edu-hobby',name:'Hobby Pilot Fundamentals',price:199,icon:'HP'})">Add to Cart</button>
+            <a href="contact.html" class="btn btn-sm">Info</a>
+          </div>
         </div>
         <div class="card card-accent-top" style="border-top-color:var(--purple)" data-anim>
           <div class="eyebrow" style="color:var(--purple)">Commercial</div>
@@ -313,7 +317,10 @@
           <p style="color:var(--text2);font-size:13px;margin:12px 0">Full ground school, airspace classification, weather, regulations, sectional chart reading, and exam prep. 95% first-attempt pass rate.</p>
           <div style="font-family:var(--mono);color:var(--purple);font-size:1.3rem;margin:16px 0">$449</div>
           <p style="color:var(--text3);font-size:12px">2-day course + exam scheduling</p>
-          <a href="contact.html" class="btn btn-sm" style="margin-top:16px;color:var(--purple)">Enroll</a>
+          <div style="display:flex;gap:8px;margin-top:16px">
+            <button class="btn btn-primary btn-sm" onclick="OW.addToCart({id:'edu-part107',name:'FAA Part 107 Prep',price:449,icon:'107'})">Add to Cart</button>
+            <a href="contact.html" class="btn btn-sm">Info</a>
+          </div>
         </div>
         <div class="card card-accent-top" style="border-top-color:var(--orange)" data-anim>
           <div class="eyebrow" style="color:var(--orange)">Team / Corporate</div>
@@ -395,7 +402,10 @@
           <p style="color:var(--text2);font-size:13px;margin:12px 0">Training course for search-and-rescue teams on deploying UAVs effectively. Covers thermal imaging, grid search patterns, real-time coordination, and night operations. Designed for first responders and SAR volunteers.</p>
           <div style="font-family:var(--mono);color:var(--orange);font-size:1.3rem;margin:16px 0">$699 / person</div>
           <p style="color:var(--text3);font-size:12px">2-day course &middot; Group rates available</p>
-          <a href="contact.html" class="btn btn-sm" style="margin-top:16px;color:var(--orange)">Enroll</a>
+          <div style="display:flex;gap:8px;margin-top:16px">
+            <button class="btn btn-primary btn-sm" onclick="OW.addToCart({id:'edu-sar',name:'SAR UAV Operations',price:699,icon:'SAR'})">Add to Cart</button>
+            <a href="contact.html" class="btn btn-sm">Info</a>
+          </div>
         </div>
       </div>
 
@@ -424,51 +434,113 @@
 
       <div class="grid grid-4">
 
-        <div class="merch-card" data-anim>
+        <div class="merch-card" data-anim data-product-id="tee-classic" data-product-name="OWA Classic Tee" data-product-price="28" data-product-icon="T">
           <div class="merch-img">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"><path d="M20.38 3.46L16 2 12 5 8 2 3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
           </div>
           <div class="merch-body">
             <div class="merch-name">OWA Classic Tee</div>
-            <div style="color:var(--text2);font-size:12px;margin-bottom:8px">Logo tee &middot; Black &middot; S–3XL</div>
+            <div style="color:var(--text2);font-size:12px;margin-bottom:4px">Logo tee &middot; XS–4XL</div>
             <div class="merch-price">$28</div>
-            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'tee-classic',name:'OWA Classic Tee',price:28,icon:'T'})">Add to Cart</button>
+            <div class="variant-group">
+              <label class="variant-label">Color</label>
+              <div class="color-swatches">
+                <button class="swatch selected" data-value="Black" style="background:#111" title="Black"></button>
+                <button class="swatch swatch-white" data-value="White" title="White"></button>
+                <button class="swatch" data-value="Red" style="background:#dc2626" title="Red"></button>
+                <button class="swatch" data-value="Blue" style="background:#2563eb" title="Blue"></button>
+                <button class="swatch" data-value="Grey" style="background:#6b7280" title="Grey"></button>
+                <button class="swatch" data-value="Green" style="background:#16a34a" title="Green"></button>
+                <button class="swatch" data-value="Pink" style="background:#ec4899" title="Pink"></button>
+                <button class="swatch" data-value="Purple" style="background:#7c3aed" title="Purple"></button>
+                <button class="swatch" data-value="Yellow" style="background:#eab308" title="Yellow"></button>
+              </div>
+            </div>
+            <div class="variant-group">
+              <label class="variant-label">Size</label>
+              <div class="size-buttons">
+                <button class="size-btn" data-value="XS">XS</button>
+                <button class="size-btn" data-value="S">S</button>
+                <button class="size-btn selected" data-value="M">M</button>
+                <button class="size-btn" data-value="L">L</button>
+                <button class="size-btn" data-value="XL">XL</button>
+                <button class="size-btn" data-value="2XL">2XL</button>
+                <button class="size-btn" data-value="3XL">3XL</button>
+                <button class="size-btn" data-value="4XL">4XL</button>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center;margin-top:8px" onclick="OW.addFromCard(this)">Add to Cart</button>
           </div>
         </div>
 
-        <div class="merch-card" data-anim>
+        <div class="merch-card" data-anim data-product-id="hoodie" data-product-name="OWA Hoodie" data-product-price="54" data-product-icon="H">
           <div class="merch-img">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"><path d="M20.38 3.46L16 2 12 5 8 2 3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/><path d="M12 5v17"/></svg>
           </div>
           <div class="merch-body">
             <div class="merch-name">OWA Hoodie</div>
-            <div style="color:var(--text2);font-size:12px;margin-bottom:8px">Embroidered logo &middot; Black &middot; S–2XL</div>
+            <div style="color:var(--text2);font-size:12px;margin-bottom:4px">Embroidered logo &middot; XS–4XL</div>
             <div class="merch-price">$54</div>
-            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'hoodie',name:'OWA Hoodie',price:54,icon:'H'})">Add to Cart</button>
+            <div class="variant-group">
+              <label class="variant-label">Color</label>
+              <div class="color-swatches">
+                <button class="swatch selected" data-value="Black" style="background:#111" title="Black"></button>
+                <button class="swatch swatch-white" data-value="White" title="White"></button>
+                <button class="swatch" data-value="Red" style="background:#dc2626" title="Red"></button>
+                <button class="swatch" data-value="Blue" style="background:#2563eb" title="Blue"></button>
+                <button class="swatch" data-value="Grey" style="background:#6b7280" title="Grey"></button>
+                <button class="swatch" data-value="Green" style="background:#16a34a" title="Green"></button>
+                <button class="swatch" data-value="Pink" style="background:#ec4899" title="Pink"></button>
+                <button class="swatch" data-value="Purple" style="background:#7c3aed" title="Purple"></button>
+                <button class="swatch" data-value="Yellow" style="background:#eab308" title="Yellow"></button>
+              </div>
+            </div>
+            <div class="variant-group">
+              <label class="variant-label">Size</label>
+              <div class="size-buttons">
+                <button class="size-btn" data-value="XS">XS</button>
+                <button class="size-btn" data-value="S">S</button>
+                <button class="size-btn selected" data-value="M">M</button>
+                <button class="size-btn" data-value="L">L</button>
+                <button class="size-btn" data-value="XL">XL</button>
+                <button class="size-btn" data-value="2XL">2XL</button>
+                <button class="size-btn" data-value="3XL">3XL</button>
+                <button class="size-btn" data-value="4XL">4XL</button>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center;margin-top:8px" onclick="OW.addFromCard(this)">Add to Cart</button>
           </div>
         </div>
 
-        <div class="merch-card" data-anim>
+        <div class="merch-card" data-anim data-product-id="cap" data-product-name="OWA Cap" data-product-price="32" data-product-icon="C">
           <div class="merch-img">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"><path d="M2 16h20M4 16c0-4 2-10 8-10s8 6 8 10"/><path d="M2 16c0 1 1 3 3 3h14c2 0 3-2 3-3"/></svg>
           </div>
           <div class="merch-body">
             <div class="merch-name">OWA Cap</div>
-            <div style="color:var(--text2);font-size:12px;margin-bottom:8px">Structured 6-panel &middot; Black / Cyan</div>
+            <div style="color:var(--text2);font-size:12px;margin-bottom:4px">Structured 6-panel &middot; Black</div>
             <div class="merch-price">$32</div>
-            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'cap',name:'OWA Cap',price:32,icon:'C'})">Add to Cart</button>
+            <div class="variant-group">
+              <label class="variant-label">Size</label>
+              <div class="size-buttons">
+                <button class="size-btn" data-value="S">S</button>
+                <button class="size-btn selected" data-value="M">M</button>
+                <button class="size-btn" data-value="L">L</button>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center;margin-top:8px" onclick="OW.addFromCard(this)">Add to Cart</button>
           </div>
         </div>
 
-        <div class="merch-card" data-anim>
+        <div class="merch-card" data-anim data-product-id="beanie" data-product-name="OWA Beanie" data-product-price="22" data-product-icon="B">
           <div class="merch-img">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"><rect x="4" y="8" width="16" height="10" rx="2"/><path d="M4 12h16"/></svg>
           </div>
           <div class="merch-body">
             <div class="merch-name">OWA Beanie</div>
-            <div style="color:var(--text2);font-size:12px;margin-bottom:8px">Embroidered &middot; Black &middot; One size</div>
+            <div style="color:var(--text2);font-size:12px;margin-bottom:4px">Embroidered &middot; Black &middot; One size</div>
             <div class="merch-price">$22</div>
-            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="OW.addToCart({id:'beanie',name:'OWA Beanie',price:22,icon:'B'})">Add to Cart</button>
+            <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center;margin-top:8px" onclick="OW.addToCart({id:'beanie',name:'OWA Beanie',price:22,icon:'B'})">Add to Cart</button>
           </div>
         </div>
 

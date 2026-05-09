@@ -1,0 +1,229 @@
+<!-- CHECKOUT PAGE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — OrbitWorks Aerospace</title>
+  <meta name="description" content="Complete your OrbitWorks Aerospace order.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<script src="js/main.js"></script>
+<script>document.write(renderNav())</script>
+<div class="page-wrap">
+  <section style="padding:60px 0 32px">
+    <div class="container">
+      <div class="eyebrow">Checkout</div>
+      <h1>Complete Your Order</h1>
+      <p class="lead" style="margin-top:12px;max-width:600px">Review your cart, enter your shipping details, and select a payment method. All drone platforms are built-to-order with domestic components.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <!-- Order confirmation (hidden until submit) -->
+      <div id="orderConfirmation" class="order-placed" style="display:none">
+        <h2>Order Placed</h2>
+        <p style="color:var(--text2);max-width:500px;margin:0 auto 20px">Your order has been submitted. You will receive a confirmation email at the address you provided. If you selected CashApp or Crypto payment, please complete your payment using the details provided.</p>
+        <p style="font-family:var(--mono);color:var(--accent);font-size:14px;margin-bottom:24px">Order reference: <strong id="orderRef"></strong></p>
+        <a href="shop.html" class="btn btn-primary btn-lg">Continue Shopping</a>
+      </div>
+
+      <!-- Checkout form (shown initially) -->
+      <form id="checkoutForm" action="https://formspree.io/f/mbdwprdn" method="POST" onsubmit="return OW.submitOrder(this)">
+        <div class="checkout-layout">
+
+          <!-- LEFT: Customer info + Payment -->
+          <div>
+
+            <!-- CUSTOMER INFO -->
+            <div class="checkout-card" style="margin-bottom:24px">
+              <h3>Customer Information</h3>
+              <div class="grid grid-2" style="gap:12px">
+                <div class="form-group">
+                  <label class="form-label">First Name</label>
+                  <input type="text" name="first_name" class="form-input" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Last Name</label>
+                  <input type="text" name="last_name" class="form-input" required>
+                </div>
+              </div>
+              <div class="grid grid-2" style="gap:12px">
+                <div class="form-group">
+                  <label class="form-label">Email</label>
+                  <input type="email" name="email" class="form-input" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Phone</label>
+                  <input type="tel" name="phone" class="form-input">
+                </div>
+              </div>
+            </div>
+
+            <!-- SHIPPING -->
+            <div class="checkout-card" style="margin-bottom:24px">
+              <h3>Shipping Address</h3>
+              <div class="form-group">
+                <label class="form-label">Street Address</label>
+                <input type="text" name="address" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Apt / Suite / Unit (optional)</label>
+                <input type="text" name="address2" class="form-input">
+              </div>
+              <div class="grid grid-3" style="gap:12px">
+                <div class="form-group">
+                  <label class="form-label">City</label>
+                  <input type="text" name="city" class="form-input" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">State</label>
+                  <input type="text" name="state" class="form-input" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">ZIP</label>
+                  <input type="text" name="zip" class="form-input" required>
+                </div>
+              </div>
+            </div>
+
+            <!-- PAYMENT METHOD -->
+            <div class="checkout-card" style="margin-bottom:24px">
+              <h3>Payment Method</h3>
+              <div class="pay-tabs">
+                <button type="button" class="pay-tab active" data-panel="payCard">Card</button>
+                <button type="button" class="pay-tab" data-panel="payPaypal">PayPal / Venmo</button>
+                <button type="button" class="pay-tab" data-panel="payCashapp">CashApp</button>
+                <button type="button" class="pay-tab" data-panel="payCrypto">Crypto</button>
+              </div>
+
+              <!-- Card (Stripe) -->
+              <div class="pay-panel active" id="payCard">
+                <p style="color:var(--text2);font-size:13px;margin-bottom:12px">Pay securely with credit or debit card via Stripe. You will be redirected to Stripe's secure checkout after placing your order.</p>
+                <div style="padding:16px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;text-align:center">
+                  <p style="font-size:13px;color:var(--text2)">Card payment will be processed after order submission. We will send a secure payment link to your email.</p>
+                </div>
+              </div>
+
+              <!-- PayPal / Venmo -->
+              <div class="pay-panel" id="payPaypal">
+                <p style="color:var(--text2);font-size:13px;margin-bottom:12px">Pay with PayPal or Venmo. After placing your order, send payment to:</p>
+                <div style="padding:16px;background:var(--bg3);border:1px solid var(--border);border-radius:8px">
+                  <p style="font-size:14px;font-weight:700;margin-bottom:4px">PayPal</p>
+                  <p style="font-family:var(--mono);font-size:13px;color:var(--accent)">orders@orbitworksaerospace.com</p>
+                  <p style="font-size:12px;color:var(--text3);margin-top:8px">Include your order reference number in the payment note.</p>
+                </div>
+              </div>
+
+              <!-- CashApp -->
+              <div class="pay-panel" id="payCashapp">
+                <p style="color:var(--text2);font-size:13px;margin-bottom:12px">Pay with CashApp. After placing your order, send payment to:</p>
+                <div style="padding:16px;background:var(--bg3);border:1px solid var(--border);border-radius:8px">
+                  <p style="font-size:14px;font-weight:700;margin-bottom:4px">CashApp</p>
+                  <p style="font-family:var(--mono);font-size:18px;color:var(--accent)">$OrbitWorksAerospace</p>
+                  <p style="font-size:12px;color:var(--text3);margin-top:8px">Include your order reference number in the payment note.</p>
+                </div>
+              </div>
+
+              <!-- Crypto -->
+              <div class="pay-panel" id="payCrypto">
+                <p style="color:var(--text2);font-size:13px;margin-bottom:12px">Pay with cryptocurrency. Send the exact order total to one of the wallet addresses below. Include your order reference in the memo/tag if supported.</p>
+                <div class="crypto-row">
+                  <span class="crypto-label">BTC</span>
+                  <span class="crypto-addr" id="btcAddr">3NWqgawhMjy24xjTujV1vA7dMbdaxrbZSh</span>
+                  <button type="button" class="crypto-copy" onclick="OW.copyText(document.getElementById('btcAddr').textContent,this)">Copy</button>
+                </div>
+                <div class="crypto-row">
+                  <span class="crypto-label">ETH</span>
+                  <span class="crypto-addr" id="ethAddr">0x839479E59729A7562b22c162a5a387CcFAb87452</span>
+                  <button type="button" class="crypto-copy" onclick="OW.copyText(document.getElementById('ethAddr').textContent,this)">Copy</button>
+                </div>
+                <div class="crypto-row">
+                  <span class="crypto-label">LTC</span>
+                  <span class="crypto-addr" id="ltcAddr">MN4pzdEwwQKH9RgLx2QNSpjgHUDHDn9ZVM</span>
+                  <button type="button" class="crypto-copy" onclick="OW.copyText(document.getElementById('ltcAddr').textContent,this)">Copy</button>
+                </div>
+              </div>
+
+              <!-- Order notes -->
+              <div class="form-group" style="margin-top:16px">
+                <label class="form-label">Order Notes (optional)</label>
+                <textarea name="order_notes" class="form-input" placeholder="Special requests, preferred crypto network, etc."></textarea>
+              </div>
+            </div>
+
+            <!-- Hidden fields for form submission -->
+            <input type="hidden" name="order_details" value="">
+            <input type="hidden" name="payment_method" value="Card">
+            <input type="hidden" name="_subject" value="New OrbitWorks Order">
+            <input type="hidden" name="_replyto" value="">
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;padding:16px">Place Order</button>
+            <p style="font-size:11px;color:var(--text3);text-align:center;margin-top:12px">By placing an order you agree to OrbitWorks Aerospace terms. Build-to-order items ship within 2–4 weeks. Merch ships within 5–7 business days.</p>
+          </div>
+
+          <!-- RIGHT: Cart Summary (sticky) -->
+          <div class="checkout-card checkout-summary">
+            <h3>Order Summary</h3>
+            <div id="checkoutItems"></div>
+            <div class="checkout-total">
+              Total <span id="checkoutTotal">$0.00</span>
+            </div>
+            <a href="shop.html" style="display:block;text-align:center;font-size:12px;color:var(--accent);margin-top:12px">Continue Shopping</a>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </section>
+</div>
+
+<script>
+  // Handle form submission
+  document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+    if (OW.cart.length === 0) {
+      e.preventDefault();
+      OW.showToast('Your cart is empty!');
+      return;
+    }
+
+    // Set reply-to from email field
+    const email = this.querySelector('[name="email"]').value;
+    this.querySelector('[name="_replyto"]').value = email;
+
+    // Generate order ref
+    const ref = 'OWA-' + Date.now().toString(36).toUpperCase();
+    document.getElementById('orderRef').textContent = ref;
+
+    // Add ref to order details
+    const orderField = this.querySelector('[name="order_details"]');
+    orderField.value = 'REF: ' + ref + '\n' + orderField.value;
+
+    // For Formspree: prevent default and use fetch
+    e.preventDefault();
+    const formData = new FormData(this);
+
+    fetch(this.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    }).then(r => {
+      if (r.ok) {
+        document.getElementById('checkoutForm').style.display = 'none';
+        document.getElementById('orderConfirmation').style.display = 'block';
+        OW.clearCartAfterOrder();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        OW.showToast('Order submission failed. Please try again or email orders@orbitworksaerospace.com');
+      }
+    }).catch(() => {
+      OW.showToast('Network error. Please try again.');
+    });
+  });
+</script>
+
+<script>document.write(renderFooter())</script>
+</body>
+</html>

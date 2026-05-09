@@ -14,19 +14,57 @@ const OW = {
   },
 
   addToCart(item) {
-    const existing = this.cart.find(i => i.id === item.id);
+    // Build a unique key from id + variants
+    const variantKey = item.size || item.color
+      ? `${item.id}-${(item.color||'').toLowerCase()}-${(item.size||'').toLowerCase()}`
+      : item.id;
+    const existing = this.cart.find(i => i._key === variantKey);
     if (existing) {
       existing.qty = (existing.qty || 1) + 1;
     } else {
-      this.cart.push({ ...item, qty: 1 });
+      this.cart.push({ ...item, _key: variantKey, qty: 1 });
     }
     this.saveCart();
     this.showToast(`Added ${item.name} to cart`);
     this.openCart();
   },
 
-  removeFromCart(id) {
-    this.cart = this.cart.filter(i => i.id !== id);
+  // Add to cart from a merch card with variant pickers
+  addFromCard(btn) {
+    const card = btn.closest('.merch-card') || btn.closest('.product-card') || btn.closest('.card');
+    const id = card.dataset.productId;
+    const name = card.dataset.productName;
+    const price = parseFloat(card.dataset.productPrice);
+    const icon = card.dataset.productIcon || 'OW';
+
+    // Read selected variants
+    const colorEl = card.querySelector('.swatch.selected');
+    const sizeEl = card.querySelector('.size-btn.selected');
+    const color = colorEl ? colorEl.dataset.value : null;
+    const size = sizeEl ? sizeEl.dataset.value : null;
+
+    // Validate required variants
+    if (card.querySelector('.color-swatches') && !color) {
+      this.showToast('Please select a color');
+      return;
+    }
+    if (card.querySelector('.size-buttons') && !size) {
+      this.showToast('Please select a size');
+      return;
+    }
+
+    this.addToCart({ id, name, price, icon, color, size });
+  },
+
+  removeFromCart(key) {
+    this.cart = this.cart.filter(i => (i._key || i.id) !== key);
+    this.saveCart();
+  },
+
+  updateQty(key, delta) {
+    const item = this.cart.find(i => (i._key || i.id) === key);
+    if (!item) return;
+    item.qty = Math.max(1, (item.qty || 1) + delta);
     this.saveCart();
   },
 
@@ -49,16 +87,20 @@ const OW = {
     if (this.cart.length === 0) {
       el.innerHTML = '<p style="color:var(--text2);text-align:center;padding:40px 0;">Your cart is empty</p>';
     } else {
-      el.innerHTML = this.cart.map(item => `
+      el.innerHTML = this.cart.map(item => {
+        const key = item._key || item.id;
+        const variants = [item.color, item.size].filter(Boolean).join(' / ');
+        return `
         <div class="cart-item">
           <span class="cart-item-icon">${item.icon || 'OW'}</span>
           <div class="cart-item-info">
             <div class="cart-item-name">${item.name}</div>
+            ${variants ? `<div style="font-size:10px;color:var(--text3);font-family:var(--mono)">${variants}</div>` : ''}
             <div class="cart-item-price">$${item.price.toFixed(2)} × ${item.qty || 1}</div>
           </div>
-          <button class="cart-item-remove" onclick="OW.removeFromCart('${item.id}')">✕</button>
-        </div>
-      `).join('');
+          <button class="cart-item-remove" onclick="OW.removeFromCart('${key}')">✕</button>
+        </div>`;
+      }).join('');
     }
     const total = document.getElementById('cartTotal');
     if (total) total.textContent = '$' + this.cartTotal().toFixed(2);
@@ -84,7 +126,7 @@ const OW = {
       this.showToast('Your cart is empty!');
       return;
     }
-    this.showToast('Checkout coming soon — email s.sanders@orbitworksaerospace.com');
+    window.location.href = 'checkout.html';
   },
 
   // ── TOAST ─────────────────────────────────────────────────────────────────
@@ -280,6 +322,105 @@ const OW = {
     window.addEventListener('scroll', onScroll, { passive: true });
   },
 
+  // ── VARIANT PICKERS ───────────────────────────────────────────────────────
+  initVariantPickers() {
+    document.querySelectorAll('.color-swatches').forEach(group => {
+      group.querySelectorAll('.swatch').forEach(btn => {
+        btn.addEventListener('click', () => {
+          group.querySelectorAll('.swatch').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+        });
+      });
+    });
+    document.querySelectorAll('.size-buttons').forEach(group => {
+      group.querySelectorAll('.size-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          group.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+        });
+      });
+    });
+  },
+
+  // ── CHECKOUT PAGE ────────────────────────────────────────────────────────
+  renderCheckout() {
+    const el = document.getElementById('checkoutItems');
+    if (!el) return;
+    if (this.cart.length === 0) {
+      el.innerHTML = '<p style="color:var(--text2);text-align:center;padding:20px 0;">Your cart is empty</p>';
+    } else {
+      el.innerHTML = this.cart.map(item => {
+        const key = item._key || item.id;
+        const variants = [item.color, item.size].filter(Boolean).join(' / ');
+        return `
+        <div class="checkout-item">
+          <div class="checkout-item-icon">${item.icon || 'OW'}</div>
+          <div class="checkout-item-info">
+            <div class="checkout-item-name">${item.name}</div>
+            ${variants ? `<div class="checkout-item-variant">${variants}</div>` : ''}
+          </div>
+          <div class="checkout-item-qty">
+            <button class="qty-btn" onclick="OW.updateQty('${key}',-1);OW.renderCheckout()">−</button>
+            <span style="font-family:var(--mono);font-size:13px;min-width:20px;text-align:center">${item.qty||1}</span>
+            <button class="qty-btn" onclick="OW.updateQty('${key}',1);OW.renderCheckout()">+</button>
+          </div>
+          <div class="checkout-item-price">$${(item.price * (item.qty||1)).toFixed(2)}</div>
+          <button class="cart-item-remove" onclick="OW.removeFromCart('${key}');OW.renderCheckout()">✕</button>
+        </div>`;
+      }).join('');
+    }
+    const total = document.getElementById('checkoutTotal');
+    if (total) total.textContent = '$' + this.cartTotal().toFixed(2);
+  },
+
+  initPayTabs() {
+    document.querySelectorAll('.pay-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.pay-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.pay-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.panel).classList.add('active');
+      });
+    });
+  },
+
+  copyText(text, btn) {
+    navigator.clipboard.writeText(text).then(() => {
+      const orig = btn.textContent;
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = orig, 1500);
+    });
+  },
+
+  submitOrder(form) {
+    if (this.cart.length === 0) {
+      this.showToast('Your cart is empty!');
+      return false;
+    }
+    // Build order summary text
+    const lines = this.cart.map(item => {
+      const variants = [item.color, item.size].filter(Boolean).join('/');
+      return `${item.name}${variants ? ' ('+variants+')' : ''} x${item.qty||1} — $${(item.price*(item.qty||1)).toFixed(2)}`;
+    });
+    lines.push('---');
+    lines.push('TOTAL: $' + this.cartTotal().toFixed(2));
+
+    // Inject into hidden field
+    const orderField = form.querySelector('[name="order_details"]');
+    if (orderField) orderField.value = lines.join('\n');
+
+    const payMethod = document.querySelector('.pay-tab.active');
+    const payField = form.querySelector('[name="payment_method"]');
+    if (payField && payMethod) payField.value = payMethod.textContent.trim();
+
+    return true; // allow form submission
+  },
+
+  clearCartAfterOrder() {
+    this.cart = [];
+    this.saveCart();
+  },
+
   // ── INIT ──────────────────────────────────────────────────────────────────
   init() {
     this.initNav();
@@ -288,6 +429,9 @@ const OW = {
     this.renderCart();
     this.initHexGrid();
     this.initShopHexGrid();
+    this.initVariantPickers();
+    this.renderCheckout();
+    this.initPayTabs();
   }
 };
 
