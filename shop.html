@@ -10,7 +10,10 @@
 <script src="js/main.js"></script>
 <script>document.write(renderNav())</script>
 
-<div class="page-wrap">
+<!-- Molecule/hex canvas background -->
+<canvas class="shop-molecule-canvas" id="moleculeCanvas"></canvas>
+
+<div class="page-wrap shop-theme">
 
   <!-- ── HERO ── -->
   <section style="padding:60px 0 32px">
@@ -18,7 +21,7 @@
       <div class="eyebrow">OrbitWorks Shop</div>
       <h1>Drones, Services & Gear</h1>
       <p class="lead" style="margin-top:12px;max-width:660px">Ready-to-fly platforms, component kits, professional aerial services, pilot training, and official OrbitWorks gear. All drone systems use domestically sourced components and are backed by 24/7 post-purchase support.</p>
-      <div style="margin-top:20px;display:flex;gap:8px;flex-wrap:wrap">
+      <div class="shop-nav-bar">
         <a href="#drones" class="btn btn-sm btn-primary">Drones</a>
         <a href="#services" class="btn btn-sm">Services</a>
         <a href="#training" class="btn btn-sm">Training</a>
@@ -212,7 +215,7 @@
   <!-- ══════════════════════════════════════════════════════════════════════════ -->
   <!-- ── AERIAL SERVICES ── -->
   <!-- ══════════════════════════════════════════════════════════════════════════ -->
-  <section id="services" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <section id="services" style="border-top:1px solid var(--border)">
     <div class="container">
       <div class="section-header" data-anim>
         <div class="eyebrow">For Hire</div>
@@ -305,7 +308,7 @@
           <p style="color:var(--text2);font-size:13px;margin:12px 0">Full ground school, airspace classification, weather, regulations, sectional chart reading, and exam prep. 95% first-attempt pass rate.</p>
           <div style="font-family:var(--mono);color:var(--purple);font-size:1.3rem;margin:16px 0">$449</div>
           <p style="color:var(--text3);font-size:12px">2-day course + exam scheduling</p>
-          <a href="contact.html" class="btn btn-sm" style="margin-top:16px;border-color:var(--purple);color:var(--purple)">Enroll</a>
+          <a href="contact.html" class="btn btn-sm" style="margin-top:16px;color:var(--purple)">Enroll</a>
         </div>
         <div class="card card-accent-top" style="border-top-color:var(--orange)" data-anim>
           <div class="eyebrow" style="color:var(--orange)">Team / Corporate</div>
@@ -313,7 +316,7 @@
           <p style="color:var(--text2);font-size:13px;margin:12px 0">Custom training for businesses, first responders, and agencies. We come to your site. Operations, compliance, emergency procedures, and mission planning.</p>
           <div style="font-family:var(--mono);color:var(--orange);font-size:1.3rem;margin:16px 0">Custom</div>
           <p style="color:var(--text3);font-size:12px">Flexible scheduling &middot; Any size team</p>
-          <a href="contact.html" class="btn btn-sm" style="margin-top:16px;border-color:var(--orange);color:var(--orange)">Request Program</a>
+          <a href="contact.html" class="btn btn-sm" style="margin-top:16px;color:var(--orange)">Request Program</a>
         </div>
       </div>
     </div>
@@ -331,7 +334,7 @@
   <!-- ══════════════════════════════════════════════════════════════════════════ -->
   <!-- ── MERCH ── -->
   <!-- ══════════════════════════════════════════════════════════════════════════ -->
-  <section id="merch" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <section id="merch" style="border-top:1px solid var(--border)">
     <div class="container">
       <div class="section-header" data-anim>
         <div class="eyebrow">Merch</div>
