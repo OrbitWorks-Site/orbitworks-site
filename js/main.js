@@ -378,7 +378,7 @@ function renderFooter() {
   </div>
   <!-- Floating cart -->
   <div class="cart-icon" onclick="OW.openCart()">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="5" r="2.5"/><circle cx="19" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><line x1="7" y1="6.5" x2="10.5" y2="10.5"/><line x1="17" y1="6.5" x2="13.5" y2="10.5"/><line x1="7" y1="17.5" x2="10.5" y2="13.5"/><line x1="17" y1="17.5" x2="13.5" y2="13.5"/><rect x="10" y="10" width="4" height="4" rx="1"/></svg>
     <span class="cart-badge" id="cartBadge" style="display:none">0</span>
   </div>
   <!-- Toast -->
