@@ -441,10 +441,10 @@ h4 { font-size: 1rem; }
   background: var(--bg2);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 28px;
   transition: all 0.2s;
   position: relative;
   overflow: hidden;
+  display: flex; flex-direction: column;
 }
 .service-card::before {
   content: '';
@@ -452,13 +452,37 @@ h4 { font-size: 1rem; }
   background: var(--accent);
   opacity: 0;
   transition: opacity 0.2s;
+  z-index: 1;
 }
 .service-card:hover::before { opacity: 1; }
 .service-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+.service-img {
+  width: 100%; height: 160px; overflow: hidden;
+}
+.service-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.3s;
+}
+.service-card:hover .service-img img { transform: scale(1.05); }
+.service-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
 .service-icon { font-size: 36px; margin-bottom: 16px; }
 .service-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
 .service-desc { color: var(--text2); font-size: 13px; line-height: 1.6; margin-bottom: 16px; }
 .service-price { font-family: var(--mono); font-size: 13px; color: var(--accent); }
+.service-compare {
+  margin-top: auto; padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.service-compare-title {
+  font-size: 11px; font-weight: 700; color: var(--text3);
+  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;
+}
+.service-compare .compare-row {
+  display: flex; align-items: baseline; gap: 6px;
+  font-size: 11px; line-height: 1.9; flex-wrap: wrap;
+}
+.service-compare .compare-name { color: var(--text2); }
+.service-compare .compare-price { color: var(--text3); font-family: var(--mono); font-size: 10px; margin-left: auto; flex-shrink: 0; }
 
 /* ── MERCH ────────────────────────────────────────────────────────────────── */
 .merch-card {
