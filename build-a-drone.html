@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build Your Drone — OrbitWorks Aerospace</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── CONFIGURATOR STYLES ─────────────────────────────────────────────── */
+    .build-wrap { max-width:1100px; margin:0 auto; padding:0 20px; }
+
+    .build-progress {
+      display:flex; gap:0; margin:32px 0 40px; position:relative;
+    }
+    .build-progress::before {
+      content:''; position:absolute; top:18px; left:40px; right:40px;
+      height:2px; background:var(--border2);
+    }
+    .build-step {
+      flex:1; text-align:center; position:relative; cursor:pointer;
+      opacity:0.35; transition:opacity 0.3s;
+    }
+    .build-step.active, .build-step.done { opacity:1; }
+    .build-step-dot {
+      width:36px; height:36px; border-radius:50%;
+      background:var(--bg3); border:2px solid var(--border2);
+      display:flex; align-items:center; justify-content:center;
+      margin:0 auto 8px; font-family:var(--mono); font-size:13px;
+      color:var(--text2); transition:all 0.3s; position:relative; z-index:2;
+    }
+    .build-step.active .build-step-dot {
+      border-color:var(--accent); color:var(--accent); background:var(--adim);
+    }
+    .build-step.done .build-step-dot {
+      border-color:var(--success); color:var(--success); background:rgba(34,197,94,0.12);
+    }
+    .build-step-label {
+      font-size:11px; color:var(--text2); font-family:var(--mono);
+      text-transform:uppercase; letter-spacing:0.5px;
+    }
+
+    /* ── STAGE PANEL ─────────────────────────────────────────────────────── */
+    .build-stage { display:none; animation:fadeUp 0.35s ease; }
+    .build-stage.active { display:block; }
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(16px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    .stage-header {
+      margin-bottom:24px; padding-bottom:16px; border-bottom:1px solid var(--border);
+    }
+    .stage-header h2 { font-size:22px; margin-bottom:4px; }
+    .stage-header p { color:var(--text2); font-size:14px; }
+
+    /* ── OPTION CARDS ────────────────────────────────────────────────────── */
+    .option-grid {
+      display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
+      gap:16px; margin-bottom:32px;
+    }
+    .option-card {
+      background:var(--bg2); border:1px solid var(--border);
+      border-radius:10px; padding:20px; cursor:pointer;
+      transition:all 0.25s; position:relative;
+    }
+    .option-card:hover { border-color:var(--border2); transform:translateY(-2px); }
+    .option-card.selected {
+      border-color:var(--accent); background:rgba(59,130,246,0.06);
+      box-shadow:0 0 0 1px var(--accent);
+    }
+    .option-card.disabled {
+      opacity:0.3; pointer-events:none;
+    }
+    .option-card .card-tag {
+      display:inline-block; font-family:var(--mono); font-size:10px;
+      background:var(--adim); color:var(--accent); padding:2px 8px;
+      border-radius:4px; margin-bottom:8px; text-transform:uppercase;
+    }
+    .option-card h3 { font-size:16px; margin-bottom:4px; }
+    .option-card .card-specs {
+      font-size:12px; color:var(--text2); line-height:1.7; margin:8px 0 12px;
+    }
+    .option-card .card-price {
+      font-family:var(--mono); font-size:18px; color:var(--success);
+    }
+    .option-card .card-check {
+      position:absolute; top:12px; right:12px; width:22px; height:22px;
+      border-radius:50%; border:2px solid var(--border2);
+      display:flex; align-items:center; justify-content:center;
+      font-size:12px; transition:all 0.2s;
+    }
+    .option-card.selected .card-check {
+      border-color:var(--accent); background:var(--accent); color:#fff;
+    }
+    .option-card .compat-note {
+      font-size:11px; color:var(--warning); margin-top:8px;
+      font-family:var(--mono);
+    }
+
+    /* ── CATEGORY LABEL ──────────────────────────────────────────────────── */
+    .cat-label {
+      font-family:var(--mono); font-size:12px; text-transform:uppercase;
+      letter-spacing:1px; color:var(--text2); margin:24px 0 12px;
+      padding-bottom:6px; border-bottom:1px solid var(--border);
+    }
+
+    /* ── QTY SELECTOR ────────────────────────────────────────────────────── */
+    .qty-row {
+      display:flex; align-items:center; gap:8px; margin-top:8px;
+    }
+    .qty-row button {
+      width:28px; height:28px; border-radius:6px; border:1px solid var(--border2);
+      background:var(--bg3); color:var(--text); font-size:16px; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .qty-row button:hover { border-color:var(--accent); }
+    .qty-row span {
+      font-family:var(--mono); font-size:14px; min-width:24px; text-align:center;
+    }
+
+    /* ── BOTTOM BAR ──────────────────────────────────────────────────────── */
+    .build-bar {
+      position:sticky; bottom:0; left:0; right:0; z-index:50;
+      background:rgba(10,12,16,0.95); backdrop-filter:blur(12px);
+      border-top:1px solid var(--border); padding:16px 0;
+    }
+    .build-bar-inner {
+      max-width:1100px; margin:0 auto; padding:0 20px;
+      display:flex; align-items:center; justify-content:space-between;
+      flex-wrap:wrap; gap:12px;
+    }
+    .build-bar .running-total {
+      font-family:var(--mono); font-size:20px; color:var(--success);
+    }
+    .build-bar .running-total small {
+      font-size:12px; color:var(--text2); display:block;
+    }
+    .build-bar-btns { display:flex; gap:10px; }
+
+    /* ── SUMMARY TABLE ───────────────────────────────────────────────────── */
+    .summary-table {
+      width:100%; border-collapse:collapse; margin:16px 0 24px;
+    }
+    .summary-table th, .summary-table td {
+      text-align:left; padding:10px 12px; font-size:13px;
+      border-bottom:1px solid var(--border);
+    }
+    .summary-table th {
+      font-family:var(--mono); font-size:11px; text-transform:uppercase;
+      color:var(--text2); letter-spacing:0.5px;
+    }
+    .summary-table .total-row td {
+      font-family:var(--mono); font-size:16px; color:var(--success);
+      border-top:2px solid var(--accent); font-weight:700;
+    }
+
+    /* ── ORDER CONFIRMATION ──────────────────────────────────────────────── */
+    .order-confirm {
+      background:var(--bg2); border:1px solid var(--success);
+      border-radius:12px; padding:40px; text-align:center;
+      max-width:600px; margin:40px auto;
+    }
+    .order-confirm h2 { color:var(--success); margin-bottom:12px; }
+    .order-confirm p { color:var(--text2); font-size:14px; line-height:1.7; }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────────────────── */
+    @media(max-width:640px) {
+      .option-grid { grid-template-columns:1fr; }
+      .build-progress { overflow-x:auto; padding-bottom:8px; }
+      .build-step-label { font-size:9px; }
+    }
+  </style>
+</head>
+<body>
+<script src="js/main.js"></script>
+<script>document.write(renderNav())</script>
+
+<canvas class="shop-hex-canvas" id="shopHexCanvas"></canvas>
+
+<div class="page-wrap">
+
+  <!-- ── HERO ── -->
+  <section style="padding:60px 0 24px">
+    <div class="build-wrap">
+      <div class="eyebrow">OrbitWorks Custom Lab</div>
+      <h1>Build Your Drone</h1>
+      <p class="lead" style="margin-top:8px;max-width:660px">Pick your airframe. Choose your electronics. We assemble, test, and ship. Every component domestically sourced &mdash; zero Chinese-origin parts.</p>
+    </div>
+  </section>
+
+  <!-- ── PROGRESS BAR ── -->
+  <div class="build-wrap">
+    <div class="build-progress" id="progressBar">
+      <div class="build-step active" data-stage="0" onclick="goStage(0)">
+        <div class="build-step-dot">1</div>
+        <div class="build-step-label">Airframe</div>
+      </div>
+      <div class="build-step" data-stage="1" onclick="goStage(1)">
+        <div class="build-step-dot">2</div>
+        <div class="build-step-label">Electronics</div>
+      </div>
+      <div class="build-step" data-stage="2" onclick="goStage(2)">
+        <div class="build-step-dot">3</div>
+        <div class="build-step-label">FPV / Camera</div>
+      </div>
+      <div class="build-step" data-stage="3" onclick="goStage(3)">
+        <div class="build-step-dot">4</div>
+        <div class="build-step-label">Extras</div>
+      </div>
+      <div class="build-step" data-stage="4" onclick="goStage(4)">
+        <div class="build-step-dot">5</div>
+        <div class="build-step-label">Review</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════════════════ -->
+  <!-- STAGES -->
+  <!-- ════════════════════════════════════════════════════════════════════════ -->
+  <div class="build-wrap" id="stageContainer">
+
+    <!-- ── STAGE 0: AIRFRAME ──────────────────────────────────────────────── -->
+    <div class="build-stage active" id="stage0">
+      <div class="stage-header">
+        <h2>Choose Your Airframe</h2>
+        <p>3D-printed fixed wings from Flightory (foaming PLA, painted, VTOL-ready) or carbon fiber multirotor frames. Pick one.</p>
+      </div>
+
+      <div class="cat-label">Fixed Wing &mdash; Flightory 3D-Printed Airframes</div>
+      <div class="option-grid" id="fwGrid"></div>
+
+      <div class="cat-label">Multirotor Frames &mdash; Carbon Fiber</div>
+      <div class="option-grid" id="mrGrid"></div>
+    </div>
+
+    <!-- ── STAGE 1: ELECTRONICS ───────────────────────────────────────────── -->
+    <div class="build-stage" id="stage1">
+      <div class="stage-header">
+        <h2>Flight Electronics</h2>
+        <p>Flight controller, ESC, motors, GPS, receiver, and servos. Options filter by your airframe choice.</p>
+      </div>
+
+      <div class="cat-label">Flight Controller</div>
+      <div class="option-grid" id="fcGrid"></div>
+
+      <div class="cat-label">ESC (Electronic Speed Controller)</div>
+      <div class="option-grid" id="escGrid"></div>
+
+      <div class="cat-label" id="motorLabel">Motors</div>
+      <div class="option-grid" id="motorGrid"></div>
+
+      <div class="cat-label">GPS Module</div>
+      <div class="option-grid" id="gpsGrid"></div>
+
+      <div class="cat-label">Receiver (Radio Link)</div>
+      <div class="option-grid" id="rxGrid"></div>
+
+      <div class="cat-label" id="servoLabel" style="display:none">Servos (Fixed Wing)</div>
+      <div class="option-grid" id="servoGrid"></div>
+    </div>
+
+    <!-- ── STAGE 2: FPV / CAMERA ──────────────────────────────────────────── -->
+    <div class="build-stage" id="stage2">
+      <div class="stage-header">
+        <h2>FPV &amp; Camera System</h2>
+        <p>Digital FPV video transmission and optional stabilized gimbal for cinematic or mapping work.</p>
+      </div>
+
+      <div class="cat-label">FPV System</div>
+      <div class="option-grid" id="fpvGrid"></div>
+
+      <div class="cat-label">Gimbal / Camera Mount</div>
+      <div class="option-grid" id="gimbalGrid"></div>
+    </div>
+
+    <!-- ── STAGE 3: EXTRAS ────────────────────────────────────────────────── -->
+    <div class="build-stage" id="stage3">
+      <div class="stage-header">
+        <h2>Battery &amp; Extras</h2>
+        <p>Power system and optional cargo/payload mechanisms.</p>
+      </div>
+
+      <div class="cat-label">Battery</div>
+      <div class="option-grid" id="battGrid"></div>
+
+      <div class="cat-label">Cargo / Payload Mechanism</div>
+      <div class="option-grid" id="cargoGrid"></div>
+
+      <div class="cat-label" id="vtolLabel" style="display:none">VTOL Conversion Kit</div>
+      <div class="option-grid" id="vtolGrid"></div>
+    </div>
+
+    <!-- ── STAGE 4: REVIEW & ORDER ────────────────────────────────────────── -->
+    <div class="build-stage" id="stage4">
+      <div class="stage-header">
+        <h2>Review Your Build</h2>
+        <p>Double-check everything. Hit "Send Order" and our team contacts you within 24 hours to arrange payment and schedule assembly.</p>
+      </div>
+      <table class="summary-table" id="summaryTable">
+        <thead><tr><th>Component</th><th>Selection</th><th>Qty</th><th>Price</th></tr></thead>
+        <tbody id="summaryBody"></tbody>
+      </table>
+
+      <div style="margin:24px 0">
+        <label style="font-size:13px;color:var(--text2);display:block;margin-bottom:6px">Name</label>
+        <input type="text" id="custName" placeholder="Your full name" style="width:100%;max-width:400px;padding:10px 14px;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-size:14px">
+      </div>
+      <div style="margin-bottom:24px">
+        <label style="font-size:13px;color:var(--text2);display:block;margin-bottom:6px">Email</label>
+        <input type="email" id="custEmail" placeholder="you@example.com" style="width:100%;max-width:400px;padding:10px 14px;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-size:14px">
+      </div>
+      <div style="margin-bottom:24px">
+        <label style="font-size:13px;color:var(--text2);display:block;margin-bottom:6px">Notes (optional)</label>
+        <textarea id="custNotes" rows="3" placeholder="Special requests, paint color, mission details..." style="width:100%;max-width:400px;padding:10px 14px;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-size:14px;resize:vertical"></textarea>
+      </div>
+    </div>
+
+    <!-- ORDER CONFIRMATION (hidden) -->
+    <div class="order-confirm" id="orderConfirm" style="display:none">
+      <div style="font-size:48px;margin-bottom:12px">&#9993;</div>
+      <h2>Order Received</h2>
+      <p>Your custom build request has been sent to <strong>orders@orbitworksaerospace.com</strong>.</p>
+      <p style="margin-top:16px">An OrbitWorks team member will contact you within <strong>24 hours</strong> to confirm specs, arrange payment, and schedule your build.</p>
+      <p style="margin-top:16px;font-size:12px;color:var(--text3)">No payment is taken until you speak with our team. Builds typically ship 2&ndash;4 weeks after payment.</p>
+      <a href="shop.html" class="btn btn-primary" style="margin-top:24px">Back to Shop</a>
+    </div>
+
+  </div><!-- /stageContainer -->
+
+  <!-- ── STICKY BOTTOM BAR ── -->
+  <div class="build-bar" id="buildBar">
+    <div class="build-bar-inner">
+      <div class="running-total">
+        <small>Estimated Total</small>
+        $<span id="runTotal">0.00</span>
+      </div>
+      <div class="build-bar-btns">
+        <button class="btn" id="btnPrev" onclick="prevStage()" style="display:none">&larr; Back</button>
+        <button class="btn btn-primary" id="btnNext" onclick="nextStage()">Next: Electronics &rarr;</button>
+        <button class="btn btn-primary" id="btnOrder" onclick="sendOrder()" style="display:none">Send Order &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page-wrap -->
+
+<script>document.write(renderFooter())</script>
+
+<!-- ════════════════════════════════════════════════════════════════════════════ -->
+<!-- CONFIGURATOR ENGINE -->
+<!-- ════════════════════════════════════════════════════════════════════════════ -->
+<script>
+(function(){
+'use strict';
+
+/* ── COMPONENT DATABASE ─────────────────────────────────────────────────── */
+const PARTS = {
+  /* ── FIXED WING AIRFRAMES (Flightory, 3D-printed LW-PLA) ──────────── */
+  fw: [
+    { id:'fw-pico',    name:'Pico Talon',       price:26.99,  ws:'650mm',  cat:'Micro',   desc:'Tiny hand-launch FPV wing. Great starter platform.',                     compat:'micro' },
+    { id:'fw-plank',   name:'Mini Plank',        price:26.99,  ws:'900mm',  cat:'Small',   desc:'Fast plank wing for FPV cruising and proximity flying.',                 compat:'small' },
+    { id:'fw-lark',    name:'Lark',              price:34.99,  ws:'1130mm', cat:'Medium',  desc:'Versatile mid-size wing. Good endurance for mapping runs.',               compat:'medium' },
+    { id:'fw-talon',   name:'Talon 1400',        price:34.99,  ws:'1400mm', cat:'Medium',  desc:'Extended-range surveillance wing. Pusher config with roomy fuselage.',    compat:'medium' },
+    { id:'fw-stingray',name:'Super Stingray',    price:34.99,  ws:'1300mm', cat:'Medium',  desc:'Blended body flying wing. Stable in wind, excellent FPV platform.',       compat:'medium', vtol:true },
+    { id:'fw-stork',   name:'Stork',             price:34.99,  ws:'1620mm', cat:'Large',   desc:'High-endurance mapping platform. Large payload bay for cameras/sensors.', compat:'large', vtol:true },
+    { id:'fw-stallion',name:'Stallion',           price:40.99,  ws:'1340mm', cat:'Medium',  desc:'Performance pusher with generous wing area. Strong crosswind handling.',  compat:'medium', vtol:true },
+    { id:'fw-moose',   name:'Moose',             price:46.99,  ws:'1600mm', cat:'Large',   desc:'Heavy-lift mapping wing. Dedicated payload compartment for survey gear.', compat:'large' },
+  ],
+
+  /* ── MULTIROTOR FRAMES (Carbon Fiber) ──────────────────────────────── */
+  mr: [
+    { id:'mr-tri',    name:'Y3 Tricopter Frame',         price:46.99,  size:'~450mm',   cat:'Tricopter', desc:'3-arm Y-config. Unique yaw authority via rear tilt servo. Efficient cruiser.', compat:'tri', motors:3 },
+    { id:'mr-5q',     name:'5" Quad Frame (Carbon)',      price:52.99,  size:'220mm',    cat:'Quadcopter', desc:'Race/freestyle workhorse. 5mm arms, full carbon. Fits 5" props.',              compat:'5q',  motors:4 },
+    { id:'mr-7q',     name:'7" Long Range Quad Frame',    price:64.99,  size:'295mm',    cat:'Quadcopter', desc:'Long-range cruiser. 6mm arms, room for HD system + GPS. 7" props.',           compat:'7q',  motors:4 },
+    { id:'mr-10q',    name:'10" Quad Frame (Carbon)',     price:89.99,  size:'450mm',    cat:'Quadcopter', desc:'Heavy-lift quad. Payload capacity for cinema cameras or LiDAR. 10" props.',   compat:'10q', motors:4 },
+    { id:'mr-hex',    name:'S550 Hexacopter Frame',       price:74.99,  size:'550mm',    cat:'Hexacopter', desc:'6-motor redundancy. Folds for transport. Great for inspection + mapping.',    compat:'hex', motors:6 },
+    { id:'mr-hex-l',  name:'ZD850 Foldable Hex Frame',    price:199.99, size:'850mm',    cat:'Hexacopter', desc:'Full carbon 850mm hex. Foldable arms, retractable gear. Heavy-lift capable.', compat:'hex-l', motors:6 },
+    { id:'mr-octo',   name:'X8 Octocopter Frame',         price:279.99, size:'1000mm+',  cat:'Octocopter', desc:'8-motor coaxial config. Maximum redundancy and payload. Industrial grade.',   compat:'octo', motors:8 },
+  ],
+
+  /* ── FLIGHT CONTROLLERS ────────────────────────────────────────────── */
+  fc: [
+    { id:'fc-f405w',  name:'SpeedyBee F405 WING',     price:42.99,  desc:'Fixed-wing specialist. INAV/ArduPilot, 12 PWM outputs, 7-36V input. Solder-free connectors.',       forType:'fw' },
+    { id:'fc-f405v4', name:'SpeedyBee F405 V4',        price:42.99,  desc:'Multirotor FC. Betaflight/INAV, STM32F405, barometer, 16MB flash. 30x30 mount.',                    forType:'mr' },
+    { id:'fc-pix6c',  name:'Holybro Pixhawk 6C',       price:192.99, desc:'ArduPilot/PX4 autopilot. STM32H743, triple IMU, full telemetry. For autonomous missions.',           forType:'both' },
+    { id:'fc-pix6cm', name:'Holybro Pixhawk 6C Mini',  price:154.99, desc:'Compact Pixhawk. Same processor as 6C, smaller footprint. Weight-sensitive builds.',                 forType:'both' },
+  ],
+
+  /* ── ESCs ──────────────────────────────────────────────────────────── */
+  esc: [
+    { id:'esc-sb60',   name:'SpeedyBee BLS 60A 4-in-1',  price:57.99,  desc:'30x30 stack, BLHeli_S, 3-6S. Pairs with F405 V4. One ESC runs all 4 motors.',   forType:'mr', perUnit:false },
+    { id:'esc-30a',    name:'BLHeli_S 30A Individual',    price:14.99,  desc:'Single 30A ESC. BLHeli_S firmware. 2-6S. Use one per motor.',                    forType:'both', perUnit:true },
+    { id:'esc-50a',    name:'BLHeli_32 50A Individual',   price:24.99,  desc:'Premium 50A ESC. BLHeli_32 with telemetry. For 7"+ builds and hex/octo.',         forType:'both', perUnit:true },
+    { id:'esc-hw60',   name:'Hobbywing XRotor 60A',       price:34.99,  desc:'Industrial-grade 60A ESC. FOC support, 3-8S. For heavy-lift platforms.',         forType:'mr', perUnit:true },
+  ],
+
+  /* ── MOTORS ────────────────────────────────────────────────────────── */
+  motors: [
+    { id:'mot-f60',    name:'T-Motor F60 Pro V 2207.5',  price:34.99,  kv:'1750KV', desc:'Race-proven 5" motor. Titanium shaft, N52H magnets. 6S.',           forSize:['5q'] },
+    { id:'mot-2812',   name:'BrotherHobby Avenger 2812', price:34.99,  kv:'900KV',  desc:'7" long-range motor. Titanium hollow shaft, smooth torque. 6S.',    forSize:['7q','tri'] },
+    { id:'mot-f90',    name:'T-Motor F90 1507',           price:28.99,  kv:'1300KV', desc:'Efficient mid-range motor. Great for 7" cruisers and light hex.',   forSize:['7q','tri'] },
+    { id:'mot-u5',     name:'T-Motor U5 2804',            price:44.99,  kv:'400KV',  desc:'10" prop motor. High efficiency at low RPM for endurance flights.',  forSize:['10q','hex'] },
+    { id:'mot-u8',     name:'T-Motor U8 II',              price:179.99, kv:'100KV',  desc:'Heavy-lift motor. 7.3kg thrust per motor. For large hex/octo.',      forSize:['hex-l','octo'] },
+    { id:'mot-fw17',   name:'T-Motor F60 1750KV (Wing)',  price:22.99,  kv:'1750KV', desc:'Fixed-wing pusher motor. Light, efficient, reliable.',              forSize:['fw-micro','fw-small','fw-medium'] },
+    { id:'mot-fw13',   name:'T-Motor F90 1300KV (Wing)',  price:28.99,  kv:'1300KV', desc:'Large wing motor. Higher torque for bigger props and payloads.',    forSize:['fw-medium','fw-large'] },
+    { id:'mot-bh910',  name:'BrotherHobby Avenger 910KV', price:34.99, kv:'910KV',  desc:'Heavy-duty wing motor. Long-range mapping flights.',                forSize:['fw-large'] },
+  ],
+
+  /* ── GPS ────────────────────────────────────────────────────────────── */
+  gps: [
+    { id:'gps-m10q',   name:'Matek SAM-M10Q',          price:28.99,  desc:'u-blox M10 quad-constellation GNSS. GPS+GLONASS+Galileo+BeiDou. Compact.' },
+    { id:'gps-m10c',   name:'Matek M10Q-5883',         price:34.99,  desc:'M10Q + integrated QMC5883L compass. Recommended for autonomous flight.' },
+    { id:'gps-bn880',  name:'BN-880 GPS/Compass',      price:18.99,  desc:'Dual GPS+GLONASS with HMC5883L compass. Budget-friendly, proven module.' },
+  ],
+
+  /* ── RECEIVERS ─────────────────────────────────────────────────────── */
+  rx: [
+    { id:'rx-elrs24',  name:'Matek ELRS-R24-D 2.4GHz', price:22.99,  desc:'ExpressLRS diversity receiver. 22.5dBm telemetry, dual antenna. Low latency.' },
+    { id:'rx-elrs900', name:'Matek ELRS-R900 900MHz',  price:28.99,  desc:'900MHz ELRS for maximum range. Better penetration through terrain.' },
+    { id:'rx-tbs',     name:'TBS Crossfire Nano Rx',    price:34.99,  desc:'868/915MHz long-range receiver. Industry standard for long-range ops.' },
+  ],
+
+  /* ── SERVOS (fixed wing only) ──────────────────────────────────────── */
+  servos: [
+    { id:'srv-es08',   name:'EMAX ES08MA II (x2)',     price:17.99,  desc:'12g metal gear analog servo pair. Standard for wing control surfaces.', qty:2, forType:'fw' },
+    { id:'srv-ds',     name:'EMAX ES3154 Digital (x2)', price:27.99, desc:'17g digital metal gear pair. Faster response, better centering.',       qty:2, forType:'fw' },
+  ],
+
+  /* ── FPV SYSTEMS ───────────────────────────────────────────────────── */
+  fpv: [
+    { id:'fpv-ws',     name:'Walksnail Avatar HD Pro Kit', price:174.99, desc:'1080p/120fps digital FPV. 1/1.8" Sony Starvis II, 4km range, 22ms latency.' },
+    { id:'fpv-dji',    name:'DJI O4 Air Unit',              price:219.99, desc:'DJI digital FPV ecosystem. 1080p/100fps, 13km range. Requires DJI goggles.' },
+    { id:'fpv-ana',    name:'Foxeer Reaper Nano (Analog)',   price:24.99,  desc:'Budget analog camera. 1200TVL, low latency. Pair with any analog VTX.' },
+    { id:'fpv-none',   name:'No FPV System',                 price:0,      desc:'Skip FPV. Useful for autonomous GPS missions with ground station only.' },
+  ],
+
+  /* ── GIMBALS ───────────────────────────────────────────────────────── */
+  gimbal: [
+    { id:'gim-gm3',   name:'Caddx GM3 3-Axis Gimbal',   price:139.99, desc:'Tri-axis stabilized gimbal. Head tracking, 46g. Walksnail compatible.' },
+    { id:'gim-gm1',   name:'Caddx GM1 1-Axis Gimbal',   price:49.99,  desc:'Single-axis tilt gimbal. Lightweight option for FPV wings.' },
+    { id:'gim-none',  name:'No Gimbal',                   price:0,      desc:'Skip gimbal stabilization. Use direct-mount camera instead.' },
+  ],
+
+  /* ── BATTERIES ─────────────────────────────────────────────────────── */
+  batt: [
+    { id:'bat-1300',  name:'CNHL 1300mAh 6S 130C',     price:32.99,  desc:'Compact 6S race/freestyle pack. XT60. Good for 5" quads.' },
+    { id:'bat-1800',  name:'CNHL 1800mAh 6S 100C',     price:39.99,  desc:'Mid-capacity 6S. Longer flight time for 7" and light hex.' },
+    { id:'bat-5000',  name:'Tattu 5000mAh 6S 35C',     price:89.99,  desc:'High-capacity 6S. Endurance flights, heavy-lift, mapping.' },
+    { id:'bat-10k',   name:'Tattu 10000mAh 6S 25C',    price:159.99, desc:'Max endurance pack. For large hex/octo and fixed-wing VTOL.' },
+    { id:'bat-4s2200',name:'CNHL 2200mAh 4S 100C',     price:27.99,  desc:'4S pack for smaller fixed wings and 5" quads.' },
+  ],
+
+  /* ── CARGO / PAYLOAD ───────────────────────────────────────────────── */
+  cargo: [
+    { id:'crg-servo',  name:'Servo Payload Release',      price:34.99,  desc:'Single-channel servo drop mechanism. 500g payload capacity.' },
+    { id:'crg-dual',   name:'Dual Servo Release System',   price:64.99,  desc:'Two-channel independent release. Drop two payloads separately.' },
+    { id:'crg-winch',  name:'Motorized Cargo Winch',       price:119.99, desc:'Powered winch with 2kg capacity. Lower and retrieve payloads.' },
+    { id:'crg-none',   name:'No Cargo Mechanism',           price:0,      desc:'Skip payload release system.' },
+  ],
+
+  /* ── VTOL KITS (Flightory) ─────────────────────────────────────────── */
+  vtol: [
+    { id:'vtol-kit',  name:'Flightory VTOL Conversion Kit', price:14.99, desc:'Quad-motor VTOL pack. Vertical takeoff/landing for compatible fixed wings.' },
+    { id:'vtol-none', name:'No VTOL (Standard Launch)',      price:0,     desc:'Hand-launch or catapult. No vertical takeoff.' },
+  ]
+};
+
+/* ── STATE ──────────────────────────────────────────────────────────────── */
+let currentStage = 0;
+const selections = {};
+const stageNames = ['Airframe','Electronics','FPV / Camera','Extras','Review'];
+const nextLabels = ['Next: Electronics','Next: FPV & Camera','Next: Extras','Next: Review',''];
+
+/* ── RENDER HELPERS ─────────────────────────────────────────────────────── */
+function cardHTML(p, cat, extra='') {
+  const specLines = [];
+  if (p.ws)   specLines.push('Wingspan: '+p.ws);
+  if (p.size) specLines.push('Size: '+p.size);
+  if (p.kv)   specLines.push('KV: '+p.kv);
+  if (p.motors) specLines.push('Motors: '+p.motors);
+  const sel = selections[cat]?.id === p.id ? ' selected' : '';
+  const dis = p._disabled ? ' disabled' : '';
+  return `
+    <div class="option-card${sel}${dis}" data-cat="${cat}" data-id="${p.id}" onclick="pick('${cat}','${p.id}')">
+      <div class="card-check">${sel ? '&#10003;' : ''}</div>
+      ${p.cat ? '<span class="card-tag">'+p.cat+'</span>' : ''}
+      <h3>${p.name}</h3>
+      <div class="card-specs">${specLines.join(' &middot; ')}${specLines.length ? '<br>' : ''}${p.desc}</div>
+      <div class="card-price">${p.price > 0 ? '$'+p.price.toFixed(2) : 'Included'}</div>
+      ${p.perUnit ? '<div style="font-size:11px;color:var(--text2);margin-top:4px">Price per unit</div>' : ''}
+      ${p.vtol ? '<div style="font-size:11px;color:var(--purple);margin-top:4px">VTOL conversion available</div>' : ''}
+      ${extra}
+    </div>`;
+}
+
+function renderGrid(gridId, parts, cat) {
+  document.getElementById(gridId).innerHTML = parts.map(p => cardHTML(p, cat)).join('');
+}
+
+/* ── PICK / SELECT ──────────────────────────────────────────────────────── */
+window.pick = function(cat, id) {
+  const list = Object.values(PARTS).flat();
+  const part = list.find(p => p.id === id);
+  if (!part || part._disabled) return;
+
+  // Toggle: if already selected, deselect
+  if (selections[cat]?.id === id) {
+    delete selections[cat];
+  } else {
+    selections[cat] = { ...part, _cat: cat };
+  }
+
+  // Re-render current stage to update selection visuals
+  renderCurrentStage();
+  updateTotal();
+};
+
+/* ── COMPATIBILITY FILTERS ──────────────────────────────────────────────── */
+function getAirframeType() {
+  if (selections.fw) return 'fw';
+  if (selections.mr) return 'mr';
+  return null;
+}
+function getAirframeCompat() {
+  return selections.fw?.compat || selections.mr?.compat || null;
+}
+function motorCount() {
+  if (selections.fw) return 1; // pusher
+  return selections.mr?.motors || 4;
+}
+function isVTOL() {
+  return selections.fw?.vtol && selections.vtol?.id === 'vtol-kit';
+}
+
+function filterMotors() {
+  const af = getAirframeType();
+  const compat = getAirframeCompat();
+  if (!af) return PARTS.motors;
+
+  return PARTS.motors.map(m => {
+    let match = false;
+    if (af === 'fw') {
+      match = m.forSize.some(s => s.startsWith('fw'));
+      // size-match
+      if (compat === 'micro')  match = m.forSize.includes('fw-micro');
+      if (compat === 'small')  match = m.forSize.includes('fw-small') || m.forSize.includes('fw-micro');
+      if (compat === 'medium') match = m.forSize.includes('fw-medium');
+      if (compat === 'large')  match = m.forSize.includes('fw-large') || m.forSize.includes('fw-medium');
+    } else {
+      match = m.forSize.includes(compat);
+    }
+    return { ...m, _disabled: !match };
+  });
+}
+
+function filterFC() {
+  const af = getAirframeType();
+  if (!af) return PARTS.fc;
+  return PARTS.fc.map(f => {
+    const ok = f.forType === 'both' || f.forType === af;
+    return { ...f, _disabled: !ok };
+  });
+}
+
+function filterESC() {
+  const af = getAirframeType();
+  if (!af) return PARTS.esc;
+  return PARTS.esc.map(e => {
+    const ok = e.forType === 'both' || e.forType === af;
+    return { ...e, _disabled: !ok };
+  });
+}
+
+/* ── RENDER STAGES ──────────────────────────────────────────────────────── */
+function renderCurrentStage() {
+  if (currentStage === 0) {
+    renderGrid('fwGrid', PARTS.fw, 'fw');
+    renderGrid('mrGrid', PARTS.mr, 'mr');
+  }
+  if (currentStage === 1) {
+    renderGrid('fcGrid', filterFC(), 'fc');
+    renderGrid('escGrid', filterESC(), 'esc');
+    renderGrid('motorGrid', filterMotors(), 'motor');
+    renderGrid('gpsGrid', PARTS.gps, 'gps');
+    renderGrid('rxGrid', PARTS.rx, 'rx');
+    // Show servos only for fixed-wing
+    const showServo = getAirframeType() === 'fw';
+    document.getElementById('servoLabel').style.display = showServo ? '' : 'none';
+    if (showServo) renderGrid('servoGrid', PARTS.servos, 'servo');
+    else document.getElementById('servoGrid').innerHTML = '';
+  }
+  if (currentStage === 2) {
+    renderGrid('fpvGrid', PARTS.fpv, 'fpv');
+    renderGrid('gimbalGrid', PARTS.gimbal, 'gimbal');
+  }
+  if (currentStage === 3) {
+    renderGrid('battGrid', PARTS.batt, 'batt');
+    renderGrid('cargoGrid', PARTS.cargo, 'cargo');
+    // Show VTOL kit if fixed-wing supports it
+    const showVtol = selections.fw?.vtol;
+    document.getElementById('vtolLabel').style.display = showVtol ? '' : 'none';
+    if (showVtol) renderGrid('vtolGrid', PARTS.vtol, 'vtol');
+    else document.getElementById('vtolGrid').innerHTML = '';
+  }
+  if (currentStage === 4) {
+    renderSummary();
+  }
+}
+
+/* ── SUMMARY ────────────────────────────────────────────────────────────── */
+function renderSummary() {
+  const body = document.getElementById('summaryBody');
+  let rows = '';
+  let total = 0;
+  const cats = ['fw','mr','fc','esc','motor','gps','rx','servo','fpv','gimbal','batt','cargo','vtol'];
+  const catLabels = {
+    fw:'Airframe (Fixed Wing)', mr:'Airframe (Multirotor)',
+    fc:'Flight Controller', esc:'ESC', motor:'Motor(s)',
+    gps:'GPS', rx:'Receiver', servo:'Servos',
+    fpv:'FPV System', gimbal:'Gimbal',
+    batt:'Battery', cargo:'Cargo System', vtol:'VTOL Kit'
+  };
+  cats.forEach(c => {
+    if (!selections[c] || selections[c].price === undefined) return;
+    let qty = 1;
+    if (c === 'motor') qty = motorCount();
+    if (c === 'esc' && selections[c].perUnit) qty = motorCount();
+    // VTOL adds 4 extra motors worth of ESCs? No — VTOL kit is self-contained.
+    const line = selections[c].price * qty;
+    total += line;
+    rows += `<tr>
+      <td>${catLabels[c]||c}</td>
+      <td>${selections[c].name}</td>
+      <td style="font-family:var(--mono)">${qty}</td>
+      <td style="font-family:var(--mono)">$${line.toFixed(2)}</td>
+    </tr>`;
+  });
+  // Assembly fee
+  const assembly = 149.99;
+  total += assembly;
+  rows += `<tr>
+    <td>Assembly &amp; Testing</td>
+    <td>Professional assembly, firmware flash, test flight</td>
+    <td style="font-family:var(--mono)">1</td>
+    <td style="font-family:var(--mono)">$${assembly.toFixed(2)}</td>
+  </tr>`;
+  rows += `<tr class="total-row"><td colspan="3">ESTIMATED TOTAL</td><td>$${total.toFixed(2)}</td></tr>`;
+  body.innerHTML = rows;
+}
+
+/* ── TOTAL CALCULATOR ───────────────────────────────────────────────────── */
+function updateTotal() {
+  let total = 0;
+  const cats = ['fw','mr','fc','esc','motor','gps','rx','servo','fpv','gimbal','batt','cargo','vtol'];
+  cats.forEach(c => {
+    if (!selections[c]) return;
+    let qty = 1;
+    if (c === 'motor') qty = motorCount();
+    if (c === 'esc' && selections[c].perUnit) qty = motorCount();
+    total += (selections[c].price || 0) * qty;
+  });
+  total += 149.99; // assembly
+  document.getElementById('runTotal').textContent = total.toFixed(2);
+}
+
+/* ── NAVIGATION ─────────────────────────────────────────────────────────── */
+window.goStage = function(n) {
+  // Only allow jumping to completed or current+1 stages
+  if (n > currentStage + 1) return;
+  setStage(n);
+};
+
+window.nextStage = function() {
+  if (currentStage < 4) setStage(currentStage + 1);
+};
+window.prevStage = function() {
+  if (currentStage > 0) setStage(currentStage - 1);
+};
+
+function setStage(n) {
+  currentStage = n;
+  // Update panels
+  document.querySelectorAll('.build-stage').forEach((el,i) => {
+    el.classList.toggle('active', i === n);
+  });
+  // Update progress dots
+  document.querySelectorAll('.build-step').forEach((el,i) => {
+    el.classList.remove('active','done');
+    if (i < n) el.classList.add('done');
+    if (i === n) el.classList.add('active');
+  });
+  // Buttons
+  document.getElementById('btnPrev').style.display = n > 0 ? '' : 'none';
+  document.getElementById('btnNext').style.display = n < 4 ? '' : 'none';
+  document.getElementById('btnOrder').style.display = n === 4 ? '' : 'none';
+  if (n < 4) document.getElementById('btnNext').innerHTML = nextLabels[n] + ' &rarr;';
+  renderCurrentStage();
+  updateTotal();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ── AIRFRAME MUTUAL EXCLUSION ──────────────────────────────────────────── */
+// If user picks a fixed-wing, clear multirotor and vice versa
+const origPick = window.pick;
+window.pick = function(cat, id) {
+  if (cat === 'fw' && selections.mr) delete selections.mr;
+  if (cat === 'mr' && selections.fw) delete selections.fw;
+  // If switching airframe type, clear electronics that won't be compatible
+  if (cat === 'fw' || cat === 'mr') {
+    delete selections.fc;
+    delete selections.esc;
+    delete selections.motor;
+    delete selections.servo;
+  }
+  origPick(cat, id);
+};
+
+/* ── SEND ORDER ─────────────────────────────────────────────────────────── */
+window.sendOrder = function() {
+  const name  = document.getElementById('custName').value.trim();
+  const email = document.getElementById('custEmail').value.trim();
+  const notes = document.getElementById('custNotes').value.trim();
+
+  if (!name || !email) {
+    OW.showToast('Please enter your name and email.');
+    return;
+  }
+
+  // Build order text
+  let lines = [];
+  lines.push('=== ORBITWORKS CUSTOM DRONE BUILD ORDER ===');
+  lines.push('Date: ' + new Date().toLocaleDateString());
+  lines.push('Customer: ' + name);
+  lines.push('Email: ' + email);
+  if (notes) lines.push('Notes: ' + notes);
+  lines.push('');
+  lines.push('--- CONFIGURATION ---');
+
+  let total = 0;
+  const cats = ['fw','mr','fc','esc','motor','gps','rx','servo','fpv','gimbal','batt','cargo','vtol'];
+  const catLabels = {
+    fw:'Airframe (Fixed Wing)', mr:'Airframe (Multirotor)',
+    fc:'Flight Controller', esc:'ESC', motor:'Motor(s)',
+    gps:'GPS', rx:'Receiver', servo:'Servos',
+    fpv:'FPV System', gimbal:'Gimbal',
+    batt:'Battery', cargo:'Cargo System', vtol:'VTOL Kit'
+  };
+  cats.forEach(c => {
+    if (!selections[c]) return;
+    let qty = 1;
+    if (c === 'motor') qty = motorCount();
+    if (c === 'esc' && selections[c].perUnit) qty = motorCount();
+    const line = selections[c].price * qty;
+    total += line;
+    lines.push(`${catLabels[c]}: ${selections[c].name} x${qty} — $${line.toFixed(2)}`);
+  });
+  const assembly = 149.99;
+  total += assembly;
+  lines.push(`Assembly & Testing: $${assembly.toFixed(2)}`);
+  lines.push('');
+  lines.push('ESTIMATED TOTAL: $' + total.toFixed(2));
+
+  const body = lines.join('\n');
+  const subject = encodeURIComponent('Custom Drone Build Order — ' + name);
+  const mailto = 'mailto:orders@orbitworksaerospace.com?subject=' + subject + '&body=' + encodeURIComponent(body);
+
+  window.location.href = mailto;
+
+  // Show confirmation
+  document.getElementById('stageContainer').style.display = 'none';
+  document.getElementById('buildBar').style.display = 'none';
+  document.getElementById('progressBar').style.display = 'none';
+  document.getElementById('orderConfirm').style.display = '';
+};
+
+/* ── INIT ───────────────────────────────────────────────────────────────── */
+renderCurrentStage();
+updateTotal();
+
+})();
+</script>
+</body>
+</html>
