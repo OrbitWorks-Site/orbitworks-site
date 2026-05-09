@@ -1,4 +1,4 @@
-/* ── OrbitWorks Aerospace · Global Styles v2.4 ────────────────────────────── */
+/* ── OrbitWorks Aerospace · Global Styles v3.0 ────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
 :root {
@@ -95,6 +95,16 @@ img { max-width: 100%; display: block; }
 }
 .nav-links a:hover { color: var(--text); background: var(--bg3); opacity: 1; }
 .nav-links a.active { color: var(--accent); }
+
+.nav-hex {
+  background: var(--bg3) !important;
+  border: 1px solid var(--border2) !important;
+  color: var(--text) !important;
+  font-weight: 600 !important;
+  padding: 7px 16px !important;
+}
+.nav-hex:hover { background: var(--bg4) !important; color: var(--accent) !important; opacity: 1 !important; }
+.nav-hex.active { background: var(--adim) !important; color: var(--accent) !important; border-color: var(--accent2) !important; }
 
 .nav-cta {
   margin-left: 12px;
@@ -845,6 +855,48 @@ img.board-avatar {
 .shop-theme .merch-img svg,
 .shop-theme .hex-icon svg { stroke: var(--accent); }
 
+/* ── CUSTOM BUILD HIGHLIGHT ──────────────────────────────────────────────── */
+.custom-build-highlight {
+  border: 2px solid var(--accent) !important;
+  background: linear-gradient(135deg, rgba(184,148,46,0.1), rgba(255,255,255,0.9)) !important;
+  box-shadow: 0 4px 24px rgba(184,148,46,0.15) !important;
+  position: relative;
+}
+.custom-build-highlight::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--orange, #c87832), var(--accent));
+}
+
+/* ── PRICING TABLE ───────────────────────────────────────────────────────── */
+.pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 16px 0;
+}
+.pricing-table th {
+  background: var(--bg3);
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text2);
+  border-bottom: 2px solid var(--border2);
+}
+.pricing-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text2);
+}
+.pricing-table td:last-child {
+  font-family: var(--mono);
+  color: var(--accent);
+  font-weight: 700;
+}
+
 /* ── RESPONSIVE ───────────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
@@ -852,7 +904,7 @@ img.board-avatar {
   .nav-links { display: none; flex-direction: column; position: fixed; top: 60px; left: 0; right: 0; background: var(--bg2); border-bottom: 1px solid var(--border); padding: 16px; gap: 4px; }
   .nav-links.open { display: flex; }
   .nav-links a { padding: 10px 14px; }
-  .nav-cta, .nav-defense { margin-left: 0; }
+  .nav-hex, .nav-cta, .nav-defense { margin-left: 0; }
   .hamburger { display: flex; }
   .hero-stats { gap: 20px; }
   .defense-hero { padding: 28px; }

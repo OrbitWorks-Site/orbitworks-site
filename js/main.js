@@ -2,7 +2,7 @@
 
 // ── SHARED DATA STORE ───────────────────────────────────────────────────────
 const OW = {
-  version: '2.3.0',
+  version: '3.0.0',
 
   // ── CART ──────────────────────────────────────────────────────────────────
   cart: JSON.parse(localStorage.getItem('ow_cart') || '[]'),
@@ -277,10 +277,9 @@ function renderNav() {
       ORBITWORKS AEROSPACE
     </a>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="shop.html">Shop</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="index.html" class="btn btn-sm nav-hex">Home</a></li>
+      <li><a href="about.html" class="btn btn-sm nav-hex">About</a></li>
+      <li><a href="shop.html" class="btn btn-sm nav-hex">Shop</a></li>
       <li><a href="contact.html" class="btn btn-sm nav-cta">Get Quote</a></li>
       <li><a href="defense.html" class="btn btn-sm nav-defense">DEFENSE</a></li>
     </ul>
@@ -323,7 +322,7 @@ function renderFooter() {
             <li><a href="shop.html">Shop</a></li>
             <li><a href="shop.html#drones">Commercial Drones</a></li>
             <li><a href="shop.html#services">Aerial Services</a></li>
-            <li><a href="shop.html#training">Pilot Training</a></li>
+            <li><a href="shop.html#education">Education Services</a></li>
             <li><a href="shop.html#merch">Merch</a></li>
           </ul>
         </div>
@@ -337,7 +336,7 @@ function renderFooter() {
       </div>
       <div class="footer-bottom">
         <p>&copy; ${new Date().getFullYear()} OrbitWorks Aerospace Inc. &middot; Binghamton, NY &middot; All rights reserved.</p>
-        <span class="mono">v2.3.0 &middot; Built in-house</span>
+        <span class="mono">v3.0.0 &middot; Built in-house</span>
       </div>
     </div>
   </footer>
