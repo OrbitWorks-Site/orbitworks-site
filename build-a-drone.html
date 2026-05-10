@@ -36,6 +36,7 @@
     .option-card .card-qty{display:flex;align-items:center;gap:6px;margin-top:8px}
     .option-card .card-qty button{width:26px;height:26px;border-radius:6px;border:1px solid var(--border2);background:var(--bg3);color:var(--text);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center}
     .option-card .card-qty button:hover{border-color:var(--accent)}
+    .option-card .card-qty button.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
     .option-card .card-qty span{font-family:var(--mono);font-size:13px;min-width:20px;text-align:center}
     .cat-label{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--text2);margin:20px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--border)}
     .cat-label .sel-mode{font-size:10px;color:var(--purple);text-transform:none;letter-spacing:0;margin-left:8px}
@@ -315,6 +316,7 @@ let stage = 0;
 const STAGES = 6;
 const sel = {};        // single selections: sel.fc = item
 const multi = {};      // multi selections:  multi.cam = [{item,qty},...]
+let battQty = 1;       // battery quantity (1, 2, 3, or 5)
 const nextLabels = ['Next: Electronics','Next: FPV & Camera','Next: Power & Payload','Next: Accessories','Next: Review',''];
 
 /* ── HELPERS ────────────────────────────────────────────────────────────── */
@@ -351,6 +353,7 @@ function card(p, catKey){
     ${p.vtol?'<div style="font-size:11px;color:var(--purple);margin-top:4px">VTOL conversion available</div>':''}
     ${p.perMotor?'<div style="font-size:11px;color:var(--text2);margin-top:3px">Price per unit &middot; auto-qty by airframe</div>':''}
     ${mode==='multi'&&isSel&&p.price>0?`<div class="card-qty"><button onclick="event.stopPropagation();adjQty('${catKey}','${p.id}',-1)">−</button><span>${qty}</span><button onclick="event.stopPropagation();adjQty('${catKey}','${p.id}',1)">+</button></div>`:''}
+    ${catKey==='batt'&&isSel&&p.price>0?`<div class="card-qty" style="margin-top:8px;flex-wrap:wrap;gap:4px"><span style="font-size:11px;color:var(--text2);width:100%;text-align:center;margin-bottom:2px">Qty:</span><button onclick="event.stopPropagation();setBattQty(1)" class="${battQty===1?'active':''}">1x</button><button onclick="event.stopPropagation();setBattQty(2)" class="${battQty===2?'active':''}">2x</button><button onclick="event.stopPropagation();setBattQty(3)" class="${battQty===3?'active':''}">3x</button><button onclick="event.stopPropagation();setBattQty(5)" class="${battQty===5?'active':''}">5x</button></div>`:''}
   </div>`;
 }
 
@@ -370,7 +373,7 @@ window.pick = function(catKey, id){
     if(catKey==='mr'&&sel.fw){ delete sel.fw; delete sel.fc; delete sel.esc; delete sel.motor; delete sel.servo; }
     if((catKey==='fw'||catKey==='mr')&&sel[catKey]?.id!==id){ delete sel.fc; delete sel.esc; delete sel.motor; delete sel.servo; }
     sel[catKey] = sel[catKey]?.id===id ? undefined : item;
-    if(!sel[catKey]) delete sel[catKey];
+    if(!sel[catKey]){ delete sel[catKey]; if(catKey==='batt') battQty=1; }
   } else {
     // Multi-select toggle
     if(!multi[catKey]) multi[catKey]=[];
@@ -391,6 +394,13 @@ window.adjQty = function(catKey, id, delta){
   const it = arr.find(x=>x.id===id);
   if(!it) return;
   it.qty = Math.max(1, Math.min(20, it.qty+delta));
+  renderStage();
+  total();
+};
+
+/* ── BATTERY QTY ───────────────────────────────────────────────────────── */
+window.setBattQty = function(n){
+  battQty = n;
   renderStage();
   total();
 };
@@ -464,6 +474,7 @@ function partsSubtotal(){
     let q=1;
     if(k==='motor') q=motorN();
     if(k==='esc'&&sel[k].perMotor) q=motorN();
+    if(k==='batt') q=battQty;
     p+=sel[k].price*q;
   });
   if(sel.motor) p+=sel.motor.price*motorN();
@@ -498,6 +509,7 @@ function renderSummary(){
     let q=1;
     if(k==='motor') q=motorN();
     if(k==='esc'&&sel[k].perMotor) q=motorN();
+    if(k==='batt') q=battQty;
     const line=sel[k].price*q;
     parts+=line;
     rows+=`<tr><td>${label}</td><td>${sel[k].name}</td><td style="font-family:var(--mono)">${q}</td><td style="font-family:var(--mono)">$${line.toFixed(2)}</td></tr>`;
@@ -559,7 +571,7 @@ window.sendOrder=function(){
   const singles=[['fw','Airframe (FW)'],['mr','Airframe (MR)'],['fc','FC'],['esc','ESC'],['motor','Motors'],['gps','GPS'],['rx','Receiver'],['servo','Servos'],['fpv','FPV'],['batt','Battery'],['vtol','VTOL']];
   singles.forEach(([k,label])=>{
     if(!sel[k]) return;
-    let q=1; if(k==='motor')q=motorN(); if(k==='esc'&&sel[k].perMotor)q=motorN();
+    let q=1; if(k==='motor')q=motorN(); if(k==='esc'&&sel[k].perMotor)q=motorN(); if(k==='batt')q=battQty;
     const line=sel[k].price*q; parts+=line;
     lines.push(`${label}: ${sel[k].name} x${q} — $${line.toFixed(2)}`);
   });

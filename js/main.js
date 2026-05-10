@@ -451,7 +451,7 @@ function renderNav() {
       <li><a href="index.html" class="btn btn-sm nav-hex">Home</a></li>
       <li><a href="about.html" class="btn btn-sm nav-hex">About</a></li>
       <li><a href="shop.html" class="btn btn-sm nav-hex">Shop</a></li>
-      <li><a href="contact.html" class="btn btn-sm nav-cta">Get Quote</a></li>
+      <li><a href="contact.html" class="btn btn-sm nav-cta">Contact</a></li>
       <li><a href="defense.html" class="btn btn-sm nav-defense">DEFENSE</a></li>
     </ul>
     <div class="hamburger" id="hamburger">
