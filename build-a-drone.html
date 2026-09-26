@@ -24,9 +24,9 @@
     .stage-header h2{font-size:22px;margin-bottom:4px}
     .stage-header p{color:var(--text2);font-size:14px}
     .option-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:28px}
-    .option-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px;cursor:pointer;transition:all .25s;position:relative}
+    .option-card{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:18px;cursor:pointer;transition:all .25s;position:relative}
     .option-card:hover{border-color:var(--border2);transform:translateY(-2px)}
-    .option-card.selected{border-color:var(--accent);background:rgba(59,130,246,.06);box-shadow:0 0 0 1px var(--accent)}
+    .option-card.selected{border-color:var(--accent);background:var(--adim);box-shadow:0 0 0 1px var(--accent)}
     .option-card.disabled{opacity:.3;pointer-events:none}
     .option-card .card-tag{display:inline-block;font-family:var(--mono);font-size:10px;background:var(--adim);color:var(--accent);padding:2px 8px;border-radius:4px;margin-bottom:6px;text-transform:uppercase}
     .option-card .card-tag.multi{background:rgba(167,139,250,.12);color:var(--purple)}
@@ -42,7 +42,7 @@
     .option-card .card-qty span{font-family:var(--mono);font-size:13px;min-width:20px;text-align:center}
     .cat-label{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--text2);margin:20px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--border)}
     .cat-label .sel-mode{font-size:10px;color:var(--purple);text-transform:none;letter-spacing:0;margin-left:8px}
-    .build-bar{position:sticky;bottom:0;left:0;right:0;z-index:50;background:rgba(10,12,16,.95);backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:16px 0}
+    .build-bar{position:sticky;bottom:0;left:0;right:0;z-index:50;background:rgba(14,20,32,.96);backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:16px 0}
     .build-bar-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
     .build-bar .running-total{font-family:var(--mono);font-size:20px;color:var(--success)}
     .build-bar .running-total small{font-size:12px;color:var(--text2);display:block}
@@ -51,7 +51,7 @@
     .summary-table th,.summary-table td{text-align:left;padding:10px 12px;font-size:13px;border-bottom:1px solid var(--border)}
     .summary-table th{font-family:var(--mono);font-size:11px;text-transform:uppercase;color:var(--text2);letter-spacing:.5px}
     .summary-table .total-row td{font-family:var(--mono);font-size:16px;color:var(--success);border-top:2px solid var(--accent);font-weight:700}
-    .order-confirm{background:var(--bg2);border:1px solid var(--success);border-radius:12px;padding:40px;text-align:center;max-width:600px;margin:40px auto}
+    .order-confirm{background:var(--bg2);border:1px solid var(--success);border-radius:4px;padding:40px;text-align:center;max-width:600px;margin:40px auto}
     .order-confirm h2{color:var(--success);margin-bottom:12px}
     .order-confirm p{color:var(--text2);font-size:14px;line-height:1.7}
     @media(max-width:640px){.option-grid{grid-template-columns:1fr}.build-progress{overflow-x:auto;padding-bottom:8px}.build-step-label{font-size:9px}}
@@ -71,9 +71,9 @@
 <script>document.write(renderNav())</script>
 <canvas class="shop-hex-canvas" id="shopHexCanvas"></canvas>
 <div class="page-wrap">
-  <section style="padding:60px 0 24px">
+  <section class="page-intro" style="padding-bottom:24px">
     <div class="build-wrap">
-      <div class="eyebrow">OrbitWorks Custom Lab · Binghamton, NY</div>
+      <div class="eyebrow">OrbitWorks Custom Lab · Binghamton, NY · Spirit of 1776</div>
       <h1>Build Your Drone</h1>
       <p class="lead" style="margin-top:8px;max-width:660px">Pick your airframe. Choose your electronics. Add accessories. We assemble, test, and ship from Binghamton — US-sourced components for hobby, FPV, and pro builds. Your mission, your liberty to configure.</p>
     </div>
