@@ -449,10 +449,11 @@ function renderNav() {
     </a>
     <ul class="nav-links">
       <li><a href="index.html" class="btn btn-sm nav-hex">Home</a></li>
-      <li><a href="about.html" class="btn btn-sm nav-hex">About</a></li>
       <li><a href="shop.html" class="btn btn-sm nav-hex">Shop</a></li>
+      <li><a href="build-a-drone.html" class="btn btn-sm nav-hex">Build</a></li>
+      <li><a href="about.html" class="btn btn-sm nav-hex">About</a></li>
       <li><a href="contact.html" class="btn btn-sm nav-cta">Contact</a></li>
-      <li><a href="defense.html" class="btn btn-sm nav-defense">DEFENSE</a></li>
+      <li><a href="defense.html" class="btn btn-sm nav-defense">Defense</a></li>
     </ul>
     <div class="hamburger" id="hamburger">
       <span></span><span></span><span></span>
@@ -472,7 +473,7 @@ function renderFooter() {
             </div>
             ORBITWORKS AEROSPACE
           </a>
-          <p>Advanced aerospace defense and drone technology. Protecting the skies for the United States and our allies. Binghamton, NY.</p>
+          <p>US-built drones for photography, FPV, mapping, education, and commercial ops. Designed and assembled in Binghamton, NY.</p>
         </div>
         <div class="footer-col">
           <h4>Company</h4>
@@ -487,10 +488,12 @@ function renderFooter() {
           <h4>Products & Services</h4>
           <ul>
             <li><a href="shop.html">Shop</a></li>
-            <li><a href="shop.html#drones">Commercial Drones</a></li>
-            <li><a href="shop.html#services">Aerial Services</a></li>
-            <li><a href="shop.html#education">Education Services</a></li>
+            <li><a href="build-a-drone.html">Build Your Drone</a></li>
+            <li><a href="shop.html#drones">Drone Platforms</a></li>
+            <li><a href="index.html#services">Aerial Services</a></li>
+            <li><a href="shop.html#education">Education</a></li>
             <li><a href="shop.html#merch">Merch</a></li>
+            <li><a href="defense.html">Defense Portal</a></li>
           </ul>
         </div>
         <div class="footer-col">
