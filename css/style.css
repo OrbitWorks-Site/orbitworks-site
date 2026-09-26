@@ -2,29 +2,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
 :root {
-  --bg:      #0a0c10;
-  --bg2:     #10131a;
-  --bg3:     #161b26;
-  --bg4:     #1e2535;
-  --accent:  #4f8ef7;
-  --accent2: #3b82f6;
-  --adim:    rgba(79,142,247,0.14);
-  --adim2:   rgba(79,142,247,0.07);
-  --contact: #38bdf8;
-  --contact2:#0ea5e9;
-  --cdim:    rgba(56,189,248,0.14);
-  --border:  rgba(255,255,255,0.07);
-  --border2: rgba(255,255,255,0.13);
-  --text:    #e8edf5;
-  --text2:   #9aa6b8;
-  --text3:   #556274;
-  --success: #22c55e;
-  --warning: #f59e0b;
-  --danger:  #ef4444;
-  --purple:  #a78bfa;
-  --orange:  #fb923c;
-  --coral:   #fb7185;
-  --green:   #4ade80;
+  /* Deeper navy · Americana civilian palette */
+  --bg:      #070b14;
+  --bg2:     #0c1220;
+  --bg3:     #121a2c;
+  --bg4:     #1a2438;
+  --accent:  #5b8fd4;          /* steel blue, not neon */
+  --accent2: #3d6eb5;
+  --adim:    rgba(91,143,212,0.14);
+  --adim2:   rgba(91,143,212,0.07);
+  --cream:   #e8dcc8;          /* parchment accent */
+  --cream2:  #c4b49a;
+  --liberty: #b83a3a;          /* tasteful red, not neon */
+  --liberty-dim: rgba(184,58,58,0.14);
+  --contact: #6ba3d9;
+  --contact2:#4a8bc4;
+  --cdim:    rgba(107,163,217,0.14);
+  --border:  rgba(232,220,200,0.08);
+  --border2: rgba(232,220,200,0.14);
+  --text:    #eef1f6;
+  --text2:   #9aabbf;
+  --text3:   #5a6a7e;
+  --success: #3d9b6a;
+  --warning: #c4923a;
+  --danger:  #c44a4a;
+  --purple:  #9b8bc9;
+  --orange:  #d4894a;
+  --coral:   #c96b7a;
+  --green:   #4a9e6e;
   --mono:    'Space Mono', monospace;
   --sans:    'DM Sans', sans-serif;
 }
@@ -54,7 +59,7 @@ img { max-width: 100%; display: block; }
 /* ── NAV ──────────────────────────────────────────────────────────────────── */
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(10,12,16,0.92);
+  background: rgba(7,11,20,0.94);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   height: 60px;
@@ -179,10 +184,10 @@ section.tight { padding: 48px 0; }
 .eyebrow {
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: 0.15em;
-  color: var(--accent);
+  letter-spacing: 0.16em;
+  color: var(--cream2);
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; color: var(--text); }
@@ -217,10 +222,15 @@ h4 { font-size: 1rem; }
 
 .btn-primary {
   background: var(--adim);
-  color: var(--accent);
-  border-color: rgba(59,130,246,0.25);
+  color: var(--cream);
+  border-color: rgba(232,220,200,0.22);
+  letter-spacing: 0.02em;
 }
-.btn-primary:hover { background: rgba(59,130,246,0.2); }
+.btn-primary:hover {
+  background: rgba(91,143,212,0.22);
+  border-color: rgba(232,220,200,0.35);
+  color: #fff;
+}
 
 .btn-contact {
   background: var(--cdim);
@@ -277,8 +287,8 @@ h4 { font-size: 1rem; }
 .badge-purple { background: rgba(167,139,250,0.15); color: var(--purple); }
 
 /* ── SECTION HEADER ───────────────────────────────────────────────────────── */
-.section-header { text-align: center; margin-bottom: 44px; }
-.section-header h2 { margin-bottom: 12px; }
+.section-header { text-align: center; margin-bottom: 48px; }
+.section-header h2 { margin-bottom: 14px; letter-spacing: -0.015em; }
 .section-header p { color: var(--text2); max-width: 580px; margin: 0 auto; font-size: 1.05rem; line-height: 1.65; }
 
 /* ── HERO ─────────────────────────────────────────────────────────────────── */
@@ -293,9 +303,19 @@ h4 { font-size: 1rem; }
 .hero-bg {
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 55% 35%, rgba(79,142,247,0.16) 0%, transparent 68%),
-    radial-gradient(ellipse 55% 45% at 15% 85%, rgba(56,189,248,0.08) 0%, transparent 70%),
-    linear-gradient(180deg, rgba(10,12,16,0.15) 0%, transparent 40%, rgba(10,12,16,0.35) 100%);
+    /* soft starfield dots via radial layers */
+    radial-gradient(ellipse 70% 55% at 60% 30%, rgba(91,143,212,0.18) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 35% at 12% 78%, rgba(184,58,58,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 88% 70%, rgba(232,220,200,0.04) 0%, transparent 65%),
+    /* subtle horizontal stripe wash (tasteful, not flag spam) */
+    repeating-linear-gradient(
+      180deg,
+      transparent 0px,
+      transparent 18px,
+      rgba(232,220,200,0.018) 18px,
+      rgba(232,220,200,0.018) 19px
+    ),
+    linear-gradient(180deg, rgba(7,11,20,0.2) 0%, transparent 42%, rgba(7,11,20,0.45) 100%);
   pointer-events: none;
 }
 
@@ -307,35 +327,42 @@ h4 { font-size: 1rem; }
 .hero-content { position: relative; z-index: 2; }
 
 .hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--adim);
-  border: 1px solid rgba(59,130,246,0.2);
-  border-radius: 6px;
-  padding: 6px 20px;
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(232,220,200,0.06);
+  border: 1px solid rgba(232,220,200,0.18);
+  border-left: 3px solid var(--liberty);
+  border-radius: 4px;
+  padding: 8px 18px 8px 16px;
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--accent);
-  letter-spacing: 0.1em;
-  margin-bottom: 24px;
+  color: var(--cream);
+  letter-spacing: 0.12em;
+  margin-bottom: 28px;
+}
+.hero-badge::before {
+  content: '★';
+  font-size: 9px;
+  color: var(--liberty);
+  opacity: 0.9;
 }
 
-.hero h1 { margin-bottom: 20px; max-width: 16ch; line-height: 1.12; }
-.hero h1 span { color: var(--accent); }
-.hero .lead { color: var(--text2); font-size: 1.125rem; line-height: 1.7; max-width: 38rem; }
+.hero h1 { margin-bottom: 22px; max-width: 18ch; line-height: 1.14; letter-spacing: -0.02em; }
+.hero h1 span { color: var(--cream); }
+.hero .lead { color: var(--text2); font-size: 1.125rem; line-height: 1.75; max-width: 40rem; letter-spacing: 0.01em; }
 
-.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 32px; }
 
 .hero-stats {
-  display: flex; gap: 36px; flex-wrap: wrap;
-  margin-top: 48px;
-  padding-top: 28px;
+  display: flex; gap: 40px; flex-wrap: wrap;
+  margin-top: 52px;
+  padding-top: 30px;
   border-top: 1px solid var(--border);
 }
 .hero-stat-val {
   font-family: var(--mono);
   font-size: 2rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--cream);
 }
 .hero-stat-label { font-size: 12px; color: var(--text2); margin-top: 2px; }
 
@@ -343,8 +370,8 @@ h4 { font-size: 1rem; }
 .hex-icon {
   width: 48px; height: 48px;
   border-radius: 10px;
-  background: var(--adim);
-  border: 1px solid rgba(59,130,246,0.15);
+  background: rgba(232,220,200,0.06);
+  border: 1px solid rgba(232,220,200,0.14);
   display: flex; align-items: center; justify-content: center;
   font-size: 24px;
   margin-bottom: 16px;
@@ -384,12 +411,16 @@ h4 { font-size: 1rem; }
 .product-card {
   background: var(--bg2);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 12px;
   overflow: hidden;
-  transition: all 0.2s;
+  transition: all 0.22s ease;
   display: flex; flex-direction: column;
 }
-.product-card:hover { border-color: var(--border2); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+.product-card:hover {
+  border-color: rgba(232,220,200,0.22);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 44px rgba(0,0,0,0.38), 0 0 0 1px rgba(184,58,58,0.08);
+}
 
 .product-img {
   height: 200px;
@@ -408,13 +439,13 @@ h4 { font-size: 1rem; }
 .product-img::before {
   content: '';
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse at center, rgba(59,130,246,0.08), transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(232,220,200,0.06), transparent 70%);
 }
 
-.product-body { padding: 18px; flex: 1; display: flex; flex-direction: column; }
-.product-name { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.product-body { padding: 20px 18px 18px; flex: 1; display: flex; flex-direction: column; }
+.product-name { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; letter-spacing: 0.01em; }
 .product-desc { font-size: 12px; color: var(--text2); margin-bottom: 12px; flex: 1; line-height: 1.5; }
-.product-price { font-family: var(--mono); font-size: 18px; color: var(--accent); font-weight: 700; margin-bottom: 12px; }
+.product-price { font-family: var(--mono); font-size: 18px; color: var(--cream); font-weight: 700; margin-bottom: 14px; }
 .product-footer { display: flex; gap: 8px; align-items: center; }
 
 .product-compare {
@@ -1100,4 +1131,51 @@ img.board-avatar {
   .hero-btns { flex-direction: column; }
   .checkout-layout { grid-template-columns: 1fr; }
   .checkout-summary { position: static; }
+}
+
+
+/* ── AMERICANA CIVILIAN ACCENTS ───────────────────────────────────────────── */
+.mission-banner {
+  text-align: center;
+  padding: 48px 28px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, rgba(232,220,200,0.03), transparent 40%),
+    var(--bg3);
+  position: relative;
+}
+.mission-banner::before {
+  content: '';
+  position: absolute; top: 0; left: 12%; right: 12%; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--liberty), var(--cream2), var(--liberty), transparent);
+  opacity: 0.55;
+  border-radius: 2px;
+}
+.badge-liberty {
+  background: var(--liberty-dim);
+  color: #e8a0a0;
+}
+.btn-liberty {
+  background: var(--liberty-dim);
+  color: #e8a0a0;
+  border-color: rgba(184,58,58,0.28);
+}
+.btn-liberty:hover { background: rgba(184,58,58,0.22); opacity: 1; }
+
+/* Subtle star divider for civilian pages */
+.star-divider {
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+  padding: 8px 0 4px; color: var(--cream2); opacity: 0.45;
+  font-size: 10px; letter-spacing: 0.3em;
+}
+.star-divider span { color: var(--liberty); opacity: 0.8; }
+
+/* Cream text utility */
+.text-cream { color: var(--cream); }
+.text-liberty { color: var(--liberty); }
+
+/* Card left liberty accent for featured civilian platforms */
+.product-card.americana-edge {
+  border-left: 2px solid rgba(184,58,58,0.35);
 }

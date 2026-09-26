@@ -473,7 +473,7 @@ function renderFooter() {
             </div>
             ORBITWORKS AEROSPACE
           </a>
-          <p>US-built drones for photography, FPV, mapping, education, and commercial ops. Designed and assembled in Binghamton, NY.</p>
+          <p>US-built drones for photography, FPV, mapping, education, and commercial ops. Designed and assembled in Binghamton, NY — American makers, open skies.</p>
         </div>
         <div class="footer-col">
           <h4>Company</h4>
