@@ -3,16 +3,21 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Request Hub Access — OrbitWorks Aerospace</title>
+  <link rel="icon" href="img/favicon.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="OrbitWorks Aerospace">
   <meta property="og:title" content="Request Hub Access — OrbitWorks Aerospace">
   <meta property="og:description" content="Request access to the OrbitWorks Hub portal.">
-  <meta property="og:image" content="https://orbitworksaerospace.com/img/logo.png">
+  <meta property="og:image" content="https://orbitworksaerospace.com/img/og-card.jpg">
   <meta property="og:url" content="https://orbitworksaerospace.com/request-access.html">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:image" content="https://orbitworksaerospace.com/img/logo.png">
+  <meta name="twitter:image" content="https://orbitworksaerospace.com/img/og-card.jpg">
 </head>
 <body>
 <script src="js/main.js"></script>
@@ -75,7 +80,7 @@
         </div>
 
         <div class="card">
-          <h3 style="margin-bottom:4px">Access Request Form</h3>
+          <h2 style="margin-bottom:4px;font-size:1.35rem">Access Request Form</h2>
           <p style="color:var(--text2);font-size:13px;margin-bottom:24px">All fields are required. False information will result in permanent denial.</p>
 
           <div id="formError" style="display:none;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:8px;padding:12px;margin-bottom:16px;color:var(--danger);font-size:13px"></div>
@@ -85,23 +90,23 @@
 
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
             <div>
-              <label class="form-label">First Name *</label>
+              <label class="form-label" for="firstName">First Name *</label>
               <input type="text" id="firstName" class="form-input" placeholder="First name">
             </div>
             <div>
-              <label class="form-label">Last Name *</label>
+              <label class="form-label" for="lastName">Last Name *</label>
               <input type="text" id="lastName" class="form-input" placeholder="Last name">
             </div>
           </div>
 
           <div style="margin-bottom:12px">
-            <label class="form-label">Email Address *</label>
+            <label class="form-label" for="email">Email Address *</label>
             <input type="email" id="email" class="form-input" placeholder="your@email.com">
             <div style="color:var(--text3);font-size:11px;margin-top:4px">Use your official work or organization email</div>
           </div>
 
           <div style="margin-bottom:12px">
-            <label class="form-label">Phone Number *</label>
+            <label class="form-label" for="phone">Phone Number *</label>
             <input type="tel" id="phone" class="form-input" placeholder="(555) 000-0000">
           </div>
 
@@ -109,17 +114,17 @@
           <div style="font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:1px;margin:20px 0 12px;text-transform:uppercase">Organization & Role</div>
 
           <div style="margin-bottom:12px">
-            <label class="form-label">Organization / Company *</label>
+            <label class="form-label" for="company">Organization / Company *</label>
             <input type="text" id="company" class="form-input" placeholder="e.g. Department of Defense, DARPA, Acme Corp">
           </div>
 
           <div style="margin-bottom:12px">
-            <label class="form-label">Job Title / Role *</label>
+            <label class="form-label" for="role">Job Title / Role *</label>
             <input type="text" id="role" class="form-input" placeholder="e.g. Program Manager, Engineer, Contracting Officer">
           </div>
 
           <div style="margin-bottom:12px">
-            <label class="form-label">Relationship to OrbitWorks *</label>
+            <label class="form-label" for="relationship">Relationship to OrbitWorks *</label>
             <select id="relationship" class="form-input" style="background:var(--bg3);color:var(--text)">
               <option value="">Select relationship type...</option>
               <option value="Employee">OrbitWorks Employee</option>
@@ -137,19 +142,19 @@
           <div style="font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:1px;margin:20px 0 12px;text-transform:uppercase">Access Details</div>
 
           <div style="margin-bottom:12px">
-            <label class="form-label">Requested Username *</label>
+            <label class="form-label" for="username">Requested Username *</label>
             <input type="text" id="username" class="form-input" placeholder="e.g. jsmith (no spaces, lowercase)" style="font-family:var(--mono)">
             <div style="color:var(--text3);font-size:11px;margin-top:4px">Lowercase letters, numbers, underscores only</div>
           </div>
 
           <div style="margin-bottom:12px">
-            <label class="form-label">Reason for Access *</label>
+            <label class="form-label" for="reason">Reason for Access *</label>
             <textarea id="reason" class="form-input" rows="4" placeholder="Briefly explain why you need access to OrbitWorks Hub and what you will be using it for..." style="resize:vertical;min-height:100px"></textarea>
           </div>
 
           <!-- Clearance -->
           <div style="margin-bottom:20px">
-            <label class="form-label">Security Clearance (if applicable)</label>
+            <label class="form-label" for="clearance">Security Clearance (if applicable)</label>
             <select id="clearance" class="form-input" style="background:var(--bg3);color:var(--text)">
               <option value="None">None / Not Applicable</option>
               <option value="Public Trust">Public Trust</option>
@@ -161,14 +166,14 @@
 
           <!-- Acknowledgment -->
           <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:20px">
-            <label style="display:flex;gap:12px;align-items:flex-start;cursor:pointer">
+            <label for="ackItar" style="display:flex;gap:12px;align-items:flex-start;cursor:pointer">
               <input type="checkbox" id="ackItar" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;accent-color:var(--accent)">
               <span style="color:var(--text2);font-size:13px;line-height:19px">I acknowledge that OrbitWorks Hub contains ITAR-controlled technical data. I am a US person or hold applicable export authorization. I understand that unauthorized access or disclosure is a federal offense.</span>
             </label>
           </div>
 
           <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:24px">
-            <label style="display:flex;gap:12px;align-items:flex-start;cursor:pointer">
+            <label for="ackAccurate" style="display:flex;gap:12px;align-items:flex-start;cursor:pointer">
               <input type="checkbox" id="ackAccurate" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;accent-color:var(--accent)">
               <span style="color:var(--text2);font-size:13px;line-height:19px">I certify that all information provided in this request is accurate and complete. I understand that providing false information will result in permanent denial of access.</span>
             </label>
