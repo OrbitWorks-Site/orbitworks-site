@@ -35,40 +35,42 @@
         <!-- Form -->
         <div class="parchment-panel" data-anim>
           <h3 style="margin-bottom:24px">Send a Message</h3>
-          <form id="contactForm" onsubmit="submitForm(event)">
+          <form id="contactForm" action="https://formspree.io/f/mbdwprdn" method="POST" onsubmit="submitForm(event)">
             <div class="grid grid-2" style="gap:12px">
               <div class="form-group">
-                <label class="form-label">First Name *</label>
-                <input class="form-input" type="text" placeholder="Jane" required />
+                <label class="form-label" for="contact-first-name">First Name *</label>
+                <input class="form-input" id="contact-first-name" name="first_name" type="text" placeholder="Jane" autocomplete="given-name" required />
               </div>
               <div class="form-group">
-                <label class="form-label">Last Name *</label>
-                <input class="form-input" type="text" placeholder="Smith" required />
+                <label class="form-label" for="contact-last-name">Last Name *</label>
+                <input class="form-input" id="contact-last-name" name="last_name" type="text" placeholder="Smith" autocomplete="family-name" required />
               </div>
             </div>
             <div class="form-group">
-              <label class="form-label">Email Address *</label>
-              <input class="form-input" type="email" placeholder="jane@company.com" required />
+              <label class="form-label" for="contact-email">Email Address *</label>
+              <input class="form-input" id="contact-email" name="email" type="email" placeholder="jane@company.com" autocomplete="email" required />
             </div>
             <div class="form-group">
-              <label class="form-label">Inquiry Type *</label>
-              <select class="form-input" required>
+              <label class="form-label" for="contact-inquiry">Inquiry Type *</label>
+              <select class="form-input" id="contact-inquiry" name="inquiry_type" required>
                 <option value="">Select...</option>
-                <option>Commercial Drone Purchase</option>
-                <option>Aerial Photography / Video</option>
-                <option>Mapping & Survey</option>
-                <option>Inspection Services</option>
-                <option>Pilot Training</option>
-                <option>Custom Drone Build</option>
-                <option>Merch / Shop</option>
-                <option>Investment / Partnership</option>
-                <option>General Inquiry</option>
+                <option value="Commercial Drone Purchase">Commercial Drone Purchase</option>
+                <option value="Aerial Photography / Video">Aerial Photography / Video</option>
+                <option value="Mapping & Survey">Mapping &amp; Survey</option>
+                <option value="Inspection Services">Inspection Services</option>
+                <option value="Pilot Training">Pilot Training</option>
+                <option value="Custom Drone Build">Custom Drone Build</option>
+                <option value="Merch / Shop">Merch / Shop</option>
+                <option value="Investment / Partnership">Investment / Partnership</option>
+                <option value="General Inquiry">General Inquiry</option>
               </select>
             </div>
             <div class="form-group">
-              <label class="form-label">Message *</label>
-              <textarea class="form-input" placeholder="Tell us about your project or question..." required></textarea>
+              <label class="form-label" for="contact-message">Message *</label>
+              <textarea class="form-input" id="contact-message" name="message" placeholder="Tell us about your project or question..." required></textarea>
             </div>
+            <input type="hidden" name="_subject" value="OrbitWorks Contact Form">
+            <input type="hidden" name="_replyto" value="">
             <button type="submit" class="btn btn-contact btn-lg" style="width:100%;justify-content:center">Send Message</button>
           </form>
           <div id="formSuccess" style="display:none;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:10px;padding:20px;margin-top:16px;text-align:center">
@@ -95,14 +97,14 @@
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </div>
             <div style="font-weight:700;margin-bottom:4px">Location</div>
-            <div style="color:var(--text2);font-size:13px">Binghamton, New York<br>Southern Tier &middot; Broome County</div>
+            <div style="color:var(--text2);font-size:13px">Binghamton, New York<br> Southern Tier &middot; Broome County</div>
           </div>
           <div class="card" style="margin-bottom:12px">
             <div style="margin-bottom:8px">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
             <div style="font-weight:700;margin-bottom:4px">Response Time</div>
-            <div style="color:var(--text2);font-size:13px">Within 24 hours for most inquiries<br>Same day when you mark a request as urgent</div>
+            <div style="color:var(--text2);font-size:13px">Within 24 hours for most inquiries<br> Same day when you mark a request as urgent</div>
           </div>
           <div class="card card-accent-left" style="border-left-color:var(--danger)">
             <div style="margin-bottom:8px">
@@ -128,9 +130,30 @@
 <script>
 function submitForm(e) {
   e.preventDefault();
-  document.getElementById('contactForm').style.display = 'none';
-  document.getElementById('formSuccess').style.display = 'block';
-  OW.showToast('Message sent! We\'ll be in touch within 24 hours.');
+  const form = document.getElementById('contactForm');
+  const btn = form.querySelector('[type="submit"]');
+  const emailEl = form.querySelector('[name="email"]');
+  const replyEl = form.querySelector('[name="_replyto"]');
+  if (replyEl && emailEl) replyEl.value = emailEl.value;
+  if (btn) btn.disabled = true;
+
+  const formData = new FormData(form);
+  fetch(form.action, {
+    method: 'POST',
+    body: formData,
+    headers: { 'Accept': 'application/json' }
+  }).then(r => {
+    if (r.ok) {
+      form.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    } else {
+      OW.showToast('Message failed to send. Please try again or email s.sanders@orbitworksaerospace.com');
+      if (btn) btn.disabled = false;
+    }
+  }).catch(() => {
+    OW.showToast('Network error. Please try again.');
+    if (btn) btn.disabled = false;
+  });
 }
 </script>
 </body>

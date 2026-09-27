@@ -351,7 +351,7 @@ function card(p, catKey){
     ${mode==='multi'&&p.price>0?'<span class="card-tag multi">Multi</span>':''}
     <h3>${p.name}</h3>
     ${p.sku?`<div class="build-sku" data-sku="${p.sku}">SKU ${p.sku}</div>`:''}
-    <div class="card-specs">${specs?specs+'<br>':''}${p.desc}</div>
+    <div class="card-specs">${specs?specs+'<br> ':''}${p.desc}</div>
     <div class="card-price">${p.price>0?'$'+p.price.toFixed(2):'Included'}</div>
     ${p.vtol?'<div style="font-size:11px;color:var(--purple);margin-top:4px">VTOL conversion available</div>':''}
     ${p.perMotor?'<div style="font-size:11px;color:var(--text2);margin-top:3px">Price per unit &middot; auto-qty by airframe</div>':''}

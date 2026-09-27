@@ -466,9 +466,10 @@ const OW = {
     this.saveCart();
   },
 
-  // ── LONG S (ſ) — Declaration-style display for titles only ────────────────
-  // Historically: long s in the middle (and often start) of a word; short s at
-  // the end. Never rewrite URLs, buttons, or body copy.
+  // ── LONG S (ſ) — opt-in decorative only (disabled for catalog/UI) ─────────
+  // Auto-transform used to mangle product/UI titles (Course→Courſe, Basic→Baſic,
+  // Partnerships→Partnerſhips). Colonial fonts stay via CSS; do not rewrite shop
+  // copy. Opt-in: mark a single decorative motto with class="long-s" if desired.
   toLongS(text) {
     if (!text) return text;
     return String(text).replace(/[A-Za-z0-9'’]+/g, (word) => {
@@ -490,20 +491,10 @@ const OW = {
   },
 
   applyLongS() {
-    const sel = [
-      '.product-name',
-      '.service-title',
-      '.merch-name',
-      '.board-name',
-      '.cots-card > h4',
-      '.card > h2',
-      '.card > h3',
-      '.card > h4',
-      '.long-s'
-    ].join(', ');
-    document.querySelectorAll(sel).forEach((el) => {
+    // Opt-in only: elements that already carry .long-s (e.g. a motto). Never
+    // auto-apply to product titles, cards, or headings.
+    document.querySelectorAll('.long-s').forEach((el) => {
       if (el.dataset.longSApplied === '1') return;
-      // Never touch interactive controls or links' visible labels if mis-tagged
       if (el.closest('button, .btn, a.btn, label, input, textarea, select')) return;
       const original = el.textContent;
       if (!original || !/[sS]/.test(original)) {
@@ -515,11 +506,11 @@ const OW = {
         el.dataset.longSApplied = '1';
         return;
       }
-      el.setAttribute('aria-label', original.trim());
+      // Keep accessible modern spelling for screen readers
+      if (!el.getAttribute('aria-label')) el.setAttribute('aria-label', original.trim());
       el.dataset.originalText = original;
       el.textContent = transformed;
       el.dataset.longSApplied = '1';
-      el.classList.add('long-s');
     });
   },
 
