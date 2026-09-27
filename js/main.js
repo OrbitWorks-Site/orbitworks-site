@@ -421,6 +421,63 @@ const OW = {
     this.saveCart();
   },
 
+  // ── LONG S (ſ) — Declaration-style display for titles only ────────────────
+  // Historically: long s in the middle (and often start) of a word; short s at
+  // the end. Never rewrite URLs, buttons, or body copy.
+  toLongS(text) {
+    if (!text) return text;
+    return String(text).replace(/[A-Za-z0-9'’]+/g, (word) => {
+      // Skip tokens that look like codes, URLs fragments, emails, versions
+      if (/@|https?|www\./i.test(word)) return word;
+      if (/^\d/.test(word) && /[A-Za-z]/.test(word) === false) return word;
+      // All-caps acronyms (FPV, IR, OWA) — leave alone
+      if (word.length <= 4 && word === word.toUpperCase() && /[A-Z]/.test(word)) return word;
+      let out = '';
+      for (let i = 0; i < word.length; i++) {
+        const ch = word[i];
+        const atEnd = i === word.length - 1;
+        // Lowercase medial/initial s → ſ; final s stays short; capital S unchanged
+        if (ch === 's' && !atEnd) out += '\u017f'; // ſ
+        else out += ch;
+      }
+      return out;
+    });
+  },
+
+  applyLongS() {
+    const sel = [
+      '.product-name',
+      '.service-title',
+      '.merch-name',
+      '.board-name',
+      '.cots-card > h4',
+      '.card > h2',
+      '.card > h3',
+      '.card > h4',
+      '.long-s'
+    ].join(', ');
+    document.querySelectorAll(sel).forEach((el) => {
+      if (el.dataset.longSApplied === '1') return;
+      // Never touch interactive controls or links' visible labels if mis-tagged
+      if (el.closest('button, .btn, a.btn, label, input, textarea, select')) return;
+      const original = el.textContent;
+      if (!original || !/[sS]/.test(original)) {
+        el.dataset.longSApplied = '1';
+        return;
+      }
+      const transformed = this.toLongS(original);
+      if (transformed === original) {
+        el.dataset.longSApplied = '1';
+        return;
+      }
+      el.setAttribute('aria-label', original.trim());
+      el.dataset.originalText = original;
+      el.textContent = transformed;
+      el.dataset.longSApplied = '1';
+      el.classList.add('long-s');
+    });
+  },
+
   // ── INIT ──────────────────────────────────────────────────────────────────
   init() {
     this.initNav();
@@ -432,6 +489,7 @@ const OW = {
     this.initVariantPickers();
     this.renderCheckout();
     this.initPayTabs();
+    this.applyLongS();
   }
 };
 
