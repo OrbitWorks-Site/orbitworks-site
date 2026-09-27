@@ -206,6 +206,7 @@ const OW = {
         }
       });
     }, { threshold: 0.1 });
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     els.forEach(el => {
       el.style.opacity = '0';
       el.style.transform = 'translateY(24px)';
@@ -218,6 +219,10 @@ const OW = {
   initHexGrid() {
     const canvas = document.getElementById('hexCanvas');
     if (!canvas) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      canvas.style.display = 'none';
+      return;
+    }
     const ctx = canvas.getContext('2d');
     let w, h;
     function resize() {
@@ -290,6 +295,10 @@ const OW = {
   initShopHexGrid() {
     const canvas = document.getElementById('shopHexCanvas');
     if (!canvas) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      canvas.style.display = 'none';
+      return;
+    }
     const ctx = canvas.getContext('2d');
     let w, h, lastScroll = -1, ticking = false;
 
@@ -514,6 +523,97 @@ const OW = {
     });
   },
 
+// ── AMBIENT FLUTE (muted by default; localStorage; reduced-motion safe) ──
+  initAmbient() {
+    if (document.getElementById('ambientAudio')) return;
+
+    const STORAGE_KEY = 'ow-ambient-muted';
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Default muted. Only '0' means user previously unmuted.
+    let muted = localStorage.getItem(STORAGE_KEY);
+    if (muted === null) muted = '1';
+    muted = muted !== '0';
+
+    const audio = document.createElement('audio');
+    audio.id = 'ambientAudio';
+    audio.loop = true;
+    audio.preload = 'none';
+    audio.volume = 0.28;
+    audio.setAttribute('playsinline', '');
+    // Never autoplay with sound — start muted/paused
+    audio.muted = true;
+
+    const mp3 = document.createElement('source');
+    mp3.src = 'audio/flute-ambient.mp3';
+    mp3.type = 'audio/mpeg';
+    const ogg = document.createElement('source');
+    ogg.src = 'audio/flute-ambient.ogg';
+    ogg.type = 'audio/ogg';
+    audio.appendChild(ogg);
+    audio.appendChild(mp3);
+    document.body.appendChild(audio);
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'ambient-toggle';
+    btn.id = 'ambientToggle';
+    btn.setAttribute('aria-pressed', muted ? 'false' : 'true');
+    btn.setAttribute('aria-label', muted ? 'Play soft flute ambience' : 'Mute flute ambience');
+    btn.title = muted ? 'Play soft flute ambience' : 'Mute flute ambience';
+    btn.innerHTML = `
+      <svg class="ambient-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+        <path d="M4 10c2-4 6-6 10-4s6 6 4 10-6 6-10 4-6-6-4-10z" opacity=".35"/>
+        <path d="M8 14c1.5-3 4-5 7-4"/>
+        <circle cx="9" cy="15" r="1.2" fill="currentColor" stroke="none"/>
+        <circle cx="12" cy="12.5" r="1" fill="currentColor" stroke="none" opacity=".85"/>
+        <circle cx="14.5" cy="10" r="0.9" fill="currentColor" stroke="none" opacity=".7"/>
+      </svg>
+      <span class="ambient-label">${muted ? 'Ambience off' : 'Ambience on'}</span>`;
+
+    const iconMuted = `<svg class="ambient-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>`;
+    const iconOn = `<svg class="ambient-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>`;
+
+    function renderBtn(isMuted) {
+      // aria-pressed true = ambience on (user unmuted)
+      btn.setAttribute('aria-pressed', isMuted ? 'false' : 'true');
+      btn.setAttribute('aria-label', isMuted ? 'Play soft flute ambience' : 'Mute flute ambience');
+      btn.title = isMuted ? 'Play soft flute ambience' : 'Mute flute ambience';
+      const label = isMuted ? 'Ambience off' : 'Ambience on';
+      btn.innerHTML = (isMuted ? iconMuted : iconOn) + `<span class="ambient-label">${label}</span>`;
+    }
+    renderBtn(muted);
+
+    async function setMuted(next) {
+      muted = next;
+      localStorage.setItem(STORAGE_KEY, muted ? '1' : '0');
+      renderBtn(muted);
+      if (muted) {
+        audio.pause();
+        audio.muted = true;
+      } else {
+        if (reduced) {
+          // Still allow explicit user unmute, but never auto-start under reduced motion
+        }
+        audio.muted = false;
+        try {
+          await audio.play();
+        } catch (e) {
+          // Autoplay policies — stay paused until next gesture
+          muted = true;
+          localStorage.setItem(STORAGE_KEY, '1');
+          renderBtn(true);
+        }
+      }
+    }
+
+    btn.addEventListener('click', () => setMuted(!muted));
+    document.body.appendChild(btn);
+
+    // Never autoplay unmuted. If user previously unmuted and motion OK, still require a gesture —
+    // browsers block unmuted autoplay. Keep paused until click.
+    // (Preference is restored on first click via button state; we do not call play() here.)
+  },
+
   // ── INIT ──────────────────────────────────────────────────────────────────
   init() {
     this.initNav();
@@ -521,6 +621,7 @@ const OW = {
     this.updateCartBadge();
     this.renderCart();
     this.initHexGrid();
+    this.initAmbient();
     this.initShopHexGrid();
     this.initVariantPickers();
     document.querySelectorAll('.merch-card').forEach(c => this.updateMerchSkuEl(c));
@@ -721,7 +822,7 @@ function renderNav() {
   <nav class="nav">
     <a class="nav-logo" href="index.html">
       <div class="nav-logo-icon">
-        <img src="img/logo.png" alt="OrbitWorks Logo" width="28" height="28" style="object-fit:contain;">
+        <img src="img/logo-mark.webp" alt="OrbitWorks" width="34" height="34" loading="eager" decoding="async">
       </div>
       ORBITWORKS AEROSPACE
     </a>
@@ -747,7 +848,7 @@ function renderFooter() {
         <div class="footer-brand">
           <a class="nav-logo" href="index.html" style="margin-bottom:0">
             <div class="nav-logo-icon">
-              <img src="img/logo.png" alt="OrbitWorks Logo" width="28" height="28" style="object-fit:contain;">
+              <img src="img/logo-mark.webp" alt="OrbitWorks" width="34" height="34" loading="eager" decoding="async">
             </div>
             ORBITWORKS AEROSPACE
           </a>
@@ -759,7 +860,9 @@ function renderFooter() {
             <li><a href="about.html">About Us</a></li>
             <li><a href="about.html#board">The Board</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="https://orbitworksaerospace.substack.com" target="_blank">Substack Blog</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms</a></li>
+            <li><a href="https://orbitworksaerospace.substack.com" target="_blank" rel="noopener">Substack Blog</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -783,7 +886,7 @@ function renderFooter() {
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; ${new Date().getFullYear()} OrbitWorks Aerospace Inc. &middot; Binghamton, NY &middot; All rights reserved.</p>
+        <p>&copy; ${new Date().getFullYear()} OrbitWorks Aerospace Inc. &middot; Binghamton, NY &middot; All rights reserved. &middot; <a href="privacy.html" style="color:inherit;text-decoration:underline">Privacy</a> &middot; <a href="terms.html" style="color:inherit;text-decoration:underline">Terms</a></p>
         <span class="mono">v3.0.0 &middot; Built in-house</span>
       </div>
     </div>
@@ -803,7 +906,7 @@ function renderFooter() {
   </div>
   <!-- Floating cart -->
   <div class="cart-icon" onclick="OW.openCart()">
-    <img src="img/logo.png" alt="OrbitWorks" style="width:100%;height:100%;object-fit:contain;border-radius:50%">
+    <img src="img/logo-mark.webp" alt="OrbitWorks" width="40" height="40" style="width:100%;height:100%;object-fit:contain;border-radius:50%" loading="lazy" decoding="async">
     <span class="cart-badge" id="cartBadge" style="display:none">0</span>
   </div>
   <!-- Toast -->
