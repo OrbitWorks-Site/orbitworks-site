@@ -214,9 +214,9 @@ img { max-width: 100%; display: block; }
 
 .nav-defense {
   margin-left: 8px;
-  background: rgba(139,46,46,0.28) !important;
-  border: 1px solid rgba(201,122,122,0.45) !important;
-  color: #e8b0b0 !important;
+  background: rgba(255,248,234,0.10) !important;
+  border: 1px solid rgba(255,248,234,0.45) !important;
+  color: #fff8ea !important;
   font-weight: 700 !important;
   font-family: var(--ui) !important;
   font-size: 12px !important;
@@ -225,7 +225,7 @@ img { max-width: 100%; display: block; }
   border-radius: 3px !important;
   text-transform: uppercase;
 }
-.nav-defense:hover { background: rgba(139,46,46,0.42) !important; opacity: 1 !important; }
+.nav-defense:hover { background: rgba(255,248,234,0.18) !important; opacity: 1 !important; }
 
 .hamburger {
   display: none;
@@ -367,15 +367,16 @@ h4 { font-size: 1rem; }
   color: #fff8ea;
 }
 
+/* btn-contact aliases primary — red reserved for 3-up RWB rows (btn-liberty) */
 .btn-contact {
-  background: var(--liberty);
+  background: var(--navy);
   color: var(--cream);
-  border-color: var(--liberty);
+  border-color: var(--navy);
 }
 .btn-contact:hover {
-  background: #a03a3a;
+  background: #243556;
   color: #fff8ea;
-  border-color: #a03a3a;
+  border-color: #243556;
 }
 
 .btn-outline {
@@ -400,12 +401,13 @@ h4 { font-size: 1rem; }
   border-color: var(--liberty);
 }
 
+/* btn-danger demoted from liberty red — red only via btn-liberty in RWB trios */
 .btn-danger {
-  background: var(--liberty-dim);
-  color: var(--liberty);
-  border-color: rgba(139,46,46,0.4);
+  background: transparent;
+  color: var(--navy);
+  border-color: var(--navy);
 }
-.btn-danger:hover { background: rgba(139,46,46,0.22); color: #6e2020; }
+.btn-danger:hover { background: rgba(26,39,68,0.08); color: var(--navy-deep); }
 
 .btn-lg { padding: 14px 32px; font-size: 15px; border-radius: 3px; }
 .btn-sm { padding: 7px 16px; font-size: 12px; border-radius: 3px; }
