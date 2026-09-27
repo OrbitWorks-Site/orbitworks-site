@@ -1,5 +1,5 @@
 /* ── OrbitWorks Aerospace · Brand Kit v5.0 — Full Parchment · Spirit of 1776 ─ */
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Courier+Prime:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Courier+Prime:wght@400;700&display=swap');
 
 :root {
   /* Full cream / parchment canvas · Spirit of 1776 Americana */
@@ -40,6 +40,14 @@
   --text2:      #4a4538;
   --text3:      #7a7260;
 
+  /* Ink on cream — Declaration readability */
+  --ink:        #2a2418;
+  --ink-soft:   #3d3428;
+  --sheet:      #faf4e6;
+  --sheet2:     #f3ead8;
+  --sheet3:     #e8dcc4;
+  --sheet-edge: rgba(90, 70, 40, 0.28);
+
   /* Colonial muted status colors (readable on parchment) */
   --success:    #3d6b4a;
   --warning:    #9a7028;
@@ -50,8 +58,28 @@
   --green:      #3d6b4a;
 
   --serif:      'Libre Baskerville', Georgia, 'Times New Roman', serif;
+  --display:    'IM Fell English', 'Libre Baskerville', Georgia, serif;
   --sans:       'Source Sans 3', 'Segoe UI', system-ui, sans-serif;
   --mono:       'Courier Prime', 'Courier New', monospace;
+
+  /* Shared parchment sheet layers (grain + crease wash) */
+  --paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.45 0 0 0 0 0.35 0 0 0 0 0.2 0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --paper-crease: linear-gradient(118deg, transparent 40%, rgba(90,70,40,0.05) 47%, transparent 54%, transparent 58%, rgba(90,70,40,0.03) 62%, transparent 70%);
+  --paper-fill:
+    linear-gradient(0deg, rgba(232,220,196,0.4) 0%, transparent 22%, transparent 78%, rgba(90,70,40,0.045) 100%),
+    linear-gradient(165deg, #fffdf6 0%, #faf4e6 38%, #f3ead8 78%, #e6d9bf 100%);
+  --paper-lift:
+    0 1px 0 rgba(255,252,245,0.85) inset,
+    0 -1px 0 rgba(90,70,40,0.07) inset,
+    0 2px 3px rgba(58,50,36,0.05),
+    0 8px 18px rgba(58,50,36,0.10),
+    0 18px 40px rgba(58,50,36,0.08);
+  --paper-lift-hover:
+    0 1px 0 rgba(255,252,245,0.9) inset,
+    0 -1px 0 rgba(90,70,40,0.08) inset,
+    0 4px 6px rgba(58,50,36,0.06),
+    0 14px 28px rgba(58,50,36,0.14),
+    0 28px 56px rgba(58,50,36,0.10);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -329,20 +357,68 @@ h4 { font-size: 1rem; }
 .btn-lg { padding: 14px 32px; font-size: 15px; border-radius: 3px; }
 .btn-sm { padding: 7px 16px; font-size: 12px; border-radius: 3px; }
 
-/* ── CARDS ────────────────────────────────────────────────────────────────── */
-.card {
-  background: rgba(255,250,240,0.82);
-  border: 1px solid rgba(138,109,46,0.18);
-  border-radius: 4px;
-  padding: 24px;
-  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 10px rgba(58,50,36,0.06), inset 0 1px 0 rgba(255,255,255,0.45);
+/* ── CARDS — aged parchment sheets ────────────────────────────────────────── */
+/* Soft cream paper, grain, lifted edge, slight deckle via uneven radii */
+.card,
+.product-card,
+.service-card,
+.merch-card,
+.board-card,
+.parchment-panel,
+.cots-card {
+  --_deckle: 3px 5px 2px 4px / 4px 2px 5px 3px;
+  background-color: var(--sheet);
+  background-image: var(--paper-crease), var(--paper-grain), var(--paper-fill);
+  background-blend-mode: multiply, soft-light, normal, normal;
+  background-repeat: no-repeat, repeat, no-repeat, no-repeat;
+  background-size: 100% 100%, 180px 180px, 100% 100%, 100% 100%;
+  border: 1px solid var(--sheet-edge);
+  border-radius: var(--_deckle);
+  box-shadow: var(--paper-lift);
+  color: var(--ink);
+  transition: border-color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+  position: relative;
+  isolation: isolate;
 }
-.card:hover { border-color: rgba(138,109,46,0.32); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(58,50,36,0.10), inset 0 1px 0 rgba(255,255,255,0.5); }
-.card-sm { padding: 16px; border-radius: 4px; }
+.card:hover,
+.product-card:hover,
+.service-card:hover,
+.merch-card:hover,
+.board-card:hover,
+.cots-card:hover {
+  border-color: rgba(90, 70, 40, 0.42);
+  transform: translateY(-3px);
+  box-shadow: var(--paper-lift-hover);
+}
+
+.card {
+  padding: 24px;
+}
+.card-sm { padding: 16px; border-radius: 2px 4px 3px 5px / 4px 3px 5px 2px; }
 
 .card-accent-top { border-top: 2px solid var(--accent); }
 .card-accent-left { border-left: 3px solid var(--accent); }
+
+/* Declaration-style type on card surfaces */
+.card h1, .card h2, .card h3, .card h4,
+.product-card h3, .product-card h4,
+.service-card h3, .service-card h4,
+.cots-card h4,
+.board-name,
+.product-name,
+.service-title,
+.merch-name {
+  font-family: var(--display);
+  color: var(--navy);
+  letter-spacing: 0.01em;
+  font-weight: 400;
+}
+.card p, .product-desc, .service-desc, .board-bio, .cots-card .cots-specs {
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.7;
+  letter-spacing: 0.012em;
+}
 
 /* ── GRID ─────────────────────────────────────────────────────────────────── */
 .grid { display: grid; gap: 20px; }
@@ -491,18 +567,8 @@ h4 { font-size: 1rem; }
 
 /* ── PRODUCT CARD ─────────────────────────────────────────────────────────── */
 .product-card {
-  background: rgba(255,250,240,0.85);
-  border: 1px solid rgba(138,109,46,0.18);
-  border-radius: 4px;
   overflow: hidden;
-  transition: all 0.22s ease;
   display: flex; flex-direction: column;
-  box-shadow: 0 2px 10px rgba(58,50,36,0.06), inset 0 1px 0 rgba(255,255,255,0.45);
-}
-.product-card:hover {
-  border-color: rgba(138,109,46,0.35);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(58,50,36,0.12), 0 0 0 1px rgba(139,46,46,0.08);
 }
 
 .product-img {
@@ -510,7 +576,7 @@ h4 { font-size: 1rem; }
   background: linear-gradient(135deg, #f8f0e0, #ebe1cd);
   display: flex; align-items: center; justify-content: center;
   font-size: 64px;
-  border-bottom: 1px solid rgba(138,109,46,0.14);
+  border-bottom: 1px solid rgba(90,70,40,0.14);
   position: relative;
   overflow: hidden;
 }
@@ -528,8 +594,23 @@ h4 { font-size: 1rem; }
 }
 
 .product-body { padding: 20px 18px 18px; flex: 1; display: flex; flex-direction: column; }
-.product-name { font-family: var(--serif); font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
-.product-desc { font-size: 13px; color: var(--text2); margin-bottom: 12px; flex: 1; line-height: 1.55; }
+.product-name {
+  font-family: var(--display);
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--navy);
+  margin-bottom: 8px;
+  letter-spacing: 0.015em;
+  line-height: 1.3;
+}
+.product-desc {
+  font-size: 16px;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+  flex: 1;
+  line-height: 1.7;
+  letter-spacing: 0.012em;
+}
 .product-price { font-family: var(--mono); font-size: 18px; color: var(--navy); font-weight: 700; margin-bottom: 14px; }
 .product-footer { display: flex; gap: 8px; align-items: center; }
 
@@ -557,15 +638,9 @@ h4 { font-size: 1rem; }
 
 /* ── SERVICE CARD ─────────────────────────────────────────────────────────── */
 .service-card {
-  background: rgba(255,250,240,0.85);
-  border: 1px solid rgba(138,109,46,0.16);
-  border-radius: 4px;
-  transition: all 0.2s;
-  position: relative;
   overflow: hidden;
   display: flex; flex-direction: column;
   padding: 24px;
-  box-shadow: 0 2px 10px rgba(58,50,36,0.05), inset 0 1px 0 rgba(255,255,255,0.45);
 }
 .service-card::before {
   content: '';
@@ -576,11 +651,6 @@ h4 { font-size: 1rem; }
   z-index: 1;
 }
 .service-card:hover::before { opacity: 1; }
-.service-card:hover {
-  border-color: rgba(138,109,46,0.35);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 28px rgba(58,50,36,0.10);
-}
 .service-img {
   width: 100%; height: 160px; overflow: hidden;
   margin: -24px -24px 16px; width: calc(100% + 48px);
@@ -592,8 +662,22 @@ h4 { font-size: 1rem; }
 .service-card:hover .service-img img { transform: scale(1.05); }
 .service-body { padding: 0; flex: 1; display: flex; flex-direction: column; }
 .service-icon { font-size: 36px; margin-bottom: 16px; }
-.service-title { font-family: var(--serif); font-size: 17px; font-weight: 700; margin-bottom: 8px; }
-.service-desc { color: var(--text2); font-size: 13px; line-height: 1.65; margin-bottom: 16px; }
+.service-title {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: var(--navy);
+  letter-spacing: 0.015em;
+  line-height: 1.3;
+}
+.service-desc {
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.7;
+  letter-spacing: 0.012em;
+  margin-bottom: 16px;
+}
 .service-price { font-family: var(--mono); font-size: 13px; color: var(--accent); }
 .service-compare {
   margin-top: auto; padding-top: 14px;
@@ -613,23 +697,24 @@ h4 { font-size: 1rem; }
 
 /* ── MERCH ────────────────────────────────────────────────────────────────── */
 .merch-card {
-  background: rgba(255,250,240,0.85);
-  border: 1px solid rgba(138,109,46,0.16);
-  border-radius: 4px;
   overflow: hidden;
-  transition: all 0.2s;
-  box-shadow: 0 2px 10px rgba(58,50,36,0.05);
 }
-.merch-card:hover { border-color: rgba(138,109,46,0.32); transform: translateY(-2px); }
 .merch-img {
   height: 220px;
   background: linear-gradient(135deg, #f8f0e0, #ebe1cd);
   display: flex; align-items: center; justify-content: center;
   font-size: 72px;
-  border-bottom: 1px solid rgba(138,109,46,0.14);
+  border-bottom: 1px solid rgba(90,70,40,0.14);
 }
 .merch-body { padding: 16px; }
-.merch-name { font-family: var(--serif); font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.merch-name {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 400;
+  margin-bottom: 6px;
+  color: var(--navy);
+  letter-spacing: 0.015em;
+}
 .merch-price { font-family: var(--mono); color: var(--accent); font-size: 16px; margin-bottom: 12px; }
 
 /* ── CART ─────────────────────────────────────────────────────────────────── */
@@ -801,23 +886,17 @@ select.form-input { cursor: pointer; }
 
 /* ── BOARD / TEAM ─────────────────────────────────────────────────────────── */
 .board-card {
-  background: rgba(255,250,240,0.85);
-  border: 1px solid rgba(138,109,46,0.18);
-  border-radius: 4px;
   padding: 32px;
   text-align: center;
-  transition: all 0.2s;
-  position: relative;
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(58,50,36,0.05);
 }
-.board-card:hover { border-color: rgba(138,109,46,0.4); transform: translateY(-3px); }
 .board-card::before {
   content: '';
   position: absolute; top: 0; left: 0; right: 0; height: 2px;
   background: linear-gradient(90deg, transparent, var(--brass), transparent);
   opacity: 0;
   transition: opacity 0.3s;
+  z-index: 1;
 }
 .board-card:hover::before { opacity: 1; }
 
@@ -836,9 +915,16 @@ img.board-avatar {
   background: none;
 }
 
-.board-name { font-family: var(--serif); font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+.board-name {
+  font-family: var(--display);
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: 4px;
+  color: var(--navy);
+  letter-spacing: 0.015em;
+}
 .board-title { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.05em; margin-bottom: 12px; }
-.board-bio { font-size: 13px; color: var(--text2); line-height: 1.7; }
+.board-bio { font-size: 16px; color: var(--ink-soft); line-height: 1.7; letter-spacing: 0.012em; }
 
 /* ── FOOTER ───────────────────────────────────────────────────────────────── */
 .footer {
@@ -1176,17 +1262,48 @@ img.board-avatar {
 .text-liberty { color: var(--liberty); }
 .text-brass { color: var(--brass); }
 
-.product-card.americana-edge {
-  border-left: 2px solid rgba(139,46,46,0.5);
+/* Parchment panel utility for forms / featured blocks (sheet look via shared rules) */
+.parchment-panel {
+  padding: 28px;
 }
 
-/* Parchment panel utility for forms / featured blocks */
-.parchment-panel {
-  background:
-    linear-gradient(180deg, rgba(255,250,240,0.9), transparent 50%),
-    rgba(255,250,240,0.75);
-  border: 1px solid rgba(138,109,46,0.22);
-  border-radius: 4px;
-  padding: 28px;
-  box-shadow: 0 2px 10px rgba(58,50,36,0.05), inset 0 1px 0 rgba(255,255,255,0.4);
+/* COTS cards (also styled in shop.html layout helpers) */
+.cots-card {
+  padding: 18px;
+}
+.cots-card h4 {
+  font-size: 1.1rem;
+  margin: 0 0 8px;
+  font-family: var(--display);
+  color: var(--navy);
+  font-weight: 400;
+  letter-spacing: 0.015em;
+}
+.cots-card .cots-specs {
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  letter-spacing: 0.012em;
+  margin-bottom: 10px;
+}
+.cots-card .cots-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  background: var(--adim);
+  color: var(--accent);
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.cots-card .cots-price {
+  font-family: var(--mono);
+  font-size: 17px;
+  color: var(--navy);
+}
+.cots-card .cots-add { margin-top: 10px; }
+
+.product-card.americana-edge {
+  border-left: 2px solid rgba(139,46,46,0.55);
 }

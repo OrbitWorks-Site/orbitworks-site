@@ -299,24 +299,18 @@
       </div>
 
       <style>
-        .cots-cat{border:1px solid var(--border);border-radius:10px;margin-bottom:12px;overflow:hidden;background:var(--bg2)}
+        /* Layout only — sheet look comes from css/style.css .cots-card parchment rules */
+        .cots-cat{border:1px solid var(--sheet-edge);border-radius:3px 5px 2px 4px / 4px 2px 5px 3px;margin-bottom:14px;overflow:hidden;background:var(--sheet2);box-shadow:0 2px 10px rgba(58,50,36,0.06)}
         .cots-cat-head{padding:16px 20px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:background .2s}
-        .cots-cat-head:hover{background:var(--bg3)}
-        .cots-cat-head h3{font-size:16px;margin:0;display:flex;align-items:center;gap:10px}
-        .cots-cat-head h3 .cat-count{font-family:var(--mono);font-size:11px;color:var(--text2);background:var(--bg3);padding:2px 8px;border-radius:4px}
+        .cots-cat-head:hover{background:rgba(255,250,240,0.55)}
+        .cots-cat-head h3{font-size:1.05rem;margin:0;display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:400;color:var(--navy);letter-spacing:0.01em}
+        .cots-cat-head h3 .cat-count{font-family:var(--mono);font-size:11px;color:var(--ink-soft);background:rgba(90,70,40,0.08);padding:2px 8px;border-radius:2px}
         .cots-cat-head .cots-arrow{font-size:18px;color:var(--text2);transition:transform .3s}
         .cots-cat.open .cots-arrow{transform:rotate(180deg)}
         .cots-cat-body{display:none;padding:0 20px 20px}
         .cots-cat.open .cots-cat-body{display:block}
-        .cots-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
-        .cots-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:18px;transition:border-color .2s,transform .2s}
-        .cots-card:hover{border-color:var(--border2);transform:translateY(-2px)}
-        .cots-card .cots-tag{display:inline-block;font-family:var(--mono);font-size:10px;background:var(--adim);color:var(--accent);padding:2px 8px;border-radius:4px;margin-bottom:6px;text-transform:uppercase}
-        .cots-card h4{font-size:14px;margin:0 0 6px}
-        .cots-card .cots-specs{font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:10px}
+        .cots-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
         .cots-card .cots-specs li{margin-bottom:2px}
-        .cots-card .cots-price{font-family:var(--mono);font-size:17px;color:var(--success)}
-        .cots-card .cots-add{margin-top:10px}
       </style>
 
       <!-- ── Fixed Wing Airframes ── -->
