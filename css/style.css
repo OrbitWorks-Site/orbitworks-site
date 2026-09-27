@@ -1,5 +1,5 @@
-/* ── OrbitWorks Aerospace · Brand Kit v5.0 — Full Parchment · Spirit of 1776 ─ */
-@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Courier+Prime:wght@400;700&display=swap');
+/* ── OrbitWorks Aerospace · Brand Kit v5.1 — Soft Vellum Sheets · Spirit of 1776 ─ */
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
 
 :root {
   /* Full cream / parchment canvas · Spirit of 1776 Americana */
@@ -57,87 +57,52 @@
   --coral:      #8b4a4a;
   --green:      #3d6b4a;
 
-  --serif:      'Libre Baskerville', Georgia, 'Times New Roman', serif;
-  --display:    'IM Fell English', 'Libre Baskerville', Georgia, serif;
-  --display-sc: 'IM Fell English SC', 'IM Fell English', 'Libre Baskerville', Georgia, serif;
-  /* Ragged / deckled parchment clip-paths (torn sheet edges) */
-  --deckle-a: polygon(
-    0.00% 1.79%, 4.76% 6.26%, 9.52% 1.11%, 14.29% 2.72%, 19.05% 6.09%, 23.81% 2.26%,
-    28.57% 1.25%, 33.33% 1.59%, 38.10% 4.95%, 42.86% 1.43%, 47.62% 4.73%, 52.38% 2.85%,
-    57.14% 1.05%, 61.90% 2.82%, 66.67% 0.97%, 71.43% 1.04%, 76.19% 1.07%, 80.95% 2.10%,
-    85.71% 2.25%, 90.48% 1.01%, 95.24% 3.90%, 100.00% 1.47%, 94.10% 6.67%, 95.26% 13.33%,
-    94.70% 20.00%, 95.61% 26.67%, 98.27% 33.33%, 95.48% 40.00%, 95.94% 46.67%, 95.16% 53.33%,
-    98.99% 60.00%, 96.91% 66.67%, 99.09% 73.33%, 98.87% 80.00%, 97.14% 86.67%, 98.26% 93.33%,
-    98.38% 100.00%, 95.24% 98.44%, 90.48% 98.82%, 85.71% 98.60%, 80.95% 95.44%, 76.19% 97.88%,
-    71.43% 95.76%, 66.67% 94.16%, 61.90% 98.55%, 57.14% 95.20%, 52.38% 95.72%, 47.62% 97.02%,
-    42.86% 97.72%, 38.10% 95.61%, 33.33% 99.17%, 28.57% 96.27%, 23.81% 97.10%, 19.05% 98.43%,
-    14.29% 97.26%, 9.52% 94.87%, 4.76% 96.63%, 0.00% 98.52%, 1.00% 93.33%, 3.03% 86.67%,
-    3.00% 80.00%, 1.15% 73.33%, 2.04% 66.67%, 6.10% 60.00%, 1.24% 53.33%, 2.89% 46.67%,
-    2.80% 40.00%, 3.92% 33.33%, 3.81% 26.67%, 4.52% 20.00%, 3.10% 13.33%, 4.77% 6.67%
-  );
-  --deckle-b: polygon(
-    0.00% 2.41%, 4.76% 1.20%, 9.52% 5.88%, 14.29% 1.55%, 19.05% 3.12%, 23.81% 6.40%,
-    28.57% 2.05%, 33.33% 1.88%, 38.10% 4.10%, 42.86% 1.02%, 47.62% 2.55%, 52.38% 5.95%,
-    57.14% 1.70%, 61.90% 3.40%, 66.67% 1.15%, 71.43% 4.80%, 76.19% 2.30%, 80.95% 1.40%,
-    85.71% 5.50%, 90.48% 2.10%, 95.24% 1.60%, 100.00% 2.90%, 97.20% 6.67%, 94.80% 13.33%,
-    96.50% 20.00%, 93.90% 26.67%, 97.80% 33.33%, 95.10% 40.00%, 98.40% 46.67%, 94.20% 53.33%,
-    96.70% 60.00%, 98.10% 66.67%, 94.50% 73.33%, 97.30% 80.00%, 95.60% 86.67%, 98.80% 93.33%,
-    97.50% 100.00%, 95.24% 97.10%, 90.48% 95.20%, 85.71% 98.90%, 80.95% 94.80%, 76.19% 97.50%,
-    71.43% 95.10%, 66.67% 98.40%, 61.90% 94.30%, 57.14% 97.80%, 52.38% 95.60%, 47.62% 98.20%,
-    42.86% 94.90%, 38.10% 97.40%, 33.33% 95.80%, 28.57% 99.10%, 23.81% 96.20%, 19.05% 94.50%,
-    14.29% 97.90%, 9.52% 95.40%, 4.76% 98.60%, 0.00% 96.80%, 2.80% 93.33%, 1.20% 86.67%,
-    4.90% 80.00%, 1.50% 73.33%, 3.60% 66.67%, 1.10% 60.00%, 5.20% 53.33%, 2.40% 46.67%,
-    1.80% 40.00%, 4.40% 33.33%, 2.10% 26.67%, 3.90% 20.00%, 1.30% 13.33%, 3.50% 6.67%
-  );
-  --deckle-c: polygon(
-    0.00% 1.50%, 4.76% 4.80%, 9.52% 1.90%, 14.29% 6.20%, 19.05% 2.40%, 23.81% 1.10%,
-    28.57% 5.40%, 33.33% 2.80%, 38.10% 1.60%, 42.86% 4.50%, 47.62% 1.30%, 52.38% 3.70%,
-    57.14% 6.10%, 61.90% 1.90%, 66.67% 2.60%, 71.43% 5.20%, 76.19% 1.40%, 80.95% 3.30%,
-    85.71% 1.80%, 90.48% 4.90%, 95.24% 2.20%, 100.00% 1.80%, 95.80% 6.67%, 98.20% 13.33%,
-    94.40% 20.00%, 97.60% 26.67%, 95.30% 33.33%, 98.90% 40.00%, 94.70% 46.67%, 96.40% 53.33%,
-    99.10% 60.00%, 95.00% 66.67%, 97.80% 73.33%, 94.60% 80.00%, 98.50% 86.67%, 96.20% 93.33%,
-    98.10% 100.00%, 95.24% 95.80%, 90.48% 98.50%, 85.71% 94.70%, 80.95% 97.20%, 76.19% 95.40%,
-    71.43% 99.00%, 66.67% 96.10%, 61.90% 94.80%, 57.14% 98.30%, 52.38% 95.50%, 47.62% 97.70%,
-    42.86% 94.40%, 38.10% 98.80%, 33.33% 96.50%, 28.57% 95.20%, 23.81% 98.10%, 19.05% 96.80%,
-    14.29% 94.60%, 9.52% 97.50%, 4.76% 95.90%, 0.00% 98.20%, 3.40% 93.33%, 1.60% 86.67%,
-    4.70% 80.00%, 2.20% 73.33%, 1.40% 66.67%, 5.50% 60.00%, 2.90% 53.33%, 1.70% 46.67%,
-    4.10% 40.00%, 2.50% 33.33%, 5.80% 26.67%, 1.90% 20.00%, 3.60% 13.33%, 2.00% 6.67%
-  );
-  --deckle-d: polygon(
-    0.00% 2.80%, 4.76% 1.40%, 9.52% 5.10%, 14.29% 2.00%, 19.05% 6.50%, 23.81% 1.70%,
-    28.57% 3.90%, 33.33% 1.20%, 38.10% 4.60%, 42.86% 6.30%, 47.62% 2.10%, 52.38% 1.50%,
-    57.14% 5.00%, 61.90% 2.40%, 66.67% 1.80%, 71.43% 4.20%, 76.19% 6.00%, 80.95% 1.60%,
-    85.71% 3.50%, 90.48% 1.90%, 95.24% 5.40%, 100.00% 2.20%, 96.40% 6.67%, 94.20% 13.33%,
-    97.90% 20.00%, 95.50% 26.67%, 93.80% 33.33%, 98.60% 40.00%, 96.10% 46.67%, 94.90% 53.33%,
-    97.40% 60.00%, 99.20% 66.67%, 95.70% 73.33%, 94.30% 80.00%, 98.00% 86.67%, 96.60% 93.33%,
-    97.80% 100.00%, 95.24% 98.70%, 90.48% 94.90%, 85.71% 97.60%, 80.95% 95.30%, 76.19% 99.20%,
-    71.43% 96.40%, 66.67% 94.70%, 61.90% 97.90%, 57.14% 95.10%, 52.38% 98.50%, 47.62% 96.00%,
-    42.86% 94.50%, 38.10% 97.30%, 33.33% 95.70%, 28.57% 98.90%, 23.81% 96.60%, 19.05% 94.80%,
-    14.29% 97.40%, 9.52% 95.50%, 4.76% 99.00%, 0.00% 97.10%, 1.90% 93.33%, 4.50% 86.67%,
-    2.30% 80.00%, 5.10% 73.33%, 1.60% 66.67%, 3.80% 60.00%, 2.00% 53.33%, 4.80% 46.67%,
-    1.40% 40.00%, 3.20% 33.33%, 5.60% 26.67%, 2.70% 20.00%, 1.50% 13.33%, 4.00% 6.67%
-  );
-  --sans:       'Source Sans 3', 'Segoe UI', system-ui, sans-serif;
-  --mono:       'Courier Prime', 'Courier New', monospace;
+  /* Period typography — Caslon (Declaration) + Fell display; no modern sans */
+  --serif:      'Libre Caslon Text', 'EB Garamond', 'Palatino Linotype', Palatino, Georgia, serif;
+  --body:       'EB Garamond', 'Libre Caslon Text', Georgia, serif;
+  --display:    'IM Fell English', 'Libre Caslon Text', Georgia, serif;
+  --display-sc: 'IM Fell English SC', 'IM Fell English', 'Libre Caslon Text', Georgia, serif;
+  /* Clearer-but-still-period for UI chrome / buttons / nav labels */
+  --ui:         'Libre Caslon Text', 'EB Garamond', Georgia, serif;
+  /* Numbers / labels — period serif (no Courier / sans) */
+  --mono:       'Libre Caslon Text', 'EB Garamond', Georgia, serif;
+  --sans:       'Libre Caslon Text', 'EB Garamond', Georgia, serif;
 
-  /* Shared parchment sheet layers (grain + crease wash) */
-  --paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.45 0 0 0 0 0.35 0 0 0 0 0.2 0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  --paper-crease: linear-gradient(118deg, transparent 40%, rgba(90,70,40,0.05) 47%, transparent 54%, transparent 58%, rgba(90,70,40,0.03) 62%, transparent 70%);
-  --paper-fill:
-    linear-gradient(0deg, rgba(232,220,196,0.4) 0%, transparent 22%, transparent 78%, rgba(90,70,40,0.045) 100%),
-    linear-gradient(165deg, #fffdf6 0%, #faf4e6 38%, #f3ead8 78%, #e6d9bf 100%);
+  /* Soft vellum sheet layers — mottled cream, fiber veins, stain washes.
+     One complete stack so background-blend/size/repeat lengths stay honest. */
+  --paper-grain: url("../img/vellum-noise.svg");
+  --paper-fibers: url("../img/vellum-fibers.svg");
+  --paper-stack:
+    linear-gradient(118deg, transparent 40%, rgba(90,70,40,0.045) 47%, transparent 54%, transparent 58%, rgba(90,70,40,0.028) 62%, transparent 70%),
+    url("../img/vellum-fibers.svg"),
+    url("../img/vellum-noise.svg"),
+    radial-gradient(ellipse 42% 28% at 12% 18%, rgba(139, 90, 40, 0.07), transparent 70%),
+    radial-gradient(ellipse 36% 32% at 88% 78%, rgba(90, 60, 30, 0.06), transparent 68%),
+    radial-gradient(ellipse 50% 22% at 70% 12%, rgba(160, 120, 60, 0.05), transparent 72%),
+    radial-gradient(ellipse 28% 40% at 8% 88%, rgba(110, 70, 35, 0.05), transparent 70%),
+    radial-gradient(ellipse 85% 70% at 50% 40%, #fffdf6 0%, #faf4e6 42%, #f0e4cc 78%, #e2d2b0 100%),
+    linear-gradient(165deg, #fffcef 0%, #f7edd8 45%, #ebe0c6 100%);
+  --paper-stack-blend: multiply, soft-light, soft-light, multiply, multiply, multiply, multiply, normal, normal;
+  --paper-stack-repeat: no-repeat, repeat, repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  --paper-stack-size: 100% 100%, 400px 400px, 256px 256px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  --paper-stack-pos: center, 0 0, 0 0, center, center, center, center, center, center;
+  /* Soft desk shadow — sheet lying on parchment, not a hard drop */
   --paper-lift:
-    0 1px 0 rgba(255,252,245,0.85) inset,
-    0 -1px 0 rgba(90,70,40,0.07) inset,
-    0 2px 3px rgba(58,50,36,0.05),
-    0 8px 18px rgba(58,50,36,0.10),
-    0 18px 40px rgba(58,50,36,0.08);
-  --paper-lift-hover:
     0 1px 0 rgba(255,252,245,0.9) inset,
-    0 -1px 0 rgba(90,70,40,0.08) inset,
-    0 4px 6px rgba(58,50,36,0.06),
+    0 -1px 0 rgba(90,70,40,0.06) inset,
+    0 0 0 1px rgba(90,70,40,0.10),
+    0 2px 4px rgba(58,50,36,0.06),
+    0 8px 16px rgba(58,50,36,0.10),
+    0 18px 36px rgba(58,50,36,0.09),
+    0 28px 56px rgba(58,50,36,0.05);
+  --paper-lift-hover:
+    0 1px 0 rgba(255,252,245,0.95) inset,
+    0 -1px 0 rgba(90,70,40,0.07) inset,
+    0 0 0 1px rgba(90,70,40,0.12),
+    0 4px 8px rgba(58,50,36,0.08),
     0 14px 28px rgba(58,50,36,0.14),
-    0 28px 56px rgba(58,50,36,0.10);
+    0 28px 52px rgba(58,50,36,0.10),
+    0 40px 72px rgba(58,50,36,0.06)
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -145,11 +110,14 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: var(--sans);
+  font-family: var(--body);
   background: var(--bg);
   color: var(--text);
-  line-height: 1.65;
+  line-height: 1.7;
+  font-size: 17px;
+  font-weight: 400;
   overflow-x: hidden;
+  text-rendering: optimizeLegibility;
   /* Aged parchment grain — warm cream canvas */
   background-image:
     radial-gradient(ellipse 100% 70% at 50% -10%, rgba(176,141,62,0.10), transparent 55%),
@@ -183,11 +151,11 @@ img { max-width: 100%; display: block; }
 
 .nav-logo {
   display: flex; align-items: center; gap: 10px;
-  font-family: var(--serif);
-  font-size: 12px;
-  font-weight: 700;
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 400;
   color: var(--cream);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   white-space: nowrap;
   text-transform: uppercase;
 }
@@ -209,12 +177,14 @@ img { max-width: 100%; display: block; }
 }
 
 .nav-links a {
+  font-family: var(--ui);
   color: rgba(247,240,224,0.72);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 400;
   padding: 6px 12px;
   border-radius: 3px;
   transition: all 0.15s;
+  letter-spacing: 0.02em;
 }
 .nav-links a:hover { color: var(--cream); background: rgba(247,240,224,0.08); opacity: 1; }
 .nav-links a.active { color: var(--brass); }
@@ -247,11 +217,12 @@ img { max-width: 100%; display: block; }
   border: 1px solid rgba(201,122,122,0.45) !important;
   color: #e8b0b0 !important;
   font-weight: 700 !important;
-  font-family: var(--mono) !important;
-  font-size: 11px !important;
-  letter-spacing: 0.05em;
+  font-family: var(--ui) !important;
+  font-size: 12px !important;
+  letter-spacing: 0.06em;
   padding: 7px 14px !important;
   border-radius: 3px !important;
+  text-transform: uppercase;
 }
 .nav-defense:hover { background: rgba(139,46,46,0.42) !important; opacity: 1 !important; }
 
@@ -337,20 +308,21 @@ section.tight { padding: 48px 0; }
 
 /* ── TYPOGRAPHY ───────────────────────────────────────────────────────────── */
 .eyebrow {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.18em;
+  font-family: var(--display-sc), var(--display);
+  font-size: 12px;
+  letter-spacing: 0.16em;
   color: var(--liberty);
   text-transform: uppercase;
   margin-bottom: 14px;
+  font-weight: 400;
 }
 
 h1, h2, h3, h4 {
-  font-family: var(--serif);
-  font-weight: 700;
-  line-height: 1.25;
+  font-family: var(--display);
+  font-weight: 400;
+  line-height: 1.28;
   color: var(--text);
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
 }
 h1 { font-size: clamp(2rem, 5vw, 3.2rem); }
 h2 { font-size: clamp(1.55rem, 3vw, 2.1rem); }
@@ -374,11 +346,11 @@ h4 { font-size: 1rem; }
   background: rgba(255,250,240,0.7);
   color: var(--navy);
   transition: all 0.18s ease;
-  font-family: var(--sans);
+  font-family: var(--ui);
   text-decoration: none;
   border-radius: 3px;
   position: relative;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
 }
 .btn:hover { background: var(--bg3); opacity: 1; transform: translateY(-1px); border-color: rgba(138,109,46,0.45); color: var(--navy); }
 
@@ -415,9 +387,9 @@ h4 { font-size: 1rem; }
 .btn-lg { padding: 14px 32px; font-size: 15px; border-radius: 3px; }
 .btn-sm { padding: 7px 16px; font-size: 12px; border-radius: 3px; }
 
-/* ── CARDS — aged parchment sheets with tattered / deckled edges ───────────── */
-/* Torn-sheet silhouette via clip-path (not soft radius). Drop-shadow replaces
-   box-shadow so the ragged silhouette still casts a lift shadow. */
+/* ── CARDS — soft vellum sheets on a desk (no jagged clip-paths) ───────────── */
+/* Warm mottled cream, fiber veins, subtle stains, soft irregular radius,
+   local SVG noise/fiber tiles, soft multi-layer desk shadow. */
 .card,
 .product-card,
 .service-card,
@@ -425,46 +397,23 @@ h4 { font-size: 1rem; }
 .board-card,
 .parchment-panel,
 .cots-card {
-  --_deckle-path: var(--deckle-a);
-  background-color: var(--sheet);
-  background-image: var(--paper-crease), var(--paper-grain), var(--paper-fill);
-  background-blend-mode: multiply, soft-light, normal, normal;
-  background-repeat: no-repeat, repeat, no-repeat, no-repeat;
-  background-size: 100% 100%, 180px 180px, 100% 100%, 100% 100%;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
+  background-color: #faf4e6;
+  /* Full vellum stack: crease + fibers + grain + stains + mottled cream */
+  background-image: var(--paper-stack);
+  background-blend-mode: var(--paper-stack-blend);
+  background-repeat: var(--paper-stack-repeat);
+  background-size: var(--paper-stack-size);
+  background-position: var(--paper-stack-pos);
+  /* Soft irregular corners — worn sheet on a desk, NOT zig-zag clip-path */
+  border-radius: 3px 5px 4px 6px / 5px 3px 6px 4px;
+  border: 1px solid rgba(90, 70, 40, 0.16);
+  box-shadow: var(--paper-lift);
   color: var(--ink);
-  transition: transform 0.22s ease, filter 0.22s ease;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
   position: relative;
   isolation: isolate;
-  -webkit-clip-path: var(--_deckle-path);
-  clip-path: var(--_deckle-path);
-  filter:
-    drop-shadow(0 1px 0 rgba(255,252,245,0.55))
-    drop-shadow(0 2px 3px rgba(58,50,36,0.08))
-    drop-shadow(0 10px 22px rgba(58,50,36,0.14))
-    drop-shadow(0 22px 44px rgba(58,50,36,0.08));
+  /* No CSS mask — masks clip soft desk shadows; radius + grain carry the edge */
 }
-/* Alternate tear patterns so neighboring cards don't look stamped identical */
-.product-card:nth-child(4n+2),
-.service-card:nth-child(4n+2),
-.merch-card:nth-child(4n+2),
-.board-card:nth-child(4n+2),
-.cots-card:nth-child(4n+2),
-.card:nth-child(4n+2) { --_deckle-path: var(--deckle-b); }
-.product-card:nth-child(4n+3),
-.service-card:nth-child(4n+3),
-.merch-card:nth-child(4n+3),
-.board-card:nth-child(4n+3),
-.cots-card:nth-child(4n+3),
-.card:nth-child(4n+3) { --_deckle-path: var(--deckle-c); }
-.product-card:nth-child(4n+4),
-.service-card:nth-child(4n+4),
-.merch-card:nth-child(4n+4),
-.board-card:nth-child(4n+4),
-.cots-card:nth-child(4n+4),
-.card:nth-child(4n+4) { --_deckle-path: var(--deckle-d); }
 
 .card:hover,
 .product-card:hover,
@@ -473,14 +422,10 @@ h4 { font-size: 1rem; }
 .board-card:hover,
 .cots-card:hover {
   transform: translateY(-3px);
-  filter:
-    drop-shadow(0 1px 0 rgba(255,252,245,0.65))
-    drop-shadow(0 4px 6px rgba(58,50,36,0.10))
-    drop-shadow(0 16px 32px rgba(58,50,36,0.18))
-    drop-shadow(0 32px 56px rgba(58,50,36,0.10));
+  box-shadow: var(--paper-lift-hover);
 }
 
-/* Dark fiber ring along the torn perimeter (reads as aged cut edge) */
+/* Subtle aged edge + fiber ring (no clip-path) */
 .card::after,
 .product-card::after,
 .service-card::after,
@@ -493,12 +438,41 @@ h4 { font-size: 1rem; }
   inset: 0;
   pointer-events: none;
   z-index: 2;
+  border-radius: inherit;
   box-shadow:
-    inset 0 0 0 1px rgba(90,70,40,0.22),
-    inset 0 0 18px rgba(90,70,40,0.10),
-    inset 0 0 40px rgba(58,50,36,0.05);
-  -webkit-clip-path: var(--_deckle-path);
-  clip-path: var(--_deckle-path);
+    inset 0 0 0 1px rgba(90, 70, 40, 0.14),
+    inset 0 0 24px rgba(90, 70, 40, 0.07),
+    inset 0 0 48px rgba(58, 50, 36, 0.04);
+}
+
+/* Hand-aged variation: shift fiber/grain + soft corner radii per neighbor
+   (no ::before — service/board cards use ::before for brass/liberty accent bars). */
+.product-card:nth-child(4n+2),
+.service-card:nth-child(4n+2),
+.merch-card:nth-child(4n+2),
+.board-card:nth-child(4n+2),
+.cots-card:nth-child(4n+2),
+.card:nth-child(4n+2) {
+  background-position: 80% 20%, -40px 30px, 20px -30px, 100% 0, 0 100%, 80% 10%, 10% 90%, center, center;
+  border-radius: 5px 3px 6px 4px / 3px 6px 4px 5px;
+}
+.product-card:nth-child(4n+3),
+.service-card:nth-child(4n+3),
+.merch-card:nth-child(4n+3),
+.board-card:nth-child(4n+3),
+.cots-card:nth-child(4n+3),
+.card:nth-child(4n+3) {
+  background-position: 30% 70%, 60px -20px, -10px 40px, 0 100%, 100% 0, 20% 80%, 90% 20%, center, center;
+  border-radius: 4px 6px 3px 5px / 6px 4px 5px 3px;
+}
+.product-card:nth-child(4n+4),
+.service-card:nth-child(4n+4),
+.merch-card:nth-child(4n+4),
+.board-card:nth-child(4n+4),
+.cots-card:nth-child(4n+4),
+.card:nth-child(4n+4) {
+  background-position: 60% 40%, -20px -40px, 40px 10px, 50% 0, 50% 100%, 0 50%, 100% 50%, center, center;
+  border-radius: 6px 4px 5px 3px / 4px 5px 3px 6px;
 }
 
 .card {
@@ -506,8 +480,12 @@ h4 { font-size: 1rem; }
 }
 .card-sm { padding: 16px; }
 
-.card-accent-top { box-shadow: inset 0 3px 0 var(--accent); }
-.card-accent-left { box-shadow: inset 3px 0 0 var(--accent); }
+.card-accent-top {
+  box-shadow: inset 0 3px 0 var(--accent), var(--paper-lift);
+}
+.card-accent-left {
+  box-shadow: inset 3px 0 0 var(--accent), var(--paper-lift);
+}
 
 /* Declaration script + long-ſ ornate treatment — titles / names only */
 .card h1, .card h2, .card h3, .card h4,
@@ -526,13 +504,13 @@ h4 { font-size: 1rem; }
   font-style: normal;
   text-rendering: optimizeLegibility;
 }
-/* Body copy stays readable Libre Baskerville / soft ink — no long-ſ here */
+/* Body copy — EB Garamond / Caslon ink on vellum */
 .card p, .product-desc, .service-desc, .board-bio, .cots-card .cots-specs {
-  font-family: var(--serif);
+  font-family: var(--body);
   color: var(--ink-soft);
   font-size: 16px;
-  line-height: 1.7;
-  letter-spacing: 0.012em;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
 }
 
 /* ── GRID ─────────────────────────────────────────────────────────────────── */
@@ -682,7 +660,7 @@ h4 { font-size: 1rem; }
 
 /* ── PRODUCT CARD ─────────────────────────────────────────────────────────── */
 .product-card {
-  /* clip-path provides the torn edge; avoid overflow:hidden (clips drop-shadow) */
+  /* Soft mask edge; overflow visible so desk shadow survives */
   display: flex; flex-direction: column;
 }
 
@@ -694,6 +672,8 @@ h4 { font-size: 1rem; }
   border-bottom: 1px solid rgba(90,70,40,0.14);
   position: relative;
   overflow: hidden;
+  /* Follow soft sheet corners at the top of the photo band */
+  border-radius: 3px 5px 0 0 / 5px 3px 0 0;
 }
 .product-img img {
   width: 100%;
@@ -811,7 +791,7 @@ h4 { font-size: 1rem; }
 
 /* ── MERCH ────────────────────────────────────────────────────────────────── */
 .merch-card {
-  /* torn clip-path handles edge clipping */
+  /* Soft vellum mask; keep overflow visible for desk shadow */
 }
 .merch-img {
   height: 220px;
@@ -986,7 +966,7 @@ h4 { font-size: 1rem; }
   color: var(--text);
   padding: 11px 14px;
   font-size: 14px;
-  font-family: var(--sans);
+  font-family: var(--ui);
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
@@ -1002,7 +982,7 @@ select.form-input { cursor: pointer; }
 .board-card {
   padding: 32px;
   text-align: center;
-  /* clip-path tears the edge; skip overflow:hidden so drop-shadow survives */
+  /* Soft vellum mask; skip overflow:hidden so desk shadow survives */
 }
 .board-card::before {
   content: '';
