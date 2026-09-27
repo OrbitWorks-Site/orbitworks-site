@@ -14,6 +14,8 @@ const OW = {
   },
 
   addToCart(item) {
+    // Resolve SKU (ops / packing slips) — cart id stays the internal key
+    if (!item.sku) item.sku = this.resolveSku(item);
     // Build a unique key from id + variants
     const variantKey = item.size || item.color
       ? `${item.id}-${(item.color||'').toLowerCase()}-${(item.size||'').toLowerCase()}`
@@ -21,12 +23,51 @@ const OW = {
     const existing = this.cart.find(i => i._key === variantKey);
     if (existing) {
       existing.qty = (existing.qty || 1) + 1;
+      if (item.sku) existing.sku = item.sku;
     } else {
       this.cart.push({ ...item, _key: variantKey, qty: 1 });
     }
     this.saveCart();
     this.showToast(`Added ${item.name} to cart`);
     this.openCart();
+  },
+
+  resolveSku(item) {
+    if (!item || !item.id) return null;
+    if (item.sku) return item.sku;
+    const merchBase = (this.MERCH_BASE && this.MERCH_BASE[item.id]) || null;
+    if (merchBase || item.id === 'tee-classic' || item.id === 'hoodie' || item.id === 'cap' || item.id === 'beanie') {
+      return this.buildMerchSku(item.id, item.color, item.size);
+    }
+    return (this.SKU_MAP && this.SKU_MAP[item.id]) || null;
+  },
+
+  buildMerchSku(id, color, size) {
+    const base = (this.MERCH_BASE && this.MERCH_BASE[id]) || (this.SKU_MAP && this.SKU_MAP[id]);
+    if (!base) return null;
+    if (id === 'beanie') return base;
+    const parts = [base];
+    if (color && this.COLOR_CODES) {
+      const code = this.COLOR_CODES[color] || String(color).slice(0, 3).toUpperCase();
+      parts.push(code);
+    }
+    if (size) parts.push(String(size).toUpperCase());
+    return parts.join('-');
+  },
+
+  updateMerchSkuEl(card) {
+    if (!card) return;
+    const el = card.querySelector('.merch-sku');
+    if (!el) return;
+    const id = card.dataset.productId;
+    const colorEl = card.querySelector('.swatch.selected');
+    const sizeEl = card.querySelector('.size-btn.selected');
+    const color = colorEl ? colorEl.dataset.value : null;
+    const size = sizeEl ? sizeEl.dataset.value : null;
+    const sku = this.buildMerchSku(id, color, size) || card.dataset.skuBase;
+    if (!sku) return;
+    el.dataset.sku = sku;
+    el.textContent = 'SKU ' + sku;
   },
 
   // Add to cart from a merch card with variant pickers
@@ -96,6 +137,7 @@ const OW = {
           <div class="cart-item-info">
             <div class="cart-item-name">${item.name}</div>
             ${variants ? `<div style="font-size:10px;color:var(--text3);font-family:var(--mono)">${variants}</div>` : ''}
+            ${item.sku ? `<div class="cart-item-sku">SKU ${item.sku}</div>` : ''}
             <div class="cart-item-price">$${item.price.toFixed(2)} × ${item.qty || 1}</div>
           </div>
           <button class="cart-item-remove" onclick="OW.removeFromCart('${key}')">✕</button>
@@ -329,6 +371,7 @@ const OW = {
         btn.addEventListener('click', () => {
           group.querySelectorAll('.swatch').forEach(b => b.classList.remove('selected'));
           btn.classList.add('selected');
+          this.updateMerchSkuEl(btn.closest('.merch-card'));
         });
       });
     });
@@ -337,6 +380,7 @@ const OW = {
         btn.addEventListener('click', () => {
           group.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
           btn.classList.add('selected');
+          this.updateMerchSkuEl(btn.closest('.merch-card'));
         });
       });
     });
@@ -358,6 +402,7 @@ const OW = {
           <div class="checkout-item-info">
             <div class="checkout-item-name">${item.name}</div>
             ${variants ? `<div class="checkout-item-variant">${variants}</div>` : ''}
+            ${item.sku ? `<div class="checkout-item-sku">SKU ${item.sku}</div>` : ''}
           </div>
           <div class="checkout-item-qty">
             <button class="qty-btn" onclick="OW.updateQty('${key}',-1);OW.renderCheckout()">−</button>
@@ -400,7 +445,7 @@ const OW = {
     // Build order summary text
     const lines = this.cart.map(item => {
       const variants = [item.color, item.size].filter(Boolean).join('/');
-      return `${item.name}${variants ? ' ('+variants+')' : ''} x${item.qty||1} — $${(item.price*(item.qty||1)).toFixed(2)}`;
+      return `${item.name}${variants ? ' ('+variants+')' : ''}${item.sku ? ' ['+item.sku+']' : ''} x${item.qty||1} — $${(item.price*(item.qty||1)).toFixed(2)}`;
     });
     lines.push('---');
     lines.push('TOTAL: $' + this.cartTotal().toFixed(2));
@@ -487,10 +532,194 @@ const OW = {
     this.initHexGrid();
     this.initShopHexGrid();
     this.initVariantPickers();
+    document.querySelectorAll('.merch-card').forEach(c => this.updateMerchSkuEl(c));
     this.renderCheckout();
     this.initPayTabs();
     this.applyLongS();
   }
+};
+
+// Auto-generated from docs/sku-catalog.json — do not edit by hand
+// Parent cart_id → base SKU (merch variants resolved in OW.resolveSku)
+OW.SKU_MAP = {
+  "atlas-pro": "OW-PLT-SACAG",
+  "bat-10k": "OW-BAT-10K",
+  "bat-10k-2x": "OW-BAT-10K-2X",
+  "bat-10k-3x": "OW-BAT-10K-3X",
+  "bat-10k-5x": "OW-BAT-10K-5X",
+  "bat-1300": "OW-BAT-1300",
+  "bat-1300-2x": "OW-BAT-1300-2X",
+  "bat-1300-3x": "OW-BAT-1300-3X",
+  "bat-1300-5x": "OW-BAT-1300-5X",
+  "bat-16k": "OW-BAT-16K",
+  "bat-16k-2x": "OW-BAT-16K-2X",
+  "bat-16k-3x": "OW-BAT-16K-3X",
+  "bat-16k-5x": "OW-BAT-16K-5X",
+  "bat-1800": "OW-BAT-1800",
+  "bat-1800-2x": "OW-BAT-1800-2X",
+  "bat-1800-3x": "OW-BAT-1800-3X",
+  "bat-1800-5x": "OW-BAT-1800-5X",
+  "bat-4s22": "OW-BAT-4S22",
+  "bat-4s22-2x": "OW-BAT-4S22-2X",
+  "bat-4s22-3x": "OW-BAT-4S22-3X",
+  "bat-4s22-5x": "OW-BAT-4S22-5X",
+  "bat-5000": "OW-BAT-5000",
+  "bat-5000-2x": "OW-BAT-5000-2X",
+  "bat-5000-3x": "OW-BAT-5000-3X",
+  "bat-5000-5x": "OW-BAT-5000-5X",
+  "bat-li22": "OW-BAT-LI22",
+  "bat-li22-2x": "OW-BAT-LI22-2X",
+  "bat-li22-3x": "OW-BAT-LI22-3X",
+  "bat-li22-5x": "OW-BAT-LI22-5X",
+  "beanie": "OW-MRC-BEAN",
+  "bld-custom": "OW-BLD-CUSTOM",
+  "bld-labor": "OW-BLD-LABOR",
+  "cam-gm1": "OW-CAM-GM1",
+  "cam-gm3": "OW-CAM-GM3",
+  "cam-gp12": "OW-CAM-GP12",
+  "cam-map": "OW-CAM-MAP",
+  "cam-sony": "OW-CAM-SONY",
+  "cam-therm": "OW-CAM-THERM",
+  "cap": "OW-MRC-CAP",
+  "crg-box": "OW-CRG-BOX",
+  "crg-dual": "OW-CRG-DUAL",
+  "crg-mag": "OW-CRG-MAG",
+  "crg-srv": "OW-CRG-SRV",
+  "crg-winch": "OW-CRG-WINCH",
+  "def-aeris": "DEF-RAD-AERIS10X",
+  "def-sentinel": "DEF-LCH-SENTINEL-MKI",
+  "def-talon": "DEF-INT-TALON-MKI",
+  "def-vanguard": "DEF-SYS-VANGUARD",
+  "edu-cuas": "OW-EDU-CUAS",
+  "edu-hobby": "OW-EDU-HOBBY",
+  "edu-hs": "OW-EDU-HS",
+  "edu-org": "OW-EDU-ORG",
+  "edu-part107": "OW-EDU-P107",
+  "edu-sar": "OW-EDU-SAR",
+  "edu-sped": "OW-EDU-SPED",
+  "ember-ir": "OW-PLT-SMKJP",
+  "esc-30a": "OW-ESC-30A",
+  "esc-50a": "OW-ESC-50A",
+  "esc-fw40": "OW-ESC-FW40",
+  "esc-hw60": "OW-ESC-HW60",
+  "esc-hw80": "OW-ESC-HW80",
+  "esc-sb55": "OW-ESC-SB55",
+  "esc-sb60": "OW-ESC-SB60",
+  "fc-cube": "OW-FC-CUBE",
+  "fc-f405v4": "OW-FC-F405V4",
+  "fc-f405w": "OW-FC-F405W",
+  "fc-f405wm": "OW-FC-F405WM",
+  "fc-f722": "OW-FC-F722",
+  "fc-pix6c": "OW-FC-PIX6C",
+  "fc-pix6cm": "OW-FC-PIX6CM",
+  "fld-bag": "OW-FLD-BAG",
+  "fld-chg": "OW-FLD-CHG",
+  "fld-flag": "OW-FLD-FLAG",
+  "fld-pad": "OW-FLD-PAD",
+  "fld-padl": "OW-FLD-PADL",
+  "fld-prop": "OW-FLD-PROP",
+  "fld-straps": "OW-FLD-STRAPS",
+  "fld-tarp": "OW-FLD-TARP",
+  "fld-tool": "OW-FLD-TOOL",
+  "fld-winds": "OW-FLD-WINDS",
+  "fpv-ana": "OW-FPV-ANA",
+  "fpv-cad": "OW-FPV-CAD",
+  "fpv-dji": "OW-FPV-DJI",
+  "fpv-djim": "OW-FPV-DJIM",
+  "fpv-ws": "OW-FPV-WS",
+  "fw-ar2": "OW-FW-AR2",
+  "fw-lark": "OW-FW-LARK",
+  "fw-moose": "OW-FW-MOOSE",
+  "fw-nano": "OW-FW-NANO",
+  "fw-pico": "OW-FW-PICO",
+  "fw-plank": "OW-FW-PLANK",
+  "fw-stallion": "OW-FW-STALLION",
+  "fw-stingray": "OW-FW-STINGRAY",
+  "fw-stork": "OW-FW-STORK",
+  "fw-talon": "OW-FW-TALON",
+  "gnd-ant": "OW-GND-ANT",
+  "gnd-boost": "OW-GND-BOOST",
+  "gnd-gog": "OW-GND-GOG",
+  "gnd-gogd": "OW-GND-GOGD",
+  "gnd-mon": "OW-GND-MON",
+  "gnd-track": "OW-GND-TRACK",
+  "gnd-tx12": "OW-GND-TX12",
+  "gnd-tx16": "OW-GND-TX16",
+  "gps-bn880": "OW-GPS-BN880",
+  "gps-m10c": "OW-GPS-M10C",
+  "gps-m10q": "OW-GPS-M10Q",
+  "gps-m9n": "OW-GPS-M9N",
+  "gps-rtk": "OW-GPS-RTK",
+  "hoodie": "OW-MRC-HOOD",
+  "lnch-bung": "OW-LNH-BUNG",
+  "lnch-cat": "OW-LNH-CAT",
+  "lnch-net": "OW-LNH-NET",
+  "lnch-para": "OW-LNH-PARA",
+  "lnch-paras": "OW-LNH-PARAS",
+  "mot-2306": "OW-MOT-2306",
+  "mot-2807": "OW-MOT-2807",
+  "mot-2812": "OW-MOT-2812",
+  "mot-bh910": "OW-MOT-BH910",
+  "mot-f60": "OW-MOT-F60",
+  "mot-f90": "OW-MOT-F90",
+  "mot-fw13": "OW-MOT-FW13",
+  "mot-fw17": "OW-MOT-FW17",
+  "mot-u10": "OW-MOT-U10",
+  "mot-u5": "OW-MOT-U5",
+  "mot-u8": "OW-MOT-U8",
+  "mr-10q": "OW-MR-10Q",
+  "mr-5dc": "OW-MR-5DC",
+  "mr-5q": "OW-MR-5Q",
+  "mr-7q": "OW-MR-7Q",
+  "mr-7x": "OW-MR-7X",
+  "mr-hex": "OW-MR-HEX",
+  "mr-hexf": "OW-MR-HEXF",
+  "mr-hexl": "OW-MR-HEXL",
+  "mr-octo": "OW-MR-OCTO",
+  "mr-tri": "OW-MR-TRI",
+  "rx-drg": "OW-RX-DRG",
+  "rx-elrs24": "OW-RX-ELRS24",
+  "rx-elrs9": "OW-RX-ELRS9",
+  "rx-ghost": "OW-RX-GHOST",
+  "rx-tbs": "OW-RX-TBS",
+  "spark-micro": "OW-PLT-FRANK",
+  "srv-ds": "OW-SRV-DS",
+  "srv-es08": "OW-SRV-ES08",
+  "srv-hw": "OW-SRV-HW",
+  "srv-mg90": "OW-SRV-MG90",
+  "srv-sa21": "OW-SRV-SA21",
+  "svc-insp": "OW-SVC-INSP",
+  "svc-map": "OW-SVC-MAP",
+  "svc-photo": "OW-SVC-PHOTO",
+  "tee-classic": "OW-MRC-TEE",
+  "titan-x8": "OW-PLT-IRNHR",
+  "trn-foam": "OW-TRN-FOAM",
+  "trn-pel1": "OW-TRN-PEL1",
+  "trn-pel2": "OW-TRN-PEL2",
+  "trn-pel3": "OW-TRN-PEL3",
+  "trn-soft": "OW-TRN-SOFT",
+  "trn-tube": "OW-TRN-TUBE",
+  "vista-6k": "OW-PLT-ADAMS",
+  "volt-fpv": "OW-PLT-DAYTN",
+  "vtol-kit": "OW-VTOL-KIT"
+};
+OW.MERCH_BASE = {
+  "beanie": "OW-MRC-BEAN",
+  "cap": "OW-MRC-CAP",
+  "hoodie": "OW-MRC-HOOD",
+  "tee-classic": "OW-MRC-TEE"
+};
+OW.COLOR_CODES = {
+  "Black": "BLK",
+  "White": "WHT",
+  "Red": "RED",
+  "Blue": "BLU",
+  "Grey": "GRY",
+  "Gray": "GRY",
+  "Green": "GRN",
+  "Pink": "PNK",
+  "Purple": "PRP",
+  "Yellow": "YLW"
 };
 
 document.addEventListener('DOMContentLoaded', () => OW.init());

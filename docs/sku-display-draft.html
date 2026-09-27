@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!-- DRAFT ONLY — not linked from the live site. Approval required before wiring into shop/defense pages. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SKU Display Pattern Draft — OrbitWorks</title>
+  <style>
+    :root {
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      --text2: #94a3b8; --text3: #64748b; --danger: #ef4444; --border: #1e293b;
+      --bg: #0b1220; --card: #111827; --accent: #3b82f6;
+    }
+    body { font-family: system-ui, sans-serif; background: var(--bg); color: #e2e8f0; padding: 32px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+    .product-name { font-weight: 600; margin-bottom: 2px; }
+    .product-sku, .cots-sku, .merch-sku, .edu-sku, .def-sku {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em;
+      color: var(--text3); margin: 2px 0 8px;
+    }
+    .def-sku { color: var(--danger); opacity: 0.9; }
+    .price { font-family: var(--mono); color: #22c55e; }
+    .quote { font-family: var(--mono); color: var(--text2); font-size: 13px; }
+    h1 { font-size: 1.25rem; } h2 { font-size: 1rem; color: var(--text2); margin-top: 28px; }
+    .note { color: var(--text3); font-size: 13px; max-width: 640px; line-height: 1.5; }
+    code { font-family: var(--mono); font-size: 12px; background: #0f172a; padding: 1px 5px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>SKU display pattern (draft)</h1>
+  <p class="note">Not linked from production pages. Shows how SKUs would appear on product, COTS, merch, education, and defense cards.</p>
+
+  <h2>Platforms</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="product-name">Sacagawea Survey</div>
+      <div class="product-sku" data-sku="OW-PLT-SACAG">SKU OW-PLT-SACAG</div>
+      <div class="price">$4,499</div>
+    </div>
+    <div class="card">
+      <div class="product-name">Daytona FPV</div>
+      <div class="product-sku" data-sku="OW-PLT-DAYTN">SKU OW-PLT-DAYTN</div>
+      <div class="price">$449</div>
+    </div>
+  </div>
+
+  <h2>COTS</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="product-name">Pico Talon Airframe</div>
+      <div class="cots-sku" data-sku="OW-FW-PICO">SKU OW-FW-PICO</div>
+      <div class="price">$26.99</div>
+    </div>
+    <div class="card">
+      <div class="product-name">CNHL 1300mAh 6S (2×)</div>
+      <div class="cots-sku" data-sku="OW-BAT-1300-2X">SKU OW-BAT-1300-2X</div>
+      <div class="price">$65.98</div>
+    </div>
+  </div>
+
+  <h2>Merch (variant SKU updates after selection)</h2>
+  <div class="grid">
+    <div class="card" data-product-id="tee-classic" data-sku-base="OW-MRC-TEE">
+      <div class="product-name">OWA Classic Tee</div>
+      <div class="merch-sku" id="demoMerchSku">SKU OW-MRC-TEE-BLK-M</div>
+      <div class="price">$28</div>
+      <p class="note" style="margin-top:8px">JS: on swatch/size change → <code>OW-MRC-TEE-{COLOR}-{SIZE}</code></p>
+    </div>
+  </div>
+
+  <h2>Education</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="product-name">FAA Part 107 Prep</div>
+      <div class="edu-sku" data-sku="OW-EDU-P107">SKU OW-EDU-P107</div>
+      <div class="price">$499</div>
+    </div>
+    <div class="card">
+      <div class="product-name">Organizational Training</div>
+      <div class="edu-sku" data-sku="OW-EDU-ORG">SKU OW-EDU-ORG</div>
+      <div class="quote">Quote</div>
+    </div>
+  </div>
+
+  <h2>Defense portal (ITAR — no cart)</h2>
+  <div class="grid">
+    <div class="card" style="border-top: 2px solid var(--danger)">
+      <div class="product-name">AERIS-10X Radar</div>
+      <div class="def-sku" data-sku="DEF-RAD-AERIS10X">SKU DEF-RAD-AERIS10X</div>
+      <div class="quote">NDA / Quote</div>
+    </div>
+    <div class="card" style="border-top: 2px solid var(--danger)">
+      <div class="product-name">Vanguard Complete Battery</div>
+      <div class="def-sku" data-sku="DEF-SYS-VANGUARD">SKU DEF-SYS-VANGUARD</div>
+      <div class="quote">NDA / Quote</div>
+    </div>
+  </div>
+</body>
+</html>

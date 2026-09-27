@@ -1410,3 +1410,49 @@ img.board-avatar {
   pointer-events: none;
   border-radius: 1px;
 }
+
+/* ── SKU display (approved scheme) ── */
+.product-sku,
+.cots-sku,
+.merch-sku,
+.edu-sku,
+.svc-sku,
+.def-sku,
+.build-sku {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, var(--mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--text3);
+  margin: 2px 0 8px;
+  line-height: 1.3;
+}
+.product-sku {
+  color: var(--ink-soft);
+  opacity: 0.85;
+}
+.cots-sku {
+  margin-top: -2px;
+  margin-bottom: 6px;
+}
+.merch-sku {
+  margin-bottom: 6px;
+}
+.edu-sku,
+.svc-sku {
+  margin-top: 2px;
+}
+.def-sku {
+  color: var(--danger);
+  opacity: 0.85;
+}
+.cart-item-sku,
+.checkout-item-sku {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, var(--mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  color: var(--text3);
+  margin-top: 2px;
+}
+.option-card .build-sku {
+  margin: 0 0 6px;
+}

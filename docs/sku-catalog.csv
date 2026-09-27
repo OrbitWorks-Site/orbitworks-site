@@ -1,0 +1,308 @@
+sku,cart_id,display_name,price,price_type,category_code,category,source_page,notes
+OW-PLT-SACAG,atlas-pro,Sacagawea Survey,4499.0,fixed,PLT,Platforms,shop.html,
+OW-PLT-ADAMS,vista-6k,Adams 6K,1999.0,fixed,PLT,Platforms,shop.html,
+OW-PLT-DAYTN,volt-fpv,Daytona FPV,449.0,fixed,PLT,Platforms,shop.html,
+OW-PLT-IRNHR,titan-x8,Iron Horse X8,7499.0,fixed,PLT,Platforms,shop.html,
+OW-PLT-SMKJP,ember-ir,Smokejumper IR,3499.0,fixed,PLT,Platforms,shop.html,
+OW-PLT-FRANK,spark-micro,Franklin Micro Kit,189.0,fixed,PLT,Platforms,shop.html,
+OW-FW-PICO,fw-pico,Pico Talon Airframe,26.99,fixed,FW,Fixed Wing Airframes,shop.html,
+OW-FW-PLANK,fw-plank,Mini Plank Airframe,26.99,fixed,FW,Fixed Wing Airframes,shop.html,
+OW-FW-LARK,fw-lark,Lark Airframe,34.99,fixed,FW,Fixed Wing Airframes,shop.html,
+OW-FW-TALON,fw-talon,Talon 1400 Airframe,34.99,fixed,FW,Fixed Wing Airframes,shop.html,
+OW-FW-STINGRAY,fw-stingray,Super Stingray Airframe,34.99,fixed,FW,Fixed Wing Airframes,shop.html,
+OW-FW-STORK,fw-stork,Stork Airframe,34.99,fixed,FW,Fixed Wing Airframes,shop.html,
+OW-FW-STALLION,fw-stallion,Stallion Airframe,40.99,fixed,FW,Fixed Wing Airframes,shop.html,
+OW-FW-MOOSE,fw-moose,Moose Airframe,46.99,fixed,FW,Fixed Wing Airframes,shop.html,
+OW-FW-AR2,fw-ar2,AR Wing 2 Airframe,38.99,fixed,FW,Fixed Wing Airframes,shop.html,
+OW-FW-NANO,fw-nano,Nano Talon EVO,32.99,fixed,FW,Fixed Wing Airframes,shop.html,
+OW-VTOL-KIT,vtol-kit,VTOL Conversion Kit,14.99,fixed,VTOL,VTOL Kits,shop.html,
+OW-MR-TRI,mr-tri,Y3 Tricopter Frame,46.99,fixed,MR,Multirotor Frames,shop.html,
+OW-MR-5Q,mr-5q,5in Quad Frame 220mm,52.99,fixed,MR,Multirotor Frames,shop.html,
+OW-MR-5DC,mr-5dc,5in DC Frame DeadCat,58.99,fixed,MR,Multirotor Frames,shop.html,
+OW-MR-7Q,mr-7q,7in LR Quad Frame,64.99,fixed,MR,Multirotor Frames,shop.html,
+OW-MR-7X,mr-7x,7in X-Class Racer Frame,72.99,fixed,MR,Multirotor Frames,shop.html,
+OW-MR-10Q,mr-10q,10in Quad Frame 450mm,89.99,fixed,MR,Multirotor Frames,shop.html,
+OW-MR-HEX,mr-hex,S550 Hexacopter Frame,74.99,fixed,MR,Multirotor Frames,shop.html,
+OW-MR-HEXF,mr-hexf,Tarot 680 Pro Hex Frame,159.99,fixed,MR,Multirotor Frames,shop.html,
+OW-MR-HEXL,mr-hexl,ZD850 Hex Frame,199.99,fixed,MR,Multirotor Frames,shop.html,
+OW-MR-OCTO,mr-octo,X8 Octocopter Frame,279.99,fixed,MR,Multirotor Frames,shop.html,
+OW-FC-F405W,fc-f405w,SpeedyBee F405 WING FC,42.99,fixed,FC,Flight Controllers,shop.html,
+OW-FC-F405WM,fc-f405wm,SpeedyBee F405 WING Mini,36.99,fixed,FC,Flight Controllers,shop.html,
+OW-FC-F405V4,fc-f405v4,SpeedyBee F405 V4 FC,42.99,fixed,FC,Flight Controllers,shop.html,
+OW-FC-F722,fc-f722,SpeedyBee F722 V3 FC,49.99,fixed,FC,Flight Controllers,shop.html,
+OW-FC-PIX6C,fc-pix6c,Holybro Pixhawk 6C,169.99,fixed,FC,Flight Controllers,shop.html,
+OW-FC-PIX6CM,fc-pix6cm,Pixhawk 6C Mini,134.99,fixed,FC,Flight Controllers,shop.html,
+OW-FC-CUBE,fc-cube,CubePilot Cube Orange+,349.99,fixed,FC,Flight Controllers,shop.html,
+OW-ESC-SB60,esc-sb60,SpeedyBee 60A 4-in-1 ESC,57.99,fixed,ESC,ESCs,shop.html,
+OW-ESC-SB55,esc-sb55,SpeedyBee 55A 4-in-1 ESC,49.99,fixed,ESC,ESCs,shop.html,
+OW-ESC-30A,esc-30a,BLHeli_S 30A ESC,14.99,fixed,ESC,ESCs,shop.html,
+OW-ESC-50A,esc-50a,BLHeli_32 50A ESC,24.99,fixed,ESC,ESCs,shop.html,
+OW-ESC-HW60,esc-hw60,Hobbywing XRotor 60A ESC,34.99,fixed,ESC,ESCs,shop.html,
+OW-ESC-HW80,esc-hw80,Hobbywing X-Rotor 80A ESC,54.99,fixed,ESC,ESCs,shop.html,
+OW-ESC-FW40,esc-fw40,BLHeli_S 40A Wing ESC,16.99,fixed,ESC,ESCs,shop.html,
+OW-MOT-F60,mot-f60,T-Motor F60 Pro V 1750KV,34.99,fixed,MOT,Motors,shop.html,
+OW-MOT-2306,mot-2306,EMAX ECO II 2306,16.99,fixed,MOT,Motors,shop.html,
+OW-MOT-2812,mot-2812,BrotherHobby 2812 900KV,34.99,fixed,MOT,Motors,shop.html,
+OW-MOT-F90,mot-f90,T-Motor F90 1507 1300KV,28.99,fixed,MOT,Motors,shop.html,
+OW-MOT-2807,mot-2807,iFlight XING2 2807,24.99,fixed,MOT,Motors,shop.html,
+OW-MOT-U5,mot-u5,T-Motor U5 400KV,44.99,fixed,MOT,Motors,shop.html,
+OW-MOT-U8,mot-u8,T-Motor U8 II 100KV,179.99,fixed,MOT,Motors,shop.html,
+OW-MOT-U10,mot-u10,T-Motor U10 II 100KV,249.99,fixed,MOT,Motors,shop.html,
+OW-MOT-FW17,mot-fw17,T-Motor AT2312 1750KV,22.99,fixed,MOT,Motors,shop.html,
+OW-MOT-FW13,mot-fw13,T-Motor AT2820 1050KV,32.99,fixed,MOT,Motors,shop.html,
+OW-MOT-BH910,mot-bh910,BrotherHobby 910KV,34.99,fixed,MOT,Motors,shop.html,
+OW-GPS-M10Q,gps-m10q,Matek SAM-M10Q GPS,28.99,fixed,GPS,GPS Modules,shop.html,
+OW-GPS-M10C,gps-m10c,Matek M10Q-5883 GPS,34.99,fixed,GPS,GPS Modules,shop.html,
+OW-GPS-BN880,gps-bn880,BN-880 GPS/Compass,18.99,fixed,GPS,GPS Modules,shop.html,
+OW-GPS-M9N,gps-m9n,Holybro M9N GPS,39.99,fixed,GPS,GPS Modules,shop.html,
+OW-GPS-RTK,gps-rtk,H-RTK F9P Rover GPS,279.99,fixed,GPS,GPS Modules,shop.html,
+OW-RX-ELRS24,rx-elrs24,Matek ELRS 2.4GHz Rx,22.99,fixed,RX,Receivers,shop.html,
+OW-RX-ELRS9,rx-elrs9,Matek ELRS 900MHz Rx,28.99,fixed,RX,Receivers,shop.html,
+OW-RX-TBS,rx-tbs,TBS Crossfire Nano Rx,34.99,fixed,RX,Receivers,shop.html,
+OW-RX-GHOST,rx-ghost,ImmersionRC Ghost Rx,39.99,fixed,RX,Receivers,shop.html,
+OW-RX-DRG,rx-drg,RadioMaster RP3 ELRS Rx,18.99,fixed,RX,Receivers,shop.html,
+OW-FPV-WS,fpv-ws,Walksnail Avatar HD Pro,174.99,fixed,FPV,FPV Systems,shop.html,
+OW-FPV-DJI,fpv-dji,DJI O4 Air Unit,139.99,fixed,FPV,FPV Systems,shop.html,
+OW-FPV-DJIM,fpv-djim,DJI O3 Air Unit,179.99,fixed,FPV,FPV Systems,shop.html,
+OW-FPV-ANA,fpv-ana,Foxeer Reaper Nano + VTX,44.99,fixed,FPV,FPV Systems,shop.html,
+OW-FPV-CAD,fpv-cad,Caddx Ratel Pro V2 + VTX,54.99,fixed,FPV,FPV Systems,shop.html,
+OW-CAM-GM3,cam-gm3,Caddx GM3 3-Axis Gimbal,139.99,fixed,CAM,Cameras & Gimbals,shop.html,
+OW-CAM-GM1,cam-gm1,Caddx GM1 1-Axis Gimbal,49.99,fixed,CAM,Cameras & Gimbals,shop.html,
+OW-CAM-GP12,cam-gp12,GoPro Mount Kit,44.99,fixed,CAM,Cameras & Gimbals,shop.html,
+OW-CAM-SONY,cam-sony,Sony RX0 II Mount Kit,54.99,fixed,CAM,Cameras & Gimbals,shop.html,
+OW-CAM-MAP,cam-map,Mapping Camera Mount,39.99,fixed,CAM,Cameras & Gimbals,shop.html,
+OW-CAM-THERM,cam-therm,FLIR Lepton 3.5 Thermal,299.99,fixed,CAM,Cameras & Gimbals,shop.html,
+OW-BAT-1300,bat-1300,CNHL 1300mAh 6S,32.99,fixed,BAT,Batteries,shop.html,
+OW-BAT-1300-2X,bat-1300-2x,CNHL 1300mAh 6S (2x),65.98,fixed,BAT,Batteries,shop.html,Multipack SKU; consider selling base unit + qty long-term
+OW-BAT-1300-3X,bat-1300-3x,CNHL 1300mAh 6S (3x),98.97,fixed,BAT,Batteries,shop.html,Multipack SKU; consider selling base unit + qty long-term
+OW-BAT-1300-5X,bat-1300-5x,CNHL 1300mAh 6S (5x),164.95,fixed,BAT,Batteries,shop.html,Multipack SKU; consider selling base unit + qty long-term
+OW-BAT-1800,bat-1800,CNHL 1800mAh 6S,39.99,fixed,BAT,Batteries,shop.html,
+OW-BAT-1800-2X,bat-1800-2x,CNHL 1800mAh 6S (2x),79.98,fixed,BAT,Batteries,shop.html,Multipack SKU; consider selling base unit + qty long-term
+OW-BAT-1800-3X,bat-1800-3x,CNHL 1800mAh 6S (3x),119.97,fixed,BAT,Batteries,shop.html,Multipack SKU; consider selling base unit + qty long-term
+OW-BAT-1800-5X,bat-1800-5x,CNHL 1800mAh 6S (5x),199.95,fixed,BAT,Batteries,shop.html,Multipack SKU; consider selling base unit + qty long-term
+OW-BAT-4S22,bat-4s22,CNHL 2200mAh 4S,27.99,fixed,BAT,Batteries,shop.html,
+OW-BAT-4S22-2X,bat-4s22-2x,CNHL 2200mAh 4S (2x),55.98,fixed,BAT,Batteries,shop.html,Multipack SKU; consider selling base unit + qty long-term
+OW-BAT-4S22-3X,bat-4s22-3x,CNHL 2200mAh 4S (3x),83.97,fixed,BAT,Batteries,shop.html,Multipack SKU; consider selling base unit + qty long-term
+OW-BAT-4S22-5X,bat-4s22-5x,CNHL 2200mAh 4S (5x),139.95,fixed,BAT,Batteries,shop.html,Multipack SKU; consider selling base unit + qty long-term
+OW-BAT-5000,bat-5000,Tattu 5000mAh 6S,89.99,fixed,BAT,Batteries,shop.html,
+OW-BAT-5000-2X,bat-5000-2x,Tattu 5000mAh 6S (2x),179.98,fixed,BAT,Batteries,shop.html,Multipack SKU; consider selling base unit + qty long-term
+OW-BAT-5000-3X,bat-5000-3x,Tattu 5000mAh 6S (3x),269.97,fixed,BAT,Batteries,shop.html,Multipack SKU; consider selling base unit + qty long-term
+OW-BAT-5000-5X,bat-5000-5x,Tattu 5000mAh 6S (5x),449.95,fixed,BAT,Batteries,shop.html,Multipack SKU; consider selling base unit + qty long-term
+OW-BAT-10K,bat-10k,Tattu 10000mAh 6S,159.99,fixed,BAT,Batteries,shop.html,
+OW-BAT-10K-2X,bat-10k-2x,Tattu 10000mAh 6S (2x),319.98,fixed,BAT,Batteries,shop.html,Multipack SKU; consider selling base unit + qty long-term
+OW-BAT-10K-3X,bat-10k-3x,Tattu 10000mAh 6S (3x),479.97,fixed,BAT,Batteries,shop.html,Multipack SKU; consider selling base unit + qty long-term
+OW-BAT-10K-5X,bat-10k-5x,Tattu 10000mAh 6S (5x),799.95,fixed,BAT,Batteries,shop.html,Multipack SKU; consider selling base unit + qty long-term
+OW-BAT-16K,bat-16k,Tattu 16000mAh 6S,219.99,fixed,BAT,Batteries,shop.html,
+OW-BAT-16K-2X,bat-16k-2x,Tattu 16000mAh 6S (2x),439.98,fixed,BAT,Batteries,shop.html,Multipack SKU; consider selling base unit + qty long-term
+OW-BAT-16K-3X,bat-16k-3x,Tattu 16000mAh 6S (3x),659.97,fixed,BAT,Batteries,shop.html,Multipack SKU; consider selling base unit + qty long-term
+OW-BAT-16K-5X,bat-16k-5x,Tattu 16000mAh 6S (5x),1099.95,fixed,BAT,Batteries,shop.html,Multipack SKU; consider selling base unit + qty long-term
+OW-BAT-LI22,bat-li22,Tattu Li-Ion 3000mAh 6S,109.99,fixed,BAT,Batteries,shop.html,
+OW-BAT-LI22-2X,bat-li22-2x,Tattu Li-Ion 3000mAh 6S (2x),219.98,fixed,BAT,Batteries,shop.html,Multipack SKU; consider selling base unit + qty long-term
+OW-BAT-LI22-3X,bat-li22-3x,Tattu Li-Ion 3000mAh 6S (3x),329.97,fixed,BAT,Batteries,shop.html,Multipack SKU; consider selling base unit + qty long-term
+OW-BAT-LI22-5X,bat-li22-5x,Tattu Li-Ion 3000mAh 6S (5x),549.95,fixed,BAT,Batteries,shop.html,Multipack SKU; consider selling base unit + qty long-term
+OW-CRG-SRV,crg-srv,Servo Payload Release,34.99,fixed,CRG,Cargo & Payload,shop.html,
+OW-CRG-DUAL,crg-dual,Dual Servo Release,64.99,fixed,CRG,Cargo & Payload,shop.html,
+OW-CRG-WINCH,crg-winch,Motorized Cargo Winch,119.99,fixed,CRG,Cargo & Payload,shop.html,
+OW-CRG-MAG,crg-mag,Electromagnetic Release,49.99,fixed,CRG,Cargo & Payload,shop.html,
+OW-CRG-BOX,crg-box,Insulated Cargo Pod 2L,79.99,fixed,CRG,Cargo & Payload,shop.html,
+OW-LNH-CAT,lnch-cat,Pneumatic Catapult Launcher,449.99,fixed,LNH,Launch & Recovery,shop.html,
+OW-LNH-BUNG,lnch-bung,Bungee Launch System,89.99,fixed,LNH,Launch & Recovery,shop.html,
+OW-LNH-PARA,lnch-para,Parachute Recovery System,179.99,fixed,LNH,Launch & Recovery,shop.html,
+OW-LNH-PARAS,lnch-paras,Parachute Recovery Small,119.99,fixed,LNH,Launch & Recovery,shop.html,
+OW-LNH-NET,lnch-net,Recovery Net Kit,129.99,fixed,LNH,Launch & Recovery,shop.html,
+OW-TRN-PEL1,trn-pel1,Pelican 1600 Hard Case,219.99,fixed,TRN,Transport & Protection,shop.html,
+OW-TRN-PEL2,trn-pel2,Pelican 1650 Hard Case,289.99,fixed,TRN,Transport & Protection,shop.html,
+OW-TRN-PEL3,trn-pel3,Pelican Air 1615,329.99,fixed,TRN,Transport & Protection,shop.html,
+OW-TRN-SOFT,trn-soft,Padded Drone Backpack,79.99,fixed,TRN,Transport & Protection,shop.html,
+OW-TRN-TUBE,trn-tube,Wing Transport Tube,64.99,fixed,TRN,Transport & Protection,shop.html,
+OW-TRN-FOAM,trn-foam,Custom Foam Insert,44.99,fixed,TRN,Transport & Protection,shop.html,
+OW-GND-TX16,gnd-tx16,RadioMaster TX16S MKII,199.99,fixed,GND,Ground Station & Range,shop.html,
+OW-GND-TX12,gnd-tx12,RadioMaster Pocket ELRS,89.99,fixed,GND,Ground Station & Range,shop.html,
+OW-GND-BOOST,gnd-boost,ELRS Range Booster,59.99,fixed,GND,Ground Station & Range,shop.html,
+OW-GND-ANT,gnd-ant,Directional Patch Antenna,34.99,fixed,GND,Ground Station & Range,shop.html,
+OW-GND-TRACK,gnd-track,Antenna Tracker,149.99,fixed,GND,Ground Station & Range,shop.html,
+OW-GND-GOG,gnd-gog,Walksnail HD Goggles X,479.99,fixed,GND,Ground Station & Range,shop.html,
+OW-GND-GOGD,gnd-gogd,DJI Goggles 3,499.99,fixed,GND,Ground Station & Range,shop.html,
+OW-GND-MON,gnd-mon,7in FPV Ground Monitor,119.99,fixed,GND,Ground Station & Range,shop.html,
+OW-FLD-PAD,fld-pad,Landing Pad 75cm,29.99,fixed,FLD,Field Accessories,shop.html,
+OW-FLD-PADL,fld-padl,Landing Pad 150cm,59.99,fixed,FLD,Field Accessories,shop.html,
+OW-FLD-CHG,fld-chg,Field Battery Charger,149.99,fixed,FLD,Field Accessories,shop.html,
+OW-FLD-BAG,fld-bag,LiPo Safety Bag Large,19.99,fixed,FLD,Field Accessories,shop.html,
+OW-FLD-PROP,fld-prop,Spare Prop Set,14.99,fixed,FLD,Field Accessories,shop.html,
+OW-FLD-TOOL,fld-tool,Drone Field Tool Kit,39.99,fixed,FLD,Field Accessories,shop.html,
+OW-FLD-WINDS,fld-winds,Portable Anemometer,34.99,fixed,FLD,Field Accessories,shop.html,
+OW-FLD-FLAG,fld-flag,Visual Observer Flag Kit,24.99,fixed,FLD,Field Accessories,shop.html,
+OW-FLD-TARP,fld-tarp,Field Ops Tarp 3m,44.99,fixed,FLD,Field Accessories,shop.html,
+OW-FLD-STRAPS,fld-straps,Kevlar Battery Straps 5pk,12.99,fixed,FLD,Field Accessories,shop.html,
+OW-SRV-ES08,srv-es08,EMAX ES08MA II Servo Pair,17.99,fixed,SRV,Servos,shop.html,
+OW-SRV-DS,srv-ds,EMAX ES3154 Servo Pair,27.99,fixed,SRV,Servos,shop.html,
+OW-SRV-SA21,srv-sa21,Savox SH-0254 Servo Pair,34.99,fixed,SRV,Servos,shop.html,
+OW-SRV-MG90,srv-mg90,TowerPro MG90S Servo Pair,12.99,fixed,SRV,Servos,shop.html,
+OW-SRV-HW,srv-hw,Hitec HS-5055MG Servo Pair,44.99,fixed,SRV,Servos,shop.html,
+OW-EDU-HOBBY,edu-hobby,Hobby Pilot Fundamentals,249.0,fixed,EDU,Education,shop.html,Priced course; add to cart
+OW-EDU-P107,edu-part107,FAA Part 107 Prep,499.0,fixed,EDU,Education,shop.html,Priced course; add to cart
+OW-EDU-SAR,edu-sar,SAR UAV Operations,799.0,fixed,EDU,Education,shop.html,Priced course; add to cart
+OW-MRC-TEE,tee-classic,OWA Classic Tee,28.0,fixed,MRC,Merch,shop.html#merch,"Parent style; variants: colors=['Black', 'White', 'Red', 'Blue', 'Grey', 'Green', 'Pink', 'Purple', 'Yellow'] sizes=['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL']"
+OW-MRC-TEE-BLK-XS,tee-classic,OWA Classic Tee / Black / XS,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-BLK-S,tee-classic,OWA Classic Tee / Black / S,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-BLK-M,tee-classic,OWA Classic Tee / Black / M,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-BLK-L,tee-classic,OWA Classic Tee / Black / L,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-BLK-XL,tee-classic,OWA Classic Tee / Black / XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-BLK-2XL,tee-classic,OWA Classic Tee / Black / 2XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-BLK-3XL,tee-classic,OWA Classic Tee / Black / 3XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-BLK-4XL,tee-classic,OWA Classic Tee / Black / 4XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-WHT-XS,tee-classic,OWA Classic Tee / White / XS,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-WHT-S,tee-classic,OWA Classic Tee / White / S,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-WHT-M,tee-classic,OWA Classic Tee / White / M,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-WHT-L,tee-classic,OWA Classic Tee / White / L,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-WHT-XL,tee-classic,OWA Classic Tee / White / XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-WHT-2XL,tee-classic,OWA Classic Tee / White / 2XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-WHT-3XL,tee-classic,OWA Classic Tee / White / 3XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-WHT-4XL,tee-classic,OWA Classic Tee / White / 4XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-RED-XS,tee-classic,OWA Classic Tee / Red / XS,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-RED-S,tee-classic,OWA Classic Tee / Red / S,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-RED-M,tee-classic,OWA Classic Tee / Red / M,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-RED-L,tee-classic,OWA Classic Tee / Red / L,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-RED-XL,tee-classic,OWA Classic Tee / Red / XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-RED-2XL,tee-classic,OWA Classic Tee / Red / 2XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-RED-3XL,tee-classic,OWA Classic Tee / Red / 3XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-RED-4XL,tee-classic,OWA Classic Tee / Red / 4XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-BLU-XS,tee-classic,OWA Classic Tee / Blue / XS,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-BLU-S,tee-classic,OWA Classic Tee / Blue / S,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-BLU-M,tee-classic,OWA Classic Tee / Blue / M,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-BLU-L,tee-classic,OWA Classic Tee / Blue / L,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-BLU-XL,tee-classic,OWA Classic Tee / Blue / XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-BLU-2XL,tee-classic,OWA Classic Tee / Blue / 2XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-BLU-3XL,tee-classic,OWA Classic Tee / Blue / 3XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-BLU-4XL,tee-classic,OWA Classic Tee / Blue / 4XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-GRY-XS,tee-classic,OWA Classic Tee / Grey / XS,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-GRY-S,tee-classic,OWA Classic Tee / Grey / S,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-GRY-M,tee-classic,OWA Classic Tee / Grey / M,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-GRY-L,tee-classic,OWA Classic Tee / Grey / L,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-GRY-XL,tee-classic,OWA Classic Tee / Grey / XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-GRY-2XL,tee-classic,OWA Classic Tee / Grey / 2XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-GRY-3XL,tee-classic,OWA Classic Tee / Grey / 3XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-GRY-4XL,tee-classic,OWA Classic Tee / Grey / 4XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-GRN-XS,tee-classic,OWA Classic Tee / Green / XS,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-GRN-S,tee-classic,OWA Classic Tee / Green / S,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-GRN-M,tee-classic,OWA Classic Tee / Green / M,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-GRN-L,tee-classic,OWA Classic Tee / Green / L,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-GRN-XL,tee-classic,OWA Classic Tee / Green / XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-GRN-2XL,tee-classic,OWA Classic Tee / Green / 2XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-GRN-3XL,tee-classic,OWA Classic Tee / Green / 3XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-GRN-4XL,tee-classic,OWA Classic Tee / Green / 4XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-PNK-XS,tee-classic,OWA Classic Tee / Pink / XS,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-PNK-S,tee-classic,OWA Classic Tee / Pink / S,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-PNK-M,tee-classic,OWA Classic Tee / Pink / M,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-PNK-L,tee-classic,OWA Classic Tee / Pink / L,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-PNK-XL,tee-classic,OWA Classic Tee / Pink / XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-PNK-2XL,tee-classic,OWA Classic Tee / Pink / 2XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-PNK-3XL,tee-classic,OWA Classic Tee / Pink / 3XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-PNK-4XL,tee-classic,OWA Classic Tee / Pink / 4XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-PRP-XS,tee-classic,OWA Classic Tee / Purple / XS,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-PRP-S,tee-classic,OWA Classic Tee / Purple / S,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-PRP-M,tee-classic,OWA Classic Tee / Purple / M,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-PRP-L,tee-classic,OWA Classic Tee / Purple / L,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-PRP-XL,tee-classic,OWA Classic Tee / Purple / XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-PRP-2XL,tee-classic,OWA Classic Tee / Purple / 2XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-PRP-3XL,tee-classic,OWA Classic Tee / Purple / 3XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-PRP-4XL,tee-classic,OWA Classic Tee / Purple / 4XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-YLW-XS,tee-classic,OWA Classic Tee / Yellow / XS,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-YLW-S,tee-classic,OWA Classic Tee / Yellow / S,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-YLW-M,tee-classic,OWA Classic Tee / Yellow / M,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-YLW-L,tee-classic,OWA Classic Tee / Yellow / L,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-YLW-XL,tee-classic,OWA Classic Tee / Yellow / XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-YLW-2XL,tee-classic,OWA Classic Tee / Yellow / 2XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-YLW-3XL,tee-classic,OWA Classic Tee / Yellow / 3XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-TEE-YLW-4XL,tee-classic,OWA Classic Tee / Yellow / 4XL,28.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-TEE; cart key = id-color-size
+OW-MRC-HOOD,hoodie,OWA Hoodie,54.0,fixed,MRC,Merch,shop.html#merch,"Parent style; variants: colors=['Black', 'White', 'Red', 'Blue', 'Grey', 'Green', 'Pink', 'Purple', 'Yellow'] sizes=['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL']"
+OW-MRC-HOOD-BLK-XS,hoodie,OWA Hoodie / Black / XS,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-BLK-S,hoodie,OWA Hoodie / Black / S,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-BLK-M,hoodie,OWA Hoodie / Black / M,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-BLK-L,hoodie,OWA Hoodie / Black / L,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-BLK-XL,hoodie,OWA Hoodie / Black / XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-BLK-2XL,hoodie,OWA Hoodie / Black / 2XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-BLK-3XL,hoodie,OWA Hoodie / Black / 3XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-BLK-4XL,hoodie,OWA Hoodie / Black / 4XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-WHT-XS,hoodie,OWA Hoodie / White / XS,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-WHT-S,hoodie,OWA Hoodie / White / S,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-WHT-M,hoodie,OWA Hoodie / White / M,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-WHT-L,hoodie,OWA Hoodie / White / L,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-WHT-XL,hoodie,OWA Hoodie / White / XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-WHT-2XL,hoodie,OWA Hoodie / White / 2XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-WHT-3XL,hoodie,OWA Hoodie / White / 3XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-WHT-4XL,hoodie,OWA Hoodie / White / 4XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-RED-XS,hoodie,OWA Hoodie / Red / XS,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-RED-S,hoodie,OWA Hoodie / Red / S,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-RED-M,hoodie,OWA Hoodie / Red / M,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-RED-L,hoodie,OWA Hoodie / Red / L,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-RED-XL,hoodie,OWA Hoodie / Red / XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-RED-2XL,hoodie,OWA Hoodie / Red / 2XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-RED-3XL,hoodie,OWA Hoodie / Red / 3XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-RED-4XL,hoodie,OWA Hoodie / Red / 4XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-BLU-XS,hoodie,OWA Hoodie / Blue / XS,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-BLU-S,hoodie,OWA Hoodie / Blue / S,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-BLU-M,hoodie,OWA Hoodie / Blue / M,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-BLU-L,hoodie,OWA Hoodie / Blue / L,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-BLU-XL,hoodie,OWA Hoodie / Blue / XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-BLU-2XL,hoodie,OWA Hoodie / Blue / 2XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-BLU-3XL,hoodie,OWA Hoodie / Blue / 3XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-BLU-4XL,hoodie,OWA Hoodie / Blue / 4XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-GRY-XS,hoodie,OWA Hoodie / Grey / XS,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-GRY-S,hoodie,OWA Hoodie / Grey / S,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-GRY-M,hoodie,OWA Hoodie / Grey / M,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-GRY-L,hoodie,OWA Hoodie / Grey / L,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-GRY-XL,hoodie,OWA Hoodie / Grey / XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-GRY-2XL,hoodie,OWA Hoodie / Grey / 2XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-GRY-3XL,hoodie,OWA Hoodie / Grey / 3XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-GRY-4XL,hoodie,OWA Hoodie / Grey / 4XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-GRN-XS,hoodie,OWA Hoodie / Green / XS,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-GRN-S,hoodie,OWA Hoodie / Green / S,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-GRN-M,hoodie,OWA Hoodie / Green / M,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-GRN-L,hoodie,OWA Hoodie / Green / L,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-GRN-XL,hoodie,OWA Hoodie / Green / XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-GRN-2XL,hoodie,OWA Hoodie / Green / 2XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-GRN-3XL,hoodie,OWA Hoodie / Green / 3XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-GRN-4XL,hoodie,OWA Hoodie / Green / 4XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-PNK-XS,hoodie,OWA Hoodie / Pink / XS,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-PNK-S,hoodie,OWA Hoodie / Pink / S,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-PNK-M,hoodie,OWA Hoodie / Pink / M,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-PNK-L,hoodie,OWA Hoodie / Pink / L,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-PNK-XL,hoodie,OWA Hoodie / Pink / XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-PNK-2XL,hoodie,OWA Hoodie / Pink / 2XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-PNK-3XL,hoodie,OWA Hoodie / Pink / 3XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-PNK-4XL,hoodie,OWA Hoodie / Pink / 4XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-PRP-XS,hoodie,OWA Hoodie / Purple / XS,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-PRP-S,hoodie,OWA Hoodie / Purple / S,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-PRP-M,hoodie,OWA Hoodie / Purple / M,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-PRP-L,hoodie,OWA Hoodie / Purple / L,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-PRP-XL,hoodie,OWA Hoodie / Purple / XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-PRP-2XL,hoodie,OWA Hoodie / Purple / 2XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-PRP-3XL,hoodie,OWA Hoodie / Purple / 3XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-PRP-4XL,hoodie,OWA Hoodie / Purple / 4XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-YLW-XS,hoodie,OWA Hoodie / Yellow / XS,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-YLW-S,hoodie,OWA Hoodie / Yellow / S,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-YLW-M,hoodie,OWA Hoodie / Yellow / M,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-YLW-L,hoodie,OWA Hoodie / Yellow / L,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-YLW-XL,hoodie,OWA Hoodie / Yellow / XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-YLW-2XL,hoodie,OWA Hoodie / Yellow / 2XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-YLW-3XL,hoodie,OWA Hoodie / Yellow / 3XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-HOOD-YLW-4XL,hoodie,OWA Hoodie / Yellow / 4XL,54.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-HOOD; cart key = id-color-size
+OW-MRC-CAP,cap,OWA Cap,32.0,fixed,MRC,Merch,shop.html#merch,"Parent style; variants: colors=n/a sizes=['S', 'M', 'L']"
+OW-MRC-CAP-S,cap,OWA Cap / S,32.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-CAP; cart key = id-color-size
+OW-MRC-CAP-M,cap,OWA Cap / M,32.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-CAP; cart key = id-color-size
+OW-MRC-CAP-L,cap,OWA Cap / L,32.0,fixed,MRC,Merch,shop.html#merch,Variant of OW-MRC-CAP; cart key = id-color-size
+OW-MRC-BEAN,beanie,OWA Beanie,22.0,fixed,MRC,Merch,shop.html#merch,Parent style; variants: colors=n/a sizes=OS
+OW-EDU-ORG,edu-org,Organizational Training,,quote,EDU,Education,shop.html#education,Quote-only — Quote
+OW-EDU-CUAS,edu-cuas,Basic Counter-UAV Tactics,,quote,EDU,Education,shop.html#education,Quote-only — Quote / gov bulk
+OW-EDU-HS,edu-hs,High School Outreach Program,,quote,EDU,Education,shop.html#education,Quote-only — Inquire
+OW-EDU-SPED,edu-sped,Special Education Programs,,quote,EDU,Education,shop.html#education,Quote-only — Inquire
+OW-SVC-PHOTO,svc-photo,Aerial Photography & Video,,quote,SVC,Aerial Services,index.html#services,Quote-only — Quote
+OW-SVC-MAP,svc-map,Aerial Mapping & Survey,,quote,SVC,Aerial Services,index.html#services,Quote-only — Quote
+OW-SVC-INSP,svc-insp,Aerial Inspection,,quote,SVC,Aerial Services,index.html#services,Quote-only — Quote
+OW-BLD-LABOR,bld-labor,Build Labor & Testing,,quote,BLD,Build Services,build-a-drone.html,"Computed: 30% of parts, $99 min; not a cart line today"
+OW-BLD-CUSTOM,bld-custom,Custom Build Configuration,,quote,BLD,Build Services,build-a-drone.html,Composite order from configurator; line items use COTS SKUs
+DEF-RAD-AERIS10X,def-aeris,AERIS-10X Radar,,quote_nda,DEF,Defense,defense.html,Flagship sensor; ITAR; NDA specs
+DEF-INT-TALON-MKI,def-talon,Talon Mk.I Interceptor,,quote_nda,DEF,Defense,defense.html,Kinetic interceptor; ITAR; NDA specs
+DEF-LCH-SENTINEL-MKI,def-sentinel,Sentinel Mk.I Launcher,,quote_nda,DEF,Defense,defense.html,Design phase TRL 4-5; ITAR
+DEF-SYS-VANGUARD,def-vanguard,Vanguard SHORAD Complete Battery,,quote_nda,DEF,Defense,defense.html,1x AERIS + 1x Sentinel + 15x Talon; system SKU

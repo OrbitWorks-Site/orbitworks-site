@@ -126,139 +126,139 @@
 const CAT = {
   // ── AIRFRAMES ──────────────────────────────────────────────────────────
   fw: { mode:'single', label:'Airframe (Fixed Wing)', items:[
-    {id:'fw-pico',     name:'Pico Talon',        price:26.99,  ws:'650mm',  tag:'Micro',   desc:'Tiny hand-launch FPV wing. Great starter platform.',                     compat:'micro'},
-    {id:'fw-plank',    name:'Mini Plank',         price:26.99,  ws:'900mm',  tag:'Small',   desc:'Fast plank wing for FPV cruising and proximity flying.',                 compat:'small'},
-    {id:'fw-lark',     name:'Lark',               price:34.99,  ws:'1130mm', tag:'Medium',  desc:'Versatile mid-size wing. Good endurance for mapping runs.',               compat:'medium'},
-    {id:'fw-talon',    name:'Talon 1400',         price:34.99,  ws:'1400mm', tag:'Medium',  desc:'Extended-range surveillance wing. Pusher config with roomy fuselage.',    compat:'medium'},
-    {id:'fw-stingray', name:'Super Stingray',     price:34.99,  ws:'1300mm', tag:'Medium',  desc:'Blended body flying wing. Stable in wind, excellent FPV platform.',       compat:'medium',vtol:1},
-    {id:'fw-stork',    name:'Stork',              price:34.99,  ws:'1620mm', tag:'Large',   desc:'High-endurance mapping platform. Large payload bay for cameras/sensors.', compat:'large',vtol:1},
-    {id:'fw-stallion', name:'Stallion',            price:40.99,  ws:'1340mm', tag:'Medium',  desc:'Performance pusher with generous wing area. Strong crosswind handling.',  compat:'medium',vtol:1},
-    {id:'fw-moose',    name:'Moose',              price:46.99,  ws:'1600mm', tag:'Large',   desc:'Heavy-lift mapping wing. Dedicated payload compartment for survey gear.', compat:'large'},
-    {id:'fw-ar2',      name:'AR Wing 2 (1200mm)', price:38.99,  ws:'1200mm', tag:'Medium',  desc:'Popular FPV flying wing. Durable EPP foam construction, easy repairs.',   compat:'medium'},
-    {id:'fw-nano',     name:'Nano Talon EVO',     price:32.99,  ws:'860mm',  tag:'Small',   desc:'Compact VTOL-capable micro wing. Backpack-portable recon platform.',      compat:'small',vtol:1},
+    {id:'fw-pico', sku:'OW-FW-PICO',     name:'Pico Talon',        price:26.99,  ws:'650mm',  tag:'Micro',   desc:'Tiny hand-launch FPV wing. Great starter platform.',                     compat:'micro'},
+    {id:'fw-plank', sku:'OW-FW-PLANK',    name:'Mini Plank',         price:26.99,  ws:'900mm',  tag:'Small',   desc:'Fast plank wing for FPV cruising and proximity flying.',                 compat:'small'},
+    {id:'fw-lark', sku:'OW-FW-LARK',     name:'Lark',               price:34.99,  ws:'1130mm', tag:'Medium',  desc:'Versatile mid-size wing. Good endurance for mapping runs.',               compat:'medium'},
+    {id:'fw-talon', sku:'OW-FW-TALON',    name:'Talon 1400',         price:34.99,  ws:'1400mm', tag:'Medium',  desc:'Extended-range surveillance wing. Pusher config with roomy fuselage.',    compat:'medium'},
+    {id:'fw-stingray', sku:'OW-FW-STINGRAY', name:'Super Stingray',     price:34.99,  ws:'1300mm', tag:'Medium',  desc:'Blended body flying wing. Stable in wind, excellent FPV platform.',       compat:'medium',vtol:1},
+    {id:'fw-stork', sku:'OW-FW-STORK',    name:'Stork',              price:34.99,  ws:'1620mm', tag:'Large',   desc:'High-endurance mapping platform. Large payload bay for cameras/sensors.', compat:'large',vtol:1},
+    {id:'fw-stallion', sku:'OW-FW-STALLION', name:'Stallion',            price:40.99,  ws:'1340mm', tag:'Medium',  desc:'Performance pusher with generous wing area. Strong crosswind handling.',  compat:'medium',vtol:1},
+    {id:'fw-moose', sku:'OW-FW-MOOSE',    name:'Moose',              price:46.99,  ws:'1600mm', tag:'Large',   desc:'Heavy-lift mapping wing. Dedicated payload compartment for survey gear.', compat:'large'},
+    {id:'fw-ar2', sku:'OW-FW-AR2',      name:'AR Wing 2 (1200mm)', price:38.99,  ws:'1200mm', tag:'Medium',  desc:'Popular FPV flying wing. Durable EPP foam construction, easy repairs.',   compat:'medium'},
+    {id:'fw-nano', sku:'OW-FW-NANO',     name:'Nano Talon EVO',     price:32.99,  ws:'860mm',  tag:'Small',   desc:'Compact VTOL-capable micro wing. Backpack-portable recon platform.',      compat:'small',vtol:1},
   ]},
   mr: { mode:'single', label:'Airframe (Multirotor)', items:[
-    {id:'mr-tri',   name:'Y3 Tricopter Frame',        price:46.99,  size:'~450mm',  tag:'Tricopter',  desc:'3-arm Y-config. Unique yaw via rear tilt servo. Efficient cruiser.',    compat:'tri',motors:3},
-    {id:'mr-5q',    name:'5" Quad Frame (220mm)',      price:52.99,  size:'220mm',   tag:'Quadcopter', desc:'Race/freestyle workhorse. 5mm arms, full carbon. Fits 5" props.',       compat:'5q', motors:4},
-    {id:'mr-5dc',   name:'5" DC Frame (DeadCat)',      price:58.99,  size:'220mm',   tag:'Quadcopter', desc:'DeadCat geometry keeps props out of camera view. Cinema FPV.',          compat:'5q', motors:4},
-    {id:'mr-7q',    name:'7" Long Range Quad Frame',   price:64.99,  size:'295mm',   tag:'Quadcopter', desc:'Long-range cruiser. 6mm arms, room for HD system + GPS.',              compat:'7q', motors:4},
-    {id:'mr-7x',    name:'7" X-Class Racer Frame',     price:72.99,  size:'295mm',   tag:'Quadcopter', desc:'Reinforced 7" race frame. 6mm arms, lightweight CF construction.',     compat:'7q', motors:4},
-    {id:'mr-10q',   name:'10" Quad Frame (450mm)',     price:89.99,  size:'450mm',   tag:'Quadcopter', desc:'Heavy-lift quad. Payload capacity for cinema cameras or LiDAR.',       compat:'10q',motors:4},
-    {id:'mr-hex',   name:'S550 Hexacopter (550mm)',    price:74.99,  size:'550mm',   tag:'Hexacopter', desc:'6-motor redundancy. Folds for transport. Inspection + mapping.',       compat:'hex',motors:6},
-    {id:'mr-hexl',  name:'ZD850 Foldable Hex (850mm)', price:199.99, size:'850mm',   tag:'Hexacopter', desc:'Full CF 850mm hex. Foldable arms, retractable gear. Heavy-lift.',      compat:'hexl',motors:6},
-    {id:'mr-hexf',  name:'Tarot 680 Pro Hex (680mm)',  price:159.99, size:'680mm',   tag:'Hexacopter', desc:'Proven industrial hex. Folding arms, clean wiring, camera-ready.',     compat:'hex',motors:6},
-    {id:'mr-octo',  name:'X8 Octocopter (1000mm+)',    price:279.99, size:'1000mm+', tag:'Octocopter', desc:'8-motor coaxial config. Maximum redundancy and payload. Industrial.',  compat:'octo',motors:8},
+    {id:'mr-tri', sku:'OW-MR-TRI',   name:'Y3 Tricopter Frame',        price:46.99,  size:'~450mm',  tag:'Tricopter',  desc:'3-arm Y-config. Unique yaw via rear tilt servo. Efficient cruiser.',    compat:'tri',motors:3},
+    {id:'mr-5q', sku:'OW-MR-5Q',    name:'5" Quad Frame (220mm)',      price:52.99,  size:'220mm',   tag:'Quadcopter', desc:'Race/freestyle workhorse. 5mm arms, full carbon. Fits 5" props.',       compat:'5q', motors:4},
+    {id:'mr-5dc', sku:'OW-MR-5DC',   name:'5" DC Frame (DeadCat)',      price:58.99,  size:'220mm',   tag:'Quadcopter', desc:'DeadCat geometry keeps props out of camera view. Cinema FPV.',          compat:'5q', motors:4},
+    {id:'mr-7q', sku:'OW-MR-7Q',    name:'7" Long Range Quad Frame',   price:64.99,  size:'295mm',   tag:'Quadcopter', desc:'Long-range cruiser. 6mm arms, room for HD system + GPS.',              compat:'7q', motors:4},
+    {id:'mr-7x', sku:'OW-MR-7X',    name:'7" X-Class Racer Frame',     price:72.99,  size:'295mm',   tag:'Quadcopter', desc:'Reinforced 7" race frame. 6mm arms, lightweight CF construction.',     compat:'7q', motors:4},
+    {id:'mr-10q', sku:'OW-MR-10Q',   name:'10" Quad Frame (450mm)',     price:89.99,  size:'450mm',   tag:'Quadcopter', desc:'Heavy-lift quad. Payload capacity for cinema cameras or LiDAR.',       compat:'10q',motors:4},
+    {id:'mr-hex', sku:'OW-MR-HEX',   name:'S550 Hexacopter (550mm)',    price:74.99,  size:'550mm',   tag:'Hexacopter', desc:'6-motor redundancy. Folds for transport. Inspection + mapping.',       compat:'hex',motors:6},
+    {id:'mr-hexl', sku:'OW-MR-HEXL',  name:'ZD850 Foldable Hex (850mm)', price:199.99, size:'850mm',   tag:'Hexacopter', desc:'Full CF 850mm hex. Foldable arms, retractable gear. Heavy-lift.',      compat:'hexl',motors:6},
+    {id:'mr-hexf', sku:'OW-MR-HEXF',  name:'Tarot 680 Pro Hex (680mm)',  price:159.99, size:'680mm',   tag:'Hexacopter', desc:'Proven industrial hex. Folding arms, clean wiring, camera-ready.',     compat:'hex',motors:6},
+    {id:'mr-octo', sku:'OW-MR-OCTO',  name:'X8 Octocopter (1000mm+)',    price:279.99, size:'1000mm+', tag:'Octocopter', desc:'8-motor coaxial config. Maximum redundancy and payload. Industrial.',  compat:'octo',motors:8},
   ]},
 
   // ── FLIGHT CONTROLLERS ─────────────────────────────────────────────────
   fc: { mode:'single', label:'Flight Controller', items:[
-    {id:'fc-f405w',  name:'SpeedyBee F405 WING',      price:42.99,  desc:'Fixed-wing FC. INAV/ArduPilot, 12 PWM outputs, 7-36V. Solder-free.',         fit:'fw'},
-    {id:'fc-f405wm', name:'SpeedyBee F405 WING Mini',  price:36.99,  desc:'Compact fixed-wing FC. Same firmware support, smaller footprint.',            fit:'fw'},
-    {id:'fc-f405v4', name:'SpeedyBee F405 V4',         price:42.99,  desc:'Multirotor FC. Betaflight/INAV, STM32F405, baro, 16MB flash. 30x30.',        fit:'mr'},
-    {id:'fc-f722',   name:'SpeedyBee F722 V3',          price:49.99,  desc:'Premium multirotor FC. STM32F722, dual gyro, OSD. 30x30 mount.',            fit:'mr'},
-    {id:'fc-pix6c',  name:'Holybro Pixhawk 6C',        price:192.99, desc:'ArduPilot/PX4 autopilot. STM32H743, triple IMU. Autonomous missions.',      fit:'all'},
-    {id:'fc-pix6cm', name:'Holybro Pixhawk 6C Mini',   price:154.99, desc:'Compact Pixhawk. Same H743 processor, smaller footprint.',                   fit:'all'},
-    {id:'fc-cube',   name:'CubePilot Cube Orange+',     price:349.99, desc:'Enterprise autopilot. Triple-redundant IMU, isolated vibration mount.',      fit:'all'},
+    {id:'fc-f405w', sku:'OW-FC-F405W',  name:'SpeedyBee F405 WING',      price:42.99,  desc:'Fixed-wing FC. INAV/ArduPilot, 12 PWM outputs, 7-36V. Solder-free.',         fit:'fw'},
+    {id:'fc-f405wm', sku:'OW-FC-F405WM', name:'SpeedyBee F405 WING Mini',  price:36.99,  desc:'Compact fixed-wing FC. Same firmware support, smaller footprint.',            fit:'fw'},
+    {id:'fc-f405v4', sku:'OW-FC-F405V4', name:'SpeedyBee F405 V4',         price:42.99,  desc:'Multirotor FC. Betaflight/INAV, STM32F405, baro, 16MB flash. 30x30.',        fit:'mr'},
+    {id:'fc-f722', sku:'OW-FC-F722',   name:'SpeedyBee F722 V3',          price:49.99,  desc:'Premium multirotor FC. STM32F722, dual gyro, OSD. 30x30 mount.',            fit:'mr'},
+    {id:'fc-pix6c', sku:'OW-FC-PIX6C',  name:'Holybro Pixhawk 6C',        price:192.99, desc:'ArduPilot/PX4 autopilot. STM32H743, triple IMU. Autonomous missions.',      fit:'all'},
+    {id:'fc-pix6cm', sku:'OW-FC-PIX6CM', name:'Holybro Pixhawk 6C Mini',   price:154.99, desc:'Compact Pixhawk. Same H743 processor, smaller footprint.',                   fit:'all'},
+    {id:'fc-cube', sku:'OW-FC-CUBE',   name:'CubePilot Cube Orange+',     price:349.99, desc:'Enterprise autopilot. Triple-redundant IMU, isolated vibration mount.',      fit:'all'},
   ]},
 
   // ── ESCs ───────────────────────────────────────────────────────────────
   esc: { mode:'single', label:'ESC', items:[
-    {id:'esc-sb60',  name:'SpeedyBee BLS 60A 4-in-1',  price:57.99,  desc:'30x30 stack, BLHeli_S, 3-6S. One ESC runs 4 motors.',             fit:'mr',perMotor:0},
-    {id:'esc-sb55',  name:'SpeedyBee BLS 55A 4-in-1',  price:49.99,  desc:'Budget 4-in-1 stack. BLHeli_S, 3-6S. Solid for 5" builds.',       fit:'mr',perMotor:0},
-    {id:'esc-30a',   name:'BLHeli_S 30A Individual',    price:14.99,  desc:'Single 30A ESC. BLHeli_S. 2-6S. One per motor.',                   fit:'all',perMotor:1},
-    {id:'esc-50a',   name:'BLHeli_32 50A Individual',   price:24.99,  desc:'Premium 50A ESC. BLHeli_32, telemetry. For 7"+ and hex/octo.',    fit:'all',perMotor:1},
-    {id:'esc-hw60',  name:'Hobbywing XRotor 60A',       price:34.99,  desc:'Industrial 60A ESC. FOC support, 3-8S. Heavy-lift platforms.',     fit:'mr',perMotor:1},
-    {id:'esc-hw80',  name:'Hobbywing X-Rotor 80A',      price:54.99,  desc:'High-current 80A ESC. For U-series motors and large props.',       fit:'mr',perMotor:1},
-    {id:'esc-fw40',  name:'BLHeli_S 40A (Wing)',         price:16.99,  desc:'Single ESC for fixed-wing pusher motor. 3-6S.',                    fit:'fw',perMotor:1},
+    {id:'esc-sb60', sku:'OW-ESC-SB60',  name:'SpeedyBee BLS 60A 4-in-1',  price:57.99,  desc:'30x30 stack, BLHeli_S, 3-6S. One ESC runs 4 motors.',             fit:'mr',perMotor:0},
+    {id:'esc-sb55', sku:'OW-ESC-SB55',  name:'SpeedyBee BLS 55A 4-in-1',  price:49.99,  desc:'Budget 4-in-1 stack. BLHeli_S, 3-6S. Solid for 5" builds.',       fit:'mr',perMotor:0},
+    {id:'esc-30a', sku:'OW-ESC-30A',   name:'BLHeli_S 30A Individual',    price:14.99,  desc:'Single 30A ESC. BLHeli_S. 2-6S. One per motor.',                   fit:'all',perMotor:1},
+    {id:'esc-50a', sku:'OW-ESC-50A',   name:'BLHeli_32 50A Individual',   price:24.99,  desc:'Premium 50A ESC. BLHeli_32, telemetry. For 7"+ and hex/octo.',    fit:'all',perMotor:1},
+    {id:'esc-hw60', sku:'OW-ESC-HW60',  name:'Hobbywing XRotor 60A',       price:34.99,  desc:'Industrial 60A ESC. FOC support, 3-8S. Heavy-lift platforms.',     fit:'mr',perMotor:1},
+    {id:'esc-hw80', sku:'OW-ESC-HW80',  name:'Hobbywing X-Rotor 80A',      price:54.99,  desc:'High-current 80A ESC. For U-series motors and large props.',       fit:'mr',perMotor:1},
+    {id:'esc-fw40', sku:'OW-ESC-FW40',  name:'BLHeli_S 40A (Wing)',         price:16.99,  desc:'Single ESC for fixed-wing pusher motor. 3-6S.',                    fit:'fw',perMotor:1},
   ]},
 
   // ── MOTORS ─────────────────────────────────────────────────────────────
   motor: { mode:'single', label:'Motor(s)', autoQty:'motors', items:[
-    {id:'mot-f60',   name:'T-Motor F60 Pro V 1750KV',   price:34.99,  kv:'1750KV', desc:'5" race motor. Titanium shaft, N52H magnets. 6S.',          forFrame:['5q']},
-    {id:'mot-2306',  name:'EMAX ECO II 2306 1700KV',    price:16.99,  kv:'1700KV', desc:'Budget 5" motor. Great value, proven reliability.',          forFrame:['5q']},
-    {id:'mot-2812',  name:'BrotherHobby Avenger 2812 900KV', price:34.99, kv:'900KV', desc:'7" LR motor. Titanium hollow shaft, smooth torque.',    forFrame:['7q','tri']},
-    {id:'mot-f90',   name:'T-Motor F90 1507 1300KV',    price:28.99,  kv:'1300KV', desc:'Efficient mid-range. Great for 7" cruisers and light hex.', forFrame:['7q','tri','hex']},
-    {id:'mot-2807',  name:'iFlight XING2 2807 1300KV',  price:24.99,  kv:'1300KV', desc:'7" all-rounder. Smooth, efficient, good price point.',      forFrame:['7q','tri','hex']},
-    {id:'mot-u5',    name:'T-Motor U5 2804 400KV',      price:44.99,  kv:'400KV',  desc:'10" prop motor. High efficiency at low RPM.',                forFrame:['10q','hex','hexl']},
-    {id:'mot-u8',    name:'T-Motor U8 II 100KV',        price:179.99, kv:'100KV',  desc:'Heavy-lift. 7.3kg thrust/motor. Large hex/octo.',            forFrame:['hexl','octo']},
-    {id:'mot-u10',   name:'T-Motor U10 II 100KV',       price:249.99, kv:'100KV',  desc:'Max thrust 10.6kg/motor. IP45 rated. Industrial.',           forFrame:['octo']},
-    {id:'mot-fw17',  name:'T-Motor AT2312 1750KV',      price:22.99,  kv:'1750KV', desc:'FW pusher. Light, efficient, reliable. Micro-medium.',       forFrame:['fw-s','fw-m']},
-    {id:'mot-fw13',  name:'T-Motor AT2820 1050KV',      price:32.99,  kv:'1050KV', desc:'Large FW motor. Higher torque for bigger props/payloads.',   forFrame:['fw-m','fw-l']},
-    {id:'mot-bh910', name:'BrotherHobby Avenger 910KV', price:34.99,  kv:'910KV',  desc:'Heavy-duty FW motor. Long-range mapping flights.',           forFrame:['fw-l']},
+    {id:'mot-f60', sku:'OW-MOT-F60',   name:'T-Motor F60 Pro V 1750KV',   price:34.99,  kv:'1750KV', desc:'5" race motor. Titanium shaft, N52H magnets. 6S.',          forFrame:['5q']},
+    {id:'mot-2306', sku:'OW-MOT-2306',  name:'EMAX ECO II 2306 1700KV',    price:16.99,  kv:'1700KV', desc:'Budget 5" motor. Great value, proven reliability.',          forFrame:['5q']},
+    {id:'mot-2812', sku:'OW-MOT-2812',  name:'BrotherHobby Avenger 2812 900KV', price:34.99, kv:'900KV', desc:'7" LR motor. Titanium hollow shaft, smooth torque.',    forFrame:['7q','tri']},
+    {id:'mot-f90', sku:'OW-MOT-F90',   name:'T-Motor F90 1507 1300KV',    price:28.99,  kv:'1300KV', desc:'Efficient mid-range. Great for 7" cruisers and light hex.', forFrame:['7q','tri','hex']},
+    {id:'mot-2807', sku:'OW-MOT-2807',  name:'iFlight XING2 2807 1300KV',  price:24.99,  kv:'1300KV', desc:'7" all-rounder. Smooth, efficient, good price point.',      forFrame:['7q','tri','hex']},
+    {id:'mot-u5', sku:'OW-MOT-U5',    name:'T-Motor U5 2804 400KV',      price:44.99,  kv:'400KV',  desc:'10" prop motor. High efficiency at low RPM.',                forFrame:['10q','hex','hexl']},
+    {id:'mot-u8', sku:'OW-MOT-U8',    name:'T-Motor U8 II 100KV',        price:179.99, kv:'100KV',  desc:'Heavy-lift. 7.3kg thrust/motor. Large hex/octo.',            forFrame:['hexl','octo']},
+    {id:'mot-u10', sku:'OW-MOT-U10',   name:'T-Motor U10 II 100KV',       price:249.99, kv:'100KV',  desc:'Max thrust 10.6kg/motor. IP45 rated. Industrial.',           forFrame:['octo']},
+    {id:'mot-fw17', sku:'OW-MOT-FW17',  name:'T-Motor AT2312 1750KV',      price:22.99,  kv:'1750KV', desc:'FW pusher. Light, efficient, reliable. Micro-medium.',       forFrame:['fw-s','fw-m']},
+    {id:'mot-fw13', sku:'OW-MOT-FW13',  name:'T-Motor AT2820 1050KV',      price:32.99,  kv:'1050KV', desc:'Large FW motor. Higher torque for bigger props/payloads.',   forFrame:['fw-m','fw-l']},
+    {id:'mot-bh910', sku:'OW-MOT-BH910', name:'BrotherHobby Avenger 910KV', price:34.99,  kv:'910KV',  desc:'Heavy-duty FW motor. Long-range mapping flights.',           forFrame:['fw-l']},
   ]},
 
   // ── GPS ─────────────────────────────────────────────────────────────────
   gps: { mode:'single', label:'GPS Module', items:[
-    {id:'gps-m10q',  name:'Matek SAM-M10Q',           price:28.99, desc:'u-blox M10 quad-constellation. GPS+GLONASS+Galileo+BeiDou.'},
-    {id:'gps-m10c',  name:'Matek M10Q-5883',          price:34.99, desc:'M10Q + integrated QMC5883L compass. Recommended for autonomous.'},
-    {id:'gps-bn880', name:'BN-880 GPS/Compass',       price:18.99, desc:'Dual GPS+GLONASS with HMC5883L compass. Budget-friendly.'},
-    {id:'gps-m9n',   name:'Holybro M9N GPS',          price:39.99, desc:'u-blox M9N with compass. Pixhawk-optimized connector.'},
-    {id:'gps-rtk',   name:'Holybro H-RTK F9P Rover',  price:279.99,desc:'Centimeter-accuracy RTK GPS. For survey and precision ag.'},
+    {id:'gps-m10q', sku:'OW-GPS-M10Q',  name:'Matek SAM-M10Q',           price:28.99, desc:'u-blox M10 quad-constellation. GPS+GLONASS+Galileo+BeiDou.'},
+    {id:'gps-m10c', sku:'OW-GPS-M10C',  name:'Matek M10Q-5883',          price:34.99, desc:'M10Q + integrated QMC5883L compass. Recommended for autonomous.'},
+    {id:'gps-bn880', sku:'OW-GPS-BN880', name:'BN-880 GPS/Compass',       price:18.99, desc:'Dual GPS+GLONASS with HMC5883L compass. Budget-friendly.'},
+    {id:'gps-m9n', sku:'OW-GPS-M9N',   name:'Holybro M9N GPS',          price:39.99, desc:'u-blox M9N with compass. Pixhawk-optimized connector.'},
+    {id:'gps-rtk', sku:'OW-GPS-RTK',   name:'Holybro H-RTK F9P Rover',  price:279.99,desc:'Centimeter-accuracy RTK GPS. For survey and precision ag.'},
   ]},
 
   // ── RECEIVERS ──────────────────────────────────────────────────────────
   rx: { mode:'single', label:'Receiver', items:[
-    {id:'rx-elrs24', name:'Matek ELRS-R24-D 2.4GHz',  price:22.99, desc:'ExpressLRS diversity. 22.5dBm, dual antenna, low latency.'},
-    {id:'rx-elrs9',  name:'Matek ELRS-R900 900MHz',   price:28.99, desc:'900MHz ELRS. Better penetration through terrain.'},
-    {id:'rx-tbs',    name:'TBS Crossfire Nano Rx',     price:34.99, desc:'868/915MHz long-range. Industry standard for LR ops.'},
-    {id:'rx-ghost',  name:'ImmersionRC Ghost Rx',      price:39.99, desc:'2.4GHz low-latency protocol. Race-grade response.'},
-    {id:'rx-drg',    name:'RadioMaster RP3 ELRS 2.4G', price:18.99, desc:'Budget ELRS diversity receiver. Great for starters.'},
+    {id:'rx-elrs24', sku:'OW-RX-ELRS24', name:'Matek ELRS-R24-D 2.4GHz',  price:22.99, desc:'ExpressLRS diversity. 22.5dBm, dual antenna, low latency.'},
+    {id:'rx-elrs9', sku:'OW-RX-ELRS9',  name:'Matek ELRS-R900 900MHz',   price:28.99, desc:'900MHz ELRS. Better penetration through terrain.'},
+    {id:'rx-tbs', sku:'OW-RX-TBS',    name:'TBS Crossfire Nano Rx',     price:34.99, desc:'868/915MHz long-range. Industry standard for LR ops.'},
+    {id:'rx-ghost', sku:'OW-RX-GHOST',  name:'ImmersionRC Ghost Rx',      price:39.99, desc:'2.4GHz low-latency protocol. Race-grade response.'},
+    {id:'rx-drg', sku:'OW-RX-DRG',    name:'RadioMaster RP3 ELRS 2.4G', price:18.99, desc:'Budget ELRS diversity receiver. Great for starters.'},
   ]},
 
   // ── SERVOS ─────────────────────────────────────────────────────────────
   servo: { mode:'single', label:'Servos', items:[
-    {id:'srv-es08',  name:'EMAX ES08MA II (x2)',       price:17.99, desc:'12g metal gear analog pair. Standard wing surfaces.',fit:'fw'},
-    {id:'srv-ds',    name:'EMAX ES3154 Digital (x2)',   price:27.99, desc:'17g digital metal gear pair. Faster, better centering.',fit:'fw'},
-    {id:'srv-sa21',  name:'Savox SH-0254 Digital (x2)', price:34.99, desc:'Premium 7.4V digital pair. Metal gear, high torque.',fit:'fw'},
-    {id:'srv-mg90',  name:'TowerPro MG90S (x2)',        price:12.99, desc:'9g micro metal gear pair. Budget option for small wings.',fit:'fw'},
-    {id:'srv-hw',    name:'Hitec HS-5055MG (x2)',       price:44.99, desc:'Premium micro digital pair. Ball bearing, precise.',fit:'fw'},
+    {id:'srv-es08', sku:'OW-SRV-ES08',  name:'EMAX ES08MA II (x2)',       price:17.99, desc:'12g metal gear analog pair. Standard wing surfaces.',fit:'fw'},
+    {id:'srv-ds', sku:'OW-SRV-DS',    name:'EMAX ES3154 Digital (x2)',   price:27.99, desc:'17g digital metal gear pair. Faster, better centering.',fit:'fw'},
+    {id:'srv-sa21', sku:'OW-SRV-SA21',  name:'Savox SH-0254 Digital (x2)', price:34.99, desc:'Premium 7.4V digital pair. Metal gear, high torque.',fit:'fw'},
+    {id:'srv-mg90', sku:'OW-SRV-MG90',  name:'TowerPro MG90S (x2)',        price:12.99, desc:'9g micro metal gear pair. Budget option for small wings.',fit:'fw'},
+    {id:'srv-hw', sku:'OW-SRV-HW',    name:'Hitec HS-5055MG (x2)',       price:44.99, desc:'Premium micro digital pair. Ball bearing, precise.',fit:'fw'},
   ]},
 
   // ── FPV SYSTEMS ────────────────────────────────────────────────────────
   fpv: { mode:'single', label:'FPV System', items:[
-    {id:'fpv-ws',    name:'Walksnail Avatar HD Pro Kit', price:174.99, desc:'1080p/120fps digital. Sony Starvis II, 4km range, 22ms.'},
-    {id:'fpv-dji',   name:'DJI O4 Air Unit',             price:219.99, desc:'DJI digital. 1080p/100fps, 13km range. DJI goggles req.'},
-    {id:'fpv-djim',  name:'DJI O3 Air Unit',              price:179.99, desc:'Previous gen DJI digital. Still excellent, lighter weight.'},
-    {id:'fpv-ana',   name:'Foxeer Reaper Nano + VTX',     price:44.99,  desc:'Analog 1200TVL camera + 600mW VTX combo. Budget FPV.'},
-    {id:'fpv-cad',   name:'Caddx Ratel Pro V2 + VTX',     price:54.99,  desc:'Premium analog 1500TVL + 800mW VTX. Best analog quality.'},
+    {id:'fpv-ws', sku:'OW-FPV-WS',    name:'Walksnail Avatar HD Pro Kit', price:174.99, desc:'1080p/120fps digital. Sony Starvis II, 4km range, 22ms.'},
+    {id:'fpv-dji', sku:'OW-FPV-DJI',   name:'DJI O4 Air Unit',             price:219.99, desc:'DJI digital. 1080p/100fps, 13km range. DJI goggles req.'},
+    {id:'fpv-djim', sku:'OW-FPV-DJIM',  name:'DJI O3 Air Unit',              price:179.99, desc:'Previous gen DJI digital. Still excellent, lighter weight.'},
+    {id:'fpv-ana', sku:'OW-FPV-ANA',   name:'Foxeer Reaper Nano + VTX',     price:44.99,  desc:'Analog 1200TVL camera + 600mW VTX combo. Budget FPV.'},
+    {id:'fpv-cad', sku:'OW-FPV-CAD',   name:'Caddx Ratel Pro V2 + VTX',     price:54.99,  desc:'Premium analog 1500TVL + 800mW VTX. Best analog quality.'},
     {id:'fpv-none',  name:'No FPV System',                 price:0,      desc:'Skip FPV. For autonomous GPS missions with ground station.'},
   ]},
 
   // ── CAMERAS / GIMBALS (multi-select) ───────────────────────────────────
   cam: { mode:'multi', label:'Camera / Gimbal', items:[
-    {id:'cam-gm3',   name:'Caddx GM3 3-Axis Gimbal',    price:139.99, desc:'Tri-axis stabilized. Head tracking, 46g. Walksnail compatible.'},
-    {id:'cam-gm1',   name:'Caddx GM1 1-Axis Gimbal',    price:49.99,  desc:'Single-axis tilt gimbal. Lightweight, FPV wings.'},
-    {id:'cam-gp12',  name:'GoPro Hero 12 Mount Kit',     price:44.99,  desc:'Vibration-damped GoPro mount with quick-release plate.'},
-    {id:'cam-sony',  name:'Sony RX0 II Mount Kit',        price:54.99,  desc:'Compact 4K camera mount. Lightweight, pro-grade optics.'},
-    {id:'cam-map',   name:'Mapping Camera Mount (nadir)', price:39.99,  desc:'Downward-facing camera mount for orthomosaic mapping.'},
-    {id:'cam-therm', name:'FLIR Lepton 3.5 Thermal Kit',  price:299.99, desc:'160x120 thermal imaging module with USB interface.'},
+    {id:'cam-gm3', sku:'OW-CAM-GM3',   name:'Caddx GM3 3-Axis Gimbal',    price:139.99, desc:'Tri-axis stabilized. Head tracking, 46g. Walksnail compatible.'},
+    {id:'cam-gm1', sku:'OW-CAM-GM1',   name:'Caddx GM1 1-Axis Gimbal',    price:49.99,  desc:'Single-axis tilt gimbal. Lightweight, FPV wings.'},
+    {id:'cam-gp12', sku:'OW-CAM-GP12',  name:'GoPro Hero 12 Mount Kit',     price:44.99,  desc:'Vibration-damped GoPro mount with quick-release plate.'},
+    {id:'cam-sony', sku:'OW-CAM-SONY',  name:'Sony RX0 II Mount Kit',        price:54.99,  desc:'Compact 4K camera mount. Lightweight, pro-grade optics.'},
+    {id:'cam-map', sku:'OW-CAM-MAP',   name:'Mapping Camera Mount (nadir)', price:39.99,  desc:'Downward-facing camera mount for orthomosaic mapping.'},
+    {id:'cam-therm', sku:'OW-CAM-THERM', name:'FLIR Lepton 3.5 Thermal Kit',  price:299.99, desc:'160x120 thermal imaging module with USB interface.'},
     {id:'cam-none',  name:'No Camera / Gimbal',            price:0,      desc:'Skip camera. Use FPV feed only.'},
   ]},
 
   // ── BATTERIES ──────────────────────────────────────────────────────────
   batt: { mode:'single', label:'Battery', items:[
-    {id:'bat-1300',  name:'CNHL 1300mAh 6S 130C',      price:32.99, desc:'Compact 6S race/freestyle. XT60. Good for 5" quads.'},
-    {id:'bat-1800',  name:'CNHL 1800mAh 6S 100C',      price:39.99, desc:'Mid-capacity 6S. Longer flight for 7" and light hex.'},
-    {id:'bat-4s22',  name:'CNHL 2200mAh 4S 100C',      price:27.99, desc:'4S pack for smaller fixed wings and 5" quads.'},
-    {id:'bat-5000',  name:'Tattu 5000mAh 6S 35C',      price:89.99, desc:'High-capacity 6S. Endurance flights, heavy-lift, mapping.'},
-    {id:'bat-10k',   name:'Tattu 10000mAh 6S 25C',     price:159.99,desc:'Max endurance. Large hex/octo and FW VTOL.'},
-    {id:'bat-16k',   name:'Tattu 16000mAh 6S 15C',     price:219.99,desc:'Ultra-endurance for large industrial platforms.'},
-    {id:'bat-li22',  name:'Tattu Li-Ion 3000mAh 6S',    price:109.99,desc:'Li-Ion for maximum flight time. Lower discharge, longer range.'},
+    {id:'bat-1300', sku:'OW-BAT-1300',  name:'CNHL 1300mAh 6S 130C',      price:32.99, desc:'Compact 6S race/freestyle. XT60. Good for 5" quads.'},
+    {id:'bat-1800', sku:'OW-BAT-1800',  name:'CNHL 1800mAh 6S 100C',      price:39.99, desc:'Mid-capacity 6S. Longer flight for 7" and light hex.'},
+    {id:'bat-4s22', sku:'OW-BAT-4S22',  name:'CNHL 2200mAh 4S 100C',      price:27.99, desc:'4S pack for smaller fixed wings and 5" quads.'},
+    {id:'bat-5000', sku:'OW-BAT-5000',  name:'Tattu 5000mAh 6S 35C',      price:89.99, desc:'High-capacity 6S. Endurance flights, heavy-lift, mapping.'},
+    {id:'bat-10k', sku:'OW-BAT-10K',   name:'Tattu 10000mAh 6S 25C',     price:159.99,desc:'Max endurance. Large hex/octo and FW VTOL.'},
+    {id:'bat-16k', sku:'OW-BAT-16K',   name:'Tattu 16000mAh 6S 15C',     price:219.99,desc:'Ultra-endurance for large industrial platforms.'},
+    {id:'bat-li22', sku:'OW-BAT-LI22',  name:'Tattu Li-Ion 3000mAh 6S',    price:109.99,desc:'Li-Ion for maximum flight time. Lower discharge, longer range.'},
   ]},
 
   // ── CARGO / PAYLOAD (multi-select) ─────────────────────────────────────
   cargo: { mode:'multi', label:'Cargo / Payload', items:[
-    {id:'crg-srv',   name:'Servo Payload Release',       price:34.99, desc:'Single-channel servo drop. 500g payload capacity.'},
-    {id:'crg-dual',  name:'Dual Servo Release System',    price:64.99, desc:'Two-channel independent release. Drop two payloads.'},
-    {id:'crg-winch', name:'Motorized Cargo Winch',        price:119.99,desc:'Powered winch with 2kg capacity. Lower and retrieve.'},
-    {id:'crg-mag',   name:'Electromagnetic Release',       price:49.99, desc:'Mag-lock drop mechanism. Instant release, 1kg capacity.'},
-    {id:'crg-box',   name:'Insulated Cargo Pod (2L)',      price:79.99, desc:'Temperature-controlled delivery pod. Medical/sample transport.'},
+    {id:'crg-srv', sku:'OW-CRG-SRV',   name:'Servo Payload Release',       price:34.99, desc:'Single-channel servo drop. 500g payload capacity.'},
+    {id:'crg-dual', sku:'OW-CRG-DUAL',  name:'Dual Servo Release System',    price:64.99, desc:'Two-channel independent release. Drop two payloads.'},
+    {id:'crg-winch', sku:'OW-CRG-WINCH', name:'Motorized Cargo Winch',        price:119.99,desc:'Powered winch with 2kg capacity. Lower and retrieve.'},
+    {id:'crg-mag', sku:'OW-CRG-MAG',   name:'Electromagnetic Release',       price:49.99, desc:'Mag-lock drop mechanism. Instant release, 1kg capacity.'},
+    {id:'crg-box', sku:'OW-CRG-BOX',   name:'Insulated Cargo Pod (2L)',      price:79.99, desc:'Temperature-controlled delivery pod. Medical/sample transport.'},
     {id:'crg-none',  name:'No Cargo Mechanism',             price:0,     desc:'Skip payload release system.'},
   ]},
 
   // ── VTOL ───────────────────────────────────────────────────────────────
   vtol: { mode:'single', label:'VTOL Kit', items:[
-    {id:'vtol-kit',  name:'Flightory VTOL Conversion Kit', price:14.99, desc:'Quad-motor VTOL pack. Vertical takeoff for compatible FW.'},
+    {id:'vtol-kit', sku:'OW-VTOL-KIT',  name:'Flightory VTOL Conversion Kit', price:14.99, desc:'Quad-motor VTOL pack. Vertical takeoff for compatible FW.'},
     {id:'vtol-none', name:'No VTOL (Hand Launch)',          price:0,     desc:'Hand-launch or catapult. No vertical takeoff.'},
   ]},
 
@@ -268,48 +268,48 @@ const CAT = {
 
   // ── LAUNCH & RECOVERY (multi) ──────────────────────────────────────────
   launch: { mode:'multi', label:'Launch & Recovery', items:[
-    {id:'lnch-cat',   name:'Pneumatic Catapult Launcher',   price:449.99, desc:'Compressed-air rail launcher. Hands-free FW launch up to 15kg AUW.'},
-    {id:'lnch-bung',  name:'Bungee Launch System',           price:89.99,  desc:'Elastic bungee rail kit. Portable FW launcher for field ops.'},
-    {id:'lnch-para',  name:'Parachute Recovery System',       price:179.99, desc:'Automatic deployment chute. Spring-loaded, INAV/ArduPilot trigger.'},
-    {id:'lnch-paras', name:'Parachute Recovery (Small)',       price:119.99, desc:'Lightweight chute for sub-3kg platforms. Ballistic deployment.'},
-    {id:'lnch-net',   name:'Recovery Net Kit',                 price:129.99, desc:'Portable catch net for fixed-wing recovery. No runway needed.'},
+    {id:'lnch-cat', sku:'OW-LNH-CAT',   name:'Pneumatic Catapult Launcher',   price:449.99, desc:'Compressed-air rail launcher. Hands-free FW launch up to 15kg AUW.'},
+    {id:'lnch-bung', sku:'OW-LNH-BUNG',  name:'Bungee Launch System',           price:89.99,  desc:'Elastic bungee rail kit. Portable FW launcher for field ops.'},
+    {id:'lnch-para', sku:'OW-LNH-PARA',  name:'Parachute Recovery System',       price:179.99, desc:'Automatic deployment chute. Spring-loaded, INAV/ArduPilot trigger.'},
+    {id:'lnch-paras', sku:'OW-LNH-PARAS', name:'Parachute Recovery (Small)',       price:119.99, desc:'Lightweight chute for sub-3kg platforms. Ballistic deployment.'},
+    {id:'lnch-net', sku:'OW-LNH-NET',   name:'Recovery Net Kit',                 price:129.99, desc:'Portable catch net for fixed-wing recovery. No runway needed.'},
     {id:'lnch-none',  name:'No Launch/Recovery System',        price:0,      desc:'Manual hand-launch or VTOL takeoff. No extra equipment.'},
   ]},
 
   // ── TRANSPORT & PROTECTION (multi) ─────────────────────────────────────
   transport: { mode:'multi', label:'Transport & Protection', items:[
-    {id:'trn-pel1',  name:'Pelican 1600 Hard Case',         price:219.99, desc:'Watertight, dustproof. Fits 5"-7" quads with foam insert.'},
-    {id:'trn-pel2',  name:'Pelican 1650 Hard Case',         price:289.99, desc:'Larger watertight case. Fits hex frames, wings up to 1m.'},
-    {id:'trn-pel3',  name:'Pelican Air 1615 (Lightweight)',   price:329.99, desc:'40% lighter than standard. TSA-approved locks. Long-wing transport.'},
-    {id:'trn-soft',  name:'Padded Backpack (5"-7" Quad)',     price:79.99,  desc:'Tactical backpack with drone compartment. Radio + goggles pockets.'},
-    {id:'trn-tube',  name:'Wing Transport Tube (1.5m)',       price:64.99,  desc:'PVC tube case for fixed wings up to 1500mm. Shoulder strap.'},
-    {id:'trn-foam',  name:'Custom Foam Insert (any case)',     price:44.99,  desc:'CNC-cut foam insert sized to your exact build. Specify case.'},
+    {id:'trn-pel1', sku:'OW-TRN-PEL1',  name:'Pelican 1600 Hard Case',         price:219.99, desc:'Watertight, dustproof. Fits 5"-7" quads with foam insert.'},
+    {id:'trn-pel2', sku:'OW-TRN-PEL2',  name:'Pelican 1650 Hard Case',         price:289.99, desc:'Larger watertight case. Fits hex frames, wings up to 1m.'},
+    {id:'trn-pel3', sku:'OW-TRN-PEL3',  name:'Pelican Air 1615 (Lightweight)',   price:329.99, desc:'40% lighter than standard. TSA-approved locks. Long-wing transport.'},
+    {id:'trn-soft', sku:'OW-TRN-SOFT',  name:'Padded Backpack (5"-7" Quad)',     price:79.99,  desc:'Tactical backpack with drone compartment. Radio + goggles pockets.'},
+    {id:'trn-tube', sku:'OW-TRN-TUBE',  name:'Wing Transport Tube (1.5m)',       price:64.99,  desc:'PVC tube case for fixed wings up to 1500mm. Shoulder strap.'},
+    {id:'trn-foam', sku:'OW-TRN-FOAM',  name:'Custom Foam Insert (any case)',     price:44.99,  desc:'CNC-cut foam insert sized to your exact build. Specify case.'},
   ]},
 
   // ── GROUND STATION & RANGE (multi) ─────────────────────────────────────
   ground: { mode:'multi', label:'Ground Station & Range', items:[
-    {id:'gnd-tx16',  name:'RadioMaster TX16S MKII',         price:199.99, desc:'16-channel ELRS radio. Hall gimbals, full-size, EdgeTX.'},
-    {id:'gnd-tx12',  name:'RadioMaster Pocket ELRS',         price:89.99,  desc:'Compact ELRS radio. Game-pad style, travel-friendly.'},
-    {id:'gnd-boost', name:'ELRS Range Booster (2.4GHz)',      price:59.99,  desc:'External 2W PA module. Extends ELRS link to 40km+.'},
-    {id:'gnd-ant',   name:'Directional Patch Antenna',        price:34.99,  desc:'13dBi patch antenna for ground station. Long-range link.'},
-    {id:'gnd-track', name:'Antenna Tracker (Pan/Tilt)',        price:149.99, desc:'Auto-tracking antenna mount. Follows drone heading via telemetry.'},
-    {id:'gnd-gog',   name:'Walksnail Avatar HD Goggles X',    price:479.99, desc:'Digital HD FPV goggles. 1080p OLED, head tracking, DVR.'},
-    {id:'gnd-gogd',  name:'DJI Goggles 3',                    price:499.99, desc:'DJI FPV goggles. 1080p/100fps, O4 compatible, DVR.'},
-    {id:'gnd-mon',   name:'7" FPV Ground Monitor',             price:119.99, desc:'Sunlight-readable ground station display. HDMI + AV input.'},
+    {id:'gnd-tx16', sku:'OW-GND-TX16',  name:'RadioMaster TX16S MKII',         price:199.99, desc:'16-channel ELRS radio. Hall gimbals, full-size, EdgeTX.'},
+    {id:'gnd-tx12', sku:'OW-GND-TX12',  name:'RadioMaster Pocket ELRS',         price:89.99,  desc:'Compact ELRS radio. Game-pad style, travel-friendly.'},
+    {id:'gnd-boost', sku:'OW-GND-BOOST', name:'ELRS Range Booster (2.4GHz)',      price:59.99,  desc:'External 2W PA module. Extends ELRS link to 40km+.'},
+    {id:'gnd-ant', sku:'OW-GND-ANT',   name:'Directional Patch Antenna',        price:34.99,  desc:'13dBi patch antenna for ground station. Long-range link.'},
+    {id:'gnd-track', sku:'OW-GND-TRACK', name:'Antenna Tracker (Pan/Tilt)',        price:149.99, desc:'Auto-tracking antenna mount. Follows drone heading via telemetry.'},
+    {id:'gnd-gog', sku:'OW-GND-GOG',   name:'Walksnail Avatar HD Goggles X',    price:479.99, desc:'Digital HD FPV goggles. 1080p OLED, head tracking, DVR.'},
+    {id:'gnd-gogd', sku:'OW-GND-GOGD',  name:'DJI Goggles 3',                    price:499.99, desc:'DJI FPV goggles. 1080p/100fps, O4 compatible, DVR.'},
+    {id:'gnd-mon', sku:'OW-GND-MON',   name:'7" FPV Ground Monitor',             price:119.99, desc:'Sunlight-readable ground station display. HDMI + AV input.'},
   ]},
 
   // ── FIELD ACCESSORIES (multi) ──────────────────────────────────────────
   field: { mode:'multi', label:'Field Accessories', items:[
-    {id:'fld-pad',   name:'Landing Pad (75cm Foldable)',     price:29.99,  desc:'High-vis launch/land pad. Weighted corners, carrying bag.'},
-    {id:'fld-padl',  name:'Landing Pad (150cm Heavy Duty)',  price:59.99,  desc:'Large pad for hex/octo. Reflective markers, stake-down.'},
-    {id:'fld-chg',   name:'Field Battery Charger (Dual 6S)', price:149.99, desc:'ToolkitRC M8S dual charger. 800W total, field-deployable.'},
-    {id:'fld-bag',   name:'LiPo Safety Bag (Large)',          price:19.99,  desc:'Fireproof LiPo charging/storage bag. Fits 4x 6S packs.'},
-    {id:'fld-prop',  name:'Spare Prop Set (matched to build)', price:14.99, desc:'Extra set of props matched to your motor/frame combo.'},
-    {id:'fld-tool',  name:'Drone Field Tool Kit',              price:39.99,  desc:'Hex drivers, prop wrench, XT60 adapter, zip ties, heat shrink.'},
-    {id:'fld-winds', name:'Portable Anemometer',               price:34.99,  desc:'Handheld wind speed meter. Pre-flight weather check.'},
-    {id:'fld-flag',  name:'Visual Observer Flag Kit',           price:24.99,  desc:'Hi-vis flags, vests, and cones for FAA compliant ops.'},
-    {id:'fld-tarp',  name:'Field Ops Tarp (Ground Station)',    price:44.99,  desc:'3m x 3m waterproof tarp with grommets. Gear protection.'},
-    {id:'fld-straps',name:'Battery Straps (Kevlar, 5-pack)',    price:12.99,  desc:'Non-slip rubberized Kevlar straps. Multiple widths.'},
+    {id:'fld-pad', sku:'OW-FLD-PAD',   name:'Landing Pad (75cm Foldable)',     price:29.99,  desc:'High-vis launch/land pad. Weighted corners, carrying bag.'},
+    {id:'fld-padl', sku:'OW-FLD-PADL',  name:'Landing Pad (150cm Heavy Duty)',  price:59.99,  desc:'Large pad for hex/octo. Reflective markers, stake-down.'},
+    {id:'fld-chg', sku:'OW-FLD-CHG',   name:'Field Battery Charger (Dual 6S)', price:149.99, desc:'ToolkitRC M8S dual charger. 800W total, field-deployable.'},
+    {id:'fld-bag', sku:'OW-FLD-BAG',   name:'LiPo Safety Bag (Large)',          price:19.99,  desc:'Fireproof LiPo charging/storage bag. Fits 4x 6S packs.'},
+    {id:'fld-prop', sku:'OW-FLD-PROP',  name:'Spare Prop Set (matched to build)', price:14.99, desc:'Extra set of props matched to your motor/frame combo.'},
+    {id:'fld-tool', sku:'OW-FLD-TOOL',  name:'Drone Field Tool Kit',              price:39.99,  desc:'Hex drivers, prop wrench, XT60 adapter, zip ties, heat shrink.'},
+    {id:'fld-winds', sku:'OW-FLD-WINDS', name:'Portable Anemometer',               price:34.99,  desc:'Handheld wind speed meter. Pre-flight weather check.'},
+    {id:'fld-flag', sku:'OW-FLD-FLAG',  name:'Visual Observer Flag Kit',           price:24.99,  desc:'Hi-vis flags, vests, and cones for FAA compliant ops.'},
+    {id:'fld-tarp', sku:'OW-FLD-TARP',  name:'Field Ops Tarp (Ground Station)',    price:44.99,  desc:'3m x 3m waterproof tarp with grommets. Gear protection.'},
+    {id:'fld-straps', sku:'OW-FLD-STRAPS',name:'Battery Straps (Kevlar, 5-pack)',    price:12.99,  desc:'Non-slip rubberized Kevlar straps. Multiple widths.'},
   ]},
 };
 
@@ -350,6 +350,7 @@ function card(p, catKey){
     ${p.tag?'<span class="card-tag">'+p.tag+'</span>':''}
     ${mode==='multi'&&p.price>0?'<span class="card-tag multi">Multi</span>':''}
     <h3>${p.name}</h3>
+    ${p.sku?`<div class="build-sku" data-sku="${p.sku}">SKU ${p.sku}</div>`:''}
     <div class="card-specs">${specs?specs+'<br>':''}${p.desc}</div>
     <div class="card-price">${p.price>0?'$'+p.price.toFixed(2):'Included'}</div>
     ${p.vtol?'<div style="font-size:11px;color:var(--purple);margin-top:4px">VTOL conversion available</div>':''}
@@ -533,7 +534,7 @@ function renderSummary(){
   rows+=`<tr style="border-top:2px solid var(--border2)"><td colspan="3" style="color:var(--text2)">Parts Subtotal</td><td style="font-family:var(--mono)">$${parts.toFixed(2)}</td></tr>`;
   // Labor & testing (30% of parts, $99 min)
   const labor = laborFee(parts);
-  rows+=`<tr><td>Labor &amp; Testing</td><td style="color:var(--text2);font-size:12px">Assembly, firmware, calibration, test flight (30% of parts, $99 min)</td><td style="font-family:var(--mono)">1</td><td style="font-family:var(--mono)">$${labor.toFixed(2)}</td></tr>`;
+  rows+=`<tr><td>Labor &amp; Testing<br><span class="build-sku" style="margin:0">SKU OW-BLD-LABOR</span></td><td style="color:var(--text2);font-size:12px">Assembly, firmware, calibration, test flight (30% of parts, $99 min)</td><td style="font-family:var(--mono)">1</td><td style="font-family:var(--mono)">$${labor.toFixed(2)}</td></tr>`;
   // NYS sales tax
   const taxable = parts + labor;
   const tax = +(taxable * NYS_TAX).toFixed(2);
